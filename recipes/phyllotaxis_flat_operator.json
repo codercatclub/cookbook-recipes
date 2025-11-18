@@ -1,0 +1,82 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "Creates a flat phyllotactic spiral pattern using the golden angle. Points are distributed in a natural spiral formation commonly found in plant structures like sunflower seed heads and pinecone scales.",
+            "category": "vex",
+            "image": "phyllotaxis.jpg",
+            "id": "3345b8518e29",
+            "date-created": "2025-11-03T17:06:40.483372+04:00",
+            "date-modified": "2025-11-03T17:06:40.483372+04:00",
+            "username": "snay",
+            "tags": [
+                "phyllotaxis",
+                "nature",
+                "packing",
+                "botanical",
+                "organic"
+            ]
+        }
+    },
+    "add1": {
+        "position": [
+            0,
+            1.28
+        ],
+        "type": "add"
+    },
+    "create_phyllotaxis_points": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "add1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "angle": 137.5,
+            "class": "detail",
+            "numPoints": 730,
+            "snippet": "int numPts = chi(\"numPoints\");\nfloat phi = chf('angle');           \n\nfor ( int i = 0; i \u003c numPts; i ++ ){\n    float r = 1.0/pow(numPts-1, 0.5);  \n    vector pos;\n    vector4 orient;\n\n    pos.x = r * sqrt(i) * cos(radians(phi)*i);\n    pos.z = r * sqrt(i) * sin(radians(phi)*i);\n\n    orient = quaternion(radians(phi*@ptnum), set(0,0,1)); \n    \n    addpoint(0, pos);\n    setpointattrib(0, \"orient\", i, orient);\n}"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "angle": {
+                                "label": "Angle",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "numPoints": {
+                                "label": "Numpoints",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "type": "integer"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "type": "attribwrangle"
+    }
+}

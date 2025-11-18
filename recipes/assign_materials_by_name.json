@@ -1,0 +1,687 @@
+{
+    "__cookbookMeta": {
+        "context": "lop",
+        "systemfields": {
+            "description": "Assign materials to geometry with the same name.",
+            "category": "solaris",
+            "image": "5db25efcdf30.jpg",
+            "id": "5db25efcdf30",
+            "date-created": "2025-11-03T17:06:40.483372+04:00",
+            "date-modified": "2025-11-03T17:06:40.483372+04:00",
+            "username": "kif",
+            "tags": [
+                "materials",
+                "shading",
+                "lighting",
+                "lop",
+                "solaris",
+                "name"
+            ]
+        }
+    },
+    "assign_materials_by_name": {
+        "flags": {
+            "display": true
+        },
+        "inputs": [
+            {
+                "from": "materiallibrary1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "exportlist": "*",
+            "primpattern": "/geo/*",
+            "snippet": "string name = usd_name(0, s@primpath);\nstring mats = \"/materials/\" + name;\n\nusd_addrelationshiptarget(0, s@primpath, \"material:binding\", mats);\nusd_setattrib(0, s@primpath, \"familyName\", \"materialBind\");"
+        },
+        "position": [
+            1.1,
+            -4.48
+        ],
+        "type": "attribwrangle"
+    },
+    "cube": {
+        "flags": {
+            "render": true
+        },
+        "parms": {
+            "primpath": "/geo/$OS"
+        },
+        "position": [
+            2.51,
+            0.06
+        ],
+        "type": "cube"
+    },
+    "materiallibrary1": {
+        "children": {
+            "cube": {
+                "children": {
+                    "displacement_output": {
+                        "color": [
+                            0.6,
+                            0.69,
+                            0.89
+                        ],
+                        "flags": {
+                            "colordefault": false
+                        },
+                        "inputs": [
+                            {
+                                "from": "mtlxdisplacement",
+                                "from_index": "out",
+                                "to_index": "suboutput"
+                            }
+                        ],
+                        "parms": {
+                            "connectorkind": "output",
+                            "parmlabel": "Displacement",
+                            "parmname": "displacement",
+                            "parmtype": "displacement"
+                        },
+                        "position": [
+                            2.52,
+                            -2.43
+                        ],
+                        "size": [
+                            1.77,
+                            0.68
+                        ],
+                        "type": "subnetconnector"
+                    },
+                    "inputs": {
+                        "flags": {
+                            "display": true,
+                            "render": true
+                        },
+                        "position": [
+                            -4.54,
+                            0.04
+                        ],
+                        "size": [
+                            1.77,
+                            0.53
+                        ],
+                        "type": "subinput"
+                    },
+                    "mtlxdisplacement": {
+                        "position": [
+                            -0.29,
+                            -2.43
+                        ],
+                        "size": [
+                            1.77,
+                            0.83
+                        ],
+                        "type": "mtlxdisplacement"
+                    },
+                    "mtlxstandard_surface": {
+                        "parms": {
+                            "base_color": [
+                                0.30000001192092896,
+                                0.07500000298023224,
+                                0.30000001192092896
+                            ]
+                        },
+                        "position": [
+                            -0.29,
+                            0.04
+                        ],
+                        "size": [
+                            1.77,
+                            1.88
+                        ],
+                        "type": "mtlxstandard_surface",
+                        "user_data": {
+                            "__inputgroup_": "collapsed",
+                            "__inputgroup_Base": "collapsed",
+                            "__inputgroup_Coat": "collapsed",
+                            "__inputgroup_Emission": "collapsed",
+                            "__inputgroup_Geometry": "collapsed",
+                            "__inputgroup_Sheen": "collapsed",
+                            "__inputgroup_Specular": "collapsed",
+                            "__inputgroup_Subsurface": "collapsed",
+                            "__inputgroup_Thin Film": "collapsed",
+                            "__inputgroup_Transmission": "collapsed"
+                        }
+                    },
+                    "surface_output": {
+                        "color": [
+                            0.89,
+                            0.69,
+                            0.6
+                        ],
+                        "flags": {
+                            "colordefault": false
+                        },
+                        "inputs": [
+                            {
+                                "from": "mtlxstandard_surface",
+                                "from_index": "out",
+                                "to_index": "suboutput"
+                            }
+                        ],
+                        "parms": {
+                            "connectorkind": "output",
+                            "parmlabel": "Surface",
+                            "parmname": "surface",
+                            "parmtype": "surface"
+                        },
+                        "position": [
+                            2.52,
+                            0.04
+                        ],
+                        "size": [
+                            1.77,
+                            0.68
+                        ],
+                        "type": "subnetconnector"
+                    }
+                },
+                "flags": {
+                    "material": true
+                },
+                "parmtemplates": [
+                    {
+                        "insert_first": "",
+                        "parmtemplates": {
+                            "folder1": {
+                                "label": "MaterialX Builder",
+                                "parmtemplates": {
+                                    "inherit_ctrl": {
+                                        "default_value": 2,
+                                        "label": "Inherit from Class",
+                                        "menu_items": [
+                                            {
+                                                "label": "Never",
+                                                "token": "0"
+                                            },
+                                            {
+                                                "label": "Always",
+                                                "token": "1"
+                                            },
+                                            {
+                                                "label": "Material Flag",
+                                                "token": "2"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "type": "integer"
+                                    },
+                                    "separator1": {
+                                        "label": "",
+                                        "script_callback_language": "hscript",
+                                        "type": "separator"
+                                    },
+                                    "shader_baseprimpath": {
+                                        "default_value": "/__class_mtl__/`$OS`",
+                                        "label": "Class Prim Path",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "script_action": "import lopshaderutils\nlopshaderutils.selectPrimFromInputOrFile(kwargs)",
+                                            "script_action_help": "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.",
+                                            "script_action_icon": "BUTTONS_reselect",
+                                            "sidefx::shader_isparm": "0",
+                                            "sidefx::usdpathtype": "prim",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_forcechildren": {
+                                        "default_value": true,
+                                        "label": "Force Translation of Children",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "shader_referencetype": {
+                                        "default_value": {
+                                            "expression": "n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r",
+                                            "language": "python"
+                                        },
+                                        "label": "Class Arc",
+                                        "menu_items": [
+                                            {
+                                                "label": "None",
+                                                "token": "none"
+                                            },
+                                            {
+                                                "label": "Reference",
+                                                "token": "reference"
+                                            },
+                                            {
+                                                "label": "Inherit",
+                                                "token": "inherit"
+                                            },
+                                            {
+                                                "label": "Specialize",
+                                                "token": "specialize"
+                                            },
+                                            {
+                                                "label": "Represent",
+                                                "token": "represent"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_rendercontextname": {
+                                        "default_value": "mtlx",
+                                        "label": "Render Context Name",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "tabmenumask": {
+                                        "default_value": "MaterialX parameter constant collect null genericshader subnet subnetconnector suboutput subinput",
+                                        "label": "Tab Menu Mask",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Tab Menu"
+                                        },
+                                        "type": "string"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_type": "collapsible",
+                                    "sidefx::shader_isparm": "0"
+                                },
+                                "type": "folder_collapsible"
+                            }
+                        }
+                    }
+                ],
+                "position": [
+                    5.5,
+                    47.85
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "subnet"
+            },
+            "sphere": {
+                "children": {
+                    "displacement_output": {
+                        "color": [
+                            0.6,
+                            0.69,
+                            0.89
+                        ],
+                        "flags": {
+                            "colordefault": false
+                        },
+                        "inputs": [
+                            {
+                                "from": "mtlxdisplacement",
+                                "from_index": "out",
+                                "to_index": "suboutput"
+                            }
+                        ],
+                        "parms": {
+                            "connectorkind": "output",
+                            "parmlabel": "Displacement",
+                            "parmname": "displacement",
+                            "parmtype": "displacement"
+                        },
+                        "position": [
+                            2.52,
+                            -2.43
+                        ],
+                        "size": [
+                            1.77,
+                            0.68
+                        ],
+                        "type": "subnetconnector"
+                    },
+                    "inputs": {
+                        "flags": {
+                            "display": true,
+                            "render": true
+                        },
+                        "position": [
+                            -4.54,
+                            0.04
+                        ],
+                        "size": [
+                            1.77,
+                            0.53
+                        ],
+                        "type": "subinput"
+                    },
+                    "mtlxdisplacement": {
+                        "position": [
+                            -0.29,
+                            -2.43
+                        ],
+                        "size": [
+                            1.77,
+                            0.83
+                        ],
+                        "type": "mtlxdisplacement"
+                    },
+                    "mtlxstandard_surface": {
+                        "parms": {
+                            "base_color": [
+                                0.25,
+                                0.5,
+                                0
+                            ]
+                        },
+                        "position": [
+                            -0.29,
+                            0.04
+                        ],
+                        "size": [
+                            1.77,
+                            1.88
+                        ],
+                        "type": "mtlxstandard_surface",
+                        "user_data": {
+                            "__inputgroup_": "collapsed",
+                            "__inputgroup_Base": "collapsed",
+                            "__inputgroup_Coat": "collapsed",
+                            "__inputgroup_Emission": "collapsed",
+                            "__inputgroup_Geometry": "collapsed",
+                            "__inputgroup_Sheen": "collapsed",
+                            "__inputgroup_Specular": "collapsed",
+                            "__inputgroup_Subsurface": "collapsed",
+                            "__inputgroup_Thin Film": "collapsed",
+                            "__inputgroup_Transmission": "collapsed"
+                        }
+                    },
+                    "surface_output": {
+                        "color": [
+                            0.89,
+                            0.69,
+                            0.6
+                        ],
+                        "flags": {
+                            "colordefault": false
+                        },
+                        "inputs": [
+                            {
+                                "from": "mtlxstandard_surface",
+                                "from_index": "out",
+                                "to_index": "suboutput"
+                            }
+                        ],
+                        "parms": {
+                            "connectorkind": "output",
+                            "parmlabel": "Surface",
+                            "parmname": "surface",
+                            "parmtype": "surface"
+                        },
+                        "position": [
+                            2.52,
+                            0.04
+                        ],
+                        "size": [
+                            1.77,
+                            0.68
+                        ],
+                        "type": "subnetconnector"
+                    }
+                },
+                "flags": {
+                    "display": true,
+                    "material": true,
+                    "render": true
+                },
+                "parmtemplates": [
+                    {
+                        "insert_first": "",
+                        "parmtemplates": {
+                            "folder1": {
+                                "label": "MaterialX Builder",
+                                "parmtemplates": {
+                                    "inherit_ctrl": {
+                                        "default_value": 2,
+                                        "label": "Inherit from Class",
+                                        "menu_items": [
+                                            {
+                                                "label": "Never",
+                                                "token": "0"
+                                            },
+                                            {
+                                                "label": "Always",
+                                                "token": "1"
+                                            },
+                                            {
+                                                "label": "Material Flag",
+                                                "token": "2"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "type": "integer"
+                                    },
+                                    "separator1": {
+                                        "label": "",
+                                        "script_callback_language": "hscript",
+                                        "type": "separator"
+                                    },
+                                    "shader_baseprimpath": {
+                                        "default_value": "/__class_mtl__/`$OS`",
+                                        "label": "Class Prim Path",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "script_action": "import lopshaderutils\nlopshaderutils.selectPrimFromInputOrFile(kwargs)",
+                                            "script_action_help": "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.",
+                                            "script_action_icon": "BUTTONS_reselect",
+                                            "sidefx::shader_isparm": "0",
+                                            "sidefx::usdpathtype": "prim",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_forcechildren": {
+                                        "default_value": true,
+                                        "label": "Force Translation of Children",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "shader_referencetype": {
+                                        "default_value": {
+                                            "expression": "n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r",
+                                            "language": "python"
+                                        },
+                                        "label": "Class Arc",
+                                        "menu_items": [
+                                            {
+                                                "label": "None",
+                                                "token": "none"
+                                            },
+                                            {
+                                                "label": "Reference",
+                                                "token": "reference"
+                                            },
+                                            {
+                                                "label": "Inherit",
+                                                "token": "inherit"
+                                            },
+                                            {
+                                                "label": "Specialize",
+                                                "token": "specialize"
+                                            },
+                                            {
+                                                "label": "Represent",
+                                                "token": "represent"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_rendercontextname": {
+                                        "default_value": "mtlx",
+                                        "label": "Render Context Name",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "tabmenumask": {
+                                        "default_value": "MaterialX parameter constant collect null genericshader subnet subnetconnector suboutput subinput",
+                                        "label": "Tab Menu Mask",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Tab Menu"
+                                        },
+                                        "type": "string"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_type": "collapsible",
+                                    "sidefx::shader_isparm": "0"
+                                },
+                                "type": "folder_collapsible"
+                            }
+                        }
+                    }
+                ],
+                "position": [
+                    5.44,
+                    46.16
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "subnet"
+            }
+        },
+        "inputs": [
+            {
+                "from": "merge1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "materials": [
+                {
+                    "assign#": {
+                        "value": false,
+                        "visible": false
+                    },
+                    "enable#": {
+                        "visible": false
+                    },
+                    "geopath#": {
+                        "visible": false
+                    },
+                    "matflag#": {
+                        "value": true,
+                        "visible": false
+                    },
+                    "matnode#": {
+                        "value": "*",
+                        "visible": false
+                    },
+                    "matpath#": {
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "matpathprefix",
+                "parmtemplates": {
+                    "tabmenufolder": {
+                        "label": "Tab Menu",
+                        "parmtemplates": {
+                            "tabmenumask": {
+                                "default_value": "*builder parameter constant rampparm collect null subnet subnetconnector suboutput subinput genericshader",
+                                "label": "Tab Menu Mask",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "spare_category": "Tab Menu"
+                                },
+                                "type": "string"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "collapsible"
+                        },
+                        "type": "folder_collapsible"
+                    }
+                }
+            }
+        ],
+        "position": [
+            1.02,
+            -2.99
+        ],
+        "type": "materiallibrary"
+    },
+    "merge1": {
+        "inputs": [
+            {
+                "from": "sphere",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "cube",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            1.02,
+            -1.69
+        ],
+        "type": "merge"
+    },
+    "sphere": {
+        "parms": {
+            "primpath": "/geo/$OS",
+            "t": [
+                -3,
+                0,
+                0
+            ]
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "sphere"
+    }
+}

@@ -1,0 +1,1073 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "Creates a spider web from guiding surface geometry. Recommend to do a few frames of vellum simulation, and then tweak the web to your taste with the vellum brush.",
+            "category": "geometry",
+            "image": "sweb.jpg",
+            "id": "72b9890d7a26",
+            "date-created": "2025-11-03T17:06:40.483372+04:00",
+            "date-modified": "2025-11-03T17:06:40.483372+04:00",
+            "username": "snay",
+            "tags": [
+                "vellum",
+                "telerana",
+                "nature",
+                "organic",
+                "environment"
+            ]
+        }
+    },
+    "__netbox1": {
+        "box_content": [
+            "scatter3",
+            "copytopoints2",
+            "sphere4",
+            "attribrandomize1",
+            "vdbfrompolygons1",
+            "convertvdb1",
+            "attribblur3"
+        ],
+        "color": [
+            0.71,
+            0.52,
+            0
+        ],
+        "position": [
+            4.46,
+            -25.52
+        ],
+        "size": [
+            5.15,
+            5.71
+        ],
+        "title": "clumps",
+        "type": "NetworkBox"
+    },
+    "attribblur1": {
+        "inputs": [
+            {
+                "from": "smooth2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "influencetype": "proximity",
+            "pinborder": false
+        },
+        "position": [
+            2.36,
+            -9.66
+        ],
+        "type": "attribblur"
+    },
+    "attribblur3": {
+        "inputs": [
+            {
+                "from": "convertvdb1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "iterations": 3,
+            "stepsize": 0.976
+        },
+        "position": [
+            7.18,
+            -25.32
+        ],
+        "type": "attribblur"
+    },
+    "attribrandomize1": {
+        "inputs": [
+            {
+                "from": "scatter3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "distribution": "ramp",
+            "name": "scale",
+            "ramp": [
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0,
+                    "value": 0.2199999988079071
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.9963768124580383,
+                    "value": 1
+                }
+            ],
+            "seed": 7187
+        },
+        "position": [
+            7.17,
+            -21.31
+        ],
+        "type": "attribrandomize"
+    },
+    "attribtransfer1": {
+        "flags": {
+            "bypass": true
+        },
+        "inputs": [
+            {
+                "from": "scatter2",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "scatter1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "pointattriblist": "pscale",
+            "primitiveattribs": false
+        },
+        "position": [
+            2.35,
+            -3.63
+        ],
+        "type": "attribtransfer"
+    },
+    "circle1": {
+        "parms": {
+            "divs": 3,
+            "reverse": false,
+            "type": "poly"
+        },
+        "position": [
+            5,
+            -16.97
+        ],
+        "type": "circle"
+    },
+    "connectadjacentpieces1": {
+        "inputs": [
+            {
+                "from": "set_pscale",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "connecttype": "pointcloud",
+            "searchradius": 0.066
+        },
+        "position": [
+            2.36,
+            -5.66
+        ],
+        "type": "connectadjacentpieces"
+    },
+    "convert1": {
+        "inputs": [
+            {
+                "from": "merge1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            2.58,
+            3.93
+        ],
+        "type": "convert"
+    },
+    "convertvdb1": {
+        "inputs": [
+            {
+                "from": "vdbfrompolygons1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "conversion": "poly"
+        },
+        "position": [
+            7.17,
+            -24.31
+        ],
+        "type": "convertvdb"
+    },
+    "copytopoints1": {
+        "inputs": [
+            {
+                "from": "platonic1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "scatter1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "targetattribs": [
+                {
+                    "applyattribs#": {
+                        "value": "*,^v,^Alpha,^N,^up,^pscale,^scale,^orient,^rot,^pivot,^trans,^transform",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "Alpha",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "mult",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "v",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "add",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            2.36,
+            -1.76
+        ],
+        "type": "copytopoints::2.0"
+    },
+    "copytopoints2": {
+        "inputs": [
+            {
+                "from": "sphere4",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "attribrandomize1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "targetattribs": [
+                {
+                    "applyattribs#": {
+                        "value": "*,^v,^Alpha,^N,^up,^pscale,^scale,^orient,^rot,^pivot,^trans,^transform",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "Alpha",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "mult",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "v",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "add",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            7.18,
+            -22.31
+        ],
+        "type": "copytopoints::2.0"
+    },
+    "crosssectionsurface1": {
+        "inputs": [
+            {
+                "from": "curve1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            1.25,
+            6.99
+        ],
+        "type": "crosssectionsurface"
+    },
+    "crosssectionsurface2": {
+        "inputs": [
+            {
+                "from": "curve2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            3.13,
+            7.14
+        ],
+        "type": "crosssectionsurface"
+    },
+    "crosssectionsurface3": {
+        "inputs": [
+            {
+                "from": "curve3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            4.95,
+            7.14
+        ],
+        "type": "crosssectionsurface"
+    },
+    "curve1": {
+        "parms": {
+            "activepoints": "10",
+            "activeprim": 1,
+            "cornerpts": "0 6 13",
+            "mode": 0,
+            "optype": "transform",
+            "parmpoints": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5hE)E3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mKZMMWkED+vT-VRU6C2`dT{GB7eVEio`HGBqGEH##\u0026qIx;sV3M\u0026f+VRCe7b95#PD+~m4Zee*Q3@Z%?b8lvJcVTj6CJieN5J+!zWNB_`ATls6H7+$cG$sx!4+dgyb#7#HCJ#Uv1^@s6000000000000000000000000004op?VRUqIX\u003c~JBWnXi3ZEaz4c_t7i^3DMuARr(!G9YkoX\u003eN2NVRUqIX\u003c~JBWpg?SVPs@*baN~qZDDC{bYW?3aBpdDbSxlfVQyq\u003eWpFTXZ*wdlbaG*Cb8KOBWh@|2EFg1lW^{CNVQzC~Z*pyNVPq^IVPkY@c4csKX\u003eBYZZ*X*ZaAhnYaA|gLbaHQWVRU6IAZTH3WNc+{F\u003er5lEFf}kb#7#1Z*p#Ba\u0026UBWEFg1lW^{CNVQzC~Z*pxcAZTH3WNc+{GH`EmEFf}kbYXO5EFfWZbZ=s1dTC{HEFfWHbZK^FaBpdDbaN~qZ*_EVb#!!jaAhnYaBN|2Wo~V3EFg1ZVQghAAYpZMZ*X*TEFf@fVQyt_a%pEQAY*TCb98cHX\u003eN0La$#v_Xmn+6EFfWUaB^\u003eWWo~42VQyz-Zgg`jAaZYYZe(L`a\u0026BdEa$#g?b#p8rb7g03Wo~q0WqN64a${_7b7d?bX\u003eN37a\u0026T\u003eBbZBp6EFfcVa\u0026BdEaCCDlAaH4RZ*+8WVQzD5VRU6IAaiYRZ**vIbaN~qV{dMDWpZ?5b#iuPb1WceVQyq\u003eWpH$JEFf=kWMy\u0026+ARr(hATc0kY;R\u0026=Y#?EDbaH88b#!HOItg}Ra\u00262L73VkaP2y}07Z)|U8c_tBCD-sBBZ)t9Ha%E;F5?d=12Wf6(X=7z`CKEss09{=x6bfN\u003cbaH88b#!HOCKOvM6%TN4X\u003eN33baZlQVs\u0026(7b0!sATU#p@1#@F\u003eaAhVID;EZEbz*F3V\u003cs0X7zA{AaAhVKD;WoFb!}yGX=5fCD;flDVQpn58Y\u003e$CP$nBI90zZ3bZKvHb0!\u003enCK!7r7%LqHb98cPZf7PPD;@=QVQh6}CLSvv1#oX^ZgeIeeSKY9D\u003cA}OX?kTQAQ1yAAqR7GZ*pO0WhNmjA_!)1a%Ev`GcqP3D\u003ccSGWoBV@Y;\u003c!bBU\u003egQ5dkJ4D\u003clYJaB^i~Y\u0026J9|Br7Ebc42IFWpgGaKpFu60000000018CM8=YAQ1y5AtoX#CJ1n0XJvC~dSxai5\u0026#4%ClO\u003cBZgX^DZgg;AXJuw=VP|tDCtE-e0RaF209`963vyw1aA9X\u003cWMOn+CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCLJakD=7?NV{~bDWpHn4Zgg`dDJC3yeO+57AQ1s3AuB2cX\u003eN2gGA1f3D+hCQa%pa7b0#ZWD=YypCM+v00W\u00265oD=q;xCN3*40XHTuD=+~#CNL{80W\u003eBtD\u003e4ExGbS=CGXgO%CNo_o6I\u0026)A5dkJ4CMqT-5\u0026#4yC_ob\u003c|NsC0|NsC0|NsC0|NsC0000000RR910RR91000000ssI20{{R30{{R30{{R31ONa41ONa40{{R30{{R3000000000000000000000RR910RR911poj50RR910RR910ssI20ssI20ssI21^@s62LJ#72LJ#72LJ#72LJ#72LJ#72LJ#7U0q#UTP7AJ7bX}c873MlGzwv3bZK^FaB^vFCNw4-dnOorCKx6iCLSv_6\u003ee{CVRC77Xl-S5X=7h$Zggd5WpXApeSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AuBcoX\u003eN2jG$uACB|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STjz6C(fs00000000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031003QGU0Yiw7A6-a7$zMi8Y?#jVPs@*baN\u0026*CLDWxU0Ws~5dkJ4CMqT?TPrxNEif)HFgGwaH8(gmH90UfH#RXhGAuGKIX5yiFgP+fG\u0026VOkH#0OeEHExGAT2O1FfcbTH#IjnHZ?ggH8(afH!\u003e_TE;%\u003ccG%z?aIW#smH#ajhG%PSKFd#85FgY?cFgG?ZFgG|fGcYkYEHW-QFfchXH#RdlFfcbYHaIjaFfK44F)lDLI5;sjFfcPWIXN^lI5jLXE;BeXIW{mgH8(jkH#RadEHExGASO5~IeaiKIWjddGBh+WHaIafH8(XfEHN%QHZ(aoGc-3gI5synH#ImcFfK44F)leXGBhzYGBh?hHZwIaF)T7JIXN;kG%_(WF)%bTG\u0026nFdEHExGATcgEGcq(WH8M0dIW{vjFflALE;%_eG\u0026C|XGchnUGBh|aH7qbLFd!y5D\u003e|tyFfKMTF*i3eG%+$VGB-9eFg7eQE;2bbG%z+WGcYzaG\u0026wLgGAuAIFd!{3E;ceZI50ReF*7nVGdVOjI4m+QGB-3cGcq+YGcz\u003cbIW#vjEHExGAT2O1H!?9WF*7nTI59RfG\u0026D3UF)lMXFf%hVF*h|fH90XiIX5gYE-)Z4E;2DRF*G\u003chHZ(CcFfcSXGb}MKGC4OfI5#sgI5RUiHZn6TFfK44CORuSeK9UEG\u0026wUdFgZ6iGB!3iHZd$QE;2AQFf=hVI599WI50LgG%PSKFd#85IWRUkGBGtUH90akFf%zeEHN%IH!v|WI5;vgGcq\u003cdHZU?QFfK44F)leUHaRjeH83?fGB_|ZIW{aYE-^PSF)}zfGBPtVHa0deGAuAIFd!y7T_zJ-CLj?3CLty\u0026CMFU91STjz6C(fs00031000620009300960|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NmWGU0Yiw7A6-a7$zAe8Y?^zVQ_GAZ+K;HWOQL}XJu}5b0$0{9D61hdnOnr9VQ+oHGO?uTP7e80VW|PDkdXaCLj?3CLty^CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y?{tVRdwGVr6=1WpXAxCLDVv7\u003c(odCLJaoCN+J1U0Ws~5dkJ4CMqT)TP7e80VW|PHYO!N6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6iCK@X~2Vr$|Z*X*TCO#${dwpG7CLj?3CLty\u0026CM#QACKFpGAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd|NsC0U0q#UTP7AJ7bX}c873MlKNDkbZgX^UVQFr2baG*7XJ~X~ZYDn_9D61hdnOnr9VQ+oHGO?uTP7e80VW|PDkdXaCLj?3CLty^CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y@5zV{dMDWpZ?5b#iuPb0$D09D61hdnOnr9VQ+oHGO?uTP7e80VW|PDkdXaCLj?3CLty^CM7@=0RaF20000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y@8wV{dY9WpZ$Ib0$G19D99TTP7e80VW|PDkdviCM+vL127;qCPFJi1~4EtATcv0LtQ2lTP7e80VW|PDkdfp00br|KocYX|Ns9000001000010000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200018U0qvSCKe_aCKx6eCK@Y53us|(WNc+{FmP{kCPXG2dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{SkzW@LL0000009{\u003eOTU#a;CKo0cCK)CgD@6-vVQyq\u003eWpFWYZ*wL^CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000000000018U0qvSCKe_aCKx6eCK@Y73us|(WNc+{GH`EmCPpS4dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{SkKL7v#0000009{\u003eOTU#a;CKo0cCK)CgD@O@vVQyq\u003eWpH$JCPyY5dnOorCKx6iCLSg=eSKY9CLj?5CLty\u0026CL\u003e!WAQ1s3Atp8^B|sDb|NsC0|NsC0T_z=4CLj?5CLty\u0026CMFU91STh2Ko9`|00018CMZA?1ONa3|NsC0|NsC0|6N^OTU#a;CKo0cCK)CgD@Y7!ZggdGaBXFDXm4aDNG2S6CK!7r7$zMi9ws$?eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CN?G|KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c873MlNeyjbX\u003eN33X\u003eM?DX\u003eN2TNhTb7CK!7r7$zMi9ws$?eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CN?G|KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c9VQwpN(OImba`-PCQ2q8dwpG7CLj?3CLty\u0026CM#PjOABFeaAj^}aBpdDbS6tHObK*yVQzC~Z*pxWOkE}uTP7e80VW|PDkdfp00br|KocVX0000000000000000000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100018U0qvSCKe_aCKx6eCK@YE1#fa\u003eWpXA\u003eCLDVv7\u003c(odCLJaoCN+J1U0Ws~5dkJ4CMqT)TP7e80VW|PHYO!N6afSP00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobE300018U0qvSCKe_aCKx6iCK@YF3U76EaCLNad2nSWP9_|CeO+57AQ1s3Atov\u0026D_bj124ZD;X=QRIPhBPxTP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y@r\u003eaA|gLbaHQWVRU6CP$nFEeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl000000000000000U0q#UTP7AJ7bX}c873MlQ4Vlvc5ifaa$#\u003cBY+-a|CQ\u00269FdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STjz8EF6j00000000000000000000000000000000000000000000000000000000002o=ezJbK0p8f00813fj@167(f63006un=|0}FWk3J`0023Xhrc23c0d3C003fH_dhIzKR^Hg008H^A-_@h5\u003cma|004-hUcYwT8$bX6001Zww!cAtJwN~e006kloxhnCJV3=\u003e3qQEaoxgWoIzYV8hd!oFp1(kUJwU}?3qPbyp1\u0026x%8$ixAAU`;ghrd!FS3p32?Ys?wiN9x0T|fYT?Ys\u003cviNC29O+W$Vl|RfMroVyXR6qdbl|R5A=|0#^O+Z7ofIo1cRK8R_ML\u003cNhfIslmqP|JzC_qHEfIp!2Z@xmOLqJ5ffIon?Wxl_NRX{|xfInba_dg%oJ3uD6fj?kb_djdgc0fl}H9xei7C-6eTR=!vH9r9s^gqbPl|KLg007rXTRuDrrau4x000o9-aQCMHb4LX0001^-aUksIY4Bahd%(L-aV@0SwO\u0026BUcSJ4\u003cvd5dMnJ$@UcLZ)\u003cviq\u003cN\u003cbIulD}PDU0Yiw7A6-a7$zAe8Y@x=aBN|2Wo~V3CQ\u003eFGdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R30001hKL7v#09{\u003eOTU#a;CKo0cCK)CgD^m$@Y+-I?Z*pm8CQ~LHdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCK)CgD^vz@Z**aFWhPW69D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zMi8Y@)}a\u0026L8RWMgk~Ze?\u003cCbaN(ECLDWxU0Ws~5dkJ4CMqT?TU{m-TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69NDK|NmWGU0Yiw7A6-a7$zAe8Y@;2a\u0026L8RWMgk~Ze?\u003cEVPt7_b0$_M9D99TTP7e80VW|PA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e80VW|PA|@sh00br{TR;#20RR91T_z|%836zQ003QGU0Yiw7A6-a7$zAe8Y@=?b7Ns_WhPf99D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910002+KV2pzTP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cSfIk2LfIk2LfInSbU0Yiw7A6-a7$zAe8Y@^5b7g03Wo~q0WqN64a${_7b7dx2CLDVv7\u003c(odCLJaoCN+J1U0Ws~5dkJ4CMqT)TP7e80VW|PHYO!N6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobE000018U0qvSCKe_aCKx6iCK@YQ33F|4Z**vIbaN(ICLDWxU0Ws~5dkJ4CMqT?TPs=tDkfScEh}3FGaxr0F)$`uT_zJ-CLj?3CLty\u0026CMFU91STjz6C(fs00031000310006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062003QGU0Yiw7A6-a7$zAe8Y^54b8lvJbaG*Cb7pUHZ6;hM9D61hdnOnr9VQ+oHGO?uTP7e80VW|PDkdXaCLj?3CLty^CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y^88b8lvJbaG*Cb7pUHZE|5`CS4{RdwpG7CLj?3CLtywCL\u003e!WAQ1s3AtodyB|sVh00000007`WT_z=4CLj?3CLtywCMFU91STh2Ko9`|00018CMZA|0RR91KV4m2TU#a;CKo0cCK)CgD_#k7a$#\u003cBY+-a|CSE2SdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STjz8EF6j0000000000000000000000000000000000000000000000000000000003R8hQGwjVm|-?008E(4Zq@Gnm+\u0026l0000005mWt!@fhdfIk2L05o`Z{=Pte?Ysa0fV4nEYP}}8fj@+rbG}eg4n6\u003c?0078=4Zkdh20s7*000mqK0W{dfV9P43qJq=0000H+`P{0j=lf@004kuuf5\u003c(Dm?%IfHYtf2fs+TrahpqUA+KoemnpG05pK=cf6qD#XSH305kvq05tH$fxi8knLhyTWWE5K`8@yt0JH!A006*40X^un2)_KcDZfAn0lokL05pKH+PnY\u003e%e(*p006U#06%JAtUdq$00002Bs}N~k3IkZ000000002FC%j+\u003elsy0d001xrY(EM*oW6zvtiKSP*S-J%fHT0Nc0B+9fV7~6u|5C*0JOIR6+qC3\u0026Ap!R*S*w(#y\u003cc6000000JH#~Q$1vxhd%%S005Xc0YBVkqrVVDrM(z4nZ5u30000005m|Sc0E2nZog2wG(JEN6g~g|0JL3QU0o|*5NB*}Vqt7ybaZlQVs\u0026(7b0%L~TU#a;CKo0cCLJakD_{n8VRCI@a3)|T9D6Ha4q|L?Vmfnla%pa7b7gcUVS6SRD`Es\u003cZ*OcSVkRCjeSKY9CLj?XCLty\u0026CM#PjV-Rm}ba`-PAT2\u00261Pf%1@P(\u003ezVD`XsDV{~bDWpHn4Zgg`XEj}PYLsUstMNm\u0026kPE=DSWGiJ5VPs@*baNmrJ|ICvL{L;yCS@yT7-3^{X?A6Ba%pWKEj}PYLsUstMNm\u003enO(te5XC7@~X\u003eN33X\u003eM?DX\u003eN2NEj}PkK}k+jK}k+fPf1QxCTA;XCSh=Ja\u0026LHLZe(;}Zf9j~baNmrJ|IC*P*P7=MNULiK~6_SPE=DSXe((LZ*_EVb#!!jaAhDZJ|It3R8Un^R9R3(CTS~b4sUW~WpW@bJ|It0L`702YAb6da\u0026L8RWMgk~Ze?\u003cEVPt7_b094~AW~0NPDDdbQcguuQb9yXRZ}KwD{K~HZ*p#Ba\u0026UBWAT2\u00261Lr+ppMN\u0026{yQzmRHZ5DHFZ*O#HaCCDZEj}PqO;1l$NKjN$CT%Nj5@B_8Z*X*TAT2\u00261K~+\u003ewP*hVUZYysfa\u0026L8RWMgk~Ze?\u003cCbaNmrJ|I$0RZc`hPf|`rQczS=CT}ZnDr0YMb98cHX\u003eN0La$#v_Xmn+6AT2\u00261Lr+dqR8m1nPE%A;K}knQR7FlEa4T^fX\u003eN37a\u0026T\u003eBbZBp6AT2\u00261NlsKnQcz7rR7g)mCUGlr9%FBAc4cyOV|8+NWpf}cJ|II+PF6)yR6|u#Rz*`Law~Hlb8lvJbaG*Cb7pUHZ6GZ^AX869R8\u0026$yPE$rtQcWgvD|94tZ)S9Ka$#\u003cBW^ZzBa$#g3Ej}PqPexQ!QbA5rMo\u0026^rQb9x}bSrfhbaG*Cb8KOBWgsm+AXHL8PE$-lR7ECrD|QfaZ**aFWgsm+AW~0MK~zO1b}M%db7Ns_Wgsm+AX7s@OhqPlD|jGqX?AaPbaG*Cb8KOBWgsm+AW%tGPgGP=K~7UlK~zO1cq@4taA|gLbaHQWVRU66Ej}PnNmfr(QcqMtR7ECvD|!}aVQyq\u003eWpH$JAT2\u00261NI_0SOhr\u0026sQzm*Vdm3nAZe(m_a4\u003eLhb094~AV@(@L`+3cFi=lZCVMM\u003c8fal|WNc+{F\u003er5lAT2\u00261NI_0SOhr\u0026JP)}1Pd@Fq#Xkl(-Y-MmVaBp)UEj}PfK~6+WMNl$OPg5p+D}EMmY+-I?Z*pm8AT2\u00261P)tEiMNd*mM\u003c#wNe-v\u003cRVQyt^ZEPSdJ|Iv`K~6\u003cZO-v?#D}Webb#!lHWqN64av\u0026`}AVF1BPeMgnNkvj7fGdG0b7g03Wo~q0WqN64a${_7b7decJ|I\u0026?M@\u003eaeR6\u003c2sNkvjaOixoqCV^ch6I\u0026)A5g#TYCMqT-5\u0026#4yCtE-e0RaF209__1KocJT0000100002000030000400005000060000700008000090000A0000B0000C0000D0000E0000F0000G0000H0000I0000J0000K0000L0000M0000N0000O0000P0000Q0000R0000S0000T0000U00018U0q#WD}oAea%pX8bZK^Fb0\u0026gYT_*);Ze(S6TPF@_Zggd5WpZV1baH8Bb9;R!4RdsIX\u003eMm_Zgg^KWpjIdClP6GbY*8{a%*LIWo~q7a%FRSeJ2oebaH8KXKQ77Wo~qGX=QVJeO)IFX\u003eMd?cyMoXX\u003e@6CZWLw!00000003P"
+            },
+            "pivottranslate": [
+                0.20450901985168457,
+                3.310110092163086,
+                -1.1477994918823242
+            ],
+            "savedstashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5e_Q^3wC94bY*yBZ*^{TCIk@\u003cD+La4a%pX8bZK^FV{dhCbS4E60xJdtX\u003eMk3CI)*e2MB0yb98QDZDl40D+mKZMMWkED+vT-VRU6C2`dT{GB7eVEio`HGBqGEH##\u0026qIx;sV3M\u0026f+VRCe7b95#PD+~m4Zee*Q3@Z%?b8lvJcVTj6CJieN5J+!zWNB_`ATls6H7+$cG$sx!4+dgyb#7#HCJ#Uv2FxF(zW^5WKerncKpW^^Kp5+izq\u003cB`KPwOsaB^vFV{dhCbYF9IZEaz4c_t7i8XzDbARr(hARr(zAVOt\u0026X=QRCLv?a?WpfHE5fNc@baH88b#!H4b9HTPVRCsU5hq9\u003eARr(hF(7bnX\u003eN2NVRUqIX\u003c~JBWpg?SPzoR*ARr(yAZKiEVqt6`VRUqIX\u003c~JBWpg?SUte-\u003eb#7#3WMgk~Ze?\u003cCbaM(T5)Ef^Z*_2Ab9HTPVRCsU5+^kvARr(hG9YkoX\u003eN2NXL4_KaC15d3144fb#!lEaCCDD3144wZ*^{DUt@1_Ze?;`aCCDDeJc|PbZ\u003eBPY;R|ICKFpL6bNu{X\u003eN3KWo9N6TPqa@X\u003eMd`V`XzD6+jXW000310ssR51ONp91^@\u003eD2mlEH3IGcL3;+!PU0o{{3So3~a%p09bY*iU7F#P94{\u0026d3ZggREbaH88b#!HOCKp\u003e\u003cTPqj^b7OCCWhNLa83u55Vr*$+CK)Rl1ax_DWhNRc8wYN6ZDn$4V\u003csCb90YD*ZDl4LD;)t)CLJpt2XAn6X\u003eV?GCLVhx8ha)hD\u003c1}PbaH8KXC@yjAO\u0026_|Y;|QOAS)pSaBpdDbS5EveO+5CA_Q}3dSxae5d$kD2Xl09a$#p\u003eCL=2(2xf3{WnpYHGA1M|B?x3?W?^+~baN\u0026pTP7kA0VX3WCJ1J5a%Ev`HZ\u0026$CD\u003c=kaVQh6}b0#N18UX+R00000003PkCtD^W5d$V8CL}8;2ykI%WpinIWhN*R00b*33vyw1aA9X\u003cWMOn+CMiG}D$F0IzmVuwKx58?Kg=JdzmVuwKx58?KZcAXzw#7XK)UvcKY+Gnz6Rk`K)UvcKMci2J{ql0K)UvcKj0T8Kj`RNKnx6rKj0T8Kj`RNKnx6rKOsA%zm\u0026KfK+rWHKQp\u003cczqcC{KrYC}J{1f*zw*vmKp5+iztCz?KG@h(Kp5+izrNs+KfdBkKp5+izW^5WKO5*@K+uQHy#N;UKO5*@K+uQHy\u003cJ^hT`MXOXKZg`VQgV^baH88b#!HOCMsK7TP7GL873MgA0`|tD-vH{a\u0026L8RWMyPyZ*p#Ba\u0026UBWCMzZ$dwpG7CL$35CL=2\u003e1!-\u003c{GcqPDD=i0ebaH8KXLBYkTU{m\u003cTP7kA0VX3REG8%t00b*85o2#|b97;DbZ}v3WoB$)XLBYlTR;#20RR91T_!0\u002669NDK|NmWGU0q!(FA8vSX\u003eDnAX?A6ECNEoCTP7MSFbhIudTC{HLv?a?WhO9PTPraJc4cyOWq2krKoSQ40096300RI700jUB04p*EV{C78Wn?BYFe@_!VqtS\u003eb0#xeCK@X=20~?eX=QRIG%Ga)Z*pX1awatq1S\u003eWLYi@6Jb0#)G8Up|T000000000000000;6DHW00000@IPH$U0Yiw8YVDZTP86;5(ftW2mlEH3IGcL3;+!PCNeN4Gg~GaCNw5B5d\u003cbSKpF!80000000000000000N_6W000000PsIuU0q!(Hw$oYX\u003eN39a\u0026L8Tb0#-iTU#a^D\u003ew\u003eYUtx80Z(ne9b0#=lTPryUb7gF0V{~b6ZYDWfD\u003e?~vZf|mAWpZU?COTUyI|6AqCObe84gdfE000000000000018U0q#UTP7SUJQ81Da\u0026L8RWM5-%a\u0026BdEUvPADCOlnRCOKOsI$I_?KoJfA00000000000000009{\u003eOU0o*yX\u003eMd?cv~k9X\u003eN37XJv9_Zgg^KWpjIdCk=CSa%pa7Wo~qGX=QVJeJ2rVZggd5WpZm}d1Y\u003eNX\u003ew(AdwnMmb98cPZf9#{d1Y\u003eNa%p9AdwpFe4QXy\u003cWq5FJb7^#GZ*CN30000000018"
+            },
+            "smoothpts": "3 7 10",
+            "stashid": ";"
+        },
+        "position": [
+            1.25,
+            8.02
+        ],
+        "type": "curve::2.0"
+    },
+    "curve2": {
+        "parms": {
+            "activepoints": "7",
+            "activeprim": 1,
+            "cornerpts": "0 6 13",
+            "mode": 0,
+            "optype": "transform",
+            "parmpoints": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5kM;h3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mKZMMWkED+vT-VRU6C2`dT{GB7eVEio`HGBqGEH##\u0026qIx;sV3M\u0026f+VRCe7b95#PD+~m4Zee*Q3@Z%?b8lvJcVTj6CJieN5J+!zWNB_`ATls6H7+$cG$sx!4+dgyb#7#HCJ#Uv1^@s6000000000000000000000000004op?VRUqIX\u003c~JBWnXi3ZEaz4c_t7i^3DMuARr(!G9YkoX\u003eN2NVRUqIX\u003c~JBWpg?SVPs@*baN~qZDDC{bYW?3aBpdDbSxlfVQyq\u003eWpFTXZ*wdlbaG*Cb8KOBWh@|2EFg1lW^{CNVQzC~Z*pyNVPq^IVPkY@c4csKX\u003eBYZZ*X*ZaAhnYaA|gLbaHQWVRU6IAZTH3WNc+{F\u003er5lEFf}kb#7#1Z*p#Ba\u0026UBWEFg1lW^{CNVQzC~Z*pxcAZTH3WNc+{GH`EmEFf}kbYXO5EFfWZbZ=s1dTC{HEFfWHbZK^FaBpdDbaN~qZ*_EVb#!!jaAhnYaBN|2Wo~V3EFg1ZVQghAAYpZMZ*X*TEFf@fVQyt_a%pEQAY*TCb98cHX\u003eN0La$#v_Xmn+6EFfWUaB^\u003eWWo~42VQyz-Zgg`jAaZYYZe(L`a\u0026BdEa$#g?b#p8rb7g03Wo~q0WqN64a${_7b7d?bX\u003eN37a\u0026T\u003eBbZBp6EFfcVa\u0026BdEaCCDlAaH4RZ*+8WVQzD5VRU6IAaiYRZ**vIbaN~qV{dMDWpZ?5b#iuPb1WceVQyq\u003eWpH$JEFf=kWMy\u0026+ARr(hATc0kY;R\u0026=Y#?EDbaH88b#!HOItg}Ra\u00262L73VkaP2y}07Z)|U8c_tBCD-sBBZ)t9Ha%E;F5?d=12Wf6(X=7z`CKEss09{=x6bfN\u003cbaH88b#!HOCKOvM6%TN4X\u003eN33baZlQVs\u0026(7b0!sATU#p@1#@F\u003eaAhVID;EZEbz*F3V\u003cs0X7zA{AaAhVKD;WoFb!}yGX=5fCD;flDVQpn58Y\u003e$CP$nBI90zZ3bZKvHb0!\u003enCK!7r7%LqHb98cPZf7PPD;@=QVQh6}CLSvv1#oX^ZgeIeeSKY9D\u003cA}OX?kTQAQ1yAAqR7GZ*pO0WhNmjA_!)1a%Ev`GcqP3D\u003ccSGWoBV@Y;\u003c!bBU\u003egQ5dkJ4D\u003clYJaB^i~Y\u0026J9|Br7Ebc42IFWpgGaKpFu60000000018CM8=YAQ1y5AtoX#CJ1n0XJvC~dSxai5\u0026#4%ClO\u003cBZgX^DZgg;AXJuw=VP|tDCtE-e0RaF209`963vyw1aA9X\u003cWMOn+CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCLJakD=7?NV{~bDWpHn4Zgg`dDJC3yeO+57AQ1s3AuB2cX\u003eN2gGA1f3D+hCQa%pa7b0#ZWD=YypCM+v00W\u00265oD=q;xCN3*40XHTuD=+~#CNL{80W\u003eBtD\u003e4ExGbS=CGXgO%CNnEE0Wu~uD\u003eVT*CN(QI0x\u003eZrHeDtYTP7e80VW|PDkdfp00br|Koda!|NsC0|NsC0|NsC0|Ns90000010000100000000020000300003000030000400004000030000300000000000000000000000010000100005000010000100002000020000200006000070000700007000070000600002000020000200002000000000100006000060000600002000060000600001000080000700009000070000A00007000000000100005000010000800005000020000000003000040000300018U0qvSCKe_aCKx6eCK@X@3Snb(X?A6Ba%pWQHzpi=CK!7r7$zMi9xFH%Zf|a3a%psEZDn+6V_#`*bY*8{awa%^eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4D\u003e(\u0026eZge\u0026@COIZ0KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMZA?KmY\u0026$00000009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096109{\u003eOTU#a;CKo0cCLJakD\u003e?\u003eYWMpu3b0#__9D99TTP7e80VW|PDkdviD?6\u003c%FfK4KH!wFfH#jymIWRRhHZeCcEHW-RH!?IZI5IgjHa9mnGc+_TFfK44Eif)HFgGwaH8(gmH90UfH#RXhGAuGKIX5yiFgP+fG\u0026VOkH#0OeEHExGATcg5IWjdcH#RUZH#jsiFflkRGA=kUFgY?eHZwUeFgG\u003ceI5aFUE-)Z5E-)}SI59RbFf%tfIW#jkH7qhNGdMCiHZV0cH#svmHZn3SFfK44COa!Ud@wFKGBq(WG\u0026C?aI59LeH#IUWF)leaG\u0026wmlG\u0026eRlHa9jmH8?CVE-)Z5E;%zYG%+\u003cYG\u0026VUlGc_\u003cVEHW-RIWjafGBGnTFf=kWI50IVFfK44F)leXGBhzYGBh?hHZwIaF)T7JIXN;kG%_(WF)%bTG\u0026nFdEHExGASOI3J*h1)E;chUH#ajhF)}hTH#RdcHY_qOGC4LhFg7qVFg7(bIWRXeEHExGAT2O1HZnIjFgP+XGcq$XIW#voEHW-KH#9RdGBq+YGc+|hG\u0026eIWFfK44Eif)OGBGeQGcqwaF*Y\u003cbG\u0026C$RE;BhWGcz+WH#IgjIWadmH!LtNFd#54GBGqUG\u0026ndmG%+\u003cWFf=zaEHN%JIX5vlH#0IgGc!0gGBYeNE-)Y_Ju5zaF)lGQIWsXZIX5;kHa0jmF)T4IGB7kSG%++dF)%SWFg7+cEHExGATcgEFg7_dF*PtXIWjmfGdVUaF)lGTFflSXI5ILbGB!3gFfuGKE-)Z5E;%qZIWjRdFf}\u003ccI50CgHY_nNF*h(VGB`LgGBYwZHa0LaEHExGASOOtCKFpGAQ1s3Atov\u0026CK3PyCMZA?KmY\u0026$0096100IC200RI30RR90|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|6N^OTU#a;CKo0cCK)CgD?broaBy;Ocx7\u00266bYX61Wo~qHCO;+|dnOorCKx6iCLSg@eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpH{B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD?kcib#!lHWqN64awb3~9D61hdnOnr9VQ+oIDLIxTP7e80VW|PDkdXaCLj?3CLty{CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y@8uVRdwGaCCDfK_(n~eO+57AQ1s3Atov\u0026D_dPA6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobG~|NsA8U0qvSCKe_aCKx6eCK@Y36Ju{~b98cHX\u003eN0La$#v_Xmn+6CPF40dnOorCKx6iCLSg@eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpH{B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD?\u003c%qZ*F#Fa\u0026%*La\u0026~2NCPOA1dnOorCKx6iCLSg@eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpH{B|sDb0RR9100000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCLJakD?|xnZ*p#Ba\u0026UBWCPXG2dwpG7CLj?3CLty\u0026CM#PeEGtC=Fd#N2MJq-IFd#M{F*7DcT_zJ-CLj?3CLty\u0026CMFU91STjz6F~p}|Nj600003100031000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062003QGU0Yiw7A6-a7$zAe8Y@Q\u0026Xkl(-Y-MmTaBp)aM\u003cyJ5eO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl004l$0000000000U0q#UTP7AJ7bX}c873MlNDF9TZe(m_a4~Rib0$b89D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zAe8Y@W)Xkl(-Y-MmVaBp)aNhTb7eO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl004kL0000000000U0q#UTP7AJ7bX}c873MlN(pFTZe(m_aCCDfN+uk8CK!7r7$zMi9ws\u003c_eO+57AQ1y5Atov\u0026BU\u003egQ5dkJ4COIZ0KokN0|NsC0|NsA8CM8=YAQ1y5Atov\u0026CK3PyCMR1!5CH)I003PkC_obf|NsC0|NsC0|NsC0U0q#UTP7AJ7bX}c873MlOAKjlbY*gIZDn+5Z)7G*CLDVv7\u003c(odCLJaoCOCb4U0Ws~5dkJ4CMqT)TP7e80VW|PIVL4Q6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@YD4Q*j*ZggR3Zg6jDZgeJ0CLDVv7\u003c(odCLJaoCOCb4U0Ws~5dkJ4CMqT)TP7e80VW|PIVL4Q6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6iCK@YE25)e5d2nSWO(q\u003cBeO+57AQ1s3Atov\u0026D_bj03t@0@Wo~3}Z)t9HCQd6)33PH{ZgXaDa\u00260D0T_zJ-CLj?3CLty\u0026CMFU91STjz6F\u003ej}000000000000000000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031003QGU0Yiw7A6-a7$zAe8Y@r*Z*pX1awbqF9D61hdnOnr9VQ+oIDLIxTP7e80VW|PDkdXaCLj?3CLty{CM7@=0R#X50000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69EJO003QGU0Yiw7A6-a7$zMi8Y@u\u003eZ*_EVb#!!jaAhV@CLDWxU0Ws~5dkJ4CMqT?TPsoqVr6=1WpXA`T_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD^m+_X?AaPa\u0026L5DbY\u0026(}CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000000000018U0qvSCKe_aCKx6eCK@YL4sdC9Z*+8WVQzD5VRU6CR3;pIeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMZA|zyJUM0000000000000000000000000000000000000000000000000000000007+QyYM?cKmY\u0026$0OBBlKW%~-KmY\u0026$0K6aRKHjorKmY\u0026$06CI}zaj5-KmY\u0026$0AgA9KP-elKmY\u0026$0Oz|Qzft%SKmY\u0026$0EnVqzjoalKmY\u0026$04Nf+zd?UJKmY\u0026$0JzJYznK+0K*e4QKe)@Czjs|aK)le0KBi5czd(OIK*e4QKcr2bzbLvJK+ZKFKRA+yzfvGqKtO-(ybXehzh_TfKmdR3ybOYgzo`~YKmp~IKg=Jdzk%aaKmg^HKfoX9KG;o7Ktr~GKX9N_zEnL$Kt#5HKk(F|zDegOKt#5HKcMz+zCx!%Kt#5HKY+GnzQ2f7Kt#5HKVVt+KOfsWKqk3?KVVt+KWp4}Ku1+IKeVkDKk4XOKuA?JKLHl\u003eKgh\u003cFKL7v#0M|)dK0FGhKL7v#01%_zJqSlOKmY\u0026$005)jJ%p7xKxCVTKLDfNJ*wkbK)_pGz5o{VKO5*@K+uQHz2FxnKj`RNKnx6rKk`n9zz{FdKMV|qKfuGjKSbuFKMV|qKfuGjKYrmtKs+R\u003ezsw(|zmVuwKx58?KY+Gnz6Rk`K)UvcKa7lwzoc{*K){F1y^M^Ezxfs%K=8fSzT%Y0zvx}\u003cKj6LBzN8Y5zMRojKs+R\u003ezvPt3zZlx-KMdH|za);WzZBZ(KV\u003cvbzks%7zJxbrK;pquzh+6Qzi?}6K=2ZPzrcItJV(7oK)_pGzSJhFzhbjYKscQ#zrM}MzDT`BKscQ#zp({)zMNwuK\u002683OzrfAOzVnVOK\u003c-H}zsMh^zdoi}K%g_~zUFgjzl1ksK=2ZPzh6sZztTofKpM`6zvy#mzhPHbK%iqLzp!8`zO)loK\u003cn_VzGMs~zF`enKv\u003cHCzeJX=znsxkKy\u003equzsMh^zhh@qKyaqTy\u0026*fLzm\u0026KfK+rWHKfD8{zn*N{KQ73|KB|SMzgVX1KhQNGKV4m2TU#a;CKo0cCK)CgD^\u0026\u003c^Y+-I?Zf$HPRVEyJeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl00000004kL00000U0q#UTP7AJ7bX}c873MlRta!yVQyt_a%pEKRwf*KeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl000000000000000U0q#UTP7AJ7bX}c873MlR|ax#bYXO5CRZjLdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCLJakD_9P4Z*^{DV{dY9WpZ$Ib0%0O9D99TTP7e80VW|PDkdviT_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0ssI1|6N^OTU#a;CKo0cCK)CgD_Ie8Z*^{DV{dY9WpZ+1WNCGCCRrvNdwpG7CLj?3CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?3CLtywCMFU91STh2Ko9`|00018CMZA|0RR9109{\u003eOTU#a;CKo0cCK)CgD_R9}V_|G%CR!#OdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh00000008hmT_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{SkKL7xLKL7xLKV4m2TU#a;CKo0cCK)CgD_atCWoK\u003c=ZggU0dTC{HV{C78WhPrD9D61hdnOnr9VQ+oIDLIxTP7e80VW|PDkdXaCLj?3CLty{CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69EAL003QGU0Yiw7A6-a7$zMi8Y^50b8T;LbZBsNb0%CS9D99TTP7e80VW|PDkdviD_sF9CS4{iD_#aOAU7Z}FeYAICKFpGAQ1s3Atov\u0026CK3PyCMZA?KmY\u0026$009610096100IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC200IC209{\u003eOTU#a;CKo0cCK)CgD_;$BZ)S9Ka$#\u003cBW^ZzBCSN8TdnOorCKx6iCLSg@eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpH{B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD_{_FZ)S9Ka$#\u003cBW^ZzBa$#g9U?v=UeO+57AQ1s3AtoXwBU\u003egQ5dkJ4CL|^$KpFu6000000N_7eCM8=YAQ1s3AtoXwCK3PyCMR1!5CH)I003PkC_otj0000#U0q#UTP7AJ7bX}c873MlVF`3{VQzD5VRU6CVI~}VeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMZA|zyJUM000000000000000000000000000000000000000000000000000000009~qvzr@U9KL7v#0Oqj`zv5t;KL7v#00000G%zT`zC*TvKL7v#G\u003cbIYzCeHNyZ``zv_L~@y(YPVKZKfdzEDyQJ^%m!0LXz2zbuCaKL7v#01zZTJ^%oKw8dTvKL7v#000r(yw2\u003e7z5oCK0Dxkzz2HhJJpcfJG+-15zeu\u003eIJ)o~$y#Q=}JOBUyG=S=NyrAO6JpcdzGynhqH1NfNzWth+KLGAzz5tu~Jpcdzv;Y7A0Kh{5J?OLuzWlc-zd#59z5oCKG=Q\u003c%yZ{NyyZ`_I0JDn#KWbpCJ^%m!0006cJm?FLJ^%m!00000006lsykG~EJpcdz05An?KMFdWzJ\u003ey\u003czYv_)z5oD#Gr*#DJpcfJw4jBtJ^%m!w6_EmK+uQHy`J#bz0`xoKL7v#00000v;dz|J!G4QKL7v#0GK!dKip=czYs*Fy%;l@z5oCK07g+j!0zUdzW@LLH0}|dz`\u0026yBzW@LL0OJ3*Krkb*z5oCK000000Jz-XKO~qKz-fr$zwm\u0026UJ^%m!00000HGpd`Jxg1^zW@LL0PwSdKC9RBzW@LL0H8{gJpf#!zE~mjz7(JpzW@LLH2?sBv;g$ryp-soznjsEzW@LL06\u003eOOJ^(ggJ^%m!wE)(Lyog9RJ^%m!HGp^Byha8vzW@LL0QiqFzO*aNJ^%m!05JQSK6)kCz5oD#G\u003e{DBzKjG@KL7v#HK\u003e{^KL7xLv#4^\u003ezQC5%ynlW+z5srIyZ`_IG$aT*zW@M$G(a+*yZ`_I0ASmvy#\u0026g*J^%m!v@il*zJP?YJ^%oKvv8;xK7eiEyahf(KL7;_JOBUy08q3MJpcdz0COk3KERc+yZ``zv^\u003eC{zJL~aJ^\u003cZ)y#N3J05E{WJpcfJH13OeKR}|Ayr7jCzW@LL0001hG=$g@KT;v4J^%m!0DwLoz5wRmyIoyfT`OV`XKZg`VQgV^baH88b#!HOCSqG#TP7AJ7bX}c9VQwpV+M9%a\u00262L7CSxWXdn;rPVr*|\u003eI\u0026*Y#X\u003eMn8WppNFdnOnwWdvexZ)_%ICLS?;eO+57AQ2xXAtov\u0026D_bjO5N~jFd2nSQEj}PmP*hn^MJ8q|XB=T;bZK^FaBpdDbaNmrJ|ICuR7qAvP)|utR8uBrD`*g5WMpu3b094~AVEY#P*hVUXe((LVPkY@c4csKX\u003eA}aJ|ICuR7qAvP*O=vCTS~b9\u0026KT1ZggR3Zg6jDZge0mJ|Im\u0026NlsKjNls8tNlsKIYAb6dVQ_GAZ+K;HWOQL}XJu}5b094~AVE-2QcqY#PDE5ePDe#fR8uBvD{L5Vb#!obbaZ)eWgsm+AWv0PP*qe^Sx`kLY%6UJZ*pX1av\u0026`}AWu?6MN%ehD{dxoZ*^{DV{dY9WpZ+1WNCGCAT2\u00261QcqP*L_\u003c$fPDN5uK}1PaQzmXJZx\u0026;3a\u0026BdEaCCDZEj}PaPf|`rQczS=CT}Zn7ISTHZ**vIbaNmrJ|I\u0026~Pft`xP*hVUa4T^VVRdwGaCCDZEj}PYRa8$\u003cR8uB#D{\u003e%mZ*^{DV{dY9WpZ$Ib094~AW~0NPDDdbQcguuP*hVUaw~HxV{dMAbaG*7ZgX^UVQFV*bY*TJEj}PaPfk-*Qb9\u003ehQ\u0026dtxNk\u003eRjMNTGjD|8%bZggdGaBXFDXm4a7Ej}PgPE\u003cuwP)$WtNKZs2bSrfpV{dMDWpZ?5b#iuPb094~AVW`1Rz*@\u0026Lse2%MN=kqD|Q}pZ)S9Ka$#\u003cBW^ZzBAT2\u00261Q%^=zR8m1sQ$|lxO(u3LcO-LfW^{CNVQzC~Z*pyNVPqgJJ|I(1MpRT%K~7UfPf|@%K}05ZD|i-ka$#\u003cBY+-a|AT2\u00261R8m1sQ%pfrMJ9MFc@T1MbYXO5AT2\u00261QcqMtR7ECvD|!xdV_|G%AT2\u00261Q$s;aMJ9SHdmwOWc5ifaa$#\u003cBY+-a|AT2\u00261P)Sx#R8\u0026$yPE$-lR7ECxD|{MoX?AaPa\u0026L5DbY\u0026ndJ|Iv@R!\u003ew?PgFrvMJ9YJeHLh8Ze(m_aCCDZEj}PfK~6+WMNm{zCVeY@8fal|WNc+{FmP{kAT2\u00261NI_0SOhr\u0026IP)}1Pek*?(Xkl(-Y-MmUaBp)UEj}PfK~6+WMNlzNPg5p;D}WkkVQyq\u003eWpFZZZ*w3mJ|IXzPDD\u0026aP%=\u003cYQzn2bffjIVVQyt_a%pEEEj}PnOhHaXPf|%oCV?x06mV=|Ze?z5Y#=Q@AW%#}PDM^lOeTUWgBW3TbZ=s1dTC{HAT2\u00261K~+\u003ewLPc6hMN%e%D}*R\u003eWoK\u003c=ZggU0dTC{HV{C78Wgsm+AX7z0O+`*rLPc6hMN\u0026gdPg6xEgk2^RTP7e8A0{CtDkdfp00br{TR;#20RR91T_z|%6CVHo000310006200093000C4000F5000I6000L7000O8000R9000UA000XB000aC000dD000gE000jF000mG000pH000sI000vJ000yK000#L000\u0026M000*N000;O000\u003eP000^Q000{R000~S0012T0015U003QGU0q!(g$i(TX\u003eDnAX?A6ECWTvFCk1J4WMz0;Ck|\u003cDbY*8{a%FCGa%p9AdwnMjb98cPZf9j~baH8Bb9;R!5ovC8WoKn_Yh`(5ZggpKWpjIdClGUVa%pa7Yh`(5Zgg^KWpjIdT_+7`Ze(S6aBp*IbZKvH6lMSb0000009^"
+            },
+            "pivottranslate": [
+                -1.3087666034698486,
+                1.694291114807129,
+                0.6189882755279541
+            ],
+            "savedstashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5e_Q^3wC94bY*yBZ*^{TCIk@\u003cD+La4a%pX8bZK^FV{dhCbS4E60xJdtX\u003eMk3CI)*e2MB0yb98QDZDl40D+mKZMMWkED+vT-VRU6C2`dT{GB7eVEio`HGBqGEH##\u0026qIx;sV3M\u0026f+VRCe7b95#PD+~m4Zee*Q3@Z%?b8lvJcVTj6CJieN5J+!zWNB_`ATls6H7+$cG$sx!4+dgyb#7#HCJ#Uv2C9Xpze`*5y@=k}KVS`6KtgfezaZCOKPwOsaB^vFV{dhCbYF9IZEaz4c_t7i8XzDbARr(hARr(zAVOt\u0026X=QRCLv?a?WpfHE5fNc@baH88b#!H4b9HTPVRCsU5hq9\u003eARr(hF(7bnX\u003eN2NVRUqIX\u003c~JBWpg?SPzoR*ARr(yAZKiEVqt6`VRUqIX\u003c~JBWpg?SUte-\u003eb#7#3WMgk~Ze?\u003cCbaM(T5)Ef^Z*_2Ab9HTPVRCsU5+^kvARr(hG9YkoX\u003eN2NXL4_KaC15d3144fb#!lEaCCDD3144wZ*^{DUt@1_Ze?;`aCCDDeJc|PbZ\u003eBPY;R|ICKFpL6bNu{X\u003eN3KWo9N6TPqa@X\u003eMd`V`XzD6+jXW000310ssR51ONp91^@\u003eD2mlEH3IGcL3;+!PU0o{{3So3~a%p09bY*iU7F#P94{\u0026d3ZggREbaH88b#!HOCKp\u003e\u003cTPqj^b7OCCWhNLa83u55Vr*$+CK)Rl1ax_DWhNRc8wYN6ZDn$4V\u003csCb90YD*ZDl4LD;)t)CLJpt2XAn6X\u003eV?GCLVhx8ha)hD\u003c1}PbaH8KXC@yjAO\u0026_|Y;|QOAS)pSaBpdDbS5EveO+5CA_Q}3dSxae5d$kD2Xl09a$#p\u003eCL=2(2xf3{WnpYHGA1M|B?x3?W?^+~baN\u0026pTP7kA0VX3WCJ1J5a%Ev`HZ\u0026$CD\u003c=kaVQh6}b0#N18UX+R00000003PkCtD^W5d$V8CL}8;2ykI%WpinIWhN*R00b*33vyw1aA9X\u003cWMOn+CMiG}D#h2Czhq}rKp@v(KgHLXzhq}rKp@v(KTBKly_VBfK=6bCJ\u0026e~FzGmWAK%iqLzZ^e1zF-YmKxcxpzjSkuzbM*KKy\u003equzjSkuzbM*KKy\u003equzp90\u0026zlh%0KLmCjKe_{_zlcZ(K=iaUKb8E9zh+T0Kp?yNyn=U+zx0kQK!7_nznIjLzaL~HKy5P6zY~R)zZlx-KSFWdzY~R)zZlx-KSFWdzg=BjT`MXOXKZg`VQgV^baH88b#!HOCMsK7TP7GL873MgA0`|tD-vH{a\u0026L8RWMyPyZ*p#Ba\u0026UBWCMzZ$dwpG7CL$35CL=2\u003e1!-\u003c{GcqPDD=i0ebaH8KXLBYkTU{m\u003cTP7kA0VX3REG8%t00b*85o2#|b97;DbZ}v3WoB$)XLBYlTR;#20RR91T_!0\u002669NDK|NmWGU0q!(FA8vSX\u003eDnAX?A6ECNEoCTP7MSFbhIudTC{HLv?a?WhO9PTPraJc4cyOWq2krKoSQ40096300RI700jUB04p*EV{C78Wn?BYFe@_!VqtS\u003eb0#xeCK@X=20~?eX=QRIG%Ga)Z*pX1awatq1S\u003eWLYi@6Jb0#)G8Up|T000000000000000;6DHW00000@IPH$U0Yiw8YVDZTP86;5(ftW2mlEH3IGcL3;+!PCNeN4Gg~GaCNw5B5d\u003cbSKpF!80000000000000000N_6W000000PsIuU0q!(Hw$oYX\u003eN39a\u0026L8Tb0#-iTU#a^D\u003ew\u003eYUtx80Z(ne9b0#=lTPryUb7gF0V{~b6ZYDWfD\u003e?~vZf|mAWpZU?COTUyI|6AqCObe84gdfE000000000000018U0q#UTP7SUJQ81Da\u0026L8RWM5-%a\u0026BdEUvPADCOlnRCOKOsI$I_?KoJfA00000000000000009{\u003eOU0o*yX\u003eMd?cv~k9X\u003eN37XJv9_Zgg^KWpjIdCk=CSa%pa7Wo~qGX=QVJeJ2rVZggd5WpZm}d1Y\u003eNX\u003ew(AdwnMmb98cPZf9#{d1Y\u003eNa%p9AdwpFe4QXy\u003cWq5FJb7^#GZ*CN30000000018"
+            },
+            "smoothpts": "3 7 10",
+            "stashid": ";"
+        },
+        "position": [
+            3.13,
+            8.02
+        ],
+        "type": "curve::2.0"
+    },
+    "curve3": {
+        "parms": {
+            "activeprim": 1,
+            "cornerpts": "0 6 13",
+            "mode": 0,
+            "optype": "transform",
+            "parmpoints": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5i~0V3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mKZMMWkED+vT-VRU6C2`dT{GB7eVEio`HGBqGEH##\u0026qIx;sV3M\u0026f+VRCe7b95#PD+~m4Zee*Q3@Z%?b8lvJcVTj6CJieN5J+!zWNB_`ATls6H7+$cG$sx!4+dgyb#7#HCJ#Uv1^@s6000000000000000000000000004op?VRUqIX\u003c~JBWnXi3ZEaz4c_t7i^3DMuARr(!G9YkoX\u003eN2NVRUqIX\u003c~JBWpg?SVPs@*baN~qZDDC{bYW?3aBpdDbSxlfVQyq\u003eWpFTXZ*wdlbaG*Cb8KOBWh@|2EFg1lW^{CNVQzC~Z*pyNVPq^IVPkY@c4csKX\u003eBYZZ*X*ZaAhnYaA|gLbaHQWVRU6IAZTH3WNc+{F\u003er5lEFf}kb#7#1Z*p#Ba\u0026UBWEFg1lW^{CNVQzC~Z*pxcAZTH3WNc+{GH`EmEFf}kbYXO5EFfWZbZ=s1dTC{HEFfWHbZK^FaBpdDbaN~qZ*_EVb#!!jaAhnYaBN|2Wo~V3EFg1ZVQghAAYpZMZ*X*TEFf@fVQyt_a%pEQAY*TCb98cHX\u003eN0La$#v_Xmn+6EFfWUaB^\u003eWWo~42VQyz-Zgg`jAaZYYZe(L`a\u0026BdEa$#g?b#p8rb7g03Wo~q0WqN64a${_7b7d?bX\u003eN37a\u0026T\u003eBbZBp6EFfcVa\u0026BdEaCCDlAaH4RZ*+8WVQzD5VRU6IAaiYRZ**vIbaN~qV{dMDWpZ?5b#iuPb1WceVQyq\u003eWpH$JEFf=kWMy\u0026+ARr(hATc0kY;R\u0026=Y#?EDbaH88b#!HOItg}Ra\u00262L73VkaP2y}07Z)|U8c_tBCD-sBBZ)t9Ha%E;F5?d=12Wf6(X=7z`CKEss09{=x6bfN\u003cbaH88b#!HOCKOvM6%TN4X\u003eN33baZlQVs\u0026(7b0!sATU#p@1#@F\u003eaAhVID;EZEbz*F3V\u003cs0X7zA{AaAhVKD;WoFb!}yGX=5fCD;flDVQpn58Y\u003e$CP$nBI90zZ3bZKvHb0!\u003enCK!7r7%LqHb98cPZf7PPD;@=QVQh6}CLSvv1#oX^ZgeIeeSKY9D\u003cA}OX?kTQAQ1yAAqR7GZ*pO0WhNmjA_!)1a%Ev`GcqP3D\u003ccSGWoBV@Y;\u003c!bBU\u003egQ5dkJ4D\u003clYJaB^i~Y\u0026J9|Br7Ebc42IFWpgGaKpFu60000000018CM8=YAQ1y5AtoX#CJ1n0XJvC~dSxai5\u0026#4%ClO\u003cBZgX^DZgg;AXJuw=VP|tDCtE-e0RaF209`963vyw1aA9X\u003cWMOn+CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCLJakD=7?NV{~bDWpHn4Zgg`dDJC3yeO+57AQ1s3AuB2cX\u003eN2gGA1f3D+hCQa%pa7b0#ZWD=YypCM+v00W\u00265oD=q;xCN3*40XHTuD=+~#CNL{80W\u003eBtD\u003e4ExGbS=CGXgO%CNnEE0x\u003eZrG%Ga$IVLq-CKFpGAQ1s3Atov\u0026CK3PyCMZA?H2?qq|NsC0|NsC0|NsC0{{R3000961009610000000IC200RI300RI300RI300aO400aO400RI300RI300000000000000000000009610096100jU5009610096100IC200IC200IC200sa600#g700#g700#g700#g700sa600IC200#g700;m800#g700{s900#g700sa6009610000000RI300RI300aO400RI30000000#g700{s900#g700IC209{\u003eOTU#a;CKo0cCK)CgD\u003ee#YV{~bDWpHw7Z6-D*9D61hdnOnr9VQ+tHx+JgZeen1bZBj5bZKK\u003eX\u003eN37XJv9GH+_9wTP7e80VW|PDkdXaCLj?3CLt?01!-\u003c{HZ\u0026$UCM7@=0RR910000009_^}TP7e80VW|PDkdfp00br|Koc|o00000000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100001000010000100018U0qvSCKe_aCKx6iCK@X_24Q4maCCDfIVK!?eO+57AQ1s3Atov\u0026D_bi%tt~JvFfcbTH#IjnHZ?ggH8(afH!\u003e_TE;%\u003ccG%z?aIW#smH#ajhG%PSKFd!{3E-)}RFgG\u003cfI5ssoFf}(eF*h\u003cSGA=ncGBhwaGC4FhH#avkG\u0026C$QE-)Z5E-*PVH83|eFfcbbG\u00263+UI4m+QI503dGB-9eIWRCcH8wajEHExGATcg5FgQ3dHZU+VH#s\u003epGdMLYGA=VXGC4LdH8nRmGdDIeGAuAIFd!y6D?5BJE;%waF)}nXFg7?bG\u0026MIhGAuDJIW{yoIWsgjHaIpnHa9gmEHExGATcgEGcq(WH8M0dIW{vjFflALE;%_eG\u0026C|XGchnUGBh|aH7qbLFd#85IWsaeF*PzYHaRvkH83$OGA=neGBh+YF*7kRG%_?eFf}YNE-)Y_J1ab?Eif)NGch+eGc++WGBP(dGcYzRGA=SXHZ(9cFf%YVH8eReH!\u003e_RE-)Z1FfKMSH#jgjGBGnUGc!3fH#jUZE;2VXGcz(ZGBYzYH90glGb}JJFd!{3E;lkUFflVSF*q?cG\u0026D3cEHN%KIWRLbGch+cHZ?ghH#s*fFfK44FfKANG%++dI5spfH83zVH#00TE;2bcF*r9fGB`6cI5sjfEHExGASOI3J$*4QF*G?dF)%qdHZnFgI5sgXF)lJNG%z$VG\u0026nIZF*q\u003cbHZ\u0026|SE-)Z5E;%qZIWjRdFf}\u003ccI50CgHY_nNF*h(VGB`LgGBYwZHa0LaEHExGATcgEFg7_dF*PtXIWjmfGdVUaF)lGTFflSXI5ILbGB!3gFfuGKE-)Y_JzXXfTP7e80VW|PDkdfp00br|Koc|o00001000020000300030|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsA8U0qvSCKe_aCKx6eCK@X~5n*s}a\u0026LHLZe(;}Zf9j~baN\u0026?CLDVv7\u003c(odCLJaoCO3V3U0Ws~5dkJ4CMqT)TP7e80VW|PI3^`P6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@Y03So70Z(?P7X=QRIKPDV|CK!7r7$zMi9ws+^eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CO9S~KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c9VQwpKnG!UbZ\u003eBUb0$D09D99TTP7e80VW|PDkdviT_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0ssI1|6N^OTU#a;CKo0cCK)CgD?t-uZ*FsRa$#w1b98cHX=iA3Wo{-xCLDVv7\u003c(odCLJaoCO3V3U0Ws~5dkJ4CMqT)TP7e80VW|PI3^`P6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@Y34P$R^c4cyOV|8+NWpgG%CLDVv7\u003c(odCLJaoCO3V3U0Ws~5dkJ4CMqT)TP7e80VW|PI3^`P6afJM00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6iCK@Y431e?^Ze?\u003cCbaN\u0026{CLDWxU0Ws~5dkJ4CMqT?TP7?kL\u003c2A\u0026HYP+XMFub+HXt!GCPiH)6I\u0026)A5dkJ4CMqT-5\u0026#4yC_oc5|NsC0000000RR910RR910ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI20ssI2U0q#UTP7AJ7bX}c873MlMhj?RZe(m_a4\u003eLhb0$V69D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cSfWH6$00000003QGU0Yiw7A6-a7$zAe8Y@Q\u0026Xkl(-Y-MmUaBp)aM\u003cyJ5eO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl000000000000000U0q#UTP7AJ7bX}c873MlNDF9TZe(m_a58Xjb0$b89D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cSfIk2L00000003QGU0Yiw7A6-a7$zAe8Y@W\u0026Xkl(-Y-MnCb0$e99D61hdnOnr9VQ+oH+_9wTP7e8112FRDkdXaCLj?3CLty`CM7@=0ssI1|NsC0|6L{}TP7e8112FRDkdfp00br{TR;#20RR91T_z|%69fPM|NsC0|NsC0|NmWGU0Yiw7A6-a7$zAe8Y@Z+X\u003eN37a\u0026T\u003eBbZBp6CQ2q8dnOorCKx6iCLSg?eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpE`B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD@zS+VQFr3VQFq~Z)t9HCQBw9dnOorCKx6iCLSg?eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpE`B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCLJakD@+D\u0026aCCWaWhP7}9D99TTP7e80VW|PDkdviD@_YwaByXAWN\u003ee3ZgeJ1D^3Y?a$#\u003cBW^ZzBCQe-@6I\u0026)A5dkJ4CMqT-5\u0026#4yC_oc5000000000000000000000RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR91U0q#UTP7AJ7bX}c873MlPX%vsWMy(DPbM6DCK!7r7$zMi9ws+^eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CO9S~KokK40000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd1ONa4U0q#UTP7AJ7bX}c9VQwpPzrB#bZ~Waba`-PCQv3EdwpG7CLj?3CLty\u0026CM#PjQ3hgVdTC{HCQ)4`6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@YJ3vg+6Z*+2RbYXO5CQ\u003eFGdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCK)CgD^m_|X?AaPbaG*Cb8KOBWhPT59D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br|KpC6\u003e000000000000000000000000000000000000000000000000000000000000+~\u003eRSJ3c@F0002uAb~$^f*3#m0002IAL%~cvSmO30000vl83(`?{+`{0001DS@%CIgg-z40002zyCJ_(_!2+\u003e0001pqF%pt-5Wpv0000e61KlVe?33|0002E%bmZO6+A%2UJF0C%bmY\u003eT{=L#(1$*zO`g9%e?36OUJE~@O`g9fx*I^wH6TAYl83)iAXh*@f9\u003c\u003etf{DLpPhCI\u0026f9\u003c\u003esf{DMW7EM3_\u003c\u0026{6oAEv*7\u003c5WNZ\u003c\u0026{6cAL%~WO-(\u003eUwtzoypj5t8Jw-r7wtzqI)S|vg=O{o#wtzpN_HVvIr$azQwtzo?wq?G*h*dyDwtzoiS@%C5+dDuexq\u0026}mS@%C{+;%`mRW(1ftrkD\u0026=vzQYRW\u0026~W7W6;J#+5$+0002jNn1WV3Z_2*0000GquxCTM\u003eaqJ00000quxD)l{r9Un}\u003cIDquxEL\u003c5@t!TVB2Z7W6+G=wCq4ht0j\u003c7bZXG=vzPx42M6!d*wVwy+%O5TVB2dMHWEHm}5Y|TVB4T*0ew5j%h%^TVB4j*0evMM1w%8=pMhI*0evfDNaDS5|+Lr=?p*;q#-~6h|Rr#wq?Es;Z#7n_K82tAEv*M=vF{u\u0026V)Z9JEgyrxEw\u0026xH6TCq+tEG_*)BlPH6TAg\u003egGK$JSIREnv}j^%icW\u003e*)BjJwO74(agx3uv^+py\u0026V)ZY!m~dU3{ybB5|+NOlQTbx=T1PR=pMhy6|+D8qD?@+5|+N1i3LCmfLTBY42M5mU0qvSCKe_aCKx6eCK@YL2ykp+Ze?z5Y$jAD9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS00000fIk2L003QGU0Yiw7A6-a7$zAe8Y@)^aBN|2Wp8q6XC_r99D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zAe8Y@-?a\u0026L5DbY\u0026)1CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000000000018U0qvSCKe_aCKx6iCK@YO4svgGZe(L`a\u0026BdEaCCDfS0)^LeO+57AQ1s3Atov\u0026D_dPA6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobG~|NsA8U0qvSCKe_aCKx6eCK@YP5pr*JZe(L`a\u0026BdEa$#g?b#o?ICLDWxU0Ws~5dkJ4CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5dkJ4CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6o500018U0qvSCKe_aCKx6eCK@YQ1#@FzY-J`{CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000@IPH9C0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u70DwOL0DwOL0DwPTU0qvSCKe_aCKx6eCK@YR5_4r|ZDnqBVr6=1WpZO|Z*yfPS|%KOCK!7r7$zMi9ws+^eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CO9S~KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd0RR91U0q#UTP7AJ7bX}c9VQwpTM2V*Z*O#HaCCDfTP7TPeO+57AQ1s3Atov\u0026D_bjE0V*b3CM_#n1~VWxATcl|U0o\u0026\u003cTP7e80VW|PDkdfp00br|Koc|o00001000010000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200002000020000200018U0qvSCKe_aCKx6eCK@YV4Rdd1baZlIZgXaDa\u00260DFCLDVv7\u003c(odCLJaoCO3V3U0Ws~5dkJ4CMqT)TP7e80VW|PI3^`P6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@YW5OZ\u00264baZlIZgXaDa\u00262;9WF}uG9D99TTP7e80VW|PA|@kSCLj?3CLtyyCM7@`0RR910002sKV2pzTP7e80VW|PA|@sh00br{TR;#20RR91T_z|%836zQ06$$_U0Yiw7A6-a7$zAe8Y^H4baG*Cb8KOBWhP)I9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br|KpC6\u003e000000000000000000000000000000000000000000000000000000000018s)oPB%wj(P0002yu?@fCV46Pw00000001;FD8s%(wtznX001\u003c2cK*IVf9\u003c\u003eg0D!bWLu$Pyxq\u0026}~nsdHTQVu=\u003c0002UfepVbhXy|Y0000GBtAX\u003e0D!c`UJE|}000005!}4a?2f(w0001hVz0g6N-8}70Dv@L6bHXZxTZazuU)+WY\u003c@fd001\u003cA\u003eUX@L;\u003eA4x001-q001=b#eu\u00264nwdWU?qt3IoB2He006WA0002MLjgVLv\u003cSZZw\u003c*6s2m!tT001\u003cAvD\u0026-\u003c3Cp|y00029ivT}rV5~j\u003e000000wg@\u003e3y(ek0000000000xhK3}2b4Vk0000m1#CYGI-I_S0\u003c6CfoY%ep0Dv\u003eVqINw10D!chg|R*W006YN1QkHght0j7@YlW6gT_Aq00000006WApHn?#n}\u003cID0001(H~~N0W~09lM5VnLGnu{s0000O@s\u003eU$5P81\u003c0Kl|D2e\u003e}~HyXVF006bMK(Rk`Mhiax0002*W^cdHrAfb=zNbC_006a!DcinelbgK^m@\u003eZzY+Szp03bC0GYY%_Oq@Lc0ARGBrWd}{;7h*%00019y-h!m{nEYw0D!b^gMmMQqtU(q0Kl{!ve`e-1Cc%e0000SDVn|j0000Yu`Rz~U?e{P0D!c\u003e7BD;nM?1X;0Wm)S001-q0Dv^$;toFoeOJE#aICw4BCWju000000000WO}RZdeuzE*0000`#~;3M@+rQ6m4rM10000\u0026uzSB\u003cU0q!(VGw6*Z(?C=VRUqIX\u003c~JBWpgHBTU%Qu7A6-a7$zMi8Y^N3c42aDVQ?m5CLDV!V-8|$Z(=%gbaH8KXLDtACS!Xh7%OB1VsCG3CS)caF@1eqTP7e8A0{CtDkdviD`gOGaCCWaWgsm+AWu+KSx`kLWh-VJVPkY@c4csHX\u003eN3LAT2\u00261K|@qYRz*-xNlsK#CT1\u0026V5Mg9waCCDZEj}PYL_|\u003cjQzmCCXc%E*bZK^FaB^vFAT2\u00261K|@qYRz*-!NlhkbD`_5WVQFr3VQFq~Z)t9HAT2\u00261O+iUcR6$8jP)|utR3\u003eRFY9?WDaB^\u003eWWo~42VQyz-Zgg`XEj}PYP*74\u0026SVc}mR6$NhMNU*xCTc5d7;klSaCLNad2nSQEj}PmRa8(_R8(0|MJ8)2Yz}X7WMy(7Ej}PmQba{kCTuHhCUS3eZe(L`a\u0026BdEa$#g?b#ovsJ|I$0RZc`hPf|`rQc^)gNmWxOZ7XgTV{dY9WpZ$Ib094~AVW`5PDN5sR8uByD{mHaZEtUMXmE6MAT2\u00261Q%z4#R7g-%QzmaKa1vp4bZ\u003eBUb094~AVF1BPf%1-CU7fpAaZYYZe(L`a\u0026BdEaCCDZEj}PpPgPDtLr+ppMN\u0026{yQzmgMaw=nQZgX^UVQFr2baG*7XJ~X~ZXhi_AVW`1Q\u0026dtxNlsH#Qb9\u003eaNK{2mCUPrt9BFQJWpZ$BWprq7WFRd*AW2SCMN\u0026{rMN~*nL?\u0026}9bRJ`GZgypIbYpdLc4c!QEj}PaPfk`vQdC1#QdUJ%CUh%x9\u0026\u003eMIbaZlIZgXaDa%~_jJ|I(1MpRT%K~7UfPf|@Lbt`rxb8lvJbaG*Cb7pUHZE|5`AT2\u00261Q%^=zR8m1sQ$|lxO;SNbCUz@#7Ibo9ZgXs5bY\u0026ndJ|I+5K~7UlK~zO1cPn@ha\u0026L5DbY\u0026ndJ|I$0R6$flCU`4(4s\u0026B+Y-J!VJ|I\u0026=K}\u003cy^c`JG#aA|gLbaZlIZgXs5bY\u0026ndJ|Iv@R!\u003ew^QbA5rOhHsdCVDG-8gOZLZ*+2RbYXO5AT2\u00261P)Sx#R8mh=K~zO1dn\u003cevXkl(-Y-MnCb094~AV@(@L`+3cR8uB=D}5ShVQyq\u003eWpFTXZ*w3mJ|IXzPDD\u0026aP%uzWQzm^Yei~?DZe(m_a4~Rib094~AV@(@L`+3cF;GuaCVne_8fal|WNc+{GH`EmAT2\u00261NI_0SOhr\u0026KP)}1Pe=C3%aBN|2Wp8q6XCN\u0026;AW%#}PDM{rNk=AtD}fYnY+-I?Zf$HJEj}PnOhHaXPEAZEfh\u0026R-VRdwGVr6=1WpW@bJ|IC=R8K-hT1iDxCW0%2D05|JZDnqBVr6=1WpZO|Z*yfJEj}PqMMq6VPE\u003clgT1iDxLrhOoMJ9t?CKFpGAQ2xXAtov\u0026CK3PyCMR1!5CH)I003PkC_ob*000000RR910ssI20{{R31ONa41poj51^@s62LJ#72mk;82\u003e\u003c{93IG5A3jhEB3;+NC4FCWD4gdfE4*\u0026oF5C8xG5dZ)H5\u0026!@I6951J6aWAK6#xJL761SM7XSbN7ytkO82|tP8UO$Q8vp\u003cR8~^|S9RL6T9smFUU0q#WT`PnNaB^vFX\u003e@6JWpgHkTU{pwX\u003eMd?cv~k9X\u003eN37XJv9_Zgg^KWpjIdCk=CSa%pa7Wo~qGX=QVJeJ2rVZggd5WpZm}d1Y\u003eNX\u003ew(AdwnMmb98cPZf9#{d1Y\u003eNa%p9AdwpFe4QXy\u003cWq5FJb7^#GZ*CN30000000018"
+            },
+            "savedstashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5e_Q^3wC94bY*yBZ*^{TCIk@\u003cD+La4a%pX8bZK^FV{dhCbS4E60xJdtX\u003eMk3CI)*e2MB0yb98QDZDl40D+mKZMMWkED+vT-VRU6C2`dT{GB7eVEio`HGBqGEH##\u0026qIx;sV3M\u0026f+VRCe7b95#PD+~m4Zee*Q3@Z%?b8lvJcVTj6CJieN5J+!zWNB_`ATls6H7+$cG$sx!4+dgyb#7#HCJ#Uv25@nbz7D$-K)P4mKiF(wKqMvwzqs~^KPwOsaB^vFV{dhCbYF9IZEaz4c_t7i8XzDbARr(hARr(zAVOt\u0026X=QRCLv?a?WpfHE5fNc@baH88b#!H4b9HTPVRCsU5hq9\u003eARr(hF(7bnX\u003eN2NVRUqIX\u003c~JBWpg?SPzoR*ARr(yAZKiEVqt6`VRUqIX\u003c~JBWpg?SUte-\u003eb#7#3WMgk~Ze?\u003cCbaM(T5)Ef^Z*_2Ab9HTPVRCsU5+^kvARr(hG9YkoX\u003eN2NXL4_KaC15d3144fb#!lEaCCDD3144wZ*^{DUt@1_Ze?;`aCCDDeJc|PbZ\u003eBPY;R|ICKFpL6bNu{X\u003eN3KWo9N6TPqa@X\u003eMd`V`XzD6+jXW000310ssR51ONp91^@\u003eD2mlEH3IGcL3;+!PU0o{{3So3~a%p09bY*iU7F#P94{\u0026d3ZggREbaH88b#!HOCKp\u003e\u003cTPqj^b7OCCWhNLa83u55Vr*$+CK)Rl1ax_DWhNRc8wYN6ZDn$4V\u003csCb90YD*ZDl4LD;)t)CLJpt2XAn6X\u003eV?GCLVhx8ha)hD\u003c1}PbaH8KXC@yjAO\u0026_|Y;|QOAS)pSaBpdDbS5EveO+5CA_Q}3dSxae5d$kD2Xl09a$#p\u003eCL=2(2xf3{WnpYHGA1M|B?x3?W?^+~baN\u0026pTP7kA0VX3WCJ1J5a%Ev`HZ\u0026$CD\u003c=kaVQh6}b0#N18UX+R00000003PkCtD^W5d$V8CL}8;2ykI%WpinIWhN*R00b*33vyw1aA9X\u003cWMOn+CMiG}DsXX\u003czSwMFK=^)0K5%i8zSwMFK=^)0K48NnK0viUK)CjaKfX^CKU9G_K)CjaKcQ}aKWI%gK)CjaKg5y-Kn#FcKyW^jJ;ag*Kn#FcKyW^jJ\u003eDmQJy022KmfH@y*P\u003cAKXQChKwKG*zOa)sKYq1JKqMvwzseP}KZ\u003eS9K==#mz7D$-KqgB%Kv\u003cr^zPWA#K)P4mKLCi$y}51!K)P4mKLCi$y\u003cJ^hT`MXOXKZg`VQgV^baH88b#!HOCMsK7TP7GL873MgA0`|tD-vH{a\u0026L8RWMyPyZ*p#Ba\u0026UBWCMzZ$dwpG7CL$35CL=2\u003e1!-\u003c{GcqPDD=i0ebaH8KXLBYkTU{m\u003cTP7kA0VX3REG8%t00b*85o2#|b97;DbZ}v3WoB$)XLBYlTR;#20RR91T_!0\u002669NDK|NmWGU0q!(FA8vSX\u003eDnAX?A6ECNEoCTP7MSFbhIudTC{HLv?a?WhO9PTPraJc4cyOWq2krKoSQ40096300RI700jUB04p*EV{C78Wn?BYFe@_!VqtS\u003eb0#xeCK@X=20~?eX=QRIG%Ga)Z*pX1awatq1S\u003eWLYi@6Jb0#)G8Up|T000000000000000;6DHW00000@IPH$U0Yiw8YVDZTP86;5(ftW2mlEH3IGcL3;+!PCNeN4Gg~GaCNw5B5d\u003cbSKpF!80000000000000000N_6W000000PsIuU0q!(Hw$oYX\u003eN39a\u0026L8Tb0#-iTU#a^D\u003ew\u003eYUtx80Z(ne9b0#=lTPryUb7gF0V{~b6ZYDWfD\u003e?~vZf|mAWpZU?COTUyI|6AqCObe84gdfE000000000000018U0q#UTP7SUJQ81Da\u0026L8RWM5-%a\u0026BdEUvPADCOlnRCOKOsI$I_?KoJfA00000000000000009{\u003eOU0o*yX\u003eMd?cv~k9X\u003eN37XJv9_Zgg^KWpjIdCk=CSa%pa7Wo~qGX=QVJeJ2rVZggd5WpZm}d1Y\u003eNX\u003ew(AdwnMmb98cPZf9#{d1Y\u003eNa%p9AdwpFe4QXy\u003cWq5FJb7^#GZ*CN30000000018"
+            },
+            "smoothpts": "3 7 10",
+            "stashid": ";"
+        },
+        "position": [
+            4.95,
+            8.02
+        ],
+        "type": "curve::2.0"
+    },
+    "delete_small_parts1": {
+        "inputs": [
+            {
+                "from": "attribblur1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "mode": "perimeter",
+            "threshold": 9.643
+        },
+        "position": [
+            2.36,
+            -10.66
+        ],
+        "type": "labs::delete_small_parts"
+    },
+    "fuse1": {
+        "inputs": [
+            {
+                "from": "resample1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "tol3d": 0.034
+        },
+        "position": [
+            2.36,
+            -7.66
+        ],
+        "type": "fuse::2.0"
+    },
+    "fuse2": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "pin_first_and_last",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "delunusedpoints": true,
+            "tol3d": 0.002
+        },
+        "position": [
+            2.36,
+            -13.76
+        ],
+        "type": "fuse::2.0"
+    },
+    "merge1": {
+        "inputs": [
+            {
+                "from": "crosssectionsurface1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "crosssectionsurface2",
+                "from_index": 0,
+                "to_index": 1
+            },
+            {
+                "from": "crosssectionsurface3",
+                "from_index": 0,
+                "to_index": 2
+            }
+        ],
+        "position": [
+            2.58,
+            5.11
+        ],
+        "type": "merge"
+    },
+    "merge2": {
+        "inputs": [
+            {
+                "from": "sweep1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "attribblur3",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            2.5,
+            -26.76
+        ],
+        "type": "merge"
+    },
+    "normal1": {
+        "inputs": [
+            {
+                "from": "set_density",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            2.36,
+            0.99
+        ],
+        "type": "normal"
+    },
+    "pin_first_and_last": {
+        "inputs": [
+            {
+                "from": "resample2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "class": "primitive",
+            "snippet": "int i[] = primpoints(0, @primnum);\n\nsetpointgroup(0, \"pin\", i[0], 1);\nsetpointgroup(0, \"pin\", i[len(i)-1], 1);\n\nfloat r= rand(@primnum);\n\nvector p0 = point(0, \"P\", i[0]);\nvector p1 = point(0, \"P\", i[len(i)-1]);\n\nsetpointattrib(0, \"dir\", i[len(i)-1], normalize(p0-p1));\nsetpointattrib(0, \"dir\", i[0], normalize(p1-p0));"
+        },
+        "position": [
+            2.35,
+            -12.7
+        ],
+        "type": "attribwrangle"
+    },
+    "platonic1": {
+        "parms": {
+            "radius": 0.31,
+            "type": 3
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "platonic"
+    },
+    "remesh1": {
+        "inputs": [
+            {
+                "from": "convert1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            2.36,
+            2.87
+        ],
+        "type": "remesh::2.0"
+    },
+    "resample1": {
+        "inputs": [
+            {
+                "from": "connectadjacentpieces1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "length": 0.02,
+            "treatpolysas": "subd"
+        },
+        "position": [
+            2.36,
+            -6.66
+        ],
+        "type": "resample"
+    },
+    "resample2": {
+        "inputs": [
+            {
+                "from": "delete_small_parts1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "length": 0.03,
+            "treatpolysas": "subd"
+        },
+        "position": [
+            2.36,
+            -11.66
+        ],
+        "type": "resample"
+    },
+    "scatter1": {
+        "inputs": [
+            {
+                "from": "normal1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "npts": 1049,
+            "relaxpoints": false,
+            "usedensityattrib": true
+        },
+        "position": [
+            2.36,
+            0
+        ],
+        "type": "scatter::2.0"
+    },
+    "scatter2": {
+        "inputs": [
+            {
+                "from": "copytopoints1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "npts": 5500,
+            "relaxpoints": false,
+            "seed": 27
+        },
+        "position": [
+            2.36,
+            -2.76
+        ],
+        "type": "scatter::2.0"
+    },
+    "scatter3": {
+        "inputs": [
+            {
+                "from": "sweep1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "npts": 20000,
+            "relaxpoints": false
+        },
+        "position": [
+            7.18,
+            -20.31
+        ],
+        "type": "scatter::2.0"
+    },
+    "set_density": {
+        "inputs": [
+            {
+                "from": "remesh1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "sphere3",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "d": [
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.12424242496490479,
+                    "value": 0.013
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.6181818246841431,
+                    "value": 1
+                }
+            ],
+            "snippet": "vector com = point(1, \"P\", 0);\nf@density = chramp(\"d\", 0.1*length(v@P-com));\nf@pscale = 1.0-f@density;\n"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "d": {
+                                "label": "D",
+                                "script_callback_language": "hscript",
+                                "show_controls": true,
+                                "type": "ramp_float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            2.35,
+            1.87
+        ],
+        "type": "attribwrangle"
+    },
+    "set_pscale": {
+        "inputs": [
+            {
+                "from": "attribtransfer1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "snippet": "f@pscale = 1.0 - f@pscale +0.2;\n"
+        },
+        "position": [
+            2.35,
+            -4.6
+        ],
+        "type": "attribwrangle"
+    },
+    "smooth2": {
+        "inputs": [
+            {
+                "from": "fuse1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "strength": 500,
+            "updateaffectednmls": false
+        },
+        "position": [
+            2.36,
+            -8.66
+        ],
+        "type": "smooth::2.0"
+    },
+    "sphere3": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "t": [
+                0.15480351448059082,
+                3.54516,
+                0.15484356880187988
+            ]
+        },
+        "position": [
+            4.1,
+            2.87
+        ],
+        "type": "sphere"
+    },
+    "sphere4": {
+        "parms": {
+            "freq": 1,
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "scale": 0.013,
+            "type": "poly"
+        },
+        "position": [
+            4.86,
+            -21.54
+        ],
+        "type": "sphere"
+    },
+    "sweep1": {
+        "inputs": [
+            {
+                "from": "vellumbrush1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "circle1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "reversecrosssections": true,
+            "scale": 0.075
+        },
+        "position": [
+            2.36,
+            -18.61
+        ],
+        "type": "sweep::2.0"
+    },
+    "vdbfrompolygons1": {
+        "inputs": [
+            {
+                "from": "copytopoints2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "voxelsize": 0.002
+        },
+        "position": [
+            7.17,
+            -23.31
+        ],
+        "type": "vdbfrompolygons"
+    },
+    "vellumbrush1": {
+        "inputs": [
+            {
+                "from": "vellumsolver1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "vellumsolver1",
+                "from_index": 1,
+                "to_index": 1
+            },
+            {
+                "from": "vellumsolver1",
+                "from_index": 2,
+                "to_index": 2
+            }
+        ],
+        "parms": {
+            "center": [
+                845,
+                549,
+                0
+            ],
+            "cursorpos": [
+                845,
+                549
+            ],
+            "handle_enablepointdictoverride": true,
+            "screenradius": 24.91574282621082,
+            "screenxform0": [
+                -1025.8930961830529,
+                354.91490483632356,
+                -0.48990428313405476,
+                -0.4899033210980672
+            ],
+            "screenxform1": [
+                327.8976662015694,
+                1068.5777129660319,
+                0.7105117834176802,
+                0.7105103881698149
+            ],
+            "screenxform2": [
+                -542.5480327171574,
+                -365.9606225641006,
+                0.5051430527898694,
+                0.5051420608291693
+            ],
+            "screenxform3": [
+                3050.924404673269,
+                -499.12154829541856,
+                4.736821952999094,
+                4.76267229093099
+            ],
+            "screenxforminv0": [
+                -0.000644300825092891,
+                -2.3183944135752432e-9,
+                -0.0006248607891368267,
+                0
+            ],
+            "screenxforminv1": [
+                0.00044396925217174687,
+                0.0006315851967695841,
+                -0.0004577837605427704,
+                0
+            ],
+            "screenxforminv2": [
+                -152.79584111062258,
+                72.08034016865614,
+                115.02621495616827,
+                -38.670223039647155
+            ],
+            "screenxforminv3": [
+                152.4257723156548,
+                -71.62291923497311,
+                -114.04958260876631,
+                38.67029897737733
+            ],
+            "strength": 15
+        },
+        "position": [
+            2.36,
+            -16.97
+        ],
+        "type": "vellumbrush"
+    },
+    "vellumcloth1": {
+        "inputs": [
+            {
+                "from": "fuse2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "bendstiffnessexp": "-4",
+            "constrainttype": "cloth",
+            "dobendgrp": true,
+            "docompress": true,
+            "domass": "calcvarying",
+            "dostretchgrp": true,
+            "dothickness": "calcuniform",
+            "pingroup": "pin",
+            "stretchstiffnessexp": "6",
+            "vizthickness": true
+        },
+        "position": [
+            2.36,
+            -14.76
+        ],
+        "type": "vellumconstraints"
+    },
+    "vellumsolver1": {
+        "editables": {
+            "dopnet1/forces": {
+                "children": {
+                    "FORCE": {
+                        "position": [
+                            0.25,
+                            1.29
+                        ],
+                        "type": "subnetoutput"
+                    },
+                    "SOURCE": {
+                        "flags": {
+                            "display": true
+                        },
+                        "parms": {
+                            "outputidx": 1
+                        },
+                        "position": [
+                            3.61,
+                            1.29
+                        ],
+                        "type": "subnetoutput"
+                    },
+                    "__stickynote1": {
+                        "color": [
+                            1,
+                            0.97,
+                            0.52
+                        ],
+                        "position": [
+                            5.9,
+                            2.56
+                        ],
+                        "size": [
+                            4.8,
+                            3.02
+                        ],
+                        "text": "Wire POP Forces into FORCE to apply per-point forces.\n\nWire Vellum Constraint Properties and Vellum Rest Blend to update constraints dynamically.\n\nWire Vellum Constraints to build new constraints.\n\nWire Vellum Source DOPs to SOURCE to add new vellum geometry.",
+                        "text_color": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "StickyNote"
+                    }
+                },
+                "type": "subnet"
+            }
+        },
+        "inputs": [
+            {
+                "from": "vellumcloth1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "vellumcloth1",
+                "from_index": 1,
+                "to_index": 1
+            },
+            {
+                "from": "vellumcloth1",
+                "from_index": 2,
+                "to_index": 2
+            }
+        ],
+        "parms": {
+            "enablecollisions": false,
+            "friction": false,
+            "gravity": [
+                0,
+                -2,
+                0
+            ],
+            "selffriction": false,
+            "surfacetension": 0.001,
+            "viscosity": 0.5
+        },
+        "position": [
+            2.36,
+            -15.76
+        ],
+        "type": "vellumsolver"
+    }
+}

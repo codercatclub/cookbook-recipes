@@ -1,0 +1,433 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "Embellishes the simple sweeped curve with ridges inspired by the underbelly of some reptiles or worms.",
+            "category": "geometry",
+            "image": "ventral_ridges.jpg",
+            "id": "f62528936cd4",
+            "date-created": "2025-11-03T17:06:40.483372+04:00",
+            "date-modified": "2025-11-03T17:06:40.483372+04:00",
+            "username": "snay",
+            "tags": [
+                "sweep",
+                "detail",
+                "nature",
+                "organic"
+            ]
+        }
+    },
+    "attribblur1": {
+        "inputs": [
+            {
+                "from": "measure1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "attributes": "curvature",
+            "iterations": 9
+        },
+        "position": [
+            4.91,
+            -6.64
+        ],
+        "type": "attribblur"
+    },
+    "convertvdb1": {
+        "inputs": [
+            {
+                "from": "vdbfrompolygons1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "conversion": "poly"
+        },
+        "position": [
+            4.91,
+            -4.63
+        ],
+        "type": "convertvdb"
+    },
+    "copytopoints4": {
+        "inputs": [
+            {
+                "from": "transform1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "resample2",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "targetattribs": [
+                {
+                    "applyattribs#": {
+                        "value": "*,^v,^Alpha,^N,^up,^pscale,^scale,^orient,^rot,^pivot,^trans,^transform",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "Alpha",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "mult",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "v",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "add",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            2.65,
+            -1.04
+        ],
+        "type": "copytopoints::2.0"
+    },
+    "measure1": {
+        "inputs": [
+            {
+                "from": "convertvdb1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "attribname": "curvature",
+            "bakeintooutput": true,
+            "colorramp": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": [
+                        0,
+                        0,
+                        1
+                    ]
+                },
+                {
+                    "interp": "linear",
+                    "pos": 0.5,
+                    "value": [
+                        1,
+                        1,
+                        1
+                    ]
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": [
+                        1,
+                        0,
+                        0
+                    ]
+                }
+            ],
+            "curvaturetype": "principal",
+            "grouptype": "points",
+            "measure": "curvature",
+            "totalattribname": "totalcurvature",
+            "umbiliccutoff": 0.072742566188215,
+            "useremaprange": true,
+            "width": 14.3
+        },
+        "position": [
+            4.91,
+            -5.64
+        ],
+        "type": "measure::2.0"
+    },
+    "merge1": {
+        "inputs": [
+            {
+                "from": "copytopoints4",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "sweep1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            4.91,
+            -2.64
+        ],
+        "type": "merge"
+    },
+    "resample1": {
+        "inputs": [
+            {
+                "from": "spiral1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "docurveuattr": true,
+            "length": 0.031
+        },
+        "position": [
+            5.04,
+            2.18
+        ],
+        "type": "resample"
+    },
+    "resample2": {
+        "inputs": [
+            {
+                "from": "set_pscale",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dotangentattr": true,
+            "length": 0.0698,
+            "tangentattr": "N"
+        },
+        "position": [
+            2.65,
+            -0.04
+        ],
+        "type": "resample"
+    },
+    "set_color_to_curvature": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "attribblur1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "snippet": "v@Cd = 5.0*pow(f@curvature,3.0);"
+        },
+        "position": [
+            4.91,
+            -7.68
+        ],
+        "type": "attribwrangle"
+    },
+    "set_pscale": {
+        "inputs": [
+            {
+                "from": "resample1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "scale": [
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0,
+                    "value": 0
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.08805031329393387,
+                    "value": 0.7106638550758362
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.5,
+                    "value": 1
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.9528301954269409,
+                    "value": 0.7704532146453857
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 1,
+                    "value": 0
+                }
+            ],
+            "snippet": "f@pscale = chramp(\"scale\", f@curveu);"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "scale": {
+                                "label": "Scale",
+                                "script_callback_language": "hscript",
+                                "show_controls": true,
+                                "type": "ramp_float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            2.65,
+            1
+        ],
+        "type": "attribwrangle"
+    },
+    "sphere1": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "scale": 0.217,
+            "type": "polymesh"
+        },
+        "position": [
+            0,
+            1
+        ],
+        "type": "sphere"
+    },
+    "spiral1": {
+        "parms": {
+            "radiusincreaseperturn": 0.2916666666666667,
+            "turns": 2.3
+        },
+        "position": [
+            5.04,
+            3.32
+        ],
+        "type": "spiral"
+    },
+    "sweep1": {
+        "inputs": [
+            {
+                "from": "resample1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "addendcapsgroup": true,
+            "applyscale": true,
+            "cols": 24,
+            "endcaptype": "grid",
+            "radius": 0.098,
+            "scaleramp": [
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0,
+                    "value": 0.3333333432674408
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.04444444179534912,
+                    "value": 1
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.8920634984970093,
+                    "value": 1
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.9999989867210388,
+                    "value": 0.23333333432674408
+                }
+            ],
+            "surfaceshape": "tube"
+        },
+        "position": [
+            5.04,
+            1.03
+        ],
+        "type": "sweep::2.0"
+    },
+    "transform1": {
+        "inputs": [
+            {
+                "from": "sphere1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "t": [
+                -0.063,
+                0,
+                0
+            ]
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "xform"
+    },
+    "vdbfrompolygons1": {
+        "inputs": [
+            {
+                "from": "merge1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "voxelsize": 0.01
+        },
+        "position": [
+            4.91,
+            -3.63
+        ],
+        "type": "vdbfrompolygons"
+    }
+}

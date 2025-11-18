@@ -1,0 +1,370 @@
+{
+    "OUT": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "copytopoints1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            3.02,
+            -5.46
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "Extract names and transforms from USD objects and apply it to point attributes in SOPs. This allows for rebuilding the same layout in SOPs. This could be useful for converting manual layout to point instances or efficiently importing layout from external application trough USD format.",
+            "category": "solaris",
+            "image": "d5887070ae72.jpg",
+            "id": "d5887070ae72",
+            "date-created": "2025-11-04T14:06:54.03640959Z",
+            "date-modified": "2025-11-04T14:06:54.036410003Z",
+            "username": "kif",
+            "tags": [
+                "instancing",
+                "layout",
+                "blender",
+                "kkf",
+                "copytopoints",
+                "copy",
+                "transform",
+                "orient"
+            ]
+        }
+    },
+    "box1": {
+        "parms": {
+            "divrate": [
+                2,
+                2,
+                2
+            ],
+            "scale": 2,
+            "type": "polymesh"
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "box"
+    },
+    "copytopoints1": {
+        "inputs": [
+            {
+                "from": "mergepacked1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "strip_trailing_digits2",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "targetattribs": [
+                {
+                    "applyattribs#": {
+                        "value": "*,^v,^Alpha,^N,^up,^pscale,^scale,^orient,^rot,^pivot,^trans,^transform",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "Alpha",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "mult",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "v",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "add",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                }
+            ],
+            "useidattrib": true
+        },
+        "position": [
+            3.04,
+            -3.72
+        ],
+        "type": "copytopoints::2.0"
+    },
+    "extractcentroid2": {
+        "inputs": [
+            {
+                "from": "lopimport1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "partitiontype": "primitives",
+            "transferattributes": "path name"
+        },
+        "position": [
+            4.74,
+            -0.56
+        ],
+        "type": "extractcentroid"
+    },
+    "get_transform_from_usd": {
+        "inputs": [
+            {
+                "from": "extractcentroid2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "lop_layout": "../lopnet1/OUT",
+            "snippet": "3@transform = usd_worldtransform(\"op:\"+chs(\"lop_layout\"), s@path);"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "lop_layout": {
+                                "label": "Lop Layout",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "type": "string"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            4.74,
+            -1.72
+        ],
+        "type": "attribwrangle"
+    },
+    "lopimport1": {
+        "parms": {
+            "loppath": "../lopnet1/OUT",
+            "primpattern": "*"
+        },
+        "position": [
+            4.74,
+            0.5
+        ],
+        "type": "lopimport::2.0"
+    },
+    "lopnet1": {
+        "children": {
+            "OUT": {
+                "flags": {
+                    "display": true
+                },
+                "inputs": [
+                    {
+                        "from": "torus1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "position": [
+                    -0.99,
+                    -0.26
+                ],
+                "type": "null"
+            },
+            "box1": {
+                "flags": {
+                    "render": true
+                },
+                "parms": {
+                    "r": [
+                        45.39675779151573,
+                        9.47312766368285,
+                        -26.045277232406804
+                    ]
+                },
+                "position": [
+                    -0.96,
+                    3.08
+                ],
+                "type": "cube"
+            },
+            "torus1": {
+                "editables": {
+                    "sopnet/create": {
+                        "children": {
+                            "torus1": {
+                                "flags": {
+                                    "display": true,
+                                    "render": true
+                                },
+                                "parms": {
+                                    "rad": [
+                                        0.5,
+                                        0.25
+                                    ]
+                                },
+                                "position": [
+                                    0,
+                                    0
+                                ],
+                                "type": "torus"
+                            }
+                        },
+                        "type": "subnet"
+                    }
+                },
+                "inputs": [
+                    {
+                        "from": "box1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "r": [
+                        46.641284063330026,
+                        21.190082462212782,
+                        -17.687694699707166
+                    ],
+                    "t": [
+                        0.5096589145839578,
+                        0.693364148987329,
+                        0.8001491302296699
+                    ]
+                },
+                "position": [
+                    -0.99,
+                    1.31
+                ],
+                "type": "sopcreate"
+            }
+        },
+        "position": [
+            4.74,
+            1.9
+        ],
+        "type": "lopnet"
+    },
+    "mergepacked1": {
+        "inputs": [
+            {
+                "from": "box1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "torus1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "names": [
+                {
+                    "name#": {
+                        "value": "box",
+                        "visible": false
+                    },
+                    "treatasfolder#": {
+                        "visible": false
+                    },
+                    "useinput#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "name#": {
+                        "value": "torus",
+                        "visible": false
+                    },
+                    "treatasfolder#": {
+                        "visible": false
+                    },
+                    "useinput#": {
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            1.33,
+            -1.62
+        ],
+        "type": "mergepacked"
+    },
+    "strip_trailing_digits2": {
+        "inputs": [
+            {
+                "from": "get_transform_from_usd",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "snippet": "// Strip trailing numbers and underscore+numbers from name attribute\n// e.g. \"apple2\" -\u003e \"apple\", \"anemone2_001\" -\u003e \"anemone\", \"apple3_004\" -\u003e \"apple\"\nstring original_name = s@name;\nstring cleaned_name = original_name;\n\n// First, strip underscore followed by digits (e.g. \"_001\", \"_004\")\nint underscore_pos = -1;\nint len = len(cleaned_name);\n\n// Find the last underscore followed only by digits\nfor (int i = len - 1; i \u003e= 0; i--) {\n    if (cleaned_name[i] == \"_\") {\n        // Check if everything after this underscore is digits\n        int all_digits = 1;\n        for (int j = i + 1; j \u003c len; j++) {\n            if (!isdigit(cleaned_name[j])) {\n                all_digits = 0;\n                break;\n            }\n        }\n        if (all_digits \u0026\u0026 i + 1 \u003c len) { // Make sure there's at least one digit after underscore\n            underscore_pos = i;\n            break;\n        }\n    }\n}\n\n// Strip the underscore and trailing digits if found\nif (underscore_pos \u003e= 0) {\n    cleaned_name = cleaned_name[0:underscore_pos];\n}\n\n// Now strip any remaining trailing digits from the base name\nlen = len(cleaned_name);\nint last_alpha = len - 1;\n\nfor (int i = len - 1; i \u003e= 0; i--) {\n    string char = cleaned_name[i];\n    if (!isdigit(char)) {\n        last_alpha = i;\n        break;\n    }\n}\n\n// Extract substring up to the last non-digit character\nif (last_alpha \u003e= 0) {\n    cleaned_name = cleaned_name[0:last_alpha + 1];\n} else {\n    // If the entire string is digits, keep it as is\n    cleaned_name = original_name;\n}\n\n// Set the cleaned name back to the name attribute\ns@name = cleaned_name;"
+        },
+        "position": [
+            4.74,
+            -2.8
+        ],
+        "type": "attribwrangle"
+    },
+    "torus1": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.25
+            ]
+        },
+        "position": [
+            2.26,
+            0.03
+        ],
+        "type": "torus"
+    }
+}

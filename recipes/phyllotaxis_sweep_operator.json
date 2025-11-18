@@ -1,0 +1,282 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "Distributes objects along a curve using phyllotactic spacing principles. Creates organic, natural-looking distributions for scattering elements like leaves, flowers, or other organic features along paths.",
+            "category": "vex",
+            "image": "phyllotaxis_sweep.jpg",
+            "id": "3f76980bfb4f",
+            "date-created": "2025-11-03T17:06:40.483372+04:00",
+            "date-modified": "2025-11-03T17:06:40.483372+04:00",
+            "username": "snay",
+            "tags": [
+                "phyllotaxis",
+                "sweep",
+                "nature",
+                "packing",
+                "botanical",
+                "organic",
+                "favorite"
+            ]
+        }
+    },
+    "add1": {
+        "position": [
+            0.86,
+            1.58
+        ],
+        "type": "add"
+    },
+    "copytopoints1": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "sphere1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "create_phyllotaxis_points",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "targetattribs": [
+                {
+                    "applyattribs#": {
+                        "value": "*,^v,^Alpha,^N,^up,^pscale,^scale,^orient,^rot,^pivot,^trans,^transform",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "Alpha",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "mult",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "v",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "add",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            0.93,
+            -2.29
+        ],
+        "type": "copytopoints::2.0"
+    },
+    "create_phyllotaxis_points": {
+        "inputs": [
+            {
+                "from": "add1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "measure1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "class": "detail",
+            "max": 49,
+            "organsize": 0.14,
+            "pscale": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": 0.39
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "snippet": "float p = ch(\"organsize\");\nfloat l = prim(1, \"perimeter\", 0);\nfloat deltas = 0.001;\n\nfloat a = 0;\nfloat s = 0;\nfloat x = 0;\nfloat y = 0; \n\nfloat phi = radians(137.5);\nvector2 uv = {0,0};\nvector pos = {0,0,0};\nint i = 0;\nmatrix3 m = ident();\n\nwhile( s \u003c l ){\n    float np = p*chramp(\"pscale\", s/l);\n    while(a \u003c 1 \u0026\u0026 s \u003c l){\n       uv = set(s/l,0);\n       pos=primuv(1, \"P\", 0, uv);\n       x = pos[0];\n       \n       a = a + (2*x/pow(np,2)) * deltas;\n       s = s + deltas;\n       \n    }\n    a=a-1;\n    y=pos[1];\n    pos = set(x,y,0);\n    \n    m = ident();\n    rotate(m, i*phi, set(0,1,0));\n    pos = m*pos;\n    \n    int npnt = addpoint(0, pos);\n    setpointattrib(0, \"pscale\", npnt, np, \"set\");\n    i++;\n    \n}\n\n\n\n\n\n"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "max": {
+                                "label": "Max",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "organsize": {
+                                "label": "Organsize",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "pscale": {
+                                "label": "Pscale",
+                                "script_callback_language": "hscript",
+                                "show_controls": true,
+                                "type": "ramp_float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            1.29,
+            -0.63
+        ],
+        "type": "attribwrangle"
+    },
+    "curve1": {
+        "parms": {
+            "cornerpts": "0 3",
+            "mode": 0,
+            "optype": "transform",
+            "parmpoints": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5g{uC3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mKZMMWkED+vT-VRU6C2`dT{GB7eVEio`HGBqGEH###oIx#RN3M\u0026f+VRCe7b95#PD+~m4Zee*Q3@Z%?b8lvJcVTj6CJieN5J+!zWNB_`ATls6H7+$cG$sx!4+dgyb#7#HCJ#Uv1^@s6000000000000000000000000004op?VRUqIX\u003c~JBWnXi3ZEaz4c_t7i^3DMuARr(!G9YkoX\u003eN2NVRUqIX\u003c~JBWpg?SZ*pX1ax5TWWMpu3b1WcoZ*^{DV{dY9WpZ+1WNCGCEFf)RX\u003eN33X\u003eM?DX\u003eN2ZAa8JVd2nScAY*TCc4cyOV|8+NWpgYbVQ_GAZ+K;HWOQL}XJu}5b1WcpZ)S9Ka$#\u003cBW^ZzBEFfWZbZ\u003eBUb1WcmY+-I?Zf$HVAa8YaaCLNad2nScAZTH3WNc+{F\u003er5lEFf}kbYXO5EFfWHbZK^FaB^vFEFf@cc5ifYZ**aFWh@|Jb#!lHWqN64ax5TFEFg1jZ*O#HaCCDlAZTH3WNc+{FmP{kEFf}kb#7#1Z*p#Ba\u0026UBWEFfcVZgX^UVQFr2baG*7XJ~X~ZY\u0026^la$#\u003cBY+-a|EFfuabY*gIZDn+5Z)7YWb7g03Wo~q0WqN64a${_7b7d?baA|gLbaZlIZgXs5bY(0cXkl(-Y-MmVaBp)gAaHD9Ze?$BX=f}TVPkY@c4csHX\u003eN3LEFfrMZe(m_aCCDlAai43Y-KDUb8lvJbaG*Cb7pUHZE|5`EFfcVa\u0026BdEaCCDDARr(hATc0kY;R\u0026=Y#?EDbaH88b#!HOItg}Ra\u00262L73VkaP2y}07Z)|U8c_tBCD-sBBZ)t9Ha%E;F5?d=12Wf6(X=7z`CKEss09{=x6bfN\u003cbaH88b#!HOCKOvM6%TN4X\u003eN33baZlQVs\u0026(7b0!sATU#p@1#@F\u003eaAhVID;EZEbz*F3V\u003cs0X7zA{AaAhVKD;WoFb!}yGX=5fCD;flDVQpn58Y\u003e$CP$nBI90zZ3bZKvHb0!\u003enCK!7r7%LqHb98cPZf7PPD;@=QVQh6}CLSvv1#oX^ZgeIeeSKY9D\u003cA}OX?kTQAQ1yAAqR7GZ*pO0WhNmjA_!)1a%Ev`GcqP3D\u003ccSGWoBV@Y;\u003c!bBU\u003egQ5dkJ4D\u003clYJaB^i~Y\u0026J9|Br7Ebc42IFWpgGaKpFu60000000018CM8=YAQ1y5AtoX#CJ1n0XJvC~dSxai5\u0026#4%ClO\u003cBZgX^DZgg;AXJuw=VP|tDCtE-e0RaF209`963vyw1aA9X\u003cWMOn+CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCLJakD=7?NV{~bDWpHn4Zgg`dDJC3yeO+57AQ1s3AuB2cX\u003eN2gGA1f3D+hCQa%pa7b0#ZWD=Y;tATuB~CM+v00Wc;lD=q;xCN3*40W\u003eBrD=+~wCNL{80W~HuD\u003e4BxCNf\u003cn6I\u0026)A5dkJ4CMqT-5\u0026#4yC_ob-|NsC0|NsC0000000RR910RR910ssI20ssI20{{R31ONa40RR911ONa41ONa40ssI20ssI20ssI20ssI21ONa41ONa41ONa41ONa41poj51ONa41poj51poj51poj51^@s60RR911poj50{{R30RR910RR911poj51ONa4U0q#UTP7AJ7bX}c873MlGYVm2bZK^FaB^vFCNm}+dnOorCKx6iCLSv^6\u003ee{CVRC77Xl-S5X=7h$Zggd5WpXAoeSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AuBZnX\u003eN2jG$u7BB|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCLJakD\u003eepUWMpu3b0#(\u003e9D99TTP7e80VW|PDkdviD\u003et+-E-)}MGC4LgH!?RkGBh(dIXN\u003emEHExJI5asjGdVCdF*7tWFflMSEHExGATTa4FfuYZHZwOeH#jmhGdMXpGc_zQE;BeZIWjXjFf}nVG%_$TFf}YNE-)Z4E-^GRIW;jcH#IdkFf=$fIXEmZE;BJOIXF2vI5RUhIXE;hI5jLVE-)Z4E-^ATH!?9dHaRsnF*7hUGcqhNE;2AUGB7hYIWjdjGB7eRG\u0026n3UE-)Y_H!C=bFfK7MFf=(bGd43dH!?9YFg7\u003cVFfK7LH8e3dHZVCdF*G+gGB+_SFfK44FfK4KH90UcIWRRjG\u0026nRiFflMPEHExGFfceWI59LaI5#jfG%`0gH#saYE-)Z4E-)}PIWRIgFf}\u003ceI5ajeF)%VLFfK4KFgP+eF*GqaH!w6bGB-CjIV\u003e\u003cPFd!y4D\u003e*$dE;2AMI50CbF*7wdIW#viGc_zQE;uqWIW#smG%z\u003ceI5jmeF)T1HFd#54H8?XhIWRXlF)%SXIXN^lCOKUu6I\u0026)A5dkJ4CMqT-5\u0026#4yC_ob-000000RR91|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC00ssI2|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0U0q#UTP7AJ7bX}c873MlIuT)TaB^\u003eWWo~42VQyz-Zgg`dIwl-@CK!7r7$zMi9wsz\u003eeO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CN(A{KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c873MlI|^ZSbZ=s1dTC{HCOak^dnOorCKx6iCLSg\u003ceSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Atp5@B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCLJakD?A5bb#!lVbaN\u0026=CLDWxU0Ws~5dkJ4CMqT?TU{m-TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69NDK|NmWGU0Yiw7A6-a7$zAe8Y?{$V{dMAbaG*7ZgX^UVQFV*bY*TPJtiD`CK!7r7$zMi9wsz\u003eeO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CN(A{KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c873MlJ`H1UZgypIbYpdLc4c!WJ|-M{CK!7r7$zMi9wsz\u003eeO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CN(A{KokK10000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c9VQwpKM7-Ra\u0026BdEaCCDfKPDV|eO+57AQ1s3Atov\u0026D_bTlD?kG\u003cAT}mID?tM=ATuUGT_zJ-CLj?3CLty\u0026CMFU91STjz6CwZq|Nj6000031000310003100031000310003100031000310003100031000310003100031000310003100062000620006200062000620006200062000620006200062000620006200062000620006200062003QGU0Yiw7A6-a7$zAe8Y@BzXkl(-Y-MmTaBp)aLM9x0eO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl004l$0000000000U0q#UTP7AJ7bX}c873MlLknnOZe(m_a4~Rib0$M39D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zAe8Y@H#Xkl(-Y-MmVaBp)aL?#@2eO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl004kL0000000000U0q#UTP7AJ7bX}c873MlMG0tOZe(m_aCCDfMJ613CK!7r7$zMi9wsz\u003eeO+57AQ1y5Atov\u0026BU\u003egQ5dkJ4CN(A{KokN0|NsC0|NsA8CM8=YAQ1y5Atov\u0026CK3PyCMR1!5CH)I003PkC_obf|NsC0|NsC0|NsC0U0q#UTP7AJ7bX}c873MlMht0gbY*gIZDn+5Z)7G$CLDVv7\u003c(odCLJaoCNzD0U0Ws~5dkJ4CMqT)TP7e80VW|PH6|rM6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@Y84Q*j*ZggR3Zg6jDZgeI`CLDVv7\u003c(odCLJaoCNzD0U0Ws~5dkJ4CMqT)TP7e80VW|PH6|rM6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6iCK@Y925)e5d2nSWNG2S6eO+57AQ1s3Atov\u0026D_bi`3t@0@Wo~3}Z)t9HCP^zw33PH{ZgXaDa\u00260C`D@z7sWo%`1WhP52Oa^Igb7gXLCQMx\u003e6I\u0026)A5dkJ4CMqT-5\u0026#4yC_ob-00000000000RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910ssI20RR910RR910{{R30RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR91U0q#UTP7AJ7bX}c873MlO$BdqWMy(DO(q\u003cBCK!7r7$zMi9wsz\u003eeO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CN(A{KokK40000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd1ONa4U0q#UTP7AJ7bX}c9VQwpP6}^zbZ~Waba`-PCQc?CdwpG7CLj?3CLty\u0026CM#PjPX=OTdTC{HCQn@^6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@YH3vg+6Z*+2RbYXO5CQv3EdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCK)CgD^U(`X?AaPbaG*Cb8KOBWhPN39D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br|KpA5I0000000000000000000000000000109fUngfki$500028R?0oU6vaLO0002\u0026E9E}F6vaLO0001wxzRnT7g;(00001GK*T\u003c\u00267g;(00000-_ESDE\u003c\u003c~s`0002Elw\u003e|\u0026GgUqS0001h#!o!I6vaLO0002Elw\u003e|Ua+W\u003e-0002Elw\u003e{$V\u0026Ogj0001GK*T;Q$fQ010001_I2ArD$fQ010002e=Ab?-$fQ010002e=Ab@MA^Sc60002Dlw\u003e{%V\u0026Ogj0002e=Ab@NA^Sc60002e=Ab?Xz7RhE0002e=Ab@Y_\u003cBD800017!A(ACxKcj=0002e=Ab@Y_\u003cBD800017!A(ACxKckOK9;^*!A(BRQa3*%K9;^*!A(A9Xk$MkK9;`H=Ab@7)T}=M0001h#!oz0+z\u0026qh0001B!A(9!\u003eUlpvjhsC2\u003c?TM+h+98EjhsB\u0026`$0Zf+z\u0026qh0002n`$0aSB0M|*0002$*bF~L\u003eUlpvjhsBv=Ab@7)T}=M00018U0qvSCKe_aCKx6eCK@YJ2ykp+Ze?z5Y$j4B9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS00000fIk2L003QGU0Yiw7A6-a7$zAe8Y@!?aBN|2Wp8q6XC_l79D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zAe8Y@%=a\u0026L5DbY\u0026(~CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yC_ouw0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000g@H1{000000000000000000000000000000000000000000000=!()m^^aJ=_Jah%000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000U0q#UTP7AJ7bX}c9VQwpRSt4*b#7#1Z*p#Ba\u0026UBWCRHXJdwpG7CLj?3CLty\u0026CM#QACKFpGAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd|NsC0U0q#UTP7AJ7bX}c873MlRuOV\u003cb#7#1Z*p#Ba\u0026lp0X?1fZRwf*KeO+57AQ1s3AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1s3AtoXwCK3PyCMR1!5CH)I003PkC_otj00000U0q#UTP7AJ7bX}c873MlR|RupVQgh4S0)^LeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu6000000PsIuCM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl004kL004kL004kLU0q#UTP7AJ7bX}c873MlSQ2w(XKiI}bYf+CX=QR_Y;SXACRipMdnOorCKx6iCLSg\u003ceSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Atp5@B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RaF209{\u003eOTU#a;CKo0cCLJakD_IG1ZEtUMXmE6MCRrvNdwpG7CLj?3CLty\u0026CM#PjS^+91S|%_iF\u003cmATTP7e80VW|PDkdfp00br|KocPV0000100001000010000100001000010000100001000010000100001000010000100001000010000100030|NsC0|NsC0|Ns9200002000020000200002000020000200002000020000200002000020000200018U0qvSCKe_aCKx6eCK@YS4Rdd1baZlIZgXaDa\u00260DCCLDVv7\u003c(odCLJaoCNzD0U0Ws~5dkJ4CMqT)TP7e80VW|PH6|rM6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@YT5OZ\u00264baZlIZgXaDa\u00262;9WF}lD9D99TTP7e80VW|PA|@kSCLj?3CLtyyCM7@`0RR910002sKV2pzTP7e80VW|PA|@sh00br|Kp7zb002J#002J#002J#002KPy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68SHy68S#U0qvSCKe_aCKx6eCK@YU33PH{ZgXs5bY\u0026)8CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yC_ouw000000000000000000000000000000yrRWD0000000000KbEpS0000000000xUJs400000000000n(2?000000000000000pj)Iq00000EnN~mfM}\u003ea0000000000Fk-Jg0000000000\u003cVQ6=0000000000n%@;Z00000000000000000000CP;I\u003e00000000000F^90000000000000000NU|(G0000000000000000000000000000000000000000=xUig0000000000taQ{q000000000000000000000000000000BR-bC00000Oklk}0000000000;4Is{0000000000WL7Xf00000004k901vc1_XeOo;!u)4kc`B=00000bN@6x0000000000B+;@y0000000000fZ5SJz*EV+0000q00000\u0026g%@n00000fE}v4000000000000000?xW?t0000000000\u0026_mn400000U0q#WD_#(1Y;R\u0026=Y+-bCa%p09bY*iUURzsRCKe_aCKx6iCK@YW26ka`ZDDXGUnU%TD_{;{Y;R\u0026Zb98cPZfA34bS7YXCKxMW1Y\u0026P*Y$jnQ9x;7=U0Ws~5g#TYCMqT?TPtD^Z*X*ZaAhDZJ|Is}R9R3(CSogN9ARU0X?A6BZ)t9Hb094~AVEV^NmfNrPf1QxQzm08WDsFwWN\u003etIAT2\u00261K}1AQR8uBoD`gmAV{~bDWpHw7Z6GZ^AVEV^NmfNrQb|oFWh-VLZDDC{bYW?3aBpdDbRaE0AWcC@PE\u003cijPEb!tPE;mlD`zHQaBy;Ocx7\u00266bYX61Wo~qHAT2\u00261K~PXqPgq4xL{vdeM@3FlQzmCCXc%vGbZ~Waba`-PAT2\u00261PgPV\u003cRa8`2P(\u003ezaD`^gIa%5$4AT2\u00261Pf|ohQYL9DY9?}Tb#7#1Z*p#Ba\u0026lp0X?1fTEj}PpPgPDtLr+ppMN(2hL`hXsCTc5d7GrO6Ze?\u003cCbaNmrJ|II+QcguuP*hVUYb$IPb8T;LbZBsNb094~AX80GPgF=yR8uBwD{T^Cb#!lVbaNmrJ|IC=R8LS;QzmUIZXj}Rb#7#1Z*p#Ba\u0026UBWAT2\u00261QcqP*L_\u003c$fPDN5sR8uByD{m@eZ*FsRa$#w1b98cHX=iA3Wo{rXJ|II+PE%A;K}k+iR8m1nM@UpfP9|?Fa2#oFbY*gIZDn+5Z)6}XJ|Ia\u003eR7FxyO+{2lPedkgD{\u0026rUZ*F#Fa\u0026%*La\u0026~2NAT2\u00261Lr+dtMN(8lRZ\u003e\u003c(QzmgMavpPUW^{CNVQzC~Z*pxQEj}PqPexQ!QbA5rMo\u0026^rCUPrtBy(?ObaZlIZgXaDa\u00262;9WFRd*AX869R8\u0026$yPE$rtQcY4pL?\u0026}9bQW}SVQzD5VRU66Ej}PrQbA5rOhHsdCUh%x5OQyHVRU66Ej}PpPgFrvMJ9DCb`Eo6VQgg}Ej}PqLqSYMCUz@#AaH4RZ*+8WVQzD5VRU66Ej}PnNmfr(R8m1sQ%pfrMJ9JEcp7kNc5ifYZ**aFWgsm+AW%tGPgGJ*R6$flCU`4(7HDB^WNc+{baNmrJ|IXzPDD\u0026aP*hVUc`JGvXkl(-Y-MmTaBp)UEj}PfK~6+WMNlwMPg5p(D|;GfVQyq\u003eWpFWYZ*w3mJ|IXzPDD\u0026aP%%(XQzm;Wd\u003eUwBZe(m_a58Xjb094~AV@(@L`+3cGEh%bCVVS\u003e7I17~Ze?$BX=flUJ|Iv`K~6\u003caQb|W9eJg$xaBN|2Wo~V3AT2\u00261P)tEiMNUmjCVne_7-4mEZ(?P7X=QRCEj}PYRa8$xMOsNkQYL\u003eZfGBfiXKiI}bYf+CX=QR_Y;SXAAT2\u00261Q$\u003cHjMNU*gMOsNkQbSBnQ$;3#T_zJ-CLj?XCLty\u0026CMFU91STh2Ko9`|00018CMZA?9{\u003eOV0096100IC200RI300aO400jU500sa600#g700;m800{s9015yA01E\u0026B01N;C01W^D01f~E01p5F01yBG01*HH01^NI022TJ02BZK02KfL02TlM02crN02lxO02u%P02%-Q02=@R02}}S0384T03HAU09{\u003eOU0o}I3UG31ZE19Ac4c!Wfm\u003eZC1!-\u003c%Wq4aB4ry+5WoKn_Wo~qGX=QVJeJ2fbbaH8KXJu}5a%p9AdwnMnX\u003eN37XJvA0WqD\u003c8bZK\u0026Bb9;R!5OZ{LX\u003eMn0WqD\u003c8baH8Bb9;SVCk\u003c(CWMz18Z*ysMX\u003eV\u003e6W\u0026i*H00000T\u003e"
+            },
+            "savedstashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5eF*-3wC94bY*yBZ*^{TCIk@\u0026D+La4a%pX8bZK^FV{dhCbS4E60V@UsX\u003eMk3CI)*e2MB0yb98QDZDl40D+mKZMMWkED+vT-VRU6C2`dT{GB7eVEio`HGBqGEH###oIx#RN3M\u0026f+VRCe7b95#PD+~m4Zee*Q3@Z%?b8lvJcVTj6CJieN5J+!zWNB_`ATls6H7+$cG$sx!4+dgyb#7#HCJ#Uv2JfmoKH8fZKY$`UJeme\u003cKL7v#0Dz60JSz|paB^vFV{dhCbYF9IZEaz4c_t7i86Y4aARr(hARr(yAVOt\u0026X=QRCLv?a?WeO`15n*(6a%p09bY)+2b!}~7a(N~ZCrBV5ARr(yAaHMKZge1FbaZlQVs\u0026(7b2\u003cr73LqdLARsXyXKZg`VQe5_baZlQVs\u0026(7b2\u003crMUvh7CZe(R-V{dY9WpZ$Ia|$aG4QFz1b#PyEb!}~7a(N~aCp91-ARr(zAaHMKZge1La\u0026L8Tb2\u003cqLUteK$bZ=j9baM\u0026`Ute-\u003eb#7!|V{dY9WpZC|baM)QD-#HGZ*XsHZ)bTX6I\u0026}32yky{Zgg^GW+oI{D-{Q6Ze(d=WpgGKKoSQ40096500jUB00IC509{=x77Af\u003ebaH88b#!HOCKg*O7Y}f6X\u003eN33baZlQVs\u0026(7b0!yCTU#p_1#@F\u003eaAhVKD;WlGbz*F3V\u003cs6Z8U%ECaAhVMD;o!Hb!}yGX=5fED;xxFVQpn594j3GP$nHK9tUr5bZKvHb0!{pCK`Jt8Y\u003e?Lb98cPZf7PRD\u003cB1SVQh6}CLk*z1#oX^ZgeIgeSKY9D\u003cTAQX?kTQA`t^CBL{PIZ*pO0WhNslBnW13a%Ev`GcqP5D\u003cueIWoBV@Y;\u003c!bC0iyU5dkJ6D\u003c%kLaB^i~Y\u0026J9|CMzcfc42IFWpgGcKpFu60000000018CMR1aA`t^7BPJv(C\u003ct(2XJvC~dSxak5\u0026#4%DGPF8cW_~6Wn^J=VJ0a+85QrUJU)OTJUjpZ008f*JU)OTJUjpZ007#X89xYhQ$GLz007eFpgx)gY(D@1004*s`##\u003cnpFV(%oIL8-3_nj82R}fKoILvV6F)oJAU`6FoIG7!U0o|G5NB*}Vqt7ybaZlQVs\u0026(7b0#WVTU#a=CK)CgCLbmoD=QLTUvh7CZe(R-V{dY9WpZ$Ib0#Y$9(#RVTP7kA0VX3WECp$9bTcw0EGsPsb98cPZfA2QEn8hC6\u003ca1E5dkJ6CM+f\u003e5\u0026#4%E)ipIZgX^DZgg;AXJuw=VP|tDE?Ynl0RaF209__2KobG~|NsA8U0q#WD=!Lga%pX8bZK^Fb0#laTU#a?D=-T}WqN64azk};c4a0oU0W+L26km~bY*xZF+dUr000310ssR51ONp91^_EE24ie*b7f\u003eEGB7JM1!7@yX\u003e%qsTP7MSGzLOtdTC{HCNwKG1#fa\u003eWpXAp5d\u003cqX1#50^baN\u0026)KpF!80000000000000000N_6W000000PsIuU0q!(Hw$oYX\u003eN39a\u0026L8Tb0#-iTU#a^D\u003ew\u003eYUtx80Z(ne9b0#=lTPryUb7gF0V{~b6ZYDWfD\u003e?~vZf|mAWpZU?COTUyI|6AqCObe82LJ#700000U0q#WTU#a^D?AckUvh7CZe(9$Z*p#Ba$j(Cb0$1pTP8VMCOTUtJ3tW!0000000018U0q#WCk1J4WMz0;Ck|\u003cDbY*8{a%FCGa%p9AdwnMjb98cPZf9j~baH8Bb9;R!5ovC8WoKn_Yh`(5ZggpKWpjIdClGUVa%pa7Yh`(5Zgg^KWpjIdT_+7`Ze(S6aBp*IbZKvH6lMSb0000009^"
+            },
+            "smoothpts": "5",
+            "softtransformrad": 0.45454545454545453,
+            "stashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5dbR$3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mKZMMWkED+vT-VRU6C2`dT{GB7eVEio`HGBqGEH###oIx#RN3M\u0026f+VRCe7b95#PD+~m4Zee*Q3@Z%?b8lvJcVTj6CJieN5J+!zWNB_`ATls6H7+$cG$sx!4+dgyb#7#HCJ#Uv2LJ#6e*gdf{{R2~e*gdf{{R2~e*gdf{woj\u003eVRUqIX\u003c~JBWnXi3ZEaz4c_t7i8z3McARsXyaBpdDbRc1LbaH88b#!HOItfq;eJc?NbZ\u003eBPY;R|ICJ|dJ5(sc_X\u003eN3KWo9N4TPqU\u003eX\u003eMd`V`XzD6F?FGU0o{_3So3~a%p09bY*iU6k9754{\u0026d3ZggREbaH88b#!HOCKX#-TPqd?b7OCCWhNFY7Y1;3Vr*$+CKoFh1ax_DWhNLa83%54ZDn$4V\u003cs6Z8U$`(ZDl4JD;oh\u0026CL1dp2XAn6X\u003eV?GCLDVv7\u003c(odD;)-NbaH8KXC@sh9tCz`Y;|QO9xEROaBpdDbS58teO+5CAOv%1dSxac5d$kB2Xl09a$#p\u003eCLt\u003e#2xf3{WnpYHGA1G`BM4+=W?^+~baN\u0026nTP7e80VW|UBnW13a%Ev`HZ\u0026$AD\u003cuYYVQh6}b0#G~8UX+R00000003PkC0iyS5d$V6CL${)2ykI%WpinIWhN#P00b*13vyw1aA9X\u003cWMOn+CMQ4{09{\u003eOU0o|E3UG31ZE19Ac4c!WC|g}81!-\u003c%Wq4aB4ry+5WoKn_Wo~qGX=QVJeJ2fbbaH8KXJu}5a%p9AdwnMnX\u003eN37XJvA0WqD\u003c8bZK\u0026Bb9;R!5OZ{LX\u003eMn0WqD\u003c8baH8Bb9;SVCk\u003c(CWMz18Z*ysMX\u003eV\u003e6W\u0026i*H00000T\u003e"
+            },
+            "stashid": ";"
+        },
+        "position": [
+            2.53,
+            3.85
+        ],
+        "type": "curve::2.0"
+    },
+    "measure1": {
+        "inputs": [
+            {
+                "from": "resample1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "attribname": "perimeter",
+            "colorramp": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": [
+                        0,
+                        0,
+                        1
+                    ]
+                },
+                {
+                    "interp": "linear",
+                    "pos": 0.5,
+                    "value": [
+                        1,
+                        1,
+                        1
+                    ]
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": [
+                        1,
+                        0,
+                        0
+                    ]
+                }
+            ],
+            "measure": "perimeter",
+            "totalattribname": "totalperimeter"
+        },
+        "position": [
+            2.53,
+            1.11
+        ],
+        "type": "measure::2.0"
+    },
+    "resample1": {
+        "inputs": [
+            {
+                "from": "curve1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "length": 0.04
+        },
+        "position": [
+            2.53,
+            2.33
+        ],
+        "type": "resample"
+    },
+    "sphere1": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "scale": 2,
+            "type": "polymesh"
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "sphere"
+    }
+}

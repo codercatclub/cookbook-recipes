@@ -1,0 +1,1068 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "An array of abstract feather like shapes reassembling Seraph's wing. ",
+            "category": "geometry",
+            "image": "757c301eb0a9.jpg",
+            "id": "757c301eb0a9",
+            "date-created": "2025-11-03T17:06:40.483372+04:00",
+            "date-modified": "2025-11-03T17:06:40.483372+04:00",
+            "username": "kif",
+            "tags": [
+                "wing",
+                "seraph",
+                "angel",
+                "abstract",
+                "shape",
+                "greek",
+                "blade",
+                "array"
+            ]
+        }
+    },
+    "autouv5": {
+        "inputs": [
+            {
+                "from": "normal5",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "graintol": 0.19,
+            "layout_padding": 1,
+            "rotstep": "PI16"
+        },
+        "position": [
+            0.68,
+            -20.71
+        ],
+        "type": "labs::autouv"
+    },
+    "carve1": {
+        "inputs": [
+            {
+                "from": "skin4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "domainv2": {
+                "expression": "fit(detail(\"../foreach_count3\", \"iteration\", 0), 0, detail(\"../foreach_count3\", \"numiterations\", 0), 0, ch(\"max\"))"
+            },
+            "firstu": false,
+            "max": 0.704,
+            "secondv": true,
+            "stdswitcher3": 1
+        },
+        "parmtemplates": [
+            {
+                "insert_first": "",
+                "parmtemplates": {
+                    "max": {
+                        "label": "Max",
+                        "tags": {
+                            "script_callback_language": "python"
+                        },
+                        "type": "float"
+                    }
+                }
+            },
+            {
+                "insert_after": "domainv2attrib",
+                "parmtemplates": {
+                    "onlybreakpoints3": {
+                        "label": "Divisions",
+                        "parmtemplates": {
+                            "divsu": {
+                                "default_value": 2,
+                                "label": "U Divisions",
+                                "max_value": 20,
+                                "menu_type": "normal",
+                                "min_value": 2,
+                                "script_callback_language": "hscript",
+                                "strict_min": true,
+                                "type": "integer"
+                            },
+                            "divsv": {
+                                "default_value": 2,
+                                "label": "V Divisions",
+                                "max_value": 20,
+                                "menu_type": "normal",
+                                "min_value": 2,
+                                "script_callback_language": "hscript",
+                                "strict_min": true,
+                                "type": "integer"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "sidefx::switcher": "onlybreakpoints"
+                        },
+                        "type": "folder_radio"
+                    },
+                    "onlybreakpoints3_1": {
+                        "label": "Breakpoints",
+                        "parmtemplates": {
+                            "allubreakpoints": {
+                                "label": "Cut At All Internal U Breakpoints",
+                                "script_callback_language": "hscript",
+                                "type": "toggle"
+                            },
+                            "allvbreakpoints": {
+                                "label": "Cut At All Internal V Breakpoints",
+                                "script_callback_language": "hscript",
+                                "type": "toggle"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tab_group_end": true,
+                        "tags": {
+                            "sidefx::switcher": "onlybreakpoints"
+                        },
+                        "type": "folder_radio"
+                    },
+                    "stdswitcher": {
+                        "label": "Cut",
+                        "parmtemplates": {
+                            "keepin": {
+                                "default_value": true,
+                                "label": "Keep Inside",
+                                "script_callback_language": "hscript",
+                                "type": "toggle"
+                            },
+                            "keepout": {
+                                "label": "Keep Outside",
+                                "script_callback_language": "hscript",
+                                "type": "toggle"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "sidefx::switcher": "stdswitcher"
+                        },
+                        "type": "folder_radio"
+                    },
+                    "stdswitcher_1": {
+                        "label": "Extract",
+                        "parmtemplates": {
+                            "extractop": {
+                                "default_value": "xisoparm",
+                                "label": "Extract Type",
+                                "menu_items": [
+                                    {
+                                        "label": "Extract 3D Isoparametric Curve(s)",
+                                        "token": "xisoparm"
+                                    },
+                                    {
+                                        "label": "Extract Point(s)",
+                                        "token": "xpoint"
+                                    },
+                                    {
+                                        "label": "Extract 2D Isoparametric Profile(s)",
+                                        "token": "xprofile"
+                                    }
+                                ],
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "type": "ordered_menu"
+                            },
+                            "keepOriginal": {
+                                "label": "Keep Original",
+                                "script_callback_language": "hscript",
+                                "type": "toggle"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "sidefx::switcher": "stdswitcher"
+                        },
+                        "type": "folder_radio"
+                    }
+                }
+            }
+        ],
+        "position": [
+            3.12,
+            -3.95
+        ],
+        "type": "carve"
+    },
+    "carve2": {
+        "inputs": [
+            {
+                "from": "carve1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "domainu1": {
+                "expression": "fit(detail(\"../foreach_count3\", \"iteration\", 0), 0, detail(\"../foreach_count3\", \"numiterations\", 0), 0, ch(\"max\"))"
+            },
+            "domainv2": {
+                "expression": "fit(detail(\"../foreach_count3\", \"iteration\", 0), 0, detail(\"../foreach_count3\", \"numiterations\", 0), 0, ch(\"max\"))"
+            },
+            "max": 0.45
+        },
+        "parmtemplates": [
+            {
+                "insert_first": "",
+                "parmtemplates": {
+                    "max": {
+                        "label": "Max",
+                        "tags": {
+                            "script_callback_language": "python"
+                        },
+                        "type": "float"
+                    }
+                }
+            },
+            {
+                "insert_after": "domainv2attrib",
+                "parmtemplates": {
+                    "onlybreakpoints3": {
+                        "label": "Divisions",
+                        "parmtemplates": {
+                            "divsu": {
+                                "default_value": 2,
+                                "label": "U Divisions",
+                                "max_value": 20,
+                                "menu_type": "normal",
+                                "min_value": 2,
+                                "script_callback_language": "hscript",
+                                "strict_min": true,
+                                "type": "integer"
+                            },
+                            "divsv": {
+                                "default_value": 2,
+                                "label": "V Divisions",
+                                "max_value": 20,
+                                "menu_type": "normal",
+                                "min_value": 2,
+                                "script_callback_language": "hscript",
+                                "strict_min": true,
+                                "type": "integer"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "sidefx::switcher": "onlybreakpoints"
+                        },
+                        "type": "folder_radio"
+                    },
+                    "onlybreakpoints3_1": {
+                        "label": "Breakpoints",
+                        "parmtemplates": {
+                            "allubreakpoints": {
+                                "label": "Cut At All Internal U Breakpoints",
+                                "script_callback_language": "hscript",
+                                "type": "toggle"
+                            },
+                            "allvbreakpoints": {
+                                "label": "Cut At All Internal V Breakpoints",
+                                "script_callback_language": "hscript",
+                                "type": "toggle"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tab_group_end": true,
+                        "tags": {
+                            "sidefx::switcher": "onlybreakpoints"
+                        },
+                        "type": "folder_radio"
+                    },
+                    "stdswitcher": {
+                        "label": "Cut",
+                        "parmtemplates": {
+                            "keepin": {
+                                "default_value": true,
+                                "label": "Keep Inside",
+                                "script_callback_language": "hscript",
+                                "type": "toggle"
+                            },
+                            "keepout": {
+                                "label": "Keep Outside",
+                                "script_callback_language": "hscript",
+                                "type": "toggle"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "sidefx::switcher": "stdswitcher"
+                        },
+                        "type": "folder_radio"
+                    },
+                    "stdswitcher_1": {
+                        "label": "Extract",
+                        "parmtemplates": {
+                            "extractop": {
+                                "default_value": "xisoparm",
+                                "label": "Extract Type",
+                                "menu_items": [
+                                    {
+                                        "label": "Extract 3D Isoparametric Curve(s)",
+                                        "token": "xisoparm"
+                                    },
+                                    {
+                                        "label": "Extract Point(s)",
+                                        "token": "xpoint"
+                                    },
+                                    {
+                                        "label": "Extract 2D Isoparametric Profile(s)",
+                                        "token": "xprofile"
+                                    }
+                                ],
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "type": "ordered_menu"
+                            },
+                            "keepOriginal": {
+                                "label": "Keep Original",
+                                "script_callback_language": "hscript",
+                                "type": "toggle"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "sidefx::switcher": "stdswitcher"
+                        },
+                        "type": "folder_radio"
+                    }
+                }
+            }
+        ],
+        "position": [
+            3.12,
+            -4.95
+        ],
+        "type": "carve"
+    },
+    "convert4": {
+        "inputs": [
+            {
+                "from": "profile2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "lodu": 0.2
+        },
+        "position": [
+            2.99,
+            -13
+        ],
+        "type": "convert"
+    },
+    "curve12": {
+        "color": [
+            0.47,
+            0.81,
+            0.2
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "parms": {
+            "activepoints": "2",
+            "convertcurves": true,
+            "handlep0pos": [
+                0,
+                1.127554178237915,
+                -0.6595841646194458
+            ],
+            "handlep1pos": [
+                0,
+                0.857562780380249,
+                -0.6852976083755493
+            ],
+            "handlep2pos": [
+                0,
+                0.2708987295627594,
+                -0.741170346736908
+            ],
+            "handlepts": [
+                2,
+                3,
+                4
+            ],
+            "mode": 0,
+            "optype": "transform",
+            "outputtype": "nurbs",
+            "parmpoints": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5o{|23wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFft%AF*-3cIx{vV3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0P000000000000000000000000000000D-aQ3baZlQVs\u0026(7UvqVBZDDeGCJ-m`umK\u003c-ARsd^AaHMKZge1FbaZlQVs\u0026(7b2\u003crOWMpu3b1WcoZ*^{DV{dY9WpZ+1WNCGCEFf=kWMy(JAZ=l3ZggR3Zg6jDZgealZ*X*ZaAhnYVQ_GAZ+K;HWOQL}XJu}5b1WcXb#!lVbaN~qaBN|2Wo~V3EFf=nbZ~Waba`-PEFfrMZe(m_a4~Rib1WcoZ**aFWh@|JV{~bDWpHw7Z7d*gX?AaPa\u0026L5DbY(0cVRdwGVr6=1WpXSaP%I#GZEtUMXmE6MEFfrMZe(m_a4\u003eLhb1WcoZ*^{DV{dY9WpZ$Ib1WcZZ*FsRa$#w1b98cHX=iA3Wo|4WbaG*Cb8KOBWh@|RZggdGaBXFDXm4aJAaiABZDnqBVr6=1WpZO|Z*yfVAaH4RZ*+8WVQzD5VRU6IAZTH3WNc+{GH`EmEFf@fVQyt_a%pEQAYo\u00264X?A6BZ)t9Hb1WceVQyq\u003eWpH$JEFg1ZVQghAAZK!Kb#QZOZf9\u0026|aBpdDbSxlaZ*p#Ba\u0026UBW3LqdLARsXyXKZg`VQe5_baZlQVs\u0026(7b2\u003crjVRCI@a0-1Z5eRf|aBpmHXL%+OTPqR\u003eaBpdDbaG{8CK6jK69;K-WNBk%b0!l\u00265\u0026\u0026IYD-;T0baZlQVs\u0026(7b0!p9D-{oLZ)t9HVRUqIX\u003c~JBWpgGKTU%Qz76o%-Z*XNM7AqG9aCKsAX=5fAD;NZHd2nSW7%LeEZgp*Ca%p2G87mqDZeeX@CK@Xn0Z=9zD;x)JaCB*JZgVCadnOorCKxLn26J?BX\u003eMmG9V;FMc42IFWhNdg9|dr4X\u003eN2TAANmYTPq+0b7^{ICLj?5D\u003cKDSbZ\u003eHDXJsZKD\u003cTMHaB^i~Y%?+@A}b\u003eZWMyVyb!\u003eEVCL\u003e!WAQ1s3AuA*ZW^i(4VQe-uCL}8*26ka=b!BrVB|sVh0000000000T_z=4CLj?5CLtywD\u003c%kVVP|D?X?kTQCK3PyD\u003c=_SZ*FsRVQzGAVP|D#Y++|}CMR1!5CH)I003PpC\u003c}67cW_~6Wn^J=VJ0X*83O\u003cS0000000000003QGU0Yiw7A6-a7$zMi8Y?LbVPkY@c4csHX\u003eN3LCMhNydwpG7CLj?3CLt\u003e-1!-\u003c{GcqPBD=P\u003ccbaH8KXLBYiTPrL9GbSu6EdeqnEh{boFeWZ5F99?rFDozwF(5M_H6}1CF#$0qF)K0yFd#7|GAlC!FfB1AGb=O$GA%PEG%Ga+Fd#7?G9WW1H7hm\u0026Dke57Hw7\u003e)G9WZ2H!C;;F)cDCI9(\u003caTP7e80VW|PDkdfp00br|Koe~L|NsC0|Ns9000001000000000200002000000000000003000030000300004000010000500006000060000600007000070000700007000080000800002000090000A00003000050000300001000010000100003000050000500003000030000300001000030000000003000050000A0000A0000A0000A0000B0000B0000300005000020000500003000050000300001000030000000003000050000100001000050000100002000050000100005000020000100002000050000100005000020000100005000020000A0000A0000C0000100005000010000C0000500001000050000C000020000200002000020000500002000020000200002000020000200005000020000500002000010000100018U0qvSCKe_aCKx6eCK@X_3Snb(X?A6Ba%pWQIVK!?CK!7r7$zMi9xFN(Zf|a3a%psEZDn+6V_#`*bY*8{awa-`eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4D?0^gZge\u0026@COal2KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c9VQwpJO*K8WN\u003etICOjq_dwpG7CLj?3CLty\u0026CM#PjJ*qG+Ff1`HGBhzZI5;pdGcY$cH#jmfEHExIHZ(OeIW#gbHZU|dFf}+JFfK4GF)lSUGB7YSGBP(dGdMCdG\u0026U?PFfKJQFg7_gGBG(YGdVdiHy|)BFf1@GIWaRdGc`3gI5RXhGBq+ZEG;lDI59CWF)=eSG\u00264CeFgQ6lATTa4EHExNIW#vgH90ajGdD3gH#j\u0026fEif)PH90srIXO8uH!(3WI59RLCOs=Yg)lBKEHExMH#IpoHZnIhGdVXmFf}nOEif)QFgQ0jI5s#jFf%YRH#0OKFfK4GEif)HHZ(IcH#jsoHZeCaFf=qQEif)HH#asoF)}teG\u0026wdlH#svPFfK4GEif)PG\u0026VIgHa0LbIWRaiGdMUbEif)HGBG$XI5jXfIWjOgGcz|bGax2DD?flOFfK4KGcqzXGBq\u003ccH8eCgIXO5mH7qeMF*Z0gG%__XG\u00263\u003cUHZV9WEif)KHZ(CgG%zzYH8U_UIWRLbATTa4EHN%IH#0RgG\u0026najH8nIdH#0aaEif)KHZ(CgGdVLjI5;;oF*Z0eATTa5IWRCbIWjgeIW;jfI50UkAT2Q_KPy0yFfK4KFg7qUFfcYbF)}hUF*GzaGb}MKF*Y(cGc`9bFg7qZGC4UoEG;lDGdDChFfukdGB7hSI5sddH6Sf8E-)}MIWsUhFg7+gGch(XFf%tSF)lGSGBr0hG%ztXGcz_gH8LzMFfKDUG\u0026e9ZH#sskF*P+ZG\u0026LYFE-^VWI5{vgG%ztRH#avjIW-_HF(yDOL69vlE-)}LF*q|YGcq|iIW;gbIW;peEHN%IH8wCYH8C|eHaR\u0026pI5jLSFfKDUI5IXkIW;#iGdM6dF*P7CE-)}KGB_|XG%+$bIWRUiGc+_bEHN%IHZV0bI5{~tHaIglGB!9YEif)KH#jmjIWRLaIWsXcFgY|JFfK7UG%zzbH8nIhF*7tdIXE;REiooRD?*bkFfK4KFfuSPH!w0WF*i9eIXN;hI5;dZE-^JTFgP$bFflkXI503XEG;lDGdDIkH90UgI5;;jH8eCdGaxN6E-)}LFf=$cI5;ymF*i6gH83(PF)lGRH!?XeGch\u003cZG%zwXHa9FSFfKDUHaImoF*7nbF*PtVH#0UMFfK7UGchqaH8M6fGc-9eF)%eCEiooSD?^VhFfK4KGBh(bIXN{oFg7wcHa0RbEHN%IG\u0026VRfH#9UgH#IddFf=(VEif)KI5adjGBY\u003cYF*G+fFf}nCEif)HFfcMVI5jgkIXE\u0026lH83_eGBGSME-^GXI5jpiGB!3eH8eLhEG;lDGdMIfH!?IhHa0mhH8(RcATTa5IW;gfFgP\u003cgIW{*kGc`3JEiooTD@2hkFfK4KGdVRdGBY?bGB-FhG%_\u003cdEHN%IGc`FgH83_fF*7hUIWsaWEif)LFgP$cGcY(YGBh\u003cbGBPtZAT2O1FfcMQFgY\u003ceFg7?aIX5vdGdC\u003cTE-^DQH#0CcG%+zZI5;^nGAu1HE;KMWFgP\u003cXIXE{pGBPqTH6So9GB7eQH!(IiGBYwTF*GwUH6Sf9CPXVmPAxDlFfcVUI59IcG\u00263|fH8wXjI4m(PFfcMVHZnFfGC4RlHa0glEG;lDH8U|eHa0jmHZwFcI5#phATTa8Ff%wdF*q_cH8V3aGB!CTMJq;@Eif)HFflYXGd49bHZ?afFf=qdGBPYME-)}MFf%hYH840gH843bH8nCfEG;lDH83\u003cVGdVXlG\u0026C?YGC4LmAT2O1FfcJRHZwLbI59akIXN;kGBP(TEif)IFgQ0hH8nLfF*7+hH90ggEG;lDHZwRjIXO8wF)}wWGcY+bATTaBG\u0026L|VIW#viHa9gkGchtCEiooWD@T\u003crFfK4KF*P_eGC46cH8?RcIXE~nI4mtNE-*1UG\u0026wjkG\u0026nLdHZV9dIXE;dEif)NH!?OkI5aajF*Y|fH!\u003ehCFfK4KF*P_eF*i9hH8e9eG\u0026nUgGb}JJFfutdIWspjF*G$cIWRUfIXEmWFfKJWFf%qbH90gjHZn0cIXECNE;lnWG%`0dGC4IdIWRObH6Sf9CPynsku5MTFfcSVGBG$bHa9mhGBhwUGc+tMFfKPUG\u0026MFbH8eRgH90XjH8?CVE;2JSFfuqYIWjgiH90giI5HqDFfK4KG\u0026M3YH#0OgFf%eUGB`CXEif)OG\u002646aIWaXfHaR#qFgG|XFfKAOH8nIeGdMLkFgY\u003ceH8eFKFfKGOGB-6jHZ?doGBhzVHa9dNEiooYD@lhkE;ltfF*h+XG\u0026eLjGBYeKF)lPRI59UlH#9IgFf}(eF*htVE;ltZGBGqbGd3|YFg7qXH6So9F*z|cG\u0026MOmF)}kSFf=nWEG;oEG%`3bH#s*lHZ(LbGB7bUEH*AOFgG|bIW;plI5;\u0026jGcq7BE-)}SFf=tYF*!3iH8?OeIW#mNEiooZT_zJ-CLj?3CLty\u0026CMFU91STjz6Kntg0003100960|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NjC200093000C4000F5000I6000L700960|NsC0|NjU800960|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NjX9000UA00960|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NjdB00960|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NjgC00960|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NmWGU0Yiw7A6-a7$zAe8Y@Z\u003eVQ_GAZ+K;HWOQL}XJu}5b0$hA9D61hdnOnr9VQ+oI(\u003eazTP7e80VW|PDkdXaCLj?3CLty}CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y@c*VRdwGVr6=1WpXA\u003cCLDVv7\u003c(odCLJaoCOUn6U0Ws~5dkJ4CMqT)TP7e80VW|PJ0\u003eMS6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6iCK@YD2Vr$|Z*X*TCQK$AdwpG7CLj?3CLty\u0026CM#QACKFpGAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd|NsC0U0q#UTP7AJ7bX}c873MlO%r2pZgX^UVQFr2baG*7XJ~X~ZYE789D61hdnOnr9VQ+oI(\u003eazTP7e80VW|PDkdXaCLj?3CLty}CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y@l-V{dY9WpZ$Ib0$tE9D99TTP7e80VW|PDkdviT_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0ssI1|6N^OTU#a;CKo0cCK)CgD^Cz-a\u0026L8Tb7^j8Y-Mn7X\u003eN2TPbM6DCK!7r7$zMi9ws_{eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4COal2KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMZA?YykiO009610096100961009610096100961009610096100961009610096100000009610096100000000000000000000000000000000000000000000000961000000000000961009610096100961009610096100961009610096100961009610096100961009610096100961009610000000000000000000000000000000096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610000000000000000096100961009610000000961009610096100000009610096100961009610096100961009610096100961009610096100961009610096100961009610096109{\u003eOTU#a;CKo0cCK)CgD^Lq)VQyq\u003eWpFTXZ*wM4CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yC_owVL;(N*fWH6$0000000000fWH6$0000000000004|FY(JnOS-$`P002VwZ9lLXK)(P0002Xlh(F8BG`|1\u003c002Xlh(F8BG`|1\u003c008--cs~in%s\u00267C000000000000000000nCjz1vaIKKb@0066Ajz8I*Illk^003YpkUtCaCBFaw006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8B#z006R6kUxUjD8F4@U0Yiw7A6-a7$zAe8Y@u?Xkl(-Y-MmUaBp)aQ6?OFeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMZA|@\u003cagu0000000000000000000000000000000002laZ5jFB3!=!0001wJ54`$8biMT0001wJ54`$8biMT0001wJ54`$8biMT000062d_W2afdzt000062d_W2afdzt0002d^;bW58biMT0002d^;bW58biMT0000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f=HU0qvSCKe_aCKx6eCK@YJ3us|(WNc+{GH`EmCQ\u003eFGdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STjz8S+E{004kL0000000000004kL000000000000000*Y^lLfdg*800000Fq0)cllxS^00000Ql(oxk!x$e00000P^DWvk!x$e000008Y;\u0026\u003eboITy000008Y;\u0026\u003eboITy00000YLq`dXd+y{00000Nu+T;{Ek?^00000_3?i`F62bN00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026I00000J+q2FSG_\u0026IU0q#UTP7AJ7bX}c873MlQweBcZe(m_aCCDfQzjgHCK!7r7$zMi9ws_{eO+57AQ1y5Atov\u0026BU\u003egQ5dkJ4COal2KokN0|NsC0|NsA8CM8=YAQ1y5Atov\u0026CK3PyCMZA?@\u003caju|NsC0|NsC0|NsC0|NsC0|NsC0|Ns92000030000400002000030000400002000030000400002000030000400030|Ns900000100030|Ns900000100002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400018U0qvSCKe_aCKx6eCK@YL3~6q3WpZ$BWprq7WF}N59D61hdnOnr9VQ+oI(\u003eazTP7e80VW|PDkdXaCLj?3CLty}CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y@)|ZDDC{bYW?3aBpdDbS70M9D61hdnOnr9VQ+oI(\u003eazTP7e80VW|PDkdXaCLj?3CLty}CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y@-?Z*X*ZaAhV|CLDWxU0Ws~5dkJ4CMqT?TPs%!VQ_F|Ze(z8X\u003eN2TS1VW$Vr6=1WpZd?Ze(m_ZEtpECRi(333PH{ZgXaDa\u00260DAD_RC*Wo%`1WhPoHTLfxvX\u003eKN4D_jI{b!==VTq|7$X\u003eN06a\u0026#tLT_zJ-CLj?3CLty\u0026CMFU91STjz6Kntg0000000031000310003100062000310006200031000310003100031000930006200062000C4000C4000C4000F5000F5000F5000F5000F5000F50006200062000I600062000620006200062000620006200062000620006200062000F5000F5000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000930006200062000F500062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000F5000620006200062000620006200062000620006200062003QGU0Yiw7A6-a7$zAe8Y^A}Z*pX1awc9T9D61hdnOnr9VQ+oI(\u003eazTP7e80VW|PDkdXaCLj?3CLty}CM7@=0R#X50000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69EJO003QGU0Yiw7A6-a7$zMi8Y^E4Z*_EVb#!!jaAhW6CLDWxU0Ws~5dkJ4CMqT?TPt7\u0026Vr6=1WpXB9D`5q0b#h{JCShGB6I\u0026)A5dkJ4CMqT-5\u0026#4yC_ocz0000000000000000000000000000000000000000000000000000000000000RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR91U0q#UTP7AJ7bX}c873MlVheC-c5ifYZ**aFWhP=K9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zAe8Y^QCaA|gLbaZlIZgXs5bY\u0026)ECLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yC_owVL;(N*000000000000000000000000000000007x\u003eOFw8LT)zMS004|FY(JnOS-$`P0056WO+R=VL%#q3005%zo\u003cFv6hduxR000IDuRpeNhduxR0056WO+R=VL%#q3007bTS3h_fL%#q3003%~KR#$8T)zMS002p(aX$QxSib-O008yze?BhcM85z40080bK0lRG!@d9j002F+iauApJ-+||006R6kUxUjD8B#z001sHo\u003cF9J6u$rf001sHo\u003cF9J6u$rf001sHo\u003cF9J6u$rf001sHo\u003cF9J6u$sYQ@ihzoj\u003c3J6u+R;p*bI!oj\u003c0I6u%Qwm%5Gwoj;_G6u$rf006ibjlSqI7QFxf006ibjlSqI7QN`)iMyw7tv|qVhdzKggu7AQfIgv)6u*wBmb-AAeLkU%6u\u003cpdu)Bv^fIs^#2*37AoVzhji$4)-w!Z*Yu)EJ}20s#?c)x9U6S`F~l|JkdQ@sFy6S|Y~oW4t96~6$06T0+$CB7j0?!5q3u)E-}\u003e^{I6LB9Y@oV#ZLtv_XYIKKc)oV!);(LX$6FTVg*u)Fsd7C(Woj=um_u)DJ^NIwG!y1!jku)7J2WIuPzsK0KC6S|1{n!WAV8oy3gu)8nxS3j)fwZCn66S{oAS--lcvb+FTu)De\u0026JU\u003e_FzP|uWoV!td)jt48_r3?Jmb=7tvp\u0026MQ7rzLqmb=7tvp\u0026MQ7rzIpmb*|=W52N5OT7oGmb)?\u003eX1}\u003cY;k*Z`mb-%qV83j+2|Wm^mb-!pV83p;2|YIoo4dyd8Nb{;2tB=@m%DE-2fwF!fj*ltt-D(uB)`f_u08;um%DsPAitF(h\u0026}-j)H}|#E5Gpk8$JM_m%C=hC%@o#dp-aV)H@IOG`|gLMLu;RfV)2(Tfav96g~hD)H`yXIls0ZT|Rhwjk_R8eZPQ@csl?P)H_NqLBFgaT0Q`vm%HnjBENW\u003cj6MJ)fV*xfUBAvN4L$%QfV+KzR=*kIDn9X`m%C%VGrx%8aX#@RfV=H0RKN9$GClw\u003et-DH+6u%hBu|5Exm%9mDF26hUggyWyfV\u003cI1RKG7~Gd=*Im%He9-8~dX5kCMht-Cb5EkDBQUOxaNfV)D-`M%O33O@iat-Ap1AwQBkAU^=0m%D7!LcRs@em?*tfV(^-*uILS(\u003e?\u00268m%D63-oDWYFFyb\u003ct-DB3\u003c~`\u003c0Qa=DBfV\u003c?SQop{+iar3Km%BE?Gr!QW%02)vt-IHf6Tfiy`#u1wmb\u003cD|W51G\u003eU_Jn\u003cmb;9|VZT@|2R^7TMLxc{U%!Ml4?Y-\u003cc0a|2X}?nh%RL}pc0ac4RlnZqI6fxIh(0O8Z@*9k%RS_2YCe!)V!wno4?YrwhCaoiR=?otI6hR6eLh?tZog0j%RT5Xk3NnUS-\u003cG\u0026I6g;Bi#`l=X1|Cw4?Z|0L_XHAMZY?%bv`g9L_Qn^t-n?rray-Cu0I_Gt-n?rra$G2\u003ep!xpuD?_qray??Y(H`xUBBS!I6hF{B|bA?HosIHraw^MB|aEyEIw-B**{R\u003cB|g^QxxXH|%|Pz4E\u003co1bxxW-Hzd-J\u003eE\u003cntHy}wVqz(DY^E\u003cli^mA^rRv_MDIWI)gJLccIejK0y\u003eOhAyNmA`rF0zvE}en8OkLcigBr@tB)U_g+hmA@@a7C}eQV?U?LZ@*v!%RM;cSU=a$iN62@%ROCPU0Yiw7A6-a7$zAe8Y^T7aBN|2Wo~V3CS)cYdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R30001hKL7v#09{\u003eOTU#a;CKo0cCK)CgD`g3AY+-I?Z*pm8CS@iZdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCK)CgD`p0AZ**aFWhQ1O9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br|KpFBx0RR9100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000H9pmK\u003ez\u003e%0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009{\u003eOTU#a;CKo0cCLJakD`yUJZ*^{DV{dY9WpZ$Ib0%jd9D99TTP7e80VW|PDkdviT_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0ssI1|6N^OTU#a;CKo0cCK)CgD`*jNZ*^{DV{dY9WpZ+1WNCGCCTJ!cdwpG7CLj?3CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?3CLtywCMFU91STh2Ko9`|00018CMZA|0RR9109{\u003eOTU#a;CKo0cCK)CgD`^FDV_|G%CTS)ddwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh00000008hmT_z=4CLj?5CLtywCMFU91STjz8S+E{004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL\u003cT#E!\u003cT#E!\u003cT#E!004kL004kL004kL004kL004kL004kL004kL004kL004kLd\u003ch*ud\u003ch*ud\u003ch*u004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kL004kLU0q#UTP7AJ7bX}c873MlY7%p0XKiI}bYf+CX=QR_Y;SXACTb=ednOorCKx6iCLSg_eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpN}B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STjz6Kntg0000000000000000000000000000000000000000000000000000000000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031003QGU0Yiw7A6-a7$zMi8Y^oFb8T;LbZBsNb0%vh9D99TTP7e80VW|PDkdviCN?W\u003c127;nCTuHh1u!5pAT}m#T_zJ-CLj?3CLty\u0026CMFU91STjz6Kntg0003100062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062003QGU0Yiw7A6-a7$zAe8Y^xIbaG*Cb8KOBWhQPW9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br|KpFBx0RR9100000000000000000000000000000000000000000000000000000000000000000000000000003f\u003enJ^%m!0000000000000000000003f6*Jpcdz0000000000000000000000000000000000000000000000000000000000000000000000000000000001(s2JUEOnKL7v#005V|yrla\u003ezW@LL000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005B|ly8s8Jy8r+H0Bv{^x=hA{yYZE6G5`Po00000000000002MuzryAzAoV4z5oEAvDnClKD}EsKL7v#0QjPSy+{#WJ^*0yv-A-ezbr8bzW@LL05WG3KF$U2J^%m!0036UJT^cDzW@LL05}BxJ%o(7z5oCK0Jyu8K9F(|Jpcdz004jEJn;NZJ^%m!0Pt2wJ_us1z5oCK0000000000000000000000000002O;v;3uJzR)Y;J^%o+v#7(~y|4\u003c9y#ScJv;d$IzV@0bJOBUy00888x}fAKJpcdz0Kik+JOD_2yZ`_I00000000000001hFPVm(zX$yaKL7v#000000000000000000000LX=UJpcdz0000000000000000IZBVJ}TuLJ{*lVJUD2Tz4F@gJpcd(vuM!By}%t+JOF@AG!VgfJ%Cf+I{*Lx06?AZyij_kyZ`_Iun;5^y\u003ezf8Jpcdz0AR1BJb\u003e8kJOBUy0AS3NyhyFRJOF@2w7?4kyZ{gSy8r+H000~EynsSKy8r-)vj7kYyya@#Jpcdz00000000000000006^fIy%6m?y#N3J03g29JXo^rJOBUy00000000000002-GeAqMJa9L_JOBXkGXNmxxd1v^IsgCw06!\u003c8KQ;yiKL7v#00s(5Kkb\u003eFJ^%m!0AR_kK8%vOJ^%m!0I\u003ciHzT#8cJ^%m!06+shy}-PBz5oCK02q*lJv2fAz5oCK0M{V}zfe6$J^%m!0Bo~)zG%\u003e\u0026z5oCK0E{QizL\u003eKSz5oCK002RWzS3Wlz5oCK003Puzg(TDz5oCK003~qy)am\u003cy#N3J0DRsKzK9V6z5oCK0C=oUzHHqnz5oCK0EdspJ9W;oy||7^J^%m!000000J17YKL7v#0000000k*BzkqDVyZ`{evTfBlzW@(4y8r+HGeDg?y?|!XI{*Lx0Kgj8JOBUy000000AQ_(JV0_CyZ`_IGywPAI{\u003eBCy8r+HGyqg3JYc+lyZ`_Iv_!BXKL7xLvj6}900000v|?Elzt3ieKj3ecKL7v#v;Y7A0DN8YK7h(nyZ``zwENH2zcKYDKL7v#0DwKIJs3^VJpcdz000000Qq`hKUfgYJ^%m!06A^XzXU\u003e;KmY\u0026$0000000000000000DwK{ynr1?JpcdzHSlnsKHz}Ez6dw*J^%m!0AiscKqz\u0026}J^%oKvlVKDzexI-J^%m!0H6(\u003cKY-)-Jpcdz0H8(Lz5oCKwNU(8zK%#W!0^B\u003ey\u0026PN*z5oC~wHUL2zdp2nzW@LL09{\u003eOT`O-8XKZg`VQgV^baH88b#!HOCU09?TP7AJ7bX}c9VQwpa0Yf^a\u00262L7CU7PkdwpG7CLj?VCLty\u0026CM#PjaS(5Cba`-PAT2\u00261Pf%1@P(\u003ezjD{\u003efNb#!lHWqN64av\u0026`}AVF1BPeMgnNkvj7aw~HjVPkY@c4csHX\u003eN3LAT2\u00261K|@qYRz*-xNlsK#CUYxvBxiDOb#QZOZf9\u0026|aBpdDbRaE0AV*S9RZvq\u0026PDe~dP)|utR3\u003eyQbr4}\u003eWN\u003etIAT2\u00261K}1AQR8uB(D|Q%RV{~bDWpHw7Z6GZ^AVEV^NmfNrQb|oFb}M%tZDDC{bYW?3aBpdDbRaE0AWcC@PE\u003cijPEb!tPE;m$D|jYhaBy;Ocx7\u00266bYX61Wo~qHAT2\u00261K~PXqPgq4xL{vdeM@3FlQzm#Tc^GeXbZ~Waba`-PAT2\u00261PgPV\u003cRa8`2P(\u003ezrD|!xZa%5$4AT2\u00261Pf|ohQYLyUdnR\u0026kb#7#1Z*p#Ba\u0026lp0X?1fTEj}PpPgPDtLr+ppMN(2hL`hXsCVMM\u003c7GrO6Ze?\u003cCbaNmrJ|II+QcguuP*hVUd@Fqxb8T;LbZBsNb094~AX80GPgF=yR8uB\u003eD}EqyZ*^{DV{dY9WpZ$Ib094~AW~0NPDDdbQcguuP*hVUek*?}V{dMAbaG*7ZgX^UVQFV*bY*TJEj}PaPfk-*Qb9\u003ehQ\u0026dtxNk\u003eRjMNTGvD}WqnZggdGaBXFDXm4a7Ej}PgPE\u003cuwP)$WtNKZs2fGdF(baG*Cb8KOBWgsm+AXHL8PE$-lR7EC%D}oSmZ**aFWgsm+AW~0MK~zO1f-8d#b7Ns_Wgsm+AX7s@OhqPxD}*3$X?AaPbaG*Cb8KOBWgsm+AW%tGPgGP=K~7UlK~zO1ge!#_aA|gLbaHQWVRU66Ej}PnNmfr(QcqMtR7EC*D~1+mVQyq\u003eWpH$JAT2\u00261NI_0SOhr\u0026sQznKhhZ\u003c;MZe(m_a4\u003eLhb094~AV@(@L`+3cFi=lZCWkAC8fal|WNc+{F\u003er5lAT2\u00261NI_0SOhr\u0026JP)}1Ph%1R2Xkl(-Y-MmVaBp)UEj}PfK~6+WMNl$OPg5p|D~c9yY+-I?Z*pm8AT2\u00261P)tEiMNd*mM\u003c$9ZixhBdVQyt^ZEPSdJ|Iv`K~6\u003cZO-v?\u003eD~u9hb#!lVbaNmrJ|IC=R8LS;QzncnjVN\u003cvXKiI}bYf+CX=QR_Y;SXAAT2\u00261Q$\u003cHjMNU*gMOsNkQbSBnQ$;3?T_zJ-CLj?VCLty\u0026CMFU91STh2Ko9`|00018CMZA?9RL6T0096100IC200RI300aO400jU500sa600#g700;m800{s9015yA01E\u0026B01N;C01W^D01f~E01p5F01yBG01*HH01^NI022TJ02BZK02KfL02TlM02crN02lxO02u%P02%-Q02=@R02}}S09{\u003eOU0o}V3UG31ZE19Ac4c!Wj$2(P1!-\u003c%Wq4aB4ry+5WoKn_Wo~qGX=QVJeJ2fbbaH8KXJu}5a%p9AdwnMnX\u003eN37XJvA0WqD\u003c8bZK\u0026Bb9;R!5OZ{LX\u003eMn0WqD\u003c8baH8Bb9;SVCk\u003c(CWMz18Z*ysMX\u003eV\u003e6W\u0026i*H00000T\u003e"
+            },
+            "pivottranslate": [
+                -0.1582331657409668,
+                -2.0716235637664795,
+                0.09912872314453125
+            ],
+            "savedstashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5d\u003cp)3wC94bY*yBZ*^{TCIk@#D+La4a%pX8bZK^FV{dhCbS4E60V@UsX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFft%AF*-3cIx{vV3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0P;0GeUg!O_zdzA#h(DOpSNzUEB6ZFwQD-aQIa%pX2Z*^{TUvqVBZDDeGCJ-kWARr(hARr(hARsXyPE}GuQy@cia\u0026~13D-jW4baZlQVs\u0026(7UvqVBZDDeGCJ`sNARr(hAT%IwZ)t9HAYpWLa%p09bY*io3144ubZ~NMZE0k9EFe%UAYWf;ZggdGZeeU+aCB~UZ7d*PUvPA3WO!+AaB^vF3LqdLARsazaB^vFX\u003e@6JWgua6baH88b#!HOItgE2aB^vFUu\u003cD\u003ebZ~TOWOytfUtei%bY*gGVQgP;a%pXDb!`eDARr(hF(7AbZ(?C=AYpWLa%p09bY*io3144wZ*^{DWn^P-a\u0026BdEaCCDDD-sQ7a\u0026L8TUvqVBZDDeGCK4xEARr(hATl6uZ)t9HAZK!Kb#QY!2?\u003c|cVQyn+Z*pI7Z)t9Ha|#JxUtx80Z(ne9a|$3JARr(yAaHVNZE19Ac4Z)Ea\u0026L8Tb2\u003crMUukY|b#z~Fa%pXI3VkaR2y}07Z)|U8c_tHED-;NDZ)t9Ha%E;F6k9752Wf6(X=7z`CKW\u0026u1ONa500IC509{=x77Af\u003ebaH88b#!HOCKg*O7Y}f6X\u003eN33baZlQVs\u0026(7b0!yCTU#p_1#@F\u003eaAhVKD;WlGbz*F3V\u003cs6Z8U%ECaAhVMD;o!Hb!}yGX=5fED;xxFVQpn594j3GP$nHK9tUr5bZKvHb0!{pCK`Jt8Y\u003e?Lb98cPZf7PRD\u003cB1SVQh6}CLk*z1#oX^ZgeIgeSKY9D\u003cTAQX?kTQA`t^CBL{PIZ*pO0WhNslBnW13a%Ev`GcqP5D\u003cueIWoBV@Y;\u003c!bC0iyU5dkJ6D\u003c%kLaB^i~Y\u0026J9|CMzcfc42IFWpgGcKpFu60000000018CMR1aA`t^7BPJv(C\u003ct(2XJvC~dSxak5\u0026#4%DGPF8cW_~6Wn^J=VJ0a+84MU0U_crKvA+}a(LjXtf\u003cVyoLcdAQ-M`=mBEEZ-1i%0U%RSg4MLt2`eZR1S#XMbIU0Yiw7$zAe8YUYi94jgiUtei%bY*gGVQgP;bZ\u0026KRCMqT#dnOutCK@ImCLk*-6\u003ee{CVRC77Xl-S5X=7h$Zggd5WpXAfeSKY9CL$35CL=2\u003e1!-\u003c{GcqPDCM8=YA`t;5BP%ThX\u003eN2jG$t)3CqNVd|NsC0|NsC0T_z`6CL$35CL\u003c;+CMXgB1STm!69fPN000310006200093003QGU0Yiw7$zAe8YUYi94jsjUte%^X=He5Zg6sGZ6+=z9(yJldnOttA0{9sD}8-kTP7kA0VX3REG8veCL$35CL\u003c;-CMQ4?0ssI1|NsC0|6L|0TP7kA0VX3REG8%t00br}KobN200001000020000300018U0qvSCKx6eCK@IiCLAj-3twMwbZ~NMZE0k9CNCx)dnOutCK@ImCLks\u0026eSKY9CL$35CL\u003c;+CM8=YA`t;5BPJ~-CqNVd|NsC0|NsC0T_z`6CL$35CL\u003c;+CMXgB1S\u003eERV{dMAbYX6EaA9X\u003cW^7?+b0#obKo9`|00018CMiG@0RR9109{\u003eOT`MsYaB^vFX\u003e@6JWnpx5a%p09bY*iUF\u003cV\u003c(CKx6eCK@IiCLAj=5?^0wZggdGZeeU+aB^vFZgp)YGA15-CK`Jt8YUkmASNq)eO+57A`t;5BPJ{+C0iyU5dkJ6CM_l\u003eKokN0|NsC0|NsA8CMR1aA`t;5BPJ{+C=vh!CNNt-5CH)I003PkDL@ke00000U0q#UTP7GL873Mg8zvkpGZ0^2aB^vFUu\u003cD\u003ebZ~TOWOybsCLVhx8ha)hCLbmsCM$h?U0Wt15dkJ6CM+f;TP7kA0VX3REhZ;G6aoML|NsC0|NmVkCtD^W5dkJ6CM+f\u003e5\u0026#4yFk3(n0RaF209__2KobE200018U0q!(G!SQOZ(?C=VRUqIX\u003c~JBWpgGpTU%Qu7$zAe8YUkm94j\u003evUte-\u003eb#7#3WMgk~Ze?\u003cCbaN\u0026(CLVizU0Wt15dkJ6CM+v92Xl0CX\u003eMn8CN^7LCKX#IA`t;5BPJ{+C=vh!CNNt-5CH)I003PkDL@ke|NsC0U0q#WT`M;VaB^vFX\u003e@6JWpgGsTU%Qu8Y?\u0026nPE}GuLv?a?WhOXXTPryRc4cyOWq2kzKoSH10096300RIkItF8GZ*yg2COR-HI|X84b7^xXJ6k3iD?9~GRZ\u003eDzCOj)W1#fa\u003eWpXAx5d\u003cqf5M^#;X\u003eN37a\u0026T{KVRUJ4ZYDl4D?bHmZf|sRCO\u003c$L2mk;800000000000000000000000000000000000000000002+KL7v#0002+KL7v#0002+KL7v#0002+KV4m2T`NEfaBpdDbZ2sJb#QYgKwDc|CLAk44_{wlZewU~a$j(7X\u003eN3LCP7_WD?$l#Wo%_*bZKvHCPG^)LkV?mZ*pX1a%E\u0026DLt86E0%\u003crVL_iS)0RaI4U0q#WTU#a^D@6)lUtx80Z(ne9b0$SyTP8wVCPP~$L_iS)00000U0q#WT`NWpaB^vFX\u003e@6JWoL44b#QYgMq683CLAkA4PRerZg6#UUvP41ZF43^U0WtXTP8zWCPY9H0RdfIU0q!#1!-\u003c%Wq4aB4ry+5WoKn_Wo~qGX=QVJeJ2fbbaH8KXJu}5a%p9AdwnMnX\u003eN37XJvA0WqD\u003c8bZK\u0026Bb9;R!5OZ{LX\u003eMn0WqD\u003c8baH8Bb9;SVCk\u003c(CWMz18Z*ysMX\u003eV\u003e6W\u0026i*H00000T\u003e"
+            },
+            "smoothpts": "0 3 6",
+            "stashid": ";"
+        },
+        "position": [
+            4.49,
+            -0.69
+        ],
+        "type": "curve::2.0"
+    },
+    "curve6": {
+        "color": [
+            0.47,
+            0.81,
+            0.2
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "parms": {
+            "activepoints": "4",
+            "convertcurves": true,
+            "handlep0pos": [
+                0,
+                1.127554178237915,
+                -0.6595841646194458
+            ],
+            "handlep1pos": [
+                0,
+                0.857562780380249,
+                -0.6852976083755493
+            ],
+            "handlep2pos": [
+                0,
+                0.2708987295627594,
+                -0.741170346736908
+            ],
+            "handlepts": [
+                2,
+                3,
+                4
+            ],
+            "mode": 0,
+            "optype": "transform",
+            "outputtype": "nurbs",
+            "parmpoints": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5ke~j3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFft%AF*-3cIx{vV3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0P000000000000000000000000000000D-aQ3baZlQVs\u0026(7UvqVBZDDeGCJ-m`umK\u003c-ARsd^AaHMKZge1FbaZlQVs\u0026(7b2\u003crOWMpu3b1WcoZ*^{DV{dY9WpZ+1WNCGCEFf=kWMy(JAZ=l3ZggR3Zg6jDZgealZ*X*ZaAhnYVQ_GAZ+K;HWOQL}XJu}5b1WcXb#!lVbaN~qaBN|2Wo~V3EFf=nbZ~Waba`-PEFfrMZe(m_a4~Rib1WcoZ**aFWh@|JV{~bDWpHw7Z7d*gX?AaPa\u0026L5DbY(0cVRdwGVr6=1WpXSaP%I#GZEtUMXmE6MEFfrMZe(m_a4\u003eLhb1WcoZ*^{DV{dY9WpZ$Ib1WcZZ*FsRa$#w1b98cHX=iA3Wo|4WbaG*Cb8KOBWh@|RZggdGaBXFDXm4aJAaiABZDnqBVr6=1WpZO|Z*yfVAaH4RZ*+8WVQzD5VRU6IAZTH3WNc+{GH`EmEFf@fVQyt_a%pEQAYo\u00264X?A6BZ)t9Hb1WceVQyq\u003eWpH$JEFg1ZVQghAAZK!Kb#QZOZf9\u0026|aBpdDbSxlaZ*p#Ba\u0026UBW3LqdLARsXyXKZg`VQe5_baZlQVs\u0026(7b2\u003crjVRCI@a0-1Z5eRf|aBpmHXL%+OTPqR\u003eaBpdDbaG{8CK6jK69;K-WNBk%b0!l\u00265\u0026\u0026IYD-;T0baZlQVs\u0026(7b0!p9D-{oLZ)t9HVRUqIX\u003c~JBWpgGKTU%Qz76o%-Z*XNM7AqG9aCKsAX=5fAD;NZHd2nSW7%LeEZgp*Ca%p2G87mqDZeeX@CK@Xn0Z=9zD;x)JaCB*JZgVCadnOorCKxLn26J?BX\u003eMmG9V;FMc42IFWhNdg9|dr4X\u003eN2TAANmYTPq+0b7^{ICLj?5D\u003cKDSbZ\u003eHDXJsZKD\u003cTMHaB^i~Y%?+@A}b\u003eZWMyVyb!\u003eEVCL\u003e!WAQ1s3AuA*ZW^i(4VQe-uCL}8*26ka=b!BrVB|sVh0000000000T_z=4CLj?5CLtywD\u003c%kVVP|D?X?kTQCK3PyD\u003c=_SZ*FsRVQzGAVP|D#Y++|}CMR1!5CH)I003PpC\u003c}67cW_~6Wn^J=VJ0X*83O\u003cS0000000000003QGU0Yiw7A6-a7$zMi8Y?LbVPkY@c4csHX\u003eN3LCMhNydwpG7CLj?3CLt\u003e-1!-\u003c{GcqPBD=P\u003ccbaH8KXLBYiTPrL9GbSu6EdeqnEh{boFeWZ5F99?rFDozwF(5M_H6}1CF#$0qF)K0yFd#7|GAlC!FfB1AGb=O$GA%PEG%Ga+Fd#7?G9WW1H7hm\u0026Dke57Hv=\u0026sG$uD)CKFpGAQ1s3Atov\u0026CK3PyCMZA?LjV8\u0026|NsC0{{R30009610000000IC200IC2000000000000RI300RI300RI300aO40096100jU500sa600sa600sa600#g700#g700#g700#g700;m800;m800IC200{s9015yA00RI300jU500RI300961009610096100RI300jU500jU500RI300RI300RI30096100RI30000000RI300jU500RI301E\u0026B00IC200jU500IC200jU500RI300IC200jU500IC20096100RI300IC200IC200IC200IC200jU500IC200IC20096100jU500jU509{\u003eOTU#a;CKo0cCK)CgD\u003ew\u003eaV{~bDWpHw7Z6-J-9D61hdnOnr9VQ+tITdbiZeen1bZBj5bZKK\u003eX\u003eN37XJv9GIemRyTP7e80VW|PDkdXaCLj?3CLt?21!-\u003c{HZ\u0026$WCM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y?\u003enVPs@*baN\u0026\u003cCLDWxU0Ws~5dkJ4CMqT?TPr-OFfK4GF)lJRF*Z0jFflVQH#RpoGBPYME;2SWH8VLhGB7qUG\u0026e9cI3O@CFf1`HH8e6XFf=kUH#RdkGBh+cEG;lDH8C(YIW;mdIWRLhIWadNFfK4GFfKVUGc+?bH8(gjG\u0026V9dGBhkLFfKSTF)%SPGchzXIWjOfIXECNE-)-GE;l(eH!w9hGB-0fF*!FlI4mtNE;uzgI5{~vIX5\u003ekF)=tXHXtTED?NoUE-)-GE;ctcIX5;kH#RdlH#aafF)S@GE;%qbH#j\u0026pI599YFfunYG$1f8Ff1)FE-*GUGcz|hG\u0026wdgH!v_XG%PJJE-*JYHaIadHaRpoHa0goGaxW7Ff1)FE;uwcH8nOiFf%zYI5jgkI4mtNE-*4NI50RhFg7_dFgY_bH!?FICOs=YfGsdCFfcPRGBh$ZGd49eG\u0026eapI50IVF)lGSI5jjfH83\u003cYF)%hTI4mtNE;BYXF*!6aGc`3cFfchVGczDCE-)-HE-^PVH8nIiH#9XhG\u002646dI4mtNE;BYXF*!3iGdMUnH#IRfI5QwHE-^VUFg7_dHZeIhF*G\u003cZIX56JF(y7MKanslFfcGSFfuSOHaRgeGBYtWG\u0026M6UF)lGSGB-0dH!v_ZFgG$eIXEmWFfKDUG\u0026e9ZHaRjdGch\u003ceFf%nEEif)HFfutaFgY+bHaIgeHZd?WH!LwOF*Y(aH#ameF*Y+ZHaImhEG;lDGdDChFfuneGBz\u003caH8M0cATTa5IWjmoFf%kTF)%kbH!?XjAT2Q_KPy0xEif)HFflPWGcYqUIXF2rFflnbGchbNE-^JWFflbTH8(anIW;\u0026nEG;lDGdDOgHaIyoH!(9fFg7tYATTa4FfcMWFflYSGB`OfHa9agG\u0026C$RE-^MRH8eOmIX5;qGdMCfI4mtNE;BbcGB!CdGcq|dF*7hZG$1f8F*!6aGdMLhG\u0026eCbG\u0026wmqG$1W8CO|7elPxeVFfcGOFflhUGBGhXIWajoGBG$fEHN%IH8U_cFgGwUI5IdeFf%MIFfKDUHaImoFg7?iH!w9cG\u0026D0HEif)HFflMRI5apoGdD3eI5agdGAuDJF*P?bIWRLZI59LZGBq|gEG;lDGdDIkH90XeGC46dFf%tZHXtxAF*!3aF*!9dHa0UfIWjRYH6Sf9CP6Dgk1a4RFfcMSGd4LnH8n6cGB`FiGBGSME-^GVI59UgG\u0026MIhH83zVIV\u003e$OE;BeZG\u0026eFcH!v|YH#aafF(554E-)}KGB-FiGdMXoGB!0ZHa9XcEHN%IG\u0026ndlHZw9dHZ(OfH#ICRFfKDVG\u0026DCdG\u0026nXkIWRRhGch1AE-^VZFf}kZGdVdnH!?FdH6Sf9CPFJiku5MTFfcPYH83(WI5ILfI5adeGdL_UE-^DTIWsjdHaIaeFf=(cGAu1HE;KMWFgP\u003cXI59FbH8e6ZGd3VCFfK4KGBPkZF*q\u003cbI50UkF)%YXEHN%IGcq?bFg7$XF*i6kIWjUVEif)LFgP$cGcY+gH#IUcGBGtEFfKAMGB7tWHaIdfGB7bTGcYwEEiooTD@0B$FfK4KH8VIdGc+_aG\u0026nUjH#ImcF)lDLGB-9dHZ?LiI5svmH#RISFfKJSF*!CiI5svjG\u002649iGBhACE;KMRI5sgjGBq_bGcz(aIVMCaMV2ivE-)}LG\u0026VCfH8D0dH!(0YG\u0026wRdEHExGFfuSRGd49aI5#ygIWaXgGB+$OFfKJPG%zzcH#RghFf=kbHaQ?IFfK4KF*G(aHZV9bIW{\u003etGBh$WH!LkME-^4TH#RjjH8e3ZIXE\u003erG%_qLFfKMTI5s\u0026sIXN*hH!w3WIWr(IE;lqaFfchZH!?OiH8wLbG9WE6CPgbol`SwXFfcJSI5aXjF*G$eF)}$gI5IdaEif)HF*!6jI5RXjGBY+XI5RmoG%PJJE;ctZHaR#nGdM9eH#IjhAT2O1FfcJSI5aUgIW#piGd46hH8V3TFfK4MIW{\u003enH#9LcH8wdgHZ(anEG;lDH8(IbHa0amG\u0026MFdF*i9lATTaBGcq(XH#9OiH8D9bG%__HEiooWT_zJ-CLj?3CLty\u0026CMFU91STjz6G8w00003100960|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NjC200093000C4000F5000I6000L700960|NsC0|NjU800960|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NjX9000UA00960|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NmWGU0Yiw7A6-a7$zAe8Y@Q;VQ_GAZ+K;HWOQL}XJu}5b0$Y79D61hdnOnr9VQ+oIemRyTP7e80VW|PDkdXaCLj?3CLty|CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y@T\u0026VRdwGVr6=1WpXA+CLDVv7\u003c(odCLJaoCOLh5U0Ws~5dkJ4CMqT)TP7e80VW|PIwmDR6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6iCK@YA2Vr$|Z*X*TCP^k7dwpG7CLj?3CLty\u0026CM#QACKFpGAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd|NsC0U0q#UTP7AJ7bX}c873MlN)uymZgX^UVQFr2baG*7XJ~X~ZYD}59D61hdnOnr9VQ+oIemRyTP7e80VW|PDkdXaCLj?3CLty|CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y@c)V{dY9WpZ$Ib0$kB9D99TTP7e80VW|PDkdviT_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0ssI1|6N^OTU#a;CKo0cCK)CgD@+h)a\u0026L8Tb7^j8Y-Mn7X\u003eN2TOeP$ACK!7r7$zMi9ws?`eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CORf1KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMZA?LID5(009610096100961009610096100961009610096100961009610096100000009610096100000000000000000000000000000000000000000000000961000000000000961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100000009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096109{\u003eOTU#a;CKo0cCK)CgD@_Y%VQyq\u003eWpFTXZ*wM1CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yC_ov;004l$0000000000004l$000000000000000j4f\u003cGpdnem00000LicSyuo*zV00000Lzaj?%gi*t00000Lzaj?%gi*t00000`J#9~3B}Am000000000000000000005K)dlAmBK^00000t6q*j*_}DR00000U?`A33-cwv00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*00000vQv;hg4!s*U0q#UTP7AJ7bX}c873MlP77#ZZe(m_a4~Rib0$tE9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br|KpDmW0000000000000000000000000000000002laZ5jFB3!=!0001wJ54`$8biMT0001wJ54`$8biMT0001wJ54`$8biMT000062d_W2afdzt000062d_W2afdzt0002d^;bW58biMT0002d^;bW58biMT0000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f\u003c90000yiCaIaZ!f=HU0qvSCKe_aCKx6eCK@YG3us|(WNc+{GH`EmCQl|DdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STjz8O8trfIk2L0000000000fIk2L0000000000007tb2t9!VZodEk001zPB|Ve-RKEZK002^@TRo9$Yrg;h002;\u003eTRo9$Yrg;h000^)$3JxSy}ked000^)$3JxSy}ked003%~KR#$8T)zMS002p(aX$QxSib-O008yze?BhcM85z4002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-+||002F+iauApJ-=ODU0Yiw7A6-a7$zAe8Y@r\u003cXkl(-Y-MnCb0$zG9D61hdnOnr9VQ+oIemRyTP7e8112FRDkdXaCLj?3CLty|CM7@=0ssI1|NsC0|6L{}TP7e8112FRDkdfp00br|KoiFQ|NsC0|NsC0|NsC0|NsC0|NsC0|Ns92000030000400002000030000400002000030000400002000030000400030|Ns900000100030|Ns900000100002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400002000030000400018U0qvSCKe_aCKx6eCK@YI3~6q3WpZ$BWprq7WF}E29D61hdnOnr9VQ+oIemRyTP7e80VW|PDkdXaCLj?3CLty|CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y@x_ZDDC{bYW?3aBpdDbS6?J9D61hdnOnr9VQ+oIemRyTP7e80VW|PDkdXaCLj?3CLty|CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y@!\u003cZ*X*ZaAhV_CLDWxU0Ws~5dkJ4CMqT?TPsuxVQ_F|Ze(z8X\u003eN2TR4Y{wVr6=1WpZd?Ze(m_ZEtpECRHm|33PH{ZgXaDa\u00260D7D^~_\u0026Wo%`1WhPfESOjWsX\u003eKN1D_I0^b!==VSu0uwX\u003eN06a\u0026#tIT_zJ-CLj?3CLty\u0026CMFU91STjz6G8w00000000031000310003100062000310006200031000310003100031000930006200062000C4000C4000C4000F5000F5000F5000F5000F5000F50006200062000I600062000620006200062000620006200062000620006200062000F5000F5000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062003QGU0Yiw7A6-a7$zAe8Y^1`Z*pX1awc0Q9D61hdnOnr9VQ+oIemRyTP7e80VW|PDkdXaCLj?3CLty|CM7@=0R#X50000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69EJO003QGU0Yiw7A6-a7$zMi8Y^51Z*_EVb#!!jaAhW3CLDWxU0Ws~5dkJ4CMqT?TPs}#Vr6=1WpXB6D_#X|b#h{JCSF}86I\u0026)A5dkJ4CMqT-5\u0026#4yC_ocJ0000000000000000000000000000000000000000000000000000000000000RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR91U0q#UTP7AJ7bX}c873MlUkh+)c5ifYZ**aFWhP%H9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zAe8Y^H9aA|gLbaZlIZgXs5bY\u0026)BCLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yC_ov;00000000000000000000000000000000000*\u003eOuhXd+y{00000j4f\u003cGpdnem00000k2_62cp5{$00000qVJwRwsD6(000001_!S{wsD6(00000k2_62cp5{$00000(e+n9cp5{$00000YLq`dXd+y{00000Nu+T;{Ek?^00000_3?i`F62bN00000;q5*@l~TjL00000J+q2FSG_\u0026I00000vQv;hg4!s*00000E;yb)rj8W900000E;yb)rj8W900000E;yb)rj8W900000E;yb)rj8W908Uf8?~|QBr;ZfApwpo_ADNv$rj8W96H}MEjs%@Qq\u003edE700000xEGDS=rR_)00000xEGDS=rR_)=-i3Br*Ex4z;TB@fH{P_QQd$(p^g;4j;NNqaGZTUp^g;4{Z+8LhgyI?`z{E-_Dh_*F;0s=5o@-;09LTO\u0026uj)i5}$a#ZFm#9RWX%5\u003e=9GF0Du#^lk%LtOJWtj0Du#^^nE41Ap7pU09LTO;IQmIz#2in08E^_X8^4~WqLTj08E^_RqxS1JYz4v09LTO_ZSvGfv}Fh09LTOvo1(K0|~mnT~@HW35;Yvcg(22Zi*ASi29nn?bsT\u003ePFJwIFZ5SGtmU=8ZFm#9e7{-0x~H\u003cd09dfQx*I${SLVLI08E^_QGL}v07\u0026\u003c~09dfQf!#YlGMBl(z!rA9ux^__m7aOO2XPI\u0026+D5EDz;TB@\u0026}P^^pzhc|Kr;Wn0C5ex$^UdekC`h!\u0026}P^^Xe|3bZUM2r)o|H9fZaPk1=6{{0C5exv|uwoGQ4s\u003e\u0026}P^^Cvg5hn6Qhz0C5ex=mmYg_Q0M$0FV\u003e9pplxs6bvW6*l^iCSjf0O2=\u003epv0C5exK+hOI_7j{x0C5ex7X%eQHOrho0C5excs5!\u003c40Dz~0CEky4%$^fn2qK\u003e\u0026}P^^AoT)3v`(!)0CEky^ypeZKLMFO0CEky#zk5{1Urd7Wb~1~R#cU~5DX{2\u0026}P^^AjJhhn2)KxOy;*g6le-Sn2)KxU0q#UTP7AJ7bX}c873MlVF+++VQyt^ZEPlCCLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000DwOL00018U0qvSCKe_aCKx6eCK@YZ32\u003cy-Ze?$BX=f\u00264CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000000000018U0qvSCKe_aCKx6eCK@Ya26At7VRU6CV\u003csGXeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl000000000000000U0q#UTP7AJ7bX}c9VQwpWDas~b#7#1Z*p#Ba\u0026UBWCS)cYdwpG7CLj?3CLty\u0026CM#QACKFpGAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd|NsC0U0q#UTP7AJ7bX}c873MlWf5|3b#7#1Z*p#Ba\u0026lp0X?1fZWhNYZeO+57AQ1s3AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1s3AtoXwCK3PyCMR1!5CH)I003PkC_otj00000U0q#UTP7AJ7bX}c873MlW(9L\u0026VQgh4W+ohaeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu6000000PsIuCM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl004kL004kL004kLU0q#UTP7AJ7bX}c873MlXA*N|XKiI}bYf+CX=QR_Y;SXACTAubdnOorCKx6iCLSg^eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpK|B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STjz6G8w00000000000000000000000000000000000000000000000000000000000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031000310003100031003QGU0Yiw7A6-a7$zMi8Y^fCb8T;LbZBsNb0%me9D99TTP7e80VW|PDkdviCN?W+127;nCTS~b1u!5pAT}myT_zJ-CLj?3CLty\u0026CMFU91STjz6G8w00003100062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062000620006200062003QGU0Yiw7A6-a7$zAe8Y^oFbaG*Cb8KOBWhQGT9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br|KpDmW0000000000000000000000000000000000000000000000000000000000000000000000000000000Wy8u1_000000000000000000000000Wq$@oD000000000000000000000000000000000000000000000000000000000000000000000000000000000000G)5ttHj4(d{00000m%6;9`$N9~00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000mEPcBG2c^3J0001OcoVuz#)G@@m2ENr0000000000000000Kl+*ko3MT;NZRh0HCqh$c8?\u003eTQola0002^qJX_f5net3VDhu{5gETMF$li^0000oXB0lp1@Arp00000R\u003ewRxKn1@50000u1pYmQjJUo40002EyOTbUauGcM00000f8#vx{7yaq0002+R!BYwVy(Ua000000000000000000000000000000K(e#^rDwj-E8;!?0J5{F!`{8H3Xr`3n7p(Apc20Jnkqa100000\u003caoNE\u003cS9J\u003e0002MQ`|fNNPWD38ZA2j0D!XqOzXM;*xEh-00000000000N^p!8^^w0!OuPb0000W_lQ2EVH`dH0000gK7+nSMUFlI0002M@6bF*6^=dt0KhY-^1i+pAThoG0000kqH@1\u003ci\u003cLeA0000WLvKCWI?z4\u003c0002G5LiC|K\u0026!l*s*%1xsV6)D0Dv\u003e}_Iy5oDgV3x0Dv?A0000$%5uB_Kesyo0001T^)x`_TyDPr0D!bWjf=e)H6T6!0002M+@U?P7#qF-0000005m-\u0026Z!5n500000E+f3KWBj}T0000W4~RbAshPe2001\u003c=v!y*SaIQU=%z;0EUX(om0001hPSZR9s;avH0Dv@IU0q!(Y!GK`Z(?C=VRUqIX\u003c~JBWpgHMTU%Qu7A6-a7$zMi8Y^uEc42aDVQ?mGCLDWxU0Ws~5gjHWCMqT?TPto5Z*X*ZaAhDZJ|Is}R9R3(CT=Tl7-4mEZ(?P7X=QRCEj}PYRa8$xMOsNkQYLRJa2#P{bZK^FaBpdDbaNmrJ|ICuR7qAvP)|utR8uB!D{\u0026-ea\u0026L8Tb7^j8Y-Mn7X\u003eN2NEj}PeQcqP-Q%O!oOhr\u0026nNlsKIaVv5VVPs@*baNmrJ|ICvL{L;yCUPrt7-3^{X?A6Ba%pWKEj}PYLsUstMNm\u003enO(t_IbRKPCX\u003eN33X\u003eM?DX\u003eN2NEj}PkK}k+jK}k+fPf1QxCUh%xCSh=Ja\u0026LHLZe(;}Zf9j~baNmrJ|IC*P*P7=MNULiK~6_SPE=DSbt`rlZ*_EVb#!!jaAhDZJ|It3R8Un^R9R3(CUz@#4sUW~WpW@bJ|It0L`702cPn@%a\u0026L8RWMgk~Ze?\u003cEVPt7_b094~AW~0NPDDdbQcguuQb9yXRZ}K-D|r@UZ*p#Ba\u0026UBWAT2\u00261Lr+ppMN\u0026{yQzm\u0026UdKPnSZ*O#HaCCDZEj}PqO;1l$NKjN$CVDG-AaZYYZe(L`a\u0026BdEaCCDZEj}PpPgPDtLr+ppMN\u0026{yQzm;Wd@5saZgX^UVQFr2baG*7XJ~X~ZXhi_AVW`1Q\u0026dtxNlsH#Qb9\u003eaNK{2mCVVS\u003e9BFQJWpZ$BWprq7WFRd*AW2SCMN\u0026{rMN~*nL?(SJein3cVQzD5VRU66Ej}PrQbA5rOhHsdCVne_5OQyHVRU66Ej}PpPgFrvMJ9hMfDUtGVQgg}Ej}PqLqSYMCV(q}AaH4RZ*+8WVQzD5VRU66Ej}PnNmfr(R8m1sQ%pfrMJ9nOf*NpXc5ifYZ**aFWgsm+AW%tGPgGJ*R6$flCW0%27HDB^WNc+{baNmrJ|IXzPDD\u0026aP*hVUgDZp@Xkl(-Y-MmTaBp)UEj}PfK~6+WMNlwMPg5p@D}@?pVQyq\u003eWpFWYZ*w3mJ|IXzPDD\u0026aP%%(XQznHgh8k#LZe(m_a58Xjb094~AV@(@L`+3cGEh%bCWb4A7I17~Ze?$BX=flUJ|Iv`K~6\u003caQb|W9hbxE_aBN|2Wo~V3AT2\u00261P)tEiMNUmjCWtGE5@B_8Z*X*TAT2\u00261K~+\u003ewP*hVUi7SdIb7g03Wo~q0WqN64a${_7b7decJ|I\u0026?M@\u003eaeR6\u003c2sNkvjaOixoqCW\u003e7q6I\u0026)A5gjHWCMqT-5\u0026#4yCtE-e0RaF209__1KocDR0000100002000030000400005000060000700008000090000A0000B0000C0000D0000E0000F0000G0000H0000I0000J0000K0000L0000M0000N0000O0000P0000Q0000R0000S00018U0q#WD~k$na%pX8bZK^Fb0\u0026*hT_*);Ze(S6TPF@_Zggd5WpZV1baH8Bb9;R!4RdsIX\u003eMm_Zgg^KWpjIdClP6GbY*8{a%*LIWo~q7a%FRSeJ2oebaH8KXKQ77Wo~qGX=QVJeO)IFX\u003eMd?cyMoXX\u003e@6CZWLw!00000003P"
+            },
+            "pivottranslate": [
+                0.6717248558998108,
+                0.3297557830810547,
+                -1.6246955394744873
+            ],
+            "savedstashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5d|v*3wC94bY*yBZ*^{TCIk@$D+La4a%pX8bZK^FV{dhCbS4E60V@UsX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFft%AF*-3cIx{vV3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0PVDyo`hBLcAd}n^Ysz+-;2KLXtezZEgD-aQIa%pX2Z*^{TUvqVBZDDeGCJ-kWARr(hARr(hARsXyPE}GuQy@cia\u0026~13D-jW4baZlQVs\u0026(7UvqVBZDDeGCJ`sNARr(hAT%IwZ)t9HAYpWLa%p09bY*io3144ubZ~NMZE0k9EFe%UAYWf;ZggdGZeeU+aCB~UZ7d*PUvPA3WO!+AaB^vF3LqdLARsazaB^vFX\u003e@6JWgua6baH88b#!HOItgE2aB^vFUu\u003cD\u003ebZ~TOWOytfUtei%bY*gGVQgP;a%pXDb!`eDARr(hF(7AbZ(?C=AYpWLa%p09bY*io3144wZ*^{DWn^P-a\u0026BdEaCCDDD-sQ7a\u0026L8TUvqVBZDDeGCK4xEARr(hATl6uZ)t9HAZK!Kb#QY!2?\u003c|cVQyn+Z*pI7Z)t9Ha|#JxUtx80Z(ne9a|$3JARr(yAaHVNZE19Ac4Z)Ea\u0026L8Tb2\u003crMUukY|b#z~Fa%pXI3VkaR2y}07Z)|U8c_tHED-;NDZ)t9Ha%E;F6k9752Wf6(X=7z`CKW\u0026u1poj600aO600RJBT`Lv}VRUqIX\u003c~JBWpgGLTPqh2aBpdDbYXOKa%p09bY*iU7h79fD;NcHV{dR}CKxLj25@y^Y-wXA87mqDba`-PCK@Xn2X1w3WpZg_CL1dp1a4t%WhNXe9RW}#9V;FOZ*X*JZ*FrY9(yJldnOty9|m)Da%pa7CLb#x1$JR\u003cb!8?XD\u003cK7NZ)t9HCLw)\u0026U0W+61aoP6WhNpK11lp3b98TVVP|C~BP%2bW^i(4VQe!pCL}8*2xMhuVRdYDb0#HQCL$35CL=2*2xf3{WnpYKG$tl1CkA$5Y;|RGCMQ4|0RR910000009__0TP7kA112LTBr7NgaA9X\u003cb7^{ICMXgB1S=^Ea$$FHVP|DzVRT_8DL@$y0CEkysz+-;\u0026~^j8hBLcAzY+\u003eSkdLXpVDyo`%+6Q7@TZ@\u003e0FV\u003e9d}n^YezZEgDfTNrz}2We2KLXtU0q#UTP7GL873Mg8zvkpDiB{^X\u003eN37a\u0026BR4UvPA8b!{dpCLVhx8ha)hCLbmsD=QUlZ*F07X\u003e@39Wprs{UukZ1WoKn_CM$h?U0Wt15dkJ6D=Y\u003cRZgev;CM+f;TP7kA0VX3WEd^\u003cAbT%|5EhZ;G6aoML|NsC0|NmVkCtD^W5dkJ6CM+f\u003e5\u0026#4yDL@ki000000RR910ssI20{{R31ONa4U0q#UTP7GL873Mg8zvkpE)8E_aCB*8cxi5Ma%pWQE+!s(CK`Jt8YUkmASNq)eO+57A`t;5BPJ{+C0iyU5dkJ6CM_l\u003eKokN0|NsC0|NsA8CMR1aA`t;5BPJ{+C=vh!CMiG@1poj50096100IC200RI300aO409{\u003eOTU#a=CK)CgCL1OkD=!OQUvPAAa%pX8WOyboCLVhx8ha)hCLbmsCM$h?U0Wt15dkJ6CM+f;TP7kA0VX3REhZ;G6aoML|NsC0|NmVkCtD^W5dkJ6CM+f\u003e5\u0026#4%FcD*KZgX^DZgg;AXJuw=VP|tDFk3(n0RaF209__2KobD~00018U0q!(F%xidX\u003eDnAX?A5{baZlQVs\u0026(7b0#rcTU#a=CK)CgCL1OkD\u003e4#aUukZ1WpZv|Y+rD4X\u003eD$GZ6-1%9(yJldnOttA0{9sD}8-kTP7kA0VX3REG8veCL$35CL\u003c;-CMQ4?0ssI1|NsC0|6L|0TP7kA0VX3REG8%t00bs5TR;#20RR91T_!0\u002669E7K003QGU0Yiw7$zAe8YUYi94j*rUte%?X\u003eDI@VRLkFbZKOGCNm};dnOutCK@ImCLks\u0026eSKY9CL$35CL\u003c;+CM8=YA`t;5BPJ~-CqNVd|NsC0|NsC0T_z`6CL$35CL\u003c;+CMXgB1ST+BKo9`|00018CMiG@0R#X509{\u003eOT`M#YXKZg`VQgV^baH88b#!HOCNx`HTP7GL873MgA0`|tH4\u003cN6a\u0026L8RWMyPyZ*p#Ba\u0026UBWCN(A=dwpG7CL$35CL\u003c;+D\u003eesnbaH8KXLBYtTU{m\u003cTP7kA0VX3REG8%t00bs5TR;#20RR91T_!0\u002669NDK|NmWGU0q!(HwtiaX\u003eDnAX?A6ECO2DKTP7MSI0;TwQbI#@a\u0026~1VI9*#SIR\u003cuRa\u0026%\u003eQCOJS71poj600IC500aOlItF8GZ*yg2COR-HI|X84b7^xXJ6k3iD?9~GRZ\u003eDzCOj)W1#fa\u003eWpXAx5d\u003cqf5M^#;X\u003eN37a\u0026T{KVRUJ4ZYDl4D?bHmZf|sRCO\u003c$L2\u003e\u003c{900000000000000000000000000000000000000000002sKL7v#0002+KL7v#0002+KL7v#0002+KL7v#0002+KV4m2T`NEfaBpdDbZ2sJb#QYgKwDc|CLAk44_{wlZewU~a$j(7X\u003eN3LCP7_WD?$l#Wo%_*bZKvHCPG^)LkV?mZ*pX1a%E\u0026DLt86E0%\u003crVL_iS*0RaI40bN~PU0Yiw94kc%UteK$bZ=j9baN\u0026}U0WtXTP8zWCPY9H1poj5003QGU0q!(Mh|duX\u003eDnAX?A62a\u0026L8Tb0$VxTU#a^D@P4qUukY|b#z~Fa%pXICP!UcCPG^#Lt7?9KoJ1}U0q#WT_*);Ze(S6TPF@_Zggd5WpZV1baH8Bb9;R!4RdsIX\u003eMm_Zgg^KWpjIdClP6GbY*8{a%*LIWo~q7a%FRSeJ2oebaH8KXKQ77Wo~qGX=QVJeO)IFX\u003eMd?cyMoXX\u003e@6CZWLw!00000003P"
+            },
+            "smoothpts": "0 3 6",
+            "stashid": ";"
+        },
+        "position": [
+            1.92,
+            -0.69
+        ],
+        "type": "curve::2.0"
+    },
+    "facet2": {
+        "inputs": [
+            {
+                "from": "group14",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "inline": true,
+            "inlinedist": 0.00001
+        },
+        "position": [
+            2.99,
+            -15
+        ],
+        "type": "facet"
+    },
+    "foreach_begin3": {
+        "color": [
+            0.9,
+            0.5,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "parms": {
+            "blockpath": "../foreach_end3",
+            "method": "input"
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "block_begin"
+    },
+    "foreach_count3": {
+        "color": [
+            0.9,
+            0.5,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "parms": {
+            "blockpath": "../foreach_end3",
+            "method": "metadata"
+        },
+        "position": [
+            7.02,
+            0.04
+        ],
+        "type": "block_begin"
+    },
+    "foreach_end3": {
+        "color": [
+            0.9,
+            0.5,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "polyframe3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "blockpath": "../foreach_begin3",
+            "itermethod": "count",
+            "method": "merge",
+            "singlepass": 4,
+            "templatepath": "../foreach_begin3"
+        },
+        "position": [
+            0.21,
+            -11.72
+        ],
+        "type": "block_end"
+    },
+    "fuse2": {
+        "inputs": [
+            {
+                "from": "sweep3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            0.71,
+            -18.62
+        ],
+        "type": "fuse::2.0"
+    },
+    "grad1": {
+        "children": {
+            "1": {
+                "position": [
+                    0,
+                    6.89
+                ],
+                "type": "SubnetIndirectInput"
+            },
+            "curve_gradient": {
+                "inputs": [
+                    {
+                        "from": "foreach_begin3",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "snippet": "f@grad =  fit(@ptnum, 0, @numpt, 1, 0);"
+                },
+                "position": [
+                    4.92,
+                    -31.45
+                ],
+                "type": "attribwrangle"
+            },
+            "foreach_begin3": {
+                "color": [
+                    0.75,
+                    0.4,
+                    0
+                ],
+                "flags": {
+                    "colordefault": false
+                },
+                "inputs": [
+                    {
+                        "from": "1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "blockpath": "../foreach_end3",
+                    "method": "piece"
+                },
+                "position": [
+                    4.79,
+                    -30.37
+                ],
+                "type": "block_begin"
+            },
+            "foreach_end3": {
+                "color": [
+                    0.75,
+                    0.4,
+                    0
+                ],
+                "flags": {
+                    "colordefault": false,
+                    "display": true,
+                    "render": true
+                },
+                "inputs": [
+                    {
+                        "from": "curve_gradient",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "blockpath": "../foreach_begin3",
+                    "class": "primitive",
+                    "itermethod": "pieces",
+                    "method": "merge",
+                    "templatepath": "../foreach_begin3",
+                    "useattrib": false
+                },
+                "position": [
+                    4.79,
+                    -32.53
+                ],
+                "type": "block_end"
+            },
+            "output0": {
+                "inputs": [
+                    {
+                        "from": "foreach_end3",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "outputidx": 0
+                },
+                "position": [
+                    4.79,
+                    -33.43
+                ],
+                "type": "output"
+            }
+        },
+        "inputs": [
+            {
+                "from": "group12",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            0.19,
+            -15.49
+        ],
+        "type": "subnet"
+    },
+    "group12": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "resample2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "basegroup": "@pscale\u003c0.001",
+            "groupname": "group3",
+            "grouptype": "point"
+        },
+        "position": [
+            0.19,
+            -14.49
+        ],
+        "type": "groupcreate"
+    },
+    "group14": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "convert4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "boundtype": "usebsphere",
+            "groupbase": false,
+            "groupbounding": true,
+            "groupname": "top",
+            "grouptype": "point",
+            "size": [
+                0.075,
+                0.02,
+                0.101
+            ],
+            "t": [
+                -0.038,
+                0,
+                -0.017
+            ]
+        },
+        "position": [
+            2.99,
+            -14
+        ],
+        "type": "groupcreate"
+    },
+    "merge5": {
+        "inputs": [
+            {
+                "from": "curve6",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "curve12",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            3.12,
+            -1.92
+        ],
+        "type": "merge"
+    },
+    "merge6": {
+        "inputs": [
+            {
+                "from": "foreach_begin3",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "carve2",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            0.21,
+            -6.25
+        ],
+        "type": "merge"
+    },
+    "name4": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "autouv5",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "group#": {
+                        "visible": false
+                    },
+                    "name#": {
+                        "value": "seraphic_blade",
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            0.68,
+            -22.08
+        ],
+        "type": "name"
+    },
+    "normal5": {
+        "inputs": [
+            {
+                "from": "fuse2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cuspangle": 39.3
+        },
+        "position": [
+            0.7,
+            -19.7
+        ],
+        "type": "normal"
+    },
+    "polyframe3": {
+        "inputs": [
+            {
+                "from": "thickness2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "tangentu": "up"
+        },
+        "position": [
+            0.21,
+            -10.58
+        ],
+        "type": "polyframe"
+    },
+    "profile2": {
+        "parms": {
+            "activepoints": "0 3 6 9 12 15 18 21 25 28",
+            "convertcurves": true,
+            "cornerpts": "3 6 9 15 18 21 25 28",
+            "handlep0pos": [
+                -0.054939623922109604,
+                0,
+                0.003390006022527814
+            ],
+            "handlep1pos": [
+                -0.05930469185113907,
+                0,
+                0.008163567632436752
+            ],
+            "handlep2pos": [
+                -0.05930618569254875,
+                0,
+                0.008219899609684944
+            ],
+            "mode": 0,
+            "optype": "transform",
+            "outputtype": "nurbs",
+            "parmpoints": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5p^pB3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFft%AF*-3cIx{vV3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0P000000000000000000000000000000D-aQ3baZlQVs\u0026(7UvqVBZDDeGCJ-m`umK\u003c-ARsd^AaHMKZge1FbaZlQVs\u0026(7b2\u003crOWMpu3b1WcoZ*^{DV{dY9WpZ+1WNCGCEFf=kWMy(JAZ=l3ZggR3Zg6jDZgealZ*X*ZaAhnYVQ_GAZ+K;HWOQL}XJu}5b1WcXb#!lVbaN~qaBN|2Wo~V3EFf=nbZ~Waba`-PEFfrMZe(m_a4~Rib1WcoZ**aFWh@|JV{~bDWpHw7Z7d*gX?AaPa\u0026L5DbY(0cVRdwGVr6=1WpXSaP%I#GZEtUMXmE6MEFfrMZe(m_a4\u003eLhb1WcoZ*^{DV{dY9WpZ$Ib1WcZZ*FsRa$#w1b98cHX=iA3Wo|4WbaG*Cb8KOBWh@|RZggdGaBXFDXm4aJAaiABZDnqBVr6=1WpZO|Z*yfVAaH4RZ*+8WVQzD5VRU6IAZTH3WNc+{GH`EmEFf@fVQyt_a%pEQAYo\u00264X?A6BZ)t9Hb1WceVQyq\u003eWpH$JEFg1ZVQghAAZK!Kb#QZOZf9\u0026|aBpdDbSxlaZ*p#Ba\u0026UBW3LqdLARsXyXKZg`VQe5_baZlQVs\u0026(7b2\u003crjVRCI@a0-1Z5eRf|aBpmHXL%+OTPqR\u003eaBpdDbaG{8CK6jK69;K-WNBk%b0!l\u00265\u0026\u0026IYD-;T0baZlQVs\u0026(7b0!p9D-{oLZ)t9HVRUqIX\u003c~JBWpgGKTU%Qz76o%-Z*XNM7AqG9aCKsAX=5fAD;NZHd2nSW7%LeEZgp*Ca%p2G87mqDZeeX@CK@Xn0Z=9zD;x)JaCB*JZgVCadnOorCKxLn26J?BX\u003eMmG9V;FMc42IFWhNdg9|dr4X\u003eN2TAANmYTPq+0b7^{ICLj?5D\u003cKDSbZ\u003eHDXJsZKD\u003cTMHaB^i~Y%?+@A}b\u003eZWMyVyb!\u003eEVCL\u003e!WAQ1s3AuA*ZW^i(4VQe-uCL}8*26ka=b!BrVB|sVh0000000000T_z=4CLj?5CLtywD\u003c%kVVP|D?X?kTQCK3PyD\u003c=_SZ*FsRVQzGAVP|D#Y++|}CMR1!5CH)I003PpC\u003c}67cW_~6Wn^J=VJ0X*83O\u003cS0000000000003QGU0Yiw7A6-a7$zMi8Y?LbVPkY@c4csHX\u003eN3LCMhNydwpG7CLj?3CLt\u003e-1!-\u003c{GcqPBD=P\u003ccbaH8KXLBYiTPrLCFd#BCCM+v00Wc;lD=q\u003euGbS!8F9I?#CNC\u003e60W\u00265rD=`5yCNV2A0X8NwD\u003eDKyGA1)CGy*X*CNwKG0x~itH7hm(F*qhRD\u003eni$IVLwNI07*\u003eCO9iO0x\u003eowIV(C7Fd#D^HXu15F)|=AH6SrKATlu~Ix9N@GBqYUD?9=+FeW@JJpnl;Ju5x|H6}hQKLIi(KPx~2GBzeaD?tJ\u003eI3__WLIN^3CPFJi0XHT?D?}MEATuB~AUPm0G9WQEATc-~GBF@BH6SuLCPZB(6I\u0026)A5dkJ4CMqT-5\u0026#4yC_oc+|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0000000RR910RR910ssI20{{R31ONa41ONa41poj51ONa4|NsC01ONa41^@s61^@s6|NsC01^@s62LJ#72mk;80{{R32\u003e\u003c{93IG5A|NsC03jhEB3;+NC3;+NC3;+NC4FCWD4FCWD1^@s61ONa41ONa44gdfE4gdfE0{{R30{{R3|NsC02\u003e\u003c{93IG5A3IG5A3;+NC|NsC03IG5A3;+NC4*\u0026oF3;+NC3;+NC0{{R30{{R35C8xG5C8xG3IG5A3;+NC2LJ#72LJ#72mk;82LJ#71^@s61^@s61ONa41poj55dZ)H5dZ)H|NsC05dZ)H5dZ)H5dZ)H5\u0026!@I1ONa41ONa41ONa41ONa41poj5|NsC00RR910RR916951J0RR913IG5A3IG5A3;+NC4FCWD4*\u0026oF3IG5A3IG5A|NsC04*\u0026oF|NsC03IG5A3IG5A4*\u0026oF4*\u0026oF4*\u0026oF6aWAK4*\u0026oF4*\u0026oF4*\u0026oF6#xJL6#xJL|NsC0761SM7XSbN7XSbN761SM7XSbN761SM6#xJL761SM7ytkO7ytkO7ytkOU0q#UTP7AJ7bX}c873MlMG9eKbZK^FaB^vFCPgM3dnOorCKx6iCLSwB6\u003ee{CVRC77Xl-S5X=7h$Zggd5WpXA)eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AuC4(X\u003eN2jG$uzTB|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCLJakD@X=mWMpu3b0$b89D99TTP7e80VW|PDkdviD@npFFfK4KFg7?aGcz+aI5jjkI5RdiG%PSKFf1)FE-*4OFfleYGd46dG\u0026C|bH8?XMEif)HF*Y\u003ceH90XdF*q|dGBYtZI4m$OFf1)FE-*4OG\u0026wafI5{\u003erF*Y\u003cgGB7wGEif)HGdMIkGdVanF*h\u003ceG%_$UHY_kMFf1)FE-)}NI5IajI5s#qH!?FcG\u0026DIhAT2O1Ff=naH90XjGB7zcH8M9gH7qbLFf1)FE-)}MI5#jeH#ssiI5smgIXEylASOvGN|7xvE-*AXFfueVH#aabI5IIaGB+$RE-)-DFfK4KF*z|aFgGzaF)%PQGc_?XF(554E-*DVHaIdkGdVdpIW{\u0026jF*htQE-)-DFfK4KGBY_bH!?LdH!(3XHZV9fH6Sf8E-*DVHaIdkGdVdpIW{\u0026jF*htQE-)-DFfK4KFf=zeF)%qeIWRFfI5RUfFf|}1N-Il^Eif)HH8wUlGB`6iIXF2sHZn0cEHExGEHExGFflYUH#IOdH8V0bGBGzbG\u0026LYCFfK4OH!(0dH#RUcG\u0026C?WI5ambFfK4GFfK4KF*GwbH83?bIWRXeIW#dfG$1W7E-*ASGBY\u003cgGdD3gH8VLjG%_qOE-)-GE-)}LG\u002646fFf}zfFgG$eG%+\u003caASO#IOph%vE-*APGd49jF*GnVHa9jjGdDCWFfK4GFfK4KF*GwbH83?bIWRXeIW#dfG$1W7E-)}MF)=nWIW;mjHZm|dH!(6SFfK4GFfK4KG\u0026eXnFgP+bH8?glF*Z3lAT2O1FfcGOFfleaIX5sjIX5sgH!w0RFfK4GFfK4KH8M6fH#0UjGB+|XH#j*tASO\u0026JO^PrsFfcJUF)}$bH8?gfGB!9jH!(IWFfK4GFfK4KH8(UhGdVCgIW;#mG%z_iATTa4G%z$cGdMXpG%++aGdVLfEHExGEHExGFfcSYFflneFg7?fG\u0026C|cI5r?KE-*ARI5RXfH#asmGcYtTF*YnPE-)-GE-)}KIW;\u0026qH8D6cIW{vkI5aXKCQU0\u0026jW8}SG\u0026eCgH83?bIWaLcG%z_hH7qbLFf1@GFfcJRGdDFbH8nXfH!?XiF*P(GFfK4QFflMVH!(0UI50CfH8L?QFfK4GEif)HFfchaH8(ahH#0akFfubaIXECNE-*GQF)%ncF)%PVFf%wcGBGSLE-)-DFfK4KGB`IdGdDRhG\u0026nXhGdVagI3OlYD^HCuE-*GQF)%ncF)%PVFf%wcGBGSLE-)-DFfK4KG\u0026eXjIXN^pH8?glH8nOeATTa4H8C(TG%`3jGBr6lF)%eaGb}JJFf1)FE-)}MGdVFgGBq\u003cXGC46gG%_?cATTa4G\u0026D0YGchwVH#RakFgQ6gHY_kMFf1)FE-)}OGcYzYG%+wWH8(ggHZ(aPCQmC+jxa7TGdDIdF*!FjGB!0iFgG$eEHExGEG;lDFfcYUGB7zcHa9sqHZ(FgH#8tHE-*1QF)=kVG\u0026L|WGBq|fG\u0026DCXFfK4GEif)HGBGtXH#j\u0026mGB7tXFflnbI3O)BE-)}KHaIXdGcz?fH8eLkGd49eEHExGEG;lDFfuYQF*Y?bHZ(LeG%__cI5Qw7P%BYBFfK4OGchwZHZ(CcHZ(FeGBY_WFfK4GFfK4LF*h|gI506dG%+wYHZ?dPFfKMVH#RdcFf=qaH8U|eH!\u003ezsD^fr(E-*DVFgP\u003cYH8e0ZIWsvkHZm+QE-)-GE-)}MG\u0026VRnFg7qZI5IIgF)%eYATTaBG\u0026D3ZGchtYI5;viFf%zOQY%wIEif)HH90XdG\u0026M0YI5#;lH8e0dEHExGEHExGFgP+cG%zqXHa9XgF*h?fHXtxAGBPtWI59LaF*!3gF*i6kHYQVDCKFpGAQ1s3Atov\u0026CK3PyCMZA?bpQYW0096100IC200RI300aO400jU500sa600#g70RR90|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0{|Ep80RR90|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0{|Nv90RR90|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0{|W#A0RR90|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|6N^OTU#a;CKo0cCK)CgD^w9-aBy;Ocx7\u00266bYX61Wo~qHCR8RIdnOorCKx6iCLSh6eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpyAB|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD^\u0026_%b#!lHWqN64awb(K9D61hdnOnr9VQ+oMtyx\u003cTP7e80VW|PDkdXaCLj?3CLtzACM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y@-@VRdwGaCCDfRwf*KeO+57AQ1s3Atov\u0026D_dPA6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobG~|NsA8U0qvSCKe_aCKx6eCK@YO6Ju{~b98cHX\u003eN0La$#v_Xmn+6CRZjLdnOorCKx6iCLSh6eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpyAB|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCLJakD_99*Z*p#Ba\u0026UBWCRipMdwpG7CLj?3CLty\u0026CM#PeEhaE4Spzd5HYQmsS_U\u00269HXt!LCR!_72{RxzATc-~GBGAwD_jgSAT}T|H6SrKATlu~Tq|7;Gaxn~IUq4LATc-~GBGAyD_#pTAT}U5ATc!{GBGAzD_;\u003eaAT}U5ATc!{F*qPHF(5KECSNOH6f+\u003c;AUPm0H6SrKATlu^GBqGFI3{3SCKFpGAQ1s3Atov\u0026CK3PyCMZA?b^rhW|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0{{R300RR90|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0{{a9100961009610096100IC200IC200IC200IC200IC200IC200IC200RI300RI300RI300RI300RI300RI300RI300RI300RI300RI300RI300RI300RI300RI300aO400aO400aO400aO400aO400jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500jU500sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600sa600#g700sa600sa600;m800;m800;m800;m800;m800;m800;m800;m800;m800;m800;m800;m800{s900{s900{s900{s900{s900{s900{s900{s900{s900{s900{s900{s909{\u003eOTU#a;CKo0cCK)CgD`604a\u0026L8Tb7^j8Y-Mn7X\u003eN2TVI~}VCK!7r7$zMi9wtV8eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CPyYEKokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMZA?bpZeX009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610000000000009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100000000000000009{\u003eOTU#a;CKo0cCK)CgD`E?1VQyq\u003eWpFTXZ*wMMCLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yC_owVUjYCBfWH6$0000000000fWH6$0000000000fWH6$0000000000fWH6$0000000000fWH6$0000000000fWH6$0000000000fWH6$0000000000fWH6$0000000000fWH6$0000000000fWH6$00000004i?t~\u003ew$000JDw7h@Jt~\u003ew$002!+g}i^vt~\u003ew$002!+g}jUiO+5er000mJyt\u003ecX9lZbm006=qVY`H;9=!kn002`mh`WTQ9=!kn002`mh`WTQ9=!kn002`mh`SVU9=!kn000!pin~NCXuSXc004fz9J_-qX1xFa005~g5xcrsRlNWJ003}{BD=a-RlNWJ003}{BD;\u0026R3cCOR003F#oI8uL3cCOR003F#oI8vNO+5er000mJyt\u003c4CO+5er000pKyt\u003c7vc0B+90020Qdb*7?c0B+90020Qdb\u003c5kTRi{(003(+PdfcjTRi{(003(+PdZ$E8a)62000`%v^tIl3_Sn\u003c003P@@j8Oz3q1e;0017JwK`hn@;m?l0018Q3p-lo@;m?l0018Q3p\u003cmHUcCSS005Y#7P}?(\u003eAU~{008imJ-j9M\u003eAU~{008imJ-j9M\u003eAU~{008imJ-j9M\u003eAU~{008imJ-mnTMLhrj008|\u003e#X5)ZMLhrj008|\u003e#X41=t~\u003ew$0057\u003e2fbCFt~\u003ew$0057\u003e2ff\u003esXgvS`001xDBRnYg@H_wj003cGTRh$?\u003eO24d006D*fIQwS\u003eO24d006D*fIK3lCOrTE00345NIW8?COrTE00345NIW8?COrTE00345NIb0D\u003eO24d005|+Qar5N\u003eO24d005|+Qann(M?C-l000G!le*G\u0026M?C-l001q!uDbkYZ9M=0000ZG`a5C}\u003cU9ZX0075(Q9Qw*E4%;z004=rzC1rag1i6#007c\u003cx;!YKoxA`5005Z%r#y#?zPtbc002EXsyw40sk{IH000x`pgf}\u003esk{IH000x`pghl8@4Ns2008gRn!L|j@4Ns2008gRn!L|j@4Ns2008gRn!L|j@4Ns2008gRn!FJxKD__{000I)L_85FKD__{000I)L_C7zM7;n2001{LLp-)~V7\u0026kU007u\u0026DLW$UUcCSS005nyK099sVZ8tV007-8UOQh1VZ8tV007-8UOUY+\u003e%0H}002X-p1jR8\u003e%0H}002X-p1hqu?7RQ~002X-p1f$X4!r;X005CEX}mCuXgmM_0087J_PlmkaXbJ3008fl@4SCW9K8Sl0081w2fSHefII*I002gN?z|l(fII*I006n5^1K}-fII*I006n5^1KaESUms$007`e={sT\u0026\u003cU9ZX0075(Q9NQ0\u003cU9ZX0075(Q9NQ0\u003cU9ZX0075(Q9RSCRy_a!0092;_\u0026YWPX*~b{001{U1v_q3XgvS`008AR89UReRy_a!0092;_\u0026d|8Ry_a!0092;_\u0026d|8Ry_a!0092;_\u0026eXeXFUJ_004c$`#RsgXFUJ_004c$`#RsgXFUJ_004c$`#PJKRy_a!005ZU_d8*#XFUJ_004RR13O`=XFUJ_004RR13O`=XFUJ_004RR13O`=XFUJ_004RR13O`=XFUJ_004RR13N_ga=icm0067`3Ostxa=icm001VT2|Qm2VZ8tV007-8UOQh1VZ8tV007-8UOT\u003cNa=icm0048y3Orv3VZ8tV007-8UOSb#a=icm005HA3Ottca=icm007rO3p_LMa=icm008eA3p`\u00264VZ8tV007-8UOQh1VZ8tV007-8UOQh1VZ8tV007-8UOQh1VZ8tV007-8UOQb~U0Yiw7A6-a7$zAe8Y^Q9Xkl(-Y-MmUaBp)aV\u003csGXeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMZA|@?QY}00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001LSTec*00006T(rDuSTec*0000@PKCT`STec*0000@PKCVSl`%a40001Vdt1AiTQj`?0002*T^+lbTQj`?0002*T^+lbTQj`?0002*T^+lbTQj`?0002*T^+kAB{RJM0001Riz2\u00263ENHy|0001+B\u003eK62\u0026u6^=00002)or\u003cc\u0026u6^=00002)or\u003cc\u0026u6^=00002)or=_c~iLn0001\u0026l\u0026m}ac~iLn0001\u0026l\u0026m}8l`%a40001Vdt1BUl`%a40001Vdt1AWG\u003cH1z0002_96Y;?G\u003cH1z0002_96Y;?G\u003cH1z0002_96Y;?G\u003cH1z0002_96Y;bO(;D80000$?v6TUO(;D80000$?v6TUO(;D80000$?v6SU-4#6m00018Me#Zj-4#6m00018Me#aU0\u0026%?n0002!9X_~Z@-Mvr0000yu@Spu@-Mvr0000yu@Spu@-Mvr0000yu@Spu@-Mvr0000yu@So\u0026tt\u003eqN0000I`V6@ltt\u003eqN0000I`V6^hSTec*00023z5~5#STec*00023z5~6HP=P%F0000plLk8x-4#6m0000xvrjw`-4#6m0000xvrjw`-4#6m0000xvrjzBr7%4J0002i#y~vFr7%4J0002i#y~vFr7%4J0002i#y~vyG!{Jo0001qcOX3YG!{Jo0001qcOX0?!Y4fd0001tWt+Jp!Y4fd0001tWt+L{Qh+@G0000n\u003egYOC\u0026k{WV0001}RUbV3c~iLn0000mRINNqSGc\u003cX0001aAE`V`SGc\u003cX0001aAE`V`SGc\u003cX0001aAE`WhS4F!30000_\u00267VAbS4F!30000_\u00267V9ur82z$0001Y_=-C@r82z$0001Y_=-C@r82z$0001Y_=-C@r82z$0001Y_=-EDWHP+~00006K14jDWHP+~00006K14jDWHP+~00006K14iv\u003e2kdQ0001dzy\u0026;d\u003e2kdQ0001dzy\u0026;d\u003e2kdQ0001dzy\u0026;d\u003e2kdQ0001dzy\u0026\u003cGkubdg0000?E_XY)kubdg0000?E_XX17csp60000?E_XX17csp60000?E_XWvu\u003eZRN0000WHSWB374EwL0000ho9DbB7csp60000?E_XWtN6)(e0001jf#$pcN6)(e0001jf#$pcN6)(e0001jf#$r(2xvV30000n\u003egYOC\u0026k{WV0001}RUbT4\u0026k{WV0001}RUbT4\u0026k{WV0001}RUbTmk7qpq0002OvoSl!2xvV30000n\u003egYPi2xvV30000n\u003egYOuk7qpq0002OvoSk=k7qpq0002OvoSk=k7qpq0002OvoSk?uV*~~0000uPTo3!uV*~~0000uPTo3!uV*~~0000uPTo34d}loX0002\u003efG\u003c0NuV*~~0000uPTo3!uV*~~0000uPTo3!uV*~~0000uPTo3!uV*~~0000uPTo3!uV*~~0000uPTo2iv~s-w0001fstY_Cv~s-w0001fstY`N\u003e2kdQ0001dzy\u0026;d\u003e2kdQ0001dzy\u0026-Sv~s-w0001fstY`N\u003e2kdQ0001dzy\u0026-Sv~s-w0001fstY_D?Q*\u003eU0002P9t=Di?Q*\u003eU0002P9t=Es\u003e2kdQ0001dzy\u0026;d\u003e2kdQ0001dzy\u0026;d\u003e2kdQ0001dzy\u0026;d\u003e2kdQ0001dzy\u0026;AU0qvSCKe_aCKx6eCK@Yb3us|(WNc+{GH`EmCS)cYdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STjz8S-BN004kL0000000000004kL0000000000004kL0000000000004kL0000000000004kL0000000000004kL0000000000004kL0000000000004kL0000000000004kL0000000000004kL0000000000vj\u003eN~0000023)kfvj\u003eN~00000O-_Zpvj\u003eN~00000O-_ZpG$R\u0026000000uzIY!=Eg_800000r5L)p\u003cWWey00000?z1Dh\u003cWWey00000eRD\u003e-;@n8R00000!\u003cYZMa;8YV00000V)+ESL@a2%00000u4=qGe$QvU00000G\u0026$Wme$QvU00000G\u0026$WmzqnJq00000N`loomxSOt00000)kC~HmW1Fs00000)kC~HG$R\u0026000000uzIY!G$R\u0026000000uzIY!bRl\u0026;00000Y2Br}L_SzO00000;arHjL_SzO00000;arHjL_SzO00000;arHjbkIFL00000VA\u003e}-NW?uo00000Ig1E7moP;=00000YcNkbLclUT00000Qt!z+LclUT00000Qt!z+nCo1\u003c00000`%CRQt#d`a00000Tt4W!t#d`a00000Tt4W!t#d`a00000Tt4W!t#d`a00000Tt4W!%z6?%00000@sS|A\u003emLz400000MnN;YHagq900000dI\u003ci!Hagq900000dI\u003ci!*{Wnc00000pU0KDLclUT000006o*4RLclUT000006o*4RLclUT000006o*4RllDwK00000\u003cwq\u003c$llDwK00000\u003cwq\u003c$llDwK00000\u003cwq\u003c$NsmlD00000YndTDNsmlD00000YndTD^)w7U00000is\u0026`G^)w7U00000is\u0026`Gjjv)o00000)C0P@q$x=~00000igzG9@dPD200000*ZiA2XHJ+q00000Ajp?I2Im4i00000T0yEj!@op400000wFRg=ij{9X00000i?g0Qij{9X00000i?g0Qf+k4400000nv$\u003cOzd1?000000*`7N)g5*TK00000t5Qijg5*TK00000t5QijyX_{u00000H#0*#^Y#e6000006*_f1^Y#e6000006*_f1SUX$200000Z{a;WSUX$200000Z{a;WSUX$200000Z{a;WSUX$200000Z{a;Wb5cpY00000l\u0026oqyb5cpY00000l\u0026oqyuzgLv00000t5QijuzgLv00000t5Qijy2%Q?00000K)~d@XqE`Q00000OD5jDuzgLv00000t5Qijn!E(P00000q72=\u003c{uBhg00000@iW-G{uBhg00000@iW-Ge-cVP00000)C0P@81OMY00000CY\u003eTY81OMY00000CY\u003eTY81OMY00000CY\u003eTY)LCdf00000nz$l67LiIl00000;ey\u003c{7LiIl00000;ey\u003c{OipM$00000$QU6z-@a!(00000%oiCu-@a!(00000%oiCu\u0026o@dv00000+8*b+\u0026o@dv00000+8*b+\u0026o@dv00000+8*b+#E@q_00000)5ah\u003e\u0026o@dv00000+8*b+\u0026o@dv00000+8*b+\u0026o@dv00000+8*b+\u0026o@dv00000+8*b+\u0026o@dv00000+8*b+UrbxQ00000Kq^8!UrbxQ00000Kq^8!Ue\u003cEG00000L!$\u003egUe\u003cEG00000L!$\u003egUrbxQ00000Kq^8!+vIY+00000#cBpTUrbxQ00000Kq^8!V1-+~00000g`Pq@V1-+~00000g`Pq@3+r;d00000!mI{73+r;d00000!mI{73+r;d00000!mI{73+r;d00000!mI{7U0q#UTP7AJ7bX}c873MlWeI3uZe(m_aCCDfWhNYZCK!7r7$zMi9wtV8eO+57AQ1y5Atov\u0026BU\u003egQ5dkJ4CPyYEKokN0|NsC0|NsA8CM8=YAQ1y5Atov\u0026CK3PyCMZA?@?Qb}|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|Ns9N00000000010000N00000000010000N00000000010000K0000L0000M0000200003000040000200003000040000200003000040000200003000040000200003000040000500006000070000500006000070000500006000070000500006000070000B0000C0000D0000B0000C0000D0000K0000L0000M0000K0000L0000M0000H0000I0000J0000H0000I0000J0000H0000I0000J0000H0000I0000J0000E0000F0000G0000E0000F0000G0000E0000F0000G0000E0000F0000G0000E0000F0000G0000500006000070000200003000040000200003000040000200003000040000200003000040000K0000L0000M0000K0000L0000M0000N000000000100030|NsC0|NsC0|Ns9H0000I0000J0000E0000F0000G0000E0000F0000G00030|NsC0|NsC0|Ns9O0000P0000Q00030|NsC0|NsC0|NsC0|NsC0|NsC0|Ns9E0000F0000G00030|NsC0|NsC0|Ns9K0000L0000M0000K0000L0000M0000H0000I0000J0000E0000F0000G0000B0000C0000D0000B0000C0000D0000B0000C0000D0000B0000C0000D0000B0000C0000D00030|NsC0|NsC0|Ns92000030000400002000030000400002000030000400030|NsC0|NsC0|Ns98000090000A00008000090000A00008000090000A00005000060000700005000060000700005000060000700030|NsC0|NsC0|Ns92000030000400030|NsC0|NsC0|Ns9200003000040000200003000040000N00000000010000N00000000010000200003000040000N00000000010000N000000000100030|NsC0|NsC0|Ns9H0000I0000J0000E0000F0000G00030|NsC0|NsC0|NsC0|NsC0|NsC0|Ns9H0000I0000J0000H0000I0000J0000H0000I0000J0000O0000P0000Q0000O0000P0000Q00030|NsC0|NsC0|Ns9H0000I0000J00030|NsC0|NsC0|NsC0|NsC0|NsC0|Ns9O0000P0000Q0000H0000I0000J00030|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|Ns9R0000S0000T0000R0000S0000T00005000060000700030|NsC0|NsC0|Ns9R0000S0000T0000500006000070000R0000S0000T0000R0000S0000T0000R0000S0000T00005000060000700030|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsA8U0qvSCKe_aCKx6eCK@Yd3~6q3WpZ$BWprq7WF}@N9D61hdnOnr9VQ+oMtyx\u003cTP7e80VW|PDkdXaCLj?3CLtzACM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y^cFZDDC{bYW?3aBpdDbS7se9D61hdnOnr9VQ+oMtyx\u003cTP7e80VW|PDkdXaCLj?3CLtzACM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y^f9Z*X*ZaAhWFCLDWxU0Ws~5dkJ4CMqT?TPtY`VQ_F|Ze(z8X\u003eN2TX)9_3W_5FACTc5d26Jt1Z**uTYb$IJVr6=1WpZd?Ze(m_ZEtpECTuHh33PH{ZgXaDa\u00260DUD{cm3Z*p#BawcvoZwF#wY+-I=WhQSca0Y2^b7gXLCU7fp24rPyWprgGaa|@8TP7e80VW|PDkdfp00br|KofNU000000000000000000000000000000000000000100002000030000300004000040000300003000050000300003000040000500003000030000600004000060000400005000030000300004000030000300003000030000400004000030000400004000040000500003000030000400003000050000300007000030000800004000030000400003000030000300003000030000300003000030000300004000030000300003000040000500003000030000300003000030000400003000040000300003000030000300003000030000300004000030000300007000040000200005000030000500003000040000300004000040000300003000040000400007000040000500003000030000400003000030000300003000030000300004000040000400018U0qvSCKe_aCKx6eCK@Yp1#fa\u003eWpXBRCLDVv7\u003c(odCLJaoCPsaIU0Ws~5dkJ4CMqT)TP7e80VW|PM\u003cyje6afSP00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobE300018U0qvSCKe_aCKx6iCK@Yq3U76EaCLNad2nSWb0!\u003eneO+57AQ1s3Atov\u0026D_bjc24ZD;X=QRIbX_JBTP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y^`RaA|gLbaHQWVRU6CbtW8peO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl000000000000000U0q#UTP7AJ7bX}c873Mlb`Ef9c5ifaa$#\u003cBY+-a|CUzzqdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STjz8S-BN000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000YFIM50000023)kff6T5t0000023)kfuz@u_00000H5`q*)I2l200000`5ZjEnOifx00000?_C|c=Eg_800000r5L)p\u003cWWey00000?z1Dh\u003cWWey00000?z1DhnOifx00000?_C|cL@a2%00000n\u003cV\u003cVe$QvU000000@ZD~e$QvU000000@ZD~e$QvU000000@ZD~e$QvU000000@ZD~mW1Fs00000)kC~HV=yQ@00000\u0026!e?FG$R\u0026000000uzIY!jWl*W00000`5ZjEjWl*W00000`5ZjEL_SzO00000;arHj$cr;Q00000bz6HnW=$wP00000K\u003c\u003ct@W=$wP00000K\u003c\u003ct@NW?uo00000Ig1E7moP;=00000YcNkbe$QvU000000@ZD~DJ3(#00000aEl_lWb!Y)00000Jh2hGz(yuI00000PExeHz(yuI00000P*SwJ;FU2w00000@B%Zr8Lccm0000068a3e8Lccm0000068a3e\u003emLz400000MnN;YjWl*W00000)$fElkx+p\u003e00000Gm{28+m\u0026cN00000FWn\u003cN+m\u0026cN00000FWn\u003cNkx+p\u003e00000Gm{285#1F%00000JF`zb%cU?q00000*2X|Q5#1F%00000JF`zb_%s$h00000iFY788Lccm0000068a3eBf=*=00000jAfg-O20=v000001\u0026))t(soBZ00000ExWF|\u003er#L{00000G3w|#Q_m7T00000s8t_4{CQKk00000FjTEPOINtN00000c^|1f2Im4i00000T0yEjOINtN00000c^|1fR|0Xp00000aWexvdg*e#00000e82@fIi)ha00000cle4szd1?000000*`7N)yfQVt00000GFU%6qhvC@0000020lbQqhvC@0000020lbQqhvC@0000020lbQqhvC@0000020lbQqhvC@0000020lbQBJ5th00000ot{2BIi)ha00000cle4sxREfu00000OfGjjxREfu00000OfGjjAQv\u0026c00000OfGjjuzgLv00000t5Qij0000000000000001F-+Q00000AT{p1cNOlt00000E1T!Me@Ps@00000;#UW}0Y}ff00000f`R6|\u003er#L{00000G3w|#$OvdX00000G3w|#Q_m7T00000s8t_481OMY00000CY\u003eTYF3V*-00000_GThGe~)K900000!m}|ue~)K900000!m}|ue~)K900000!m}|uQ_m7T00000s8t_4Q_m7T00000s8t_4$OvdX00000G3w|#fv;yh00000I8NR=e~)K900000!m}|urHf}h00000)^;#EM|@{J00000^?)xs#E@q_00000)5ah\u003eM|@{J00000^?)xs336vW00000LGwI2EyHI$00000LGwI2+beRt00000`F#gG8nkk~00000eyR\u0026R8nkk~00000eyR\u0026Rde3sb00000CZP#DUe\u003cEG00000L!$\u003egUe\u003cEG00000y*CIvy}xq300000bI1xj+vIY+00000#cBpTmAZ1h00000lFSM`8|`wv00000!yXJgGw^b~00000?-~m{;GVL\u002600000W@wGO;GVL\u0026K+(#u)$|*^;GVL\u0026@KJHFD\u0026ohyU0q#UTP7AJ7bX}c873MlcL;E7VQyt^ZEPlYCLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000DwOL00018U0qvSCKe_aCKx6eCK@Yv32\u003cy-Ze?$BX=f\u0026QCLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000000000018U0qvSCKe_aCKx6eCK@Yw26At7VRU6Cc_titeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl000000000000000U0q#UTP7AJ7bX}c9VQwpdJb}Lb#7#1Z*p#Ba\u0026UBWCVD0udwpG7CLj?3CLty\u0026CM#QACKFpGAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd|NsC0U0q#UTP7AJ7bX}c873Mldl7PPb#7#1Z*p#Ba\u0026lp0X?1fZdnO!veO+57AQ1s3AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1s3AtoXwCK3PyCMR1!5CH)I003PkC_otj00000U0q#UTP7AJ7bX}c873Mld\u003cAo3VQgh4d?p-weO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu6000000PsIuCM8=YAQ1y5AtoXwCK3PyCMZA|@?QY}0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwPSd)Yq#0DwOL0DwPqf4V;a0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwOL0DwPTU0qvSCKe_aCKx6eCK@Y!5_4r|ZDnqBVr6=1WpZO|Z*yfPeI^`xCK!7r7$zMi9wtV8eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CPyYEKokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMZA?bpQYW000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096100961009610096109{\u003eOTU#a;CKo0cCLJakD}D)cZEtUMXmE6MCVnOydwpG7CLj?3CLty\u0026CM#Pje*r2ce=C3kFd#D~fGdFoFd#D^HYR~9f(I}lGaxn~IVOTDg9\u003cPpGaxn~IUq4ICW9-44KN@xAT}U5ATcr^F*PQHD}@j+ATuB~AUPm0G9WQEATc;5g(f;Hh88d\u0026Gaxn~IUq4IATc!{F*qPHF(5KDCWb4A5i=k*AUPm0G9WQEATc-~GBGBHD~J\u0026=AT}U5ATcr^F*P7DI3O}HCWtGE4=^A(ATcr^F*P7DI3O}HCW$MG3@{)$ATc!{F*qPHF(!\u0026DiwQ6wIUq4LATc;5iz|!\u003cFd#V~F*PQPD~$s%AUP(DD~\u003c**AUPm1H71TGEh~=%Fd#BDCXXwS2QVNpI3O}LCXg$U1TY{nI3|%@CKFpGAQ1s3Atov\u0026CK3PyCMZA?bpQYW0096100IC200RI300aO400jU500sa600#g700;m800{s900#g700#g700#g700#g700#g700#g700#g7015yA015yA015yA015yA01E\u0026B01E\u0026B01E\u0026B01N;C01N;C01W^D01W^D01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01f~E01p5F01p5F01yBG01yBG01p5F01p5F01p5F01p5F01p5F01p5F01p5F01p5F01p5F01p5F01p5F01p5F01p5F01p5F01p5F01p5F01p5F01p5F01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01^NI01^NI022TJ01^NI01^NI01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH02BZK02BZK01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH01*HH09{\u003eOTU#a;CKo0cCK)CgE0PIxa$#\u003cBY+-a|CXyx`dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STjz8S-BN0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000Q7pg00000*z\u003cZi04Vmi00000Q26yZ0000000000000000000000000000000000000000000000000000000000000000000000000000F1df000008ajhH000000000000000000000000000000000000000000000000000000000000\u0026\u003esvu00000zyMUa000000000000000fX@p$00000Kq90%000000000000000000000000000000000000000000000Am%f\u003e00000ECdQU000000000000000000000000000000000000000000000000000000000000kS!Ct00000h)q5@K(S0Z00000pwWgo000000000000000000000000000000000000000000000;252{00000cq14%000000000000000000000000000000000000000000000P{~F+00000kv51r0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000M4\u0026C00000$nHG5000000000000000z+RoY000002GJ?G000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000fRXdL00000z(ONA000000000000000000000000000000000000000000000K!!6q00000fV!MH000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000K;Q\u0026A000005Eb^h0000000000000000B8ld0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aOlLl0000000000000000000000000000000000000000000000000000000fGFZQ00000z|3?x0000000000000000000000000000000000000000000000000000000000000000000000000000FJV_00000kiV(80000000000000000DyM3000000Ct|Y0N{1E000000O57F0000000000000000000000000000000N^9H00000z$8~W07#-Z000000000000000000000000006z%100000ppb\u003c*00000000000000000000000000000000000000000000000000000000D2TS00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000K+(#u$VUpj00000kWeHr01se1045B*ppMNj00000U0q#WE0YjsY;R\u0026=Y+-bCa%p09bY*iUlUrL`CKe_aCKx6iCK@Z026ka`ZDDXGlqMW|eO+57AQ2rVAtov\u0026D_bj-5N~jFd2nSQEj}PmP*hn^MJAOimKb4mbZ=s1dTC{HAT2\u00261K~+\u003ewLPc6hMN%e~E0-K$V{~bDWpHn4Zgg`XEj}PYLsUstMNm\u0026kPE=DSmn)bgXL4_KaC2#HXKZC~Z)t9HAT2\u00261M^aB!P*X`xM@\u0026UfPf1QxCYURk5Mg9waCCDZEj}PYL_|\u003cjQzn@!niyeYbZK^FaB^vFAT2\u00261K|@qYRz*-!Nlhl2E1Mo|VQFr3VQFq~Z)t9HAT2\u00261O+iUcR6$8jP)|utR3@7%oF-v#aB^\u003eWWo~42VQyz-Zgg`XEj}PYP*74\u0026SVc}mR6$NhMNU*xCY\u0026ps7;klSaCLNad2nSQEj}PmRa8(_R8(0|MJAmqo(^wvWMy(7Ej}PmQba{kCY~#wCUS3eZe(L`a\u0026BdEa$#g?b#ovsJ|I$0RZc`hPf|`rQc^)gNmWxOpDUmiV{dY9WpZ$Ib094~AVW`5PDN5sR8uCPE1?#1ZEtUMXmE6MAT2\u00261Q%z4#R7g-%QzoG+q9Af_b#7#1Z*p#Ba\u0026UBWAT2\u00261QcqP*L_\u003c$fPDN5sR8uCRE2Ao7Z*FsRa$#w1b98cHX=iA3Wo{rXJ|II+PE%A;K}k+iR8m1nM@UpfP9~!(q#S8(bY*gIZDn+5Z)6}XJ|Ia\u003eR7FxyO+{2lPedl9E2S26a$#\u003cBY+-a|AT2\u00261R8m1sQ%pfrMJA;yrVw\u0026(bYXO5AT2\u00261QcqMtR7EDHE2j=~V_|G%AT2\u00261Q$s;aMJA^!s334@c5ifaa$#\u003cBY+-a|AT2\u00261P)Sx#R8\u0026$yPE$-lR7EDJE2$cAX?AaPa\u0026L5DbY\u0026ndJ|Iv@R!\u003ew?PgFrvMJA~$supNrZe(m_aCCDZEj}PfK~6+WMNm{zCaNo|8fal|WNc+{FmP{kAT2\u00261NI_0SOhr\u0026IP)}1Pt1GM;Xkl(-Y-MmUaBp)UEj}PfK~6+WMNlzNPg5qWE3F!6VQyq\u003eWpFZZZ*w3mJ|IXzPDD\u0026aP%=\u003cYQzoq|t`=}?VQyt_a%pEEEj}PnOhHaXPf|%oCax\u003e56mV=|Ze?z5Y#=Q@AW%#}PDM^lOeU`@uo7W)bZ\u003eBUb094~AVF1BPf%1-Ca^29D05|JZDnqBVr6=1WpZO|Z*yfJEj}PqMMq6VPE\u003clgT1iDxLrhOoMJBObCKFpGAQ2rVAtov\u0026CK3PyCMR1!5CH)I003PkC_ob(000000RR910ssI20{{R31ONa41poj51^@s62LJ#72mk;82\u003e\u003c{93IG5A3jhEB3;+NC4FCWD4gdfE4*\u0026oF5C8xG5dZ)H5\u0026!@I6951J6aWAK6#xJL761SM7XSbN7ytkO82|tP8UO$Q8vp\u003cR8~^|SU0q#WT`RH*aB^vFX\u003e@6JWpgI7TU{pwX\u003eMd?cv~k9X\u003eN37XJv9_Zgg^KWpjIdCk=CSa%pa7Wo~qGX=QVJeJ2rVZggd5WpZm}d1Y\u003eNX\u003ew(AdwnMmb98cPZf9#{d1Y\u003eNa%p9AdwpFe4QXy\u003cWq5FJb7^#GZ*CN30000000018"
+            },
+            "pivottranslate": [
+                -0.03557869605720043,
+                6.17707662797784e-10,
+                -0.0243998346850276
+            ],
+            "savedstashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5gsc93wC94bY*yBZ*^{TCIk^4D+La4a%pX8bZK^FV{dhCbS4E60V@UsX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFft%AF*-3cIx{vV3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0P8jHWZRAaY1P|GPWP|GPWWRy$2KtJfYD-aQIa%pX2Z*^{TUvqVBZDDeGCJ-kXARr(hARr(hARsXyLS=esWpW@xb#iuP3M\u0026y2VRUqIX\u003c~JBWnXi3ZEaz4c_tAjxF8@PARsg#aBpdDbRc1LbaH88b#!HOItgE2aCC5TX\u003eDm_cq|}LEFfQBX\u003eN37a\u0026BR4UvPA8b!{vlUte%^X=He5Zg6sGZ3-YDARr(zAaHVNZE19Ac4Z)8baZlQVs\u0026(7b2\u003crMUvP41ZC`9*b98WYX=HdTAYWf;ZggdGZeeU+aB^vFZgp)6ARr(hATc0kY;R\u0026=Y#?EDbaH88b#!HOItgE2a\u0026L8RWMyPyZ*p#Ba\u0026UBW3M\u0026!~XL4_Ka9?wEZEaz4c_tDkjUXT(ARsj$aBpdDbRcJPZ*_2UItdA1Utw-zXm4^~aBpdDbaM\u0026`UteK$bZ=j9baM\u0026`Ute-\u003eb#7!|V{dY9WpZC|baM\u0026`UteN!Z);_4UvPAD3JG6db#7u|Y+-I=Wn^D)baM(IARr(hF(7bqX\u003eDnAX?A5GXL4_KaC15dUtei%aCLNFaB^vFa|(Sc69{x~aBpmHXL%+QTPqX@aBpdDbaG{8CKOvM6$fc\u003cWNBk%b0!r)5*`2m0RRF30{{d71po#B2LKxY8~_~v2mlEH3IGcL3;+!P4ge1T5C9ke82}mp5dabZ695zd6#y0h7XV#dD;5f2baZlQVs\u0026(7b0!vBD;E!NZ)t9HVRUqIX\u003c~JBWpgGMTU%Qz7zJ}\u003cZ*XNM7%LeDaCKsAX=5fCD;flJd2nSW8Y\u003e$IZgp*Ca%p2G8!H?HZeeX@CLAjr0Z=9#D;@`LaCB*JZgVCcdnOutCK@Xr26J?BX\u003eMmGA1fdQc42IFWhNjiAq8-6X\u003eN2TA$@\u0026aTPq?2b7^{ICL$37D\u003ccPUbZ\u003eHDXJsZMD\u003clYJaB^i~Y%?+@Br7EdWMyVyb!\u003eEVCM8=YA`t;5BP%8dW^i(4VQe-uCMGK\u003c26ka=b!BrVCqNnj0000000000T_z`6CL$37CL\u003c;!D\u003c}wXVP|D?X?kTQC=vh!D=7\u003cdVRvw0XJuqzbYUhbKp9%#4ko=\u0026%PBC)ghjo79f-Y9%PBAbUOv6RH\u003cZ0l%PBAbH0ZpLo}Rr\u003e%PBBMqJ_NJ(X72t%PBCsU5mUhm$to7%PBCl!ic=Rhrhj0%PBCVPeZ(hh`+s1%PBBkV?w-*Y^c3Z%PBA*+6BB)MW4M;%PBA#(geJEj*7id%PBAztf#wDwqU(b%PBBGKj^u5dl\u003cb?%PBA*SQolGfuOul%PBCRkUF|}?$EnX%PBChDDS\u0026qD%Cnr%PBB;x+%Q4mk~Tr%PBB`m?pf!2)8^?%PBBG36#776Sq82%PBA{qn5lpM|eC?%PBDa`Leu7Lv1`z%PBCzbFaJ@;oLh=%PBCX^`^W4P;WO-%PBBaeE+=TCYZcX%PBBqluNw=ag{t!%PBBG#!0+dI=4Jf%PBCZ\u003e5RNoW4Am|%PBDIz\u003ed5ci@\u0026{4%PBB0^*y|fiNC#2%PBBi@jSe+)w8`\u0026%PBCNaR$6yU0qvSCKx6eCK@IiCLAj\u00265MN(uZggdGZeeU+aCB~UZ6+!v9(yJldnOttA0{9xD-~{UZeen1bZBj5bZKK\u003eX\u003eN37XJv9GD}8-kTP7kA0VX3WECp$9bTcw0EG8veCL$35CL=2?1!-\u003c{HZ\u0026$JCMQ4?0ssI1|NsC0|6L|0TP7kA0VX3REG8%t00br}KocGS0000100002000030000400005000060000700008000090000A0000B0000C0000D0000E0000F0000G0000H0000I0000J0000K0000L0000M0000N0000O0000P0000Q0000R0000S0000T00018U0qvSCKx6eCK@IiCLAj+4PReybZKOGX\u003eM?GX\u003eBGhCLVhx8ha)hCLbmsCM$h?U0Wt15dkJ6CM+f;TP7kA0VX3REhZ;G6aoML|NsC0|NmVkCtD^W5dkJ6CM+f\u003e5\u0026#4yDL@k*000000RR910ssI20{{R31ONa41poj51^@s62LJ#72mk;82\u003e\u003c{93IG5A3jhEB3;+NC4FCWD4gdfE4*\u0026oF5C8xG5dZ)H5\u0026!@I6951J6aWAK6#xJL761SM7XSbN7ytkO82|tP8UO$Q8vp\u003cR8~^|S9RL6TU0q#UTP7GL873Mg8zvkpFAHB^aCC5TX\u003eDm_cqT6\u003c9(yJldnOttA0{9sD}8-kTP7kA0VX3REG8veCL$35CL\u003c;-CMQ4?0ssI1|NsC0|6L|0TP7kA0VX3REG8%t00b*A5o2#|b97;DbZ}v3WoB$)XLBYnTR;#20RR91T_!0\u002669E7K003QGU0o|N6L4~AZE19Ac4c97baH88b#!HOCNW!ETP7GL873Mg8zvkpG7?{3X\u003eN37a\u0026BR4UvP41ZEkgKCNd@-dnOutCK@ImCLks\u0026eSKY9CL$35CL\u003c;+CM8=YA`t;5BPJ~-CqNVd|NsC0|NsC0T_z`6CL$35CL\u003c;+CMXgB1ST+BKo9`|00018CMiG@0RR9109{\u003eOTU#a=CK)CgCL1OkD\u003eD#ZUvP41ZC`9*b98WYX=HdNGbSE;CK`Jt8YUkmASNq)eO+57A`t;5BPJ{+C0iyU5dkJ6CM_l\u003eKokN0|NsC0|NsA8CMR1aA`t;5BPJ{+C=vh!CNNt-5CH)I003PkDL@ke9RL6TU0q#WD\u003eM*iY;R\u0026=Y+-bCa%p09bY*iUG+SF+CKx6eCK@ImCLAj@5?^0(Z*^{DWn^P-a\u0026BdEaCCDfH6|W=eO+57A`t;5BPJ{\u003eHV1Qba%pa7b0#)hT_zP\u003cCL$35CL\u003c;+CMXgB1ST+BKo9`|00018CMiG@0ssI1|6N^OU0o|T3UG31ZE19Ac4c!WH(Og\u003cCK@X^3qoajX=QRlb#iuPCOBPND\u003e(*sWpZ?7cqTbO5*`2m0RRF30{{d71po#B2LK2F2\u003e=QJ3jhoN4FC=R4*(DV5dabZ695zd6#y0h7XTOl82}mp8vq;t9RMpj24ie*b7f\u003eEIx#Cd1!7@yX\u003e%q!TP7MSJO)B#dTC{HCOj)W1#fa\u003eWpXAx5d\u003cqf1#50^baN\u0026?KpG1G000000001*nVFfHnYlljnVFfHnaMviGcz+YGt)nsnVFfHnb|)8000000N_6~Gcz+YGvhyJW@ct)X68SdnVFfHndv{x%*@Qp%\u003cMk^000000PsIuU0q!(KMQbgX\u003eN39a\u0026L8Tb0$AqTU#a^D?krlUtw-zXm4^~aBpdDbaN\u0026^U0W+b33Fv^Wn*+{Z*C?*TPs2db#8BRWMy(?WF|seD?\u003cljZ*Oc;OhqO`TM+\u003e\u003c5dts~0WlE*FcASU5dts~0WlE*FcASU5dts~0WlE*FcASU5dts~0WlE+FcASU5dts~0WlE)FkM|;U0qvSCLAk73SVDgb#!lEaCCDfL|t1ZL0cw5TP8zW5gssIU0q#WTU#a^D@77tUvh7CZe(9$Z*p#Ba$j(Cb0$SyTP8tUCPG^#Lt7CZFkM|;U0qvSCLAk93}0Vja\u0026K#8ZeMV8b0$VzTP8tUCPG^#Lt7C8FcASU5dts~0WlE*FcASU5d|\u003c20WlE*FcASU5dts~0WlE+FcASU5dts~0WlE)FkM|;U0qvSCLAkA5MN()Zen3\u003cVQyn(WM6P}b0$Y!TP8tUCPG^#Lt7C6F%cawU0q#WU0o|k4{\u0026m6ZE19Ac4cRBZ*_2UCP-UbTP7SUNey3LX\u003eM?JbYF0CX\u003eD^RNnKkeL0cw5TPsQeX*ecIKoJ1}U0q#WT_*);Ze(S6TPF@_Zggd5WpZV1baH8Bb9;R!4RdsIX\u003eMm_Zgg^KWpjIdClP6GbY*8{a%*LIWo~q7a%FRSeJ2oebaH8KXKQ77Wo~qGX=QVJeO)IFX\u003eMd?cyMoXX\u003e@6CZWLw!00000003P"
+            },
+            "smoothpts": "0",
+            "stashid": ";"
+        },
+        "position": [
+            2.99,
+            -11.91
+        ],
+        "type": "curve::2.0"
+    },
+    "resample2": {
+        "inputs": [
+            {
+                "from": "foreach_end3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            0.19,
+            -13.49
+        ],
+        "type": "resample"
+    },
+    "resample7": {
+        "inputs": [
+            {
+                "from": "merge6",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            0.21,
+            -8.15
+        ],
+        "type": "resample"
+    },
+    "skin4": {
+        "inputs": [
+            {
+                "from": "merge5",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            3.12,
+            -2.95
+        ],
+        "type": "skin"
+    },
+    "sweep3": {
+        "color": [
+            1,
+            0.73,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "grad1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "transform7",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "applyroll": false,
+            "applyyaw": true,
+            "capdivs": 1,
+            "capscale": 0,
+            "cols": 32,
+            "computeuvs": true,
+            "endcaptype": "grid",
+            "incyaw": 180,
+            "scale": 7,
+            "scaleramp": [
+                {
+                    "interp": "bezier",
+                    "pos": 0.0009699321235530078,
+                    "value": 0.06916426867246628
+                },
+                {
+                    "interp": "bezier",
+                    "pos": 0.12926828861236572,
+                    "value": {
+                        "expression": "fit(detail(\"../foreach_count3\", \"iteration\", 0), 0, detail(\"../foreach_count3\", \"numiterations\", 0), 3.4, 0.8)"
+                    }
+                },
+                {
+                    "interp": "bezier",
+                    "pos": 0.26143792271614075,
+                    "value": 0.0703125
+                },
+                {
+                    "interp": "bezier",
+                    "pos": 1,
+                    "value": 0
+                }
+            ],
+            "yaw": -110.5
+        },
+        "position": [
+            0.71,
+            -17.35
+        ],
+        "type": "sweep::2.0"
+    },
+    "thickness2": {
+        "inputs": [
+            {
+                "from": "resample7",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "mult": 0.439,
+            "scale_ramp": [
+                {
+                    "interp": "bezier",
+                    "pos": 0.34248366951942444,
+                    "value": 0
+                },
+                {
+                    "interp": "bezier",
+                    "pos": 0.5346405506134033,
+                    "value": {
+                        "expression": "fit(detail(\"../foreach_count3\", \"iteration\", 0), 0, detail(\"../foreach_count3\", \"numiterations\", 0), 3.4, 0.8)"
+                    }
+                },
+                {
+                    "interp": "bezier",
+                    "pos": 0.9977426528930664,
+                    "value": 0
+                }
+            ],
+            "snippet": "float pct = @ptnum / (@numpt-1.0);\n\nfloat rampval = chramp(\"scale_ramp\", pct);\nf@pscale = rampval * ch(\"mult\");\n"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "folder0_1",
+                "parmtemplates": {
+                    "mult": {
+                        "label": "Mult",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "type": "float"
+                    },
+                    "scale_ramp": {
+                        "label": "Scale Ramp",
+                        "script_callback_language": "hscript",
+                        "show_controls": true,
+                        "type": "ramp_float"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0.21,
+            -9.47
+        ],
+        "type": "attribwrangle"
+    },
+    "transform7": {
+        "inputs": [
+            {
+                "from": "facet2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "r": [
+                0,
+                180,
+                0
+            ]
+        },
+        "position": [
+            2.99,
+            -16.06
+        ],
+        "type": "xform"
+    }
+}

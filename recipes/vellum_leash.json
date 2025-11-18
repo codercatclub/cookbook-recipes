@@ -1,0 +1,503 @@
+{
+    "ANIMATED": {
+        "inputs": [
+            {
+                "from": "first_pin_stiffness",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            4.11,
+            -0.22
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "Vellum wire setup that supports animated soft pinning on the tip and tail of the wire. Useful setup for art directing a wire simulation.",
+            "category": "vellum",
+            "image": "a76bbed88d2f.gif",
+            "id": "a76bbed88d2f",
+            "date-created": "2025-11-09T00:00:00Z",
+            "date-modified": "2025-11-09T09:04:58.173815912Z",
+            "username": "snay",
+            "tags": [
+                "pin",
+                "animation",
+                "harri"
+            ]
+        }
+    },
+    "attach_to_magnet": {
+        "inputs": [
+            {
+                "from": "transofrm_anim",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "magnet",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "group": "first",
+            "snippet": "if(@Frame \u003e 40){\n    v@P = point(1,\"P\",0);\n}"
+        },
+        "position": [
+            0,
+            3.04
+        ],
+        "type": "attribwrangle"
+    },
+    "attribdelete1": {
+        "inputs": [
+            {
+                "from": "vellumsolver1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "negate": true
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "attribdelete"
+    },
+    "first_pin_stiffness": {
+        "inputs": [
+            {
+                "from": "last_pin_stiffness",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "fade": {
+                "extrapolation_after": "extend",
+                "extrapolation_before": "extend",
+                "keyframes": [
+                    {
+                        "accel": 0.5972222222222219,
+                        "expression": "bezier()",
+                        "frame": 34,
+                        "inaccel": 0.3333333333333333,
+                        "slope": 0,
+                        "value": 0
+                    },
+                    {
+                        "accel": 0.15277783332163905,
+                        "expression": "bezier()",
+                        "frame": 77,
+                        "inaccel": 0.5972224393482232,
+                        "slope": 0.0008527131782945769,
+                        "value": 0.005
+                    },
+                    {
+                        "accel": 2.836953279993517,
+                        "expression": "bezier()",
+                        "frame": 88,
+                        "inaccel": 1.0066608412880258,
+                        "slope": 6.512727272727251,
+                        "value": 1
+                    },
+                    {
+                        "accel": 0.3333333333333333,
+                        "expression": "bezier()",
+                        "frame": 119,
+                        "inaccel": 0.43055555555555536,
+                        "slope": 0,
+                        "value": 100
+                    }
+                ]
+            },
+            "group": "first",
+            "snippet": "f@stiffness= chf(\"fade\");\n\n\n"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "fade": {
+                                "label": "Fade",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            4.11,
+            0.92
+        ],
+        "type": "attribwrangle"
+    },
+    "last_pin_stiffness": {
+        "inputs": [
+            {
+                "from": "attach_to_magnet",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "last",
+            "snippet": "f@stiffness = 1000000000.0;\n\n"
+        },
+        "position": [
+            4.11,
+            2
+        ],
+        "type": "attribwrangle"
+    },
+    "magnet": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "scale": 0.107,
+            "t": [
+                -0.349,
+                0.3165919141769409,
+                0
+            ]
+        },
+        "position": [
+            4.11,
+            6.19
+        ],
+        "type": "sphere"
+    },
+    "resample2": {
+        "inputs": [
+            {
+                "from": "spiral1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "docurveuattr": true,
+            "length": 0.01,
+            "treatpolysas": "subd"
+        },
+        "position": [
+            0,
+            6.51
+        ],
+        "type": "resample"
+    },
+    "set_first_and_last_group1": {
+        "inputs": [
+            {
+                "from": "resample2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "class": "primitive",
+            "snippet": "int prims[] = primpoints(0, @primnum);\n\nsetpointgroup(0, \"first\", 0, 1);\nsetpointgroup(0, \"last\", len(prims)-1, 1);\n\n\n"
+        },
+        "position": [
+            0,
+            5.47
+        ],
+        "type": "attribwrangle"
+    },
+    "spiral1": {
+        "parms": {
+            "direction": "cw",
+            "height": 0.0882,
+            "radiusincreaseperturn": -0.187,
+            "radiusscale": 0.154,
+            "startradius": 0.918,
+            "turns": 3.308
+        },
+        "position": [
+            0,
+            7.51
+        ],
+        "type": "spiral"
+    },
+    "sweep1": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "attribdelete1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "applyscale": true,
+            "endcaptype": "grid",
+            "radius": 0.0075,
+            "scaleramp": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": 0.6000000238418579
+                },
+                {
+                    "interp": "linear",
+                    "pos": 0.017587939277291298,
+                    "value": 1
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "surfaceshape": "tube"
+        },
+        "position": [
+            0,
+            -1
+        ],
+        "type": "sweep::2.0"
+    },
+    "transofrm_anim": {
+        "inputs": [
+            {
+                "from": "set_first_and_last_group1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "t": [
+                0,
+                {
+                    "extrapolation_after": "extend",
+                    "extrapolation_before": "extend",
+                    "keyframes": [
+                        {
+                            "accel": 1.0694444444444442,
+                            "expression": "bezier()",
+                            "frame": 1,
+                            "inaccel": 0.3333333333333333,
+                            "slope": 0,
+                            "value": 0
+                        },
+                        {
+                            "accel": 0.04401960352382826,
+                            "expression": "bezier()",
+                            "frame": 78,
+                            "inaccel": 3.3895094713347516,
+                            "slope": 3.0075187385856323,
+                            "value": 3.2163742065429686
+                        },
+                        {
+                            "accel": 0.3333333333333333,
+                            "expression": "bezier()",
+                            "frame": 79,
+                            "inaccel": 0.013888888888888987,
+                            "slope": 0,
+                            "value": 3.79563193321228
+                        }
+                    ]
+                },
+                0
+            ]
+        },
+        "position": [
+            0,
+            4.43
+        ],
+        "type": "xform"
+    },
+    "vellum_hair1": {
+        "inputs": [
+            {
+                "from": "attach_to_magnet",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "bendrestscale": 0.048,
+            "bendstiffnessexp": "-2",
+            "constrainttype": "hair",
+            "dobendgrp": true,
+            "domass": "calcuniform",
+            "dostretchgrp": true,
+            "dothickness": "calcuniform",
+            "mass": 1,
+            "matchanimation": true,
+            "pingroup": "last first",
+            "pintype": "soft",
+            "stretchdampingratio": 0.01,
+            "thicknessscale": 2,
+            "vizthickness": true
+        },
+        "position": [
+            0,
+            2
+        ],
+        "type": "vellumconstraints"
+    },
+    "vellumsolver1": {
+        "editables": {
+            "dopnet1/forces": {
+                "children": {
+                    "FORCE": {
+                        "inputs": [
+                            {
+                                "from": "popwind1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            0.25,
+                            1.28
+                        ],
+                        "type": "subnetoutput"
+                    },
+                    "SOURCE": {
+                        "flags": {
+                            "display": true
+                        },
+                        "parms": {
+                            "outputidx": 1
+                        },
+                        "position": [
+                            3.71,
+                            1.29
+                        ],
+                        "type": "subnetoutput"
+                    },
+                    "__stickynote1": {
+                        "color": [
+                            1,
+                            0.97,
+                            0.52
+                        ],
+                        "position": [
+                            5.9,
+                            2.56
+                        ],
+                        "size": [
+                            1.24,
+                            3.02
+                        ],
+                        "text": "Wire POP Forces into FORCE to apply per-point forces.\n\nWire Vellum Constraint Properties and Vellum Rest Blend to update constraints dynamically.\n\nWire Vellum Constraints to build new constraints.\n\nWire Vellum Source DOPs to SOURCE to add new vellum geometry.",
+                        "text_color": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "StickyNote"
+                    },
+                    "popwind1": {
+                        "flags": {
+                            "bypass": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "vellumconstraintproperty1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "amp": 1,
+                            "swirlscale": [
+                                1,
+                                0,
+                                0
+                            ],
+                            "swirlsize": 2
+                        },
+                        "position": [
+                            0.25,
+                            2.74
+                        ],
+                        "type": "popwind"
+                    },
+                    "vellumconstraintproperty1": {
+                        "parms": {
+                            "bindgeoinput2": "../../../../ANIMATED",
+                            "bindgroup": "@type=pin",
+                            "bindinputmenu2": "sop",
+                            "dostiffness": true,
+                            "localexpression": "stiffness = point(1, \"stiffness\", @ptnum);\n",
+                            "usegroup": true,
+                            "uselocal": true
+                        },
+                        "position": [
+                            0.25,
+                            4.14
+                        ],
+                        "type": "vellumconstraintproperty"
+                    }
+                },
+                "type": "subnet"
+            }
+        },
+        "inputs": [
+            {
+                "from": "vellum_hair1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "vellum_hair1",
+                "from_index": 1,
+                "to_index": 1
+            },
+            {
+                "from": "vellum_hair1",
+                "from_index": 2,
+                "to_index": 2
+            }
+        ],
+        "parms": {
+            "gravity": [
+                0,
+                -9,
+                0
+            ],
+            "static_sdfscale": 2,
+            "useground": true,
+            "veldamping": 0.1,
+            "wind": [
+                {
+                    "expression": "-3*sin(5*$F)*max(0.0,1.0-max(0.0, 0.01*($F-291)))*max(0.0,min(1.0, 0.02*($F-71)))"
+                },
+                0,
+                0
+            ]
+        },
+        "position": [
+            0,
+            1
+        ],
+        "type": "vellumsolver"
+    }
+}

@@ -1,0 +1,1357 @@
+{
+    "CONTROLS": {
+        "color": [
+            0.09,
+            0.37,
+            0.69
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "parms": {
+            "grow_speed": 30,
+            "remesh_step": 12,
+            "remesh_target_length": 0.2
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "cacheinput",
+                "parmtemplates": {
+                    "grow_speed": {
+                        "label": "Grow Speed",
+                        "tags": {
+                            "script_callback_language": "python"
+                        },
+                        "type": "float"
+                    },
+                    "remesh_step": {
+                        "label": "remesh step",
+                        "max_value": 100,
+                        "menu_type": "normal",
+                        "tags": {
+                            "script_callback_language": "python"
+                        },
+                        "type": "integer"
+                    },
+                    "remesh_target_length": {
+                        "label": "Remesh Target Length",
+                        "tags": {
+                            "script_callback_language": "python"
+                        },
+                        "type": "float"
+                    },
+                    "use_remesh": {
+                        "label": "Use Remesh",
+                        "tags": {
+                            "script_callback_language": "python"
+                        },
+                        "type": "toggle"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "type": "null"
+    },
+    "REF_GEO1": {
+        "inputs": [
+            {
+                "from": "scale_mask",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            2.86,
+            2.1
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "Implementation of Differential Growth algorithm using Vellum and SOP Solver. Based on Junichiro Horikawa tutorial (https://www.youtube.com/watch?v=tcckNTS9-Os)",
+            "category": "vellum",
+            "image": "6b6de4f86958.gif",
+            "id": "6b6de4f86958",
+            "date-created": "2025-11-03T00:00:00Z",
+            "date-modified": "2025-11-05T19:22:13.749266056Z",
+            "username": "kif",
+            "tags": [
+                "algorithms",
+                "growth",
+                "plants",
+                "organic",
+                "biology",
+                "bio"
+            ]
+        }
+    },
+    "__stickynote1": {
+        "color": [
+            1,
+            0.97,
+            0.52
+        ],
+        "position": [
+            5.48,
+            -0.49
+        ],
+        "size": [
+            2.68,
+            0.92
+        ],
+        "text": "Dive inside VellumSolver to see the sutup\n",
+        "text_color": [
+            0,
+            0,
+            0
+        ],
+        "type": "StickyNote"
+    },
+    "circle1": {
+        "parms": {
+            "divs": 40,
+            "orient": "zx",
+            "reverse": false,
+            "scale": 5,
+            "type": "poly"
+        },
+        "position": [
+            2.86,
+            7.28
+        ],
+        "type": "circle"
+    },
+    "output0": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "vellumsolver1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "outputidx": 0
+        },
+        "position": [
+            2.86,
+            -0.99
+        ],
+        "type": "output"
+    },
+    "remesh1": {
+        "inputs": [
+            {
+                "from": "reverse1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "targetsize": {
+                "expression": "ch(\"../CONTROLS/remesh_target_length\")"
+            }
+        },
+        "position": [
+            2.86,
+            5.28
+        ],
+        "type": "remesh::2.0"
+    },
+    "reverse1": {
+        "inputs": [
+            {
+                "from": "circle1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            2.86,
+            6.28
+        ],
+        "type": "reverse"
+    },
+    "scale_mask": {
+        "inputs": [
+            {
+                "from": "uvquickshade1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "rad": {
+                "expression": "ch(\"../circle1/scale\")"
+            },
+            "ramp": [
+                {
+                    "interp": "bspline",
+                    "pos": 0,
+                    "value": 0
+                },
+                {
+                    "interp": "bspline",
+                    "pos": 0.9030733108520508,
+                    "value": 0
+                },
+                {
+                    "interp": "bspline",
+                    "pos": 0.9148099422454834,
+                    "value": 1
+                },
+                {
+                    "interp": "bspline",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "snippet": "vector cen = set(0,0,0);\nfloat dist = distance(@P, cen);\nfloat rad= chf(\"rad\");\n\nfloat d = dist / rad;\n\nd = chramp(\"ramp\", d);\n\nf@scaleval = d;\n\n\n"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "folder0_1",
+                "parmtemplates": {
+                    "rad": {
+                        "label": "Rad",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "type": "float"
+                    },
+                    "ramp": {
+                        "label": "Ramp",
+                        "script_callback_language": "hscript",
+                        "show_controls": true,
+                        "type": "ramp_float"
+                    }
+                }
+            }
+        ],
+        "position": [
+            2.86,
+            3.24
+        ],
+        "type": "attribwrangle"
+    },
+    "uvquickshade1": {
+        "inputs": [
+            {
+                "from": "remesh1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            2.86,
+            4.28
+        ],
+        "type": "uvquickshade"
+    },
+    "vellumcloth1": {
+        "inputs": [
+            {
+                "from": "REF_GEO1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "bendplasticity": true,
+            "bendstiffnessexp": "-4",
+            "constrainttype": "cloth",
+            "dobendgrp": true,
+            "docompress": true,
+            "domass": "calcvarying",
+            "dostretchgrp": true,
+            "dothickness": "calcuniform",
+            "linear": "off",
+            "pingroup": "pin",
+            "vizthickness": true
+        },
+        "position": [
+            2.86,
+            1.01
+        ],
+        "type": "vellumconstraints"
+    },
+    "vellumsolver1": {
+        "editables": {
+            "dopnet1/forces": {
+                "children": {
+                    "1": {
+                        "position": [
+                            0.22,
+                            6.01
+                        ],
+                        "type": "SubnetIndirectInput"
+                    },
+                    "BASE": {
+                        "inputs": [
+                            {
+                                "from": "1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            0.22,
+                            4.4
+                        ],
+                        "type": "null"
+                    },
+                    "OUT": {
+                        "flags": {
+                            "display": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "enable_remesh",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            0.22,
+                            -5.47
+                        ],
+                        "type": "null"
+                    },
+                    "__stickynote1": {
+                        "color": [
+                            1,
+                            0.97,
+                            0.52
+                        ],
+                        "position": [
+                            5.9,
+                            2.56
+                        ],
+                        "size": [
+                            4.8,
+                            3.02
+                        ],
+                        "text": "Wire POP Forces into FORCE to apply per-point forces.\n\nWire Vellum Constraint Properties and Vellum Rest Blend to update constraints dynamically.\n\nWire Vellum Constraints to build new constraints.\n\nWire Vellum Source DOPs to SOURCE to add new vellum geometry.",
+                        "text_color": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "StickyNote"
+                    },
+                    "enable_remesh": {
+                        "inputs": [
+                            {
+                                "from": "geometrywrangle2",
+                                "from_index": 0,
+                                "to_index": 0
+                            },
+                            {
+                                "from": "geometrywrangle3",
+                                "from_index": 0,
+                                "to_index": 1
+                            }
+                        ],
+                        "parms": {
+                            "input": {
+                                "expression": "ch(\"../../../../CONTROLS/use_remesh\")"
+                            }
+                        },
+                        "position": [
+                            0.22,
+                            -4.04
+                        ],
+                        "type": "switch"
+                    },
+                    "geometrywrangle1": {
+                        "inputs": [
+                            {
+                                "from": "sopsolver2",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "bindclass": "primitive",
+                            "bindgeo": "ConstraintGeometry",
+                            "bindgeoinput2": "../sopsolver1/",
+                            "bindgeoinput3": "../../../../REF_GEO1",
+                            "bindgroup": "stretch",
+                            "bindinputmenu1": "self",
+                            "bindinputmenu2": "sop",
+                            "bindinputmenu3": "sop",
+                            "max_scale": {
+                                "expression": "ch(\"../../../../CONTROLS/grow_speed\")"
+                            },
+                            "snippet": "int pts[] = primpoints(0, @primnum);\nvector pos1 = point(0, \"P\", pts[0]);\nvector pos2 = point(0, \"P\", pts[1]);\nvector uv1 = uvsample(1, \"uv\", \"P\", pos1);\nvector uv2 = uvsample(1, \"uv\", \"P\", pos2);\n\nvector rpos1 = uvsample(2, \"P\", \"uv\", uv1);\nvector rpos2 = uvsample(2, \"P\", \"uv\", uv2);\nfloat dist = distance(rpos1, rpos2);\n\nvector cuv = uvsample(1, \"uv\", \"P\", @P);\nfloat scaleval = uvsample(2, \"scaleval\", \"uv\", cuv);\nscaleval = scaleval * ch(\"max_scale\");\n\nfloat f = @Frame / float($FEND);\nscaleval = lerp(1.0, scaleval, f);\n\nf@restlength = dist * scaleval;\n\n// This is necessary for scale value to work\n// if not present scale value goes down for some reason\nf@aa = scaleval;\n\n\n\n\n\n\n"
+                        },
+                        "parmtemplates": [
+                            {
+                                "insert_after": "vex_threadjobsize",
+                                "parmtemplates": {
+                                    "folder_generatedparms_snippet": {
+                                        "label": "Generated Channel Parameters",
+                                        "parmtemplates": {
+                                            "max_scale": {
+                                                "label": "Max Scale",
+                                                "max_value": 1,
+                                                "script_callback_language": "hscript",
+                                                "type": "float"
+                                            }
+                                        },
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "group_type": "simple",
+                                            "sidefx::look": "blank"
+                                        },
+                                        "type": "folder_simple"
+                                    }
+                                }
+                            }
+                        ],
+                        "position": [
+                            -2.5,
+                            -0.92
+                        ],
+                        "type": "geometrywrangle"
+                    },
+                    "geometrywrangle2": {
+                        "inputs": [
+                            {
+                                "from": "geometrywrangle1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "bindclass": "primitive",
+                            "bindgeo": "ConstraintGeometry",
+                            "bindgeoinput2": "../sopsolver1/",
+                            "bindgeoinput3": "../../../../REF_GEO1",
+                            "bindgroup": "bend",
+                            "bindinputmenu1": "self",
+                            "bindinputmenu2": "sop",
+                            "bindinputmenu3": "sop",
+                            "snippet": "\nvector cuv = uvsample(1, \"uv\", \"P\", @P);\nfloat scaleval = uvsample(2, \"scaleval\", \"uv\", cuv);\n\nfloat minstiff = 0.01;\nfloat maxstiff = 10.0;\n\nf@stiffness = exp(lerp(log(maxstiff), log(minstiff), scaleval));\n"
+                        },
+                        "position": [
+                            -2.5,
+                            -2.41
+                        ],
+                        "type": "geometrywrangle"
+                    },
+                    "geometrywrangle3": {
+                        "inputs": [
+                            {
+                                "from": "BASE",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "bindclass": "primitive",
+                            "bindgeo": "ConstraintGeometry",
+                            "bindgeoinput2": "../sopsolver1/",
+                            "bindgeoinput3": "../../../../REF_GEO1",
+                            "bindgroup": "stretch",
+                            "bindinputmenu1": "self",
+                            "bindinputmenu2": "sop",
+                            "bindinputmenu3": "sop",
+                            "max_scale": {
+                                "expression": "ch(\"../../../../CONTROLS/grow_speed\")"
+                            },
+                            "snippet": "int pts[] = primpoints(0, @primnum);\n\nvector pos1 = point(0, \"P\", pts[0]);\nvector pos2 = point(0, \"P\", pts[1]);\n\nfloat dist = distance(pos1, pos2);\n\nfloat scaleval = prim(2, \"scaleval\", @primnum);\nscaleval *= ch(\"max_scale\");\n\nfloat f = @Frame / float($FEND);\nscaleval = lerp(1.0, scaleval, f);\n\nf@scaleval = scaleval;\n\nf@restlength = dist * scaleval;\n\n// This is necessary for scale value to work\n// if not present scale value goes down for some reason\nf@aa = scaleval;\n"
+                        },
+                        "parmtemplates": [
+                            {
+                                "insert_after": "vex_threadjobsize",
+                                "parmtemplates": {
+                                    "folder_generatedparms_snippet": {
+                                        "label": "Generated Channel Parameters",
+                                        "parmtemplates": {
+                                            "max_scale": {
+                                                "label": "Max Scale",
+                                                "max_value": 1,
+                                                "script_callback_language": "hscript",
+                                                "type": "float"
+                                            }
+                                        },
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "group_type": "simple",
+                                            "sidefx::look": "blank"
+                                        },
+                                        "type": "folder_simple"
+                                    }
+                                }
+                            }
+                        ],
+                        "position": [
+                            2.59,
+                            -1.88
+                        ],
+                        "type": "geometrywrangle"
+                    },
+                    "sopsolver1": {
+                        "children": {
+                            "dop_geometry": {
+                                "color": [
+                                    0.6,
+                                    0.4,
+                                    1
+                                ],
+                                "flags": {
+                                    "colordefault": false
+                                },
+                                "parms": {
+                                    "adddopobjectname": false,
+                                    "donotsim": true,
+                                    "doposxform": {
+                                        "expression": "ch(\"../transformsopoutput\")"
+                                    },
+                                    "doppath": "`stamps(\"..\", \"DOPNET\", \"../..\")`",
+                                    "doxform": {
+                                        "expression": "ch(\"../transformsopoutput\")"
+                                    },
+                                    "geodatapath": "`stamps(\"..\", \"DATANAME\", chs(\"../datapath\"))`",
+                                    "importstyle": "fetch",
+                                    "objpattern": "`stamps(\"..\", \"OBJID\", arg(dopnodeobjs(\"..\"),0))`",
+                                    "pointvels": "none"
+                                },
+                                "position": [
+                                    3.63,
+                                    -1.9
+                                ],
+                                "type": "dopimport"
+                            },
+                            "feedbacks": {
+                                "color": [
+                                    0.6,
+                                    0.4,
+                                    1
+                                ],
+                                "flags": {
+                                    "colordefault": false
+                                },
+                                "parms": {
+                                    "datapath": "Feedback",
+                                    "doppath": "`stamps(\"..\", \"DOPNET\", \"../..\")`",
+                                    "objpattern": "`stamps(\"..\", \"OBJID\", arg(dopnodeobjs(\"..\"),0))`",
+                                    "record": "Impacts"
+                                },
+                                "position": [
+                                    8.62,
+                                    -1.96
+                                ],
+                                "type": "dopimportrecords"
+                            },
+                            "impacts": {
+                                "color": [
+                                    0.6,
+                                    0.4,
+                                    1
+                                ],
+                                "flags": {
+                                    "colordefault": false
+                                },
+                                "parms": {
+                                    "datapath": "Impacts",
+                                    "doppath": "`stamps(\"..\", \"DOPNET\", \"../..\")`",
+                                    "objpattern": "`stamps(\"..\", \"OBJID\", arg(dopnodeobjs(\"..\"),0))`",
+                                    "record": "Impacts"
+                                },
+                                "position": [
+                                    6.39,
+                                    -1.86
+                                ],
+                                "type": "dopimportrecords"
+                            },
+                            "relationship_geometry": {
+                                "color": [
+                                    0.6,
+                                    0.4,
+                                    1
+                                ],
+                                "flags": {
+                                    "colordefault": false
+                                },
+                                "parms": {
+                                    "numobj": [
+                                        {
+                                            "enable#": {
+                                                "visible": false
+                                            },
+                                            "expand#": {
+                                                "visible": false
+                                            },
+                                            "group#": {
+                                                "visible": false
+                                            },
+                                            "objpath#": {
+                                                "value": "`stamps(\"..\", \"DATAPATH\", chsop(\"relnode\") + \":Relationships/\" + chs(chsop(\"relnode\") + \"/relname\") + \"/\" + chs(chsop(\"relnode\") + \"/relationship/dataname\") + \"/Geometry\")`",
+                                                "visible": false
+                                            }
+                                        }
+                                    ],
+                                    "relnode": {
+                                        "expression": "import toolutils\n\nnode = hou.node(\".\")\nsopsolver = hou.node(\"..\")\n\n# Attempt to discover a constraint network that we're wired to.\nnodetypes = [\"constraintnetwork\"]\nfor nodetype in nodetypes:\n    network = toolutils.findOutputNodeOfBaseType(sopsolver, nodetype)\n    if network:\n        return node.relativePathTo(network)\n\nreturn \"../..\"",
+                                        "language": "Python"
+                                    }
+                                },
+                                "parmtemplates": [
+                                    {
+                                        "insert_first": "",
+                                        "parmtemplates": {
+                                            "folder0": {
+                                                "label": "Object Merge",
+                                                "parmtemplates": {
+                                                    "_separator": {
+                                                        "label": "",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "separator"
+                                                    },
+                                                    "addpath": {
+                                                        "default_value": true,
+                                                        "label": "Add Path Attribute",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "createprimgroups": {
+                                                        "label": "Create Primitive Groups",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "createprimstring": {
+                                                        "label": "Create Per-Primitive Path",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "createptgroups": {
+                                                        "label": "Create Point Groups",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "createptstring": {
+                                                        "label": "Create Per-Point Path",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "invertxform": {
+                                                        "label": "Invert Transform",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "numobj": {
+                                                        "default_value": 1,
+                                                        "label": "Number of Objects",
+                                                        "parmtemplates": {
+                                                            "enable#": {
+                                                                "default_value": true,
+                                                                "label": "Enable Merge #",
+                                                                "script_callback_language": "hscript",
+                                                                "type": "toggle"
+                                                            },
+                                                            "expand#": {
+                                                                "label": "Expand Group #",
+                                                                "script_callback_language": "hscript",
+                                                                "type": "toggle"
+                                                            },
+                                                            "group#": {
+                                                                "label": "Group #",
+                                                                "menu_type": "string_toggle",
+                                                                "script_callback_language": "hscript",
+                                                                "type": "string"
+                                                            },
+                                                            "objpath#": {
+                                                                "label": "Object #",
+                                                                "menu_type": "normal",
+                                                                "script_callback_language": "hscript",
+                                                                "tags": {
+                                                                    "opfilter": "!!SOP!!",
+                                                                    "oprelative": "."
+                                                                },
+                                                                "type": "operator_path"
+                                                            }
+                                                        },
+                                                        "script_callback_language": "hscript",
+                                                        "type": "folder_multiparmlist"
+                                                    },
+                                                    "pack": {
+                                                        "label": "Pack Geometry Before Merging",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "pathattrib": {
+                                                        "default_value": "objname",
+                                                        "label": "Path Attribute",
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "string"
+                                                    },
+                                                    "pivot": {
+                                                        "default_value": "centroid",
+                                                        "label": "Pivot Location",
+                                                        "menu_items": [
+                                                            {
+                                                                "label": "Origin",
+                                                                "token": "origin"
+                                                            },
+                                                            {
+                                                                "label": "Centroid",
+                                                                "token": "centroid"
+                                                            }
+                                                        ],
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "ordered_menu"
+                                                    },
+                                                    "primgroupprefix": {
+                                                        "default_value": "_primgrp_",
+                                                        "label": "Primitive Group Prefix",
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "string"
+                                                    },
+                                                    "ptgroupprefix": {
+                                                        "default_value": "_ptgrp_",
+                                                        "label": "Point Group Prefix",
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "string"
+                                                    },
+                                                    "verbosegroups": {
+                                                        "label": "Verbose Group Names",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "viewportlod": {
+                                                        "default_value": "full",
+                                                        "label": "Display As",
+                                                        "menu_items": [
+                                                            {
+                                                                "label": "Full Geometry",
+                                                                "token": "full"
+                                                            },
+                                                            {
+                                                                "label": "Point Cloud",
+                                                                "token": "points"
+                                                            },
+                                                            {
+                                                                "label": "Bounding Box",
+                                                                "token": "box"
+                                                            },
+                                                            {
+                                                                "label": "Centroid",
+                                                                "token": "centroid"
+                                                            },
+                                                            {
+                                                                "label": "Hidden",
+                                                                "token": "hidden"
+                                                            }
+                                                        ],
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "ordered_menu"
+                                                    },
+                                                    "xformpath": {
+                                                        "label": "Transform Object",
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "tags": {
+                                                            "opfilter": "!!OBJ!!",
+                                                            "oprelative": "."
+                                                        },
+                                                        "type": "operator_path"
+                                                    },
+                                                    "xformtype": {
+                                                        "default_value": "object",
+                                                        "label": "Transform",
+                                                        "menu_items": [
+                                                            {
+                                                                "label": "None",
+                                                                "token": "none"
+                                                            },
+                                                            {
+                                                                "label": "Into This Object",
+                                                                "token": "local"
+                                                            },
+                                                            {
+                                                                "label": "Into Specified Object",
+                                                                "token": "object"
+                                                            }
+                                                        ],
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "ordered_menu"
+                                                    }
+                                                },
+                                                "script_callback_language": "hscript",
+                                                "type": "folder_tabs"
+                                            },
+                                            "folder0_1": {
+                                                "label": "Custom Parameters",
+                                                "parmtemplates": {
+                                                    "relnode": {
+                                                        "default_value": "../..",
+                                                        "label": "Relationship",
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "tags": {
+                                                            "opfilter": "!!DOP!!",
+                                                            "oprelative": "."
+                                                        },
+                                                        "type": "operator_path"
+                                                    }
+                                                },
+                                                "script_callback_language": "hscript",
+                                                "type": "folder_tabs"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "position": [
+                                    11.08,
+                                    -1.89
+                                ],
+                                "type": "object_merge"
+                            },
+                            "remesh1": {
+                                "inputs": [
+                                    {
+                                        "from": "dop_geometry",
+                                        "from_index": 0,
+                                        "to_index": 0
+                                    }
+                                ],
+                                "parms": {
+                                    "targetsize": {
+                                        "expression": "ch(\"../../../../../CONTROLS/remesh_target_length\")"
+                                    }
+                                },
+                                "position": [
+                                    5.22,
+                                    -3.49
+                                ],
+                                "type": "remesh::2.0"
+                            },
+                            "switch1": {
+                                "flags": {
+                                    "display": true,
+                                    "render": true
+                                },
+                                "inputs": [
+                                    {
+                                        "from": "dop_geometry",
+                                        "from_index": 0,
+                                        "to_index": 0
+                                    },
+                                    {
+                                        "from": "remesh1",
+                                        "from_index": 0,
+                                        "to_index": 1
+                                    }
+                                ],
+                                "parms": {
+                                    "input": {
+                                        "expression": "$F % ch(\"../../../../../CONTROLS/remesh_step\") == 0"
+                                    }
+                                },
+                                "position": [
+                                    3.75,
+                                    -5.04
+                                ],
+                                "type": "switch"
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "from": "BASE",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "uniquedataname": true
+                        },
+                        "position": [
+                            -2.5,
+                            2.04
+                        ],
+                        "type": "sopsolver::2.0",
+                        "user_data": {
+                            "wirestyle": "rounded"
+                        }
+                    },
+                    "sopsolver2": {
+                        "children": {
+                            "dop_geometry": {
+                                "color": [
+                                    0.6,
+                                    0.4,
+                                    1
+                                ],
+                                "flags": {
+                                    "colordefault": false
+                                },
+                                "parms": {
+                                    "adddopobjectname": false,
+                                    "donotsim": true,
+                                    "doposxform": {
+                                        "expression": "ch(\"../transformsopoutput\")"
+                                    },
+                                    "doppath": "`stamps(\"..\", \"DOPNET\", \"../..\")`",
+                                    "doxform": {
+                                        "expression": "ch(\"../transformsopoutput\")"
+                                    },
+                                    "geodatapath": "`stamps(\"..\", \"DATANAME\", chs(\"../datapath\"))`",
+                                    "importstyle": "fetch",
+                                    "objpattern": "`stamps(\"..\", \"OBJID\", arg(dopnodeobjs(\"..\"),0))`",
+                                    "pointvels": "none"
+                                },
+                                "position": [
+                                    3.75,
+                                    -1.86
+                                ],
+                                "type": "dopimport"
+                            },
+                            "feedbacks": {
+                                "color": [
+                                    0.6,
+                                    0.4,
+                                    1
+                                ],
+                                "flags": {
+                                    "colordefault": false
+                                },
+                                "parms": {
+                                    "datapath": "Feedback",
+                                    "doppath": "`stamps(\"..\", \"DOPNET\", \"../..\")`",
+                                    "objpattern": "`stamps(\"..\", \"OBJID\", arg(dopnodeobjs(\"..\"),0))`",
+                                    "record": "Impacts"
+                                },
+                                "position": [
+                                    8.62,
+                                    -1.96
+                                ],
+                                "type": "dopimportrecords"
+                            },
+                            "impacts": {
+                                "color": [
+                                    0.6,
+                                    0.4,
+                                    1
+                                ],
+                                "flags": {
+                                    "colordefault": false
+                                },
+                                "parms": {
+                                    "datapath": "Impacts",
+                                    "doppath": "`stamps(\"..\", \"DOPNET\", \"../..\")`",
+                                    "objpattern": "`stamps(\"..\", \"OBJID\", arg(dopnodeobjs(\"..\"),0))`",
+                                    "record": "Impacts"
+                                },
+                                "position": [
+                                    6.39,
+                                    -1.86
+                                ],
+                                "type": "dopimportrecords"
+                            },
+                            "object_merge1": {
+                                "parms": {
+                                    "numobj": [
+                                        {
+                                            "enable#": {
+                                                "visible": false
+                                            },
+                                            "expand#": {
+                                                "visible": false
+                                            },
+                                            "group#": {
+                                                "visible": false
+                                            },
+                                            "objpath#": {
+                                                "value": "../../../../../vellumsolver1/dopnet1/forces/sopsolver1",
+                                                "visible": false
+                                            }
+                                        }
+                                    ]
+                                },
+                                "position": [
+                                    5.26,
+                                    -3.11
+                                ],
+                                "type": "object_merge"
+                            },
+                            "relationship_geometry": {
+                                "color": [
+                                    0.6,
+                                    0.4,
+                                    1
+                                ],
+                                "flags": {
+                                    "colordefault": false
+                                },
+                                "parms": {
+                                    "numobj": [
+                                        {
+                                            "enable#": {
+                                                "visible": false
+                                            },
+                                            "expand#": {
+                                                "visible": false
+                                            },
+                                            "group#": {
+                                                "visible": false
+                                            },
+                                            "objpath#": {
+                                                "value": "`stamps(\"..\", \"DATAPATH\", chsop(\"relnode\") + \":Relationships/\" + chs(chsop(\"relnode\") + \"/relname\") + \"/\" + chs(chsop(\"relnode\") + \"/relationship/dataname\") + \"/Geometry\")`",
+                                                "visible": false
+                                            }
+                                        }
+                                    ],
+                                    "relnode": {
+                                        "expression": "import toolutils\n\nnode = hou.node(\".\")\nsopsolver = hou.node(\"..\")\n\n# Attempt to discover a constraint network that we're wired to.\nnodetypes = [\"constraintnetwork\"]\nfor nodetype in nodetypes:\n    network = toolutils.findOutputNodeOfBaseType(sopsolver, nodetype)\n    if network:\n        return node.relativePathTo(network)\n\nreturn \"../..\"",
+                                        "language": "Python"
+                                    }
+                                },
+                                "parmtemplates": [
+                                    {
+                                        "insert_first": "",
+                                        "parmtemplates": {
+                                            "folder0": {
+                                                "label": "Object Merge",
+                                                "parmtemplates": {
+                                                    "_separator": {
+                                                        "label": "",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "separator"
+                                                    },
+                                                    "addpath": {
+                                                        "default_value": true,
+                                                        "label": "Add Path Attribute",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "createprimgroups": {
+                                                        "label": "Create Primitive Groups",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "createprimstring": {
+                                                        "label": "Create Per-Primitive Path",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "createptgroups": {
+                                                        "label": "Create Point Groups",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "createptstring": {
+                                                        "label": "Create Per-Point Path",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "invertxform": {
+                                                        "label": "Invert Transform",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "numobj": {
+                                                        "default_value": 1,
+                                                        "label": "Number of Objects",
+                                                        "parmtemplates": {
+                                                            "enable#": {
+                                                                "default_value": true,
+                                                                "label": "Enable Merge #",
+                                                                "script_callback_language": "hscript",
+                                                                "type": "toggle"
+                                                            },
+                                                            "expand#": {
+                                                                "label": "Expand Group #",
+                                                                "script_callback_language": "hscript",
+                                                                "type": "toggle"
+                                                            },
+                                                            "group#": {
+                                                                "label": "Group #",
+                                                                "menu_type": "string_toggle",
+                                                                "script_callback_language": "hscript",
+                                                                "type": "string"
+                                                            },
+                                                            "objpath#": {
+                                                                "label": "Object #",
+                                                                "menu_type": "normal",
+                                                                "script_callback_language": "hscript",
+                                                                "tags": {
+                                                                    "opfilter": "!!SOP!!",
+                                                                    "oprelative": "."
+                                                                },
+                                                                "type": "operator_path"
+                                                            }
+                                                        },
+                                                        "script_callback_language": "hscript",
+                                                        "type": "folder_multiparmlist"
+                                                    },
+                                                    "pack": {
+                                                        "label": "Pack Geometry Before Merging",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "pathattrib": {
+                                                        "default_value": "objname",
+                                                        "label": "Path Attribute",
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "string"
+                                                    },
+                                                    "pivot": {
+                                                        "default_value": "centroid",
+                                                        "label": "Pivot Location",
+                                                        "menu_items": [
+                                                            {
+                                                                "label": "Origin",
+                                                                "token": "origin"
+                                                            },
+                                                            {
+                                                                "label": "Centroid",
+                                                                "token": "centroid"
+                                                            }
+                                                        ],
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "ordered_menu"
+                                                    },
+                                                    "primgroupprefix": {
+                                                        "default_value": "_primgrp_",
+                                                        "label": "Primitive Group Prefix",
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "string"
+                                                    },
+                                                    "ptgroupprefix": {
+                                                        "default_value": "_ptgrp_",
+                                                        "label": "Point Group Prefix",
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "string"
+                                                    },
+                                                    "verbosegroups": {
+                                                        "label": "Verbose Group Names",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "toggle"
+                                                    },
+                                                    "viewportlod": {
+                                                        "default_value": "full",
+                                                        "label": "Display As",
+                                                        "menu_items": [
+                                                            {
+                                                                "label": "Full Geometry",
+                                                                "token": "full"
+                                                            },
+                                                            {
+                                                                "label": "Point Cloud",
+                                                                "token": "points"
+                                                            },
+                                                            {
+                                                                "label": "Bounding Box",
+                                                                "token": "box"
+                                                            },
+                                                            {
+                                                                "label": "Centroid",
+                                                                "token": "centroid"
+                                                            },
+                                                            {
+                                                                "label": "Hidden",
+                                                                "token": "hidden"
+                                                            }
+                                                        ],
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "ordered_menu"
+                                                    },
+                                                    "xformpath": {
+                                                        "label": "Transform Object",
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "tags": {
+                                                            "opfilter": "!!OBJ!!",
+                                                            "oprelative": "."
+                                                        },
+                                                        "type": "operator_path"
+                                                    },
+                                                    "xformtype": {
+                                                        "default_value": "object",
+                                                        "label": "Transform",
+                                                        "menu_items": [
+                                                            {
+                                                                "label": "None",
+                                                                "token": "none"
+                                                            },
+                                                            {
+                                                                "label": "Into This Object",
+                                                                "token": "local"
+                                                            },
+                                                            {
+                                                                "label": "Into Specified Object",
+                                                                "token": "object"
+                                                            }
+                                                        ],
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "type": "ordered_menu"
+                                                    }
+                                                },
+                                                "script_callback_language": "hscript",
+                                                "type": "folder_tabs"
+                                            },
+                                            "folder0_1": {
+                                                "label": "Custom Parameters",
+                                                "parmtemplates": {
+                                                    "relnode": {
+                                                        "default_value": "../..",
+                                                        "label": "Relationship",
+                                                        "menu_type": "normal",
+                                                        "script_callback_language": "hscript",
+                                                        "tags": {
+                                                            "opfilter": "!!DOP!!",
+                                                            "oprelative": "."
+                                                        },
+                                                        "type": "operator_path"
+                                                    }
+                                                },
+                                                "script_callback_language": "hscript",
+                                                "type": "folder_tabs"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "position": [
+                                    11.08,
+                                    -1.89
+                                ],
+                                "type": "object_merge"
+                            },
+                            "switch1": {
+                                "flags": {
+                                    "display": true,
+                                    "render": true,
+                                    "template": true
+                                },
+                                "inputs": [
+                                    {
+                                        "from": "dop_geometry",
+                                        "from_index": 0,
+                                        "to_index": 0
+                                    },
+                                    {
+                                        "from": "vellumcloth1",
+                                        "from_index": 1,
+                                        "to_index": 1
+                                    }
+                                ],
+                                "parms": {
+                                    "input": {
+                                        "expression": "$F % ch(\"../../../../../CONTROLS/remesh_step\") == 0"
+                                    }
+                                },
+                                "position": [
+                                    3.92,
+                                    -5.97
+                                ],
+                                "type": "switch"
+                            },
+                            "vellumcloth1": {
+                                "inputs": [
+                                    {
+                                        "from": "object_merge1",
+                                        "from_index": 0,
+                                        "to_index": 0
+                                    }
+                                ],
+                                "parms": {
+                                    "bendstiffnessexp": "-4",
+                                    "constrainttype": "cloth",
+                                    "dobendgrp": true,
+                                    "docompress": true,
+                                    "domass": "calcvarying",
+                                    "dostretchgrp": true,
+                                    "dothickness": "calcuniform",
+                                    "linear": "off"
+                                },
+                                "position": [
+                                    5.39,
+                                    -4.45
+                                ],
+                                "type": "vellumconstraints"
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "from": "sopsolver1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "datapath": "ConstraintGeometry",
+                            "uniquedataname": true
+                        },
+                        "position": [
+                            -2.5,
+                            0.48
+                        ],
+                        "type": "sopsolver::2.0",
+                        "user_data": {
+                            "wirestyle": "rounded"
+                        }
+                    }
+                },
+                "type": "subnet",
+                "user_data": {
+                    "wirestyle": "rounded"
+                }
+            }
+        },
+        "inputs": [
+            {
+                "from": "vellumcloth1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "vellumcloth1",
+                "from_index": 1,
+                "to_index": 1
+            },
+            {
+                "from": "vellumcloth1",
+                "from_index": 2,
+                "to_index": 2
+            }
+        ],
+        "parms": {
+            "gravity": [
+                0,
+                0,
+                0
+            ],
+            "resimulate": {
+                "expression": "ch(\"../resimulate\")"
+            },
+            "surfacetension": 0.001,
+            "viscosity": 0.5
+        },
+        "position": [
+            2.86,
+            0.01
+        ],
+        "type": "vellumsolver"
+    }
+}

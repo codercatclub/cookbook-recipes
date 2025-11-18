@@ -1,0 +1,442 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "Art direct the crack and peel of a surface geometry, using voronoi fracturing and a vellum cloth simulation.",
+            "category": "vellum",
+            "image": "09751abf704f.gif",
+            "id": "09751abf704f",
+            "date-created": "2025-11-09T14:53:58.643827495Z",
+            "date-modified": "2025-11-09T14:53:58.643828392Z",
+            "username": "snay",
+            "tags": [
+                "voronoi",
+                "final",
+                "destination",
+                "peel",
+                "organic",
+                "skin",
+                "fabric"
+            ]
+        }
+    },
+    "anim": {
+        "inputs": [
+            {
+                "from": "unpinning",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            5.08,
+            -6.11
+        ],
+        "type": "null"
+    },
+    "density": {
+        "inputs": [
+            {
+                "from": "sphere4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "freq": -1.944,
+            "snippet": "f@d = curlnoise(chf(\"freq\")*v@P).x;\n\n\n"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "freq": {
+                                "label": "Freq",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "type": "attribwrangle"
+    },
+    "group9": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "voronoifracture4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "groupname": "pin",
+            "grouptype": "point"
+        },
+        "position": [
+            1.99,
+            -3.17
+        ],
+        "type": "groupcreate"
+    },
+    "peak1": {
+        "inputs": [
+            {
+                "from": "sphere4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dist": -0.05
+        },
+        "position": [
+            5.08,
+            -2.17
+        ],
+        "type": "peak"
+    },
+    "remesh3": {
+        "inputs": [
+            {
+                "from": "sphere4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "targetsize": 0.02
+        },
+        "position": [
+            1.99,
+            -1.17
+        ],
+        "type": "remesh::2.0"
+    },
+    "scatter3": {
+        "inputs": [
+            {
+                "from": "density",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "densityattrib": "d",
+            "npts": 300,
+            "relaxiterations": 3,
+            "usedensityattrib": true
+        },
+        "position": [
+            0,
+            -1.04
+        ],
+        "type": "scatter::2.0"
+    },
+    "sphere4": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "parms": {
+            "cols": 50,
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "rows": 50,
+            "type": "polymesh"
+        },
+        "position": [
+            1.99,
+            1.87
+        ],
+        "type": "sphere"
+    },
+    "unpinning": {
+        "inputs": [
+            {
+                "from": "group9",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cut": {
+                "extrapolation_after": "extend",
+                "extrapolation_before": "extend",
+                "keyframes": [
+                    {
+                        "accel": 0.8194444444444444,
+                        "expression": "bezier()",
+                        "frame": 1,
+                        "inaccel": 0.3333333333333333,
+                        "slope": 0,
+                        "value": 0
+                    },
+                    {
+                        "accel": 0.3333333333333333,
+                        "expression": "bezier()",
+                        "frame": 60,
+                        "inaccel": 0.8194444444444444,
+                        "slope": 0,
+                        "value": 1
+                    }
+                ]
+            },
+            "snippet": "i@stopped = smooth(chf(\"cut\"), chf(\"cut\"), 0.5*(1.0 + curlnoise(2*v@P)));\n\n"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "cut": {
+                                "label": "Cut",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            5.07,
+            -5.1
+        ],
+        "type": "attribwrangle"
+    },
+    "vellumcloth4": {
+        "inputs": [
+            {
+                "from": "group9",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "peak1",
+                "from_index": 0,
+                "to_index": 2
+            }
+        ],
+        "parms": {
+            "bendstiffnessexp": "-8",
+            "constrainttype": "cloth",
+            "dobendgrp": true,
+            "docompress": true,
+            "domass": "calcvarying",
+            "dostretchgrp": true,
+            "dothickness": "calcuniform",
+            "matchanimation": true,
+            "pingroup": "pin",
+            "pintype": "stopped"
+        },
+        "position": [
+            1.99,
+            -5.1
+        ],
+        "type": "vellumconstraints"
+    },
+    "vellumsolver5": {
+        "editables": {
+            "dopnet1/forces": {
+                "children": {
+                    "FORCE": {
+                        "inputs": [
+                            {
+                                "from": "popforce1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            0,
+                            1.29
+                        ],
+                        "type": "subnetoutput"
+                    },
+                    "SOURCE": {
+                        "flags": {
+                            "display": true
+                        },
+                        "parms": {
+                            "outputidx": 1
+                        },
+                        "position": [
+                            3.61,
+                            1.29
+                        ],
+                        "type": "subnetoutput"
+                    },
+                    "__stickynote1": {
+                        "color": [
+                            1,
+                            0.97,
+                            0.52
+                        ],
+                        "position": [
+                            5.9,
+                            2.56
+                        ],
+                        "size": [
+                            4.8,
+                            3.02
+                        ],
+                        "text": "Wire POP Forces into FORCE to apply per-point forces.\n\nWire Vellum Constraint Properties and Vellum Rest Blend to update constraints dynamically.\n\nWire Vellum Constraints to build new constraints.\n\nWire Vellum Source DOPs to SOURCE to add new vellum geometry.",
+                        "text_color": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "StickyNote"
+                    },
+                    "popforce1": {
+                        "inputs": [
+                            {
+                                "from": "popwrangle1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "amp": 0.3,
+                            "swirlsize": 0.5
+                        },
+                        "position": [
+                            0,
+                            2.56
+                        ],
+                        "type": "popforce"
+                    },
+                    "popwrangle1": {
+                        "parms": {
+                            "bindgeoinput1": "../../../../anim",
+                            "bindinputmenu1": "sop",
+                            "snippet": "i@stopped = point(0,\"stopped\",@ptnum);"
+                        },
+                        "position": [
+                            0,
+                            3.84
+                        ],
+                        "type": "popwrangle"
+                    }
+                },
+                "type": "subnet"
+            }
+        },
+        "inputs": [
+            {
+                "from": "vellumstitch3",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "vellumstitch3",
+                "from_index": 1,
+                "to_index": 1
+            },
+            {
+                "from": "vellumstitch3",
+                "from_index": 2,
+                "to_index": 2
+            }
+        ],
+        "parms": {
+            "gravity": [
+                0,
+                0,
+                0
+            ],
+            "surfacetension": 0.001,
+            "viscosity": 0.5
+        },
+        "position": [
+            1.99,
+            -7.1
+        ],
+        "type": "vellumsolver"
+    },
+    "vellumstitch3": {
+        "inputs": [
+            {
+                "from": "vellumcloth4",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "vellumcloth4",
+                "from_index": 1,
+                "to_index": 1
+            },
+            {
+                "from": "vellumcloth4",
+                "from_index": 2,
+                "to_index": 2
+            }
+        ],
+        "parms": {
+            "breakthreshold": 0.000001,
+            "constrainttype": "weld",
+            "dobreaking": true,
+            "useclosestpt": false
+        },
+        "position": [
+            1.99,
+            -6.1
+        ],
+        "type": "vellumconstraints"
+    },
+    "voronoifracture4": {
+        "inputs": [
+            {
+                "from": "remesh3",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "scatter3",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "computeinteriornormals": false,
+            "createinteriorsurfaces": false,
+            "outputpieceattrib": true
+        },
+        "position": [
+            1.99,
+            -2.17
+        ],
+        "type": "voronoifracture::2.0"
+    }
+}

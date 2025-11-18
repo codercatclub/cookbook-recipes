@@ -1,0 +1,315 @@
+{
+    "ANIM": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "root_scale",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            2.6,
+            -4.72
+        ],
+        "type": "null"
+    },
+    "PARAMS": {
+        "color": [
+            0.32,
+            0.26,
+            0.58
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "parms": {
+            "progress": {
+                "extrapolation_after": "extend",
+                "extrapolation_before": "extend",
+                "keyframes": [
+                    {
+                        "accel": 2.125,
+                        "expression": "bezier()",
+                        "frame": 1,
+                        "inaccel": 0.3333333333333333,
+                        "slope": 0,
+                        "value": 0
+                    },
+                    {
+                        "accel": 0.3333333333333333,
+                        "expression": "bezier()",
+                        "frame": 154,
+                        "inaccel": 2.125,
+                        "slope": 0,
+                        "value": 1
+                    }
+                ]
+            }
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "cacheinput",
+                "parmtemplates": {
+                    "progress": {
+                        "label": "Progress",
+                        "tags": {
+                            "script_callback_language": "python"
+                        },
+                        "type": "float"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "Create a plant like unfurling animation by converting a line to a KineFX rig and applying a compounding rotation.",
+            "category": "animation",
+            "image": "6b6543c32821.gif",
+            "id": "6b6543c32821",
+            "date-created": "2025-11-05T00:00:00Z",
+            "date-modified": "2025-11-05T11:46:16.746459022Z",
+            "username": "snay",
+            "tags": [
+                "nature",
+                "organic",
+                "plants",
+                "kinefx",
+                "rig",
+                "stem",
+                "kkfrag"
+            ]
+        }
+    },
+    "apply_transform": {
+        "inputs": [
+            {
+                "from": "set_rotate_and_scale_amount",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "snippet": "prerotate(4@localtransform,f@rotateAmount, {1,0,0});\nprescale(4@localtransform, f@scaleAmount);"
+        },
+        "position": [
+            2.57,
+            -2.3
+        ],
+        "type": "kinefx::rigattribwrangle",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": 0, \"solid_links\": 1, \"show_axes\": 0, \"show_scene_geo\": 1}"
+        }
+    },
+    "line1": {
+        "parms": {
+            "points": 20
+        },
+        "position": [
+            2.57,
+            2
+        ],
+        "type": "line"
+    },
+    "resample1": {
+        "inputs": [
+            {
+                "from": "line1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "docurveuattr": true,
+            "length": 0.03
+        },
+        "position": [
+            2.57,
+            1
+        ],
+        "type": "resample"
+    },
+    "rigdoctor1": {
+        "inputs": [
+            {
+                "from": "resample1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "inittransforms": true
+        },
+        "position": [
+            2.57,
+            -0.01
+        ],
+        "type": "kinefx::rigdoctor",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": false, \"solid_links\": 1, \"show_axes\": false, \"show_scene_geo\": 1}"
+        }
+    },
+    "root_scale": {
+        "inputs": [
+            {
+                "from": "apply_transform",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "0",
+            "root_scale": {
+                "extrapolation_after": "extend",
+                "extrapolation_before": "extend",
+                "keyframes": [
+                    {
+                        "accel": 1.0277777777777777,
+                        "expression": "bezier()",
+                        "frame": 1,
+                        "inaccel": 0.3333333333333333,
+                        "slope": 0,
+                        "value": 0
+                    },
+                    {
+                        "accel": 0.3333333333333333,
+                        "expression": "bezier()",
+                        "frame": 75,
+                        "inaccel": 1.0277777777777777,
+                        "slope": 0,
+                        "value": 1
+                    }
+                ]
+            },
+            "snippet": "prescale(4@localtransform, chf(\"root_scale\"));"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "root_scale": {
+                                "label": "Root Scale",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            2.6,
+            -3.44
+        ],
+        "type": "kinefx::rigattribwrangle",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": 0, \"solid_links\": 1, \"show_axes\": 0, \"show_scene_geo\": 1}"
+        }
+    },
+    "set_rotate_and_scale_amount": {
+        "inputs": [
+            {
+                "from": "rigdoctor1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "amount": 0.049,
+            "rotateByCurveU": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": 0
+                },
+                {
+                    "interp": "linear",
+                    "pos": 0.7420560717582703,
+                    "value": 1
+                }
+            ],
+            "rotateByProgress": [
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0,
+                    "value": 1
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.7091836929321289,
+                    "value": -0.021467600017786026
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 1,
+                    "value": 0
+                }
+            ],
+            "snippet": "float amount = chf(\"../PARAMS/progress\");\n\nf@rotateAmount = chramp(\"rotateByProgress\", amount) * chramp(\"rotateByCurveU\", f@curveu);\nf@scaleAmount = fit(f@rotateAmount, 0, 1, 1, 0.8);"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "amount": {
+                                "label": "Amount",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "rotateByCurveU": {
+                                "label": "Rotatebycurveu",
+                                "script_callback_language": "hscript",
+                                "show_controls": true,
+                                "type": "ramp_float"
+                            },
+                            "rotateByProgress": {
+                                "label": "Rotatebyprogress",
+                                "script_callback_language": "hscript",
+                                "show_controls": true,
+                                "type": "ramp_float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            2.57,
+            -1.1
+        ],
+        "type": "kinefx::rigattribwrangle",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": 0, \"solid_links\": 1, \"show_axes\": 0, \"show_scene_geo\": 1}"
+        }
+    }
+}

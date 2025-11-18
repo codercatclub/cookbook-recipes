@@ -1,0 +1,435 @@
+{
+    "__cookbookMeta": {
+        "context": "lop",
+        "systemfields": {
+            "description": "This example shows how to time offset animated point instances in LOPs using point attribute.",
+            "category": "solaris",
+            "image": "32492600217c.gif",
+            "id": "32492600217c",
+            "date-created": "2025-11-04T16:13:18.945888479Z",
+            "date-modified": "2025-11-04T16:13:18.945888977Z",
+            "username": "kif",
+            "tags": [
+                "solaris",
+                "lops",
+                "instances",
+                "offset",
+                "time",
+                "animation"
+            ]
+        }
+    },
+    "__stickynote1": {
+        "color": [
+            1,
+            0.97,
+            0.52
+        ],
+        "position": [
+            3.83,
+            -4.79
+        ],
+        "size": [
+            3.79,
+            2.82
+        ],
+        "text": "Note that for retime to work icoming animation needs to be cached (preferably to disc as usd).\nAlso note that since we are offseting between 0 and 60 frames we need to make sure to have $ENDFRAM + 60 for our assets animation.",
+        "text_color": [
+            0,
+            0,
+            0
+        ],
+        "type": "StickyNote"
+    },
+    "cache1": {
+        "inputs": [
+            {
+                "from": "merge1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "behavior": "all",
+            "sample_f": [
+                {
+                    "expression": "@fstart"
+                },
+                {
+                    "expression": "@fend+60"
+                },
+                {
+                    "expression": "@finc"
+                }
+            ]
+        },
+        "position": [
+            1.05,
+            -2.72
+        ],
+        "type": "cache::2.0"
+    },
+    "instancer1": {
+        "children": {
+            "frame_offsets": {
+                "inputs": [
+                    {
+                        "from": "make_names",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "dimensions": 1,
+                    "max": [
+                        60,
+                        1,
+                        1,
+                        1
+                    ],
+                    "name": "frameoffset",
+                    "seed": 1
+                },
+                "position": [
+                    4.55,
+                    -25.7
+                ],
+                "type": "attribrandomize"
+            },
+            "grid1": {
+                "parms": {
+                    "cols": 2,
+                    "rows": 2,
+                    "size": [
+                        7,
+                        7
+                    ]
+                },
+                "position": [
+                    4.63,
+                    -21.47
+                ],
+                "type": "grid"
+            },
+            "make_names": {
+                "inputs": [
+                    {
+                        "from": "scatter1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "distribution": "discrete",
+                    "name": "name",
+                    "seed": 1.04,
+                    "values": [
+                        {
+                            "strvalue#": {
+                                "value": "pig",
+                                "visible": false
+                            },
+                            "value#": {
+                                "visible": false
+                            },
+                            "weight#": {
+                                "visible": false
+                            }
+                        },
+                        {
+                            "strvalue#": {
+                                "value": "toy",
+                                "visible": false
+                            },
+                            "value#": {
+                                "visible": false
+                            },
+                            "weight#": {
+                                "visible": false
+                            }
+                        }
+                    ],
+                    "valuetype": "string"
+                },
+                "position": [
+                    4.59,
+                    -24.58
+                ],
+                "type": "attribrandomize"
+            },
+            "output0": {
+                "flags": {
+                    "display": true,
+                    "render": true
+                },
+                "inputs": [
+                    {
+                        "from": "frame_offsets",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "outputidx": 0
+                },
+                "position": [
+                    4.53,
+                    -27.15
+                ],
+                "type": "output"
+            },
+            "scatter1": {
+                "inputs": [
+                    {
+                        "from": "grid1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "npts": 5
+                },
+                "position": [
+                    4.58,
+                    -23.15
+                ],
+                "type": "scatter::2.0"
+            }
+        },
+        "inputs": [
+            {
+                "from": "cache1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "primpath": "/instances",
+            "protoindexsrc": "nameattr",
+            "protopattern": "/geo/*",
+            "protosourcemode": "first"
+        },
+        "position": [
+            1.05,
+            -3.72
+        ],
+        "type": "instancer"
+    },
+    "merge1": {
+        "inputs": [
+            {
+                "from": "pig2",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "toy",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            1.04,
+            -1.69
+        ],
+        "type": "merge"
+    },
+    "pig2": {
+        "editables": {
+            "sopnet/create": {
+                "children": {
+                    "output0": {
+                        "flags": {
+                            "display": true,
+                            "render": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "transform1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "outputidx": 0
+                        },
+                        "position": [
+                            0.36,
+                            -2.15
+                        ],
+                        "type": "output"
+                    },
+                    "testgeometry_pighead1": {
+                        "position": [
+                            0.44,
+                            0.74
+                        ],
+                        "type": "testgeometry_pighead"
+                    },
+                    "transform1": {
+                        "inputs": [
+                            {
+                                "from": "testgeometry_pighead1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "t": [
+                                0,
+                                {
+                                    "expression": "sin(@Frame*3)*2"
+                                },
+                                0
+                            ]
+                        },
+                        "position": [
+                            0.43,
+                            -0.53
+                        ],
+                        "type": "xform"
+                    }
+                },
+                "type": "subnet"
+            }
+        },
+        "parms": {
+            "pathprefix": "/geo/pig",
+            "shear": [
+                0.2,
+                0.2,
+                0.2
+            ]
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "sopcreate"
+    },
+    "retimeinstances1": {
+        "editables": {
+            "sopnet/modify": {
+                "children": {
+                    "1": {
+                        "position": [
+                            0,
+                            6
+                        ],
+                        "type": "SubnetIndirectInput"
+                    },
+                    "from_lops": {
+                        "flags": {
+                            "display": true,
+                            "render": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            0,
+                            4.3
+                        ],
+                        "type": "null"
+                    }
+                },
+                "type": "subnet"
+            }
+        },
+        "inputs": [
+            {
+                "from": "instancer1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "instances": "/instances[*]"
+        },
+        "position": [
+            1.05,
+            -4.72
+        ],
+        "type": "retimeinstances",
+        "user_data": {
+            "__retime_data": "{\"/instances\": {\"isAnim\": 0, \"matching\": [-1, -1, -1, -1, -1], \"offsets\": [35.61150360107422, 33.43299865722656, 31.635631561279297, 41.67061233520508, 58.58302307128906], \"animoffsets\": [35.61150360107422, 33.43299865722656, 31.635631561279297, 41.67061233520508, 58.58302307128906], \"timescales\": [1, 1, 1, 1, 1], \"animtimescales\": [1, 1, 1, 1, 1]}}"
+        }
+    },
+    "toy": {
+        "editables": {
+            "sopnet/create": {
+                "children": {
+                    "output0": {
+                        "flags": {
+                            "display": true,
+                            "render": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "transform1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "outputidx": 0
+                        },
+                        "position": [
+                            0.36,
+                            -2.15
+                        ],
+                        "type": "output"
+                    },
+                    "testgeometry_rubbertoy1": {
+                        "position": [
+                            0.5,
+                            0.85
+                        ],
+                        "type": "testgeometry_rubbertoy"
+                    },
+                    "transform1": {
+                        "inputs": [
+                            {
+                                "from": "testgeometry_rubbertoy1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "t": [
+                                0,
+                                {
+                                    "expression": "sin(@Frame*3)*2"
+                                },
+                                0
+                            ]
+                        },
+                        "position": [
+                            0.43,
+                            -0.53
+                        ],
+                        "type": "xform"
+                    }
+                },
+                "type": "subnet"
+            }
+        },
+        "parms": {
+            "pathprefix": "/geo/toy",
+            "shear": [
+                0.2,
+                0.2,
+                0.2
+            ]
+        },
+        "position": [
+            2.05,
+            -0.03
+        ],
+        "type": "sopcreate"
+    }
+}

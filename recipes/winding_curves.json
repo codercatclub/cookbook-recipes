@@ -1,0 +1,1054 @@
+{
+    "CONTROLS": {
+        "color": [
+            1,
+            0,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "parms": {
+            "noise_offset": 4.53
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "cacheinput",
+                "parmtemplates": {
+                    "noise_offset": {
+                        "label": "Noise Offset",
+                        "tags": {
+                            "script_callback_language": "python"
+                        },
+                        "type": "float"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "Duplicate curve with random offset noise and scale. Useful for quick simple cable generations.",
+            "category": "geometry",
+            "image": "b6fb88dc748b.jpg",
+            "id": "b6fb88dc748b",
+            "date-created": "2025-11-16T17:58:36.027317795+04:00",
+            "date-modified": "2025-11-04T09:26:12.434835655Z",
+            "username": "kif",
+            "tags": [
+                "curves",
+                "cables",
+                "generator",
+                "noise",
+                "wires"
+            ]
+        }
+    },
+    "attribpromote1": {
+        "inputs": [
+            {
+                "from": "attribrandomize1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "inclass": "primitive",
+            "inname": "noise_mult"
+        },
+        "position": [
+            2.62,
+            4.32
+        ],
+        "type": "attribpromote"
+    },
+    "attribrandomize1": {
+        "inputs": [
+            {
+                "from": "copy1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "class": "primitive",
+            "dimensions": 1,
+            "distribution": "ramp",
+            "name": "noise_mult",
+            "ramp": [
+                {
+                    "interp": "constant",
+                    "pos": 0,
+                    "value": 0
+                },
+                {
+                    "interp": "constant",
+                    "pos": 9.999999974752427e-7,
+                    "value": 0.2068965584039688
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.19875776767730713,
+                    "value": 0.3965517282485962
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.48240166902542114,
+                    "value": 0.6551724076271057
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.9420289993286133,
+                    "value": 0.9655172228813171
+                }
+            ],
+            "seed": 3602
+        },
+        "position": [
+            2.62,
+            5.32
+        ],
+        "type": "attribrandomize"
+    },
+    "copy1": {
+        "inputs": [
+            {
+                "from": "resample1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "ncy": 11
+        },
+        "position": [
+            2.63,
+            6.32
+        ],
+        "type": "copyxform"
+    },
+    "curve1": {
+        "parms": {
+            "enablebezierops": false,
+            "mode": 0,
+            "optype": "transform",
+            "outputtype": "nurbs",
+            "parmpoints": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5d|v*3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFf\u003c@BG\u0026(XhIy5#W3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0P000000000000000000000000000000D-aQ3baZlQVs\u0026(7UvqVBZDDeGCJ-m`\u0026H*4GARsd`AaHMKZge1FbaZlQVs\u0026(7b2\u003crOWMpu3b1WcoZ*^{DV{dY9WpZ+1WNCGCEFf=kWMy(JAZ=l3ZggR3Zg6jDZgealZ*X*ZaAhnYV{dMDWpZ?5b#iuPb1WcXaBy;Ocx7\u00266bYX61Wo~qHEFg1lW^{CNVQzC~Z*pxcAYpZMZ*X*TEFf@fVQyt^ZEP$cZ*_EVb#!!jaAhnYXkl(-Y-MmUaBp)gAaZYXVRU6IAYo\u00264X?A6Ba%pWWAaH4RZ*+2RbYXO5EFfWZbZ=s1dTC{HEFe%UAaiYRZ**vIbaN~qXkl(-Y-MmTaBp)gAaZYYZe(L`a\u0026BdEaCCDlAY*TCb98cHX\u003eN0La$#v_Xmn+6EFg4pVQzD5VRU6IAZc!NWpZ$BWprq7WGo\u003caWoK\u003c=ZggU0dTC{HV{C78Wh@|YX?AaPbaG*Cb8KOBWh@|QVQyq\u003eWpFZZZ*wdlaBN|2Wp8q6XDlFLV{~bDWpHn4Zgg`jAZTH3WNc+{baN~qb7Ns_Wh@|bZ)S9Ka$#\u003cBW^ZzBa$#gFAY*TGZe?\u003cCbaM(IARr(hF(7AbZ(?C=AYpWLa%p09bY*io33g#}ZDDW\u003ceJc?NbZ\u003eBPY;R|ICJ|dJ5(sc_X\u003eN3KWo9N4TPqU\u003eX\u003eMd`V`XzD6F?FGU0o{_3So3~a%p09bY*iU6k9754{\u0026d3ZggREbaH88b#!HOCKX#-TPqd?b7OCCWhNFY7Y1;3Vr*$+CKoFh1ax_DWhNLa83%54ZDn$4V\u003cs6Z8U$`(ZDl4JD;oh\u0026CL1dp2XAn6X\u003eV?GCLDVv7\u003c(odD;)-NbaH8KXC@sh9tCz`Y;|QO9xEROaBpdDbS58teO+5CAOv%1dSxac5d$kB2Xl09a$#p\u003eCLt\u003e#2xf3{WnpYHGA1G`BM4+=W?^+~baN\u0026nTP7e80VW|UBnW13a%Ev`HZ\u0026$AD\u003cuYYVQh6}b0#G~8UX+R00000003PkC0iyS5d$V6CL${)2ykI%WpinIWhN#P00b*15o2#|b97;DbZ}v3WoB$)XLBYeTR;#20RR91T`MRHa$$FHVP|DzVRT_8C_otl000000000000000U0q#UTP7AJ7bX}c9VQwpDGXs_bZK^FaBpdDbaN\u0026tCLDWxU0Ws~5dkJ4D=GzPZgev;CMqi{2Xl0CX\u003eMn8CM#PjECDbkEGsPmF(xf5E\u0026(zoE-NnqGbS%xCKFpGAQ1s3Atov\u0026CK3PyCMZA?1^@s5{{R300096100IC200RI309{\u003eOTU#a;CKo0cCK)CgD=-RSV{~bDWpHw7Z6+`#9D61hdnOnr9VQ+tF%@oaZeen1bZBj5bZKK\u003eX\u003eN37XJv9GF@1eqTP7e80VW|PDkdXaCLj?3CLt\u003e_1!-\u003c{HZ\u0026$OCM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y?pfVPs@*baN\u0026%CLDWxU0Ws~5dkJ4CMqT?TPrlOFfK4KG%`6bFfcPWIW;jiHa9dhH7qbLFflSXH!v_UFgY\u003cfI5s#rG\u0026U?SE-)Z4E;ckbH#smiF)%kdFfuhVH!LkME;2bYF*PtUH#IplH8wUgG\u0026L+RE-)Z5E;KYaH90XeH8C|XIWRdiGAu1HE;BMWG\u0026e9aFfuhbF*i6jF)T1HFd#B6GB7YVH!?6ZH!w6ZI5ajlEHExGFf=kbFfcGPGcq|fF*P(bH!LtNFd!y0T_zJ-CLj?3CLty\u0026CMFU91STjz69oVO00960|NsC0|NsC0|NsC0|NmWGU0Yiw7A6-a7$zAe8Y?vsVQ_GAZ+K;HWOQL}XJu}5b0#$=9D61hdnOnr9VQ+oF@1eqTP7e80VW|PDkdXaCLj?3CLty=CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y?ymVRdwGVr6=1WpXAqCLDVv7\u003c(odCLJaoCNX_|U0Ws~5dkJ4CMqT)TP7e80VW|PGA1QJ6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6iCK@X@2Vr$|Z*X*TCO0M=dwpG7CLj?3CLty\u0026CM#QACKFpGAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd|NsC0U0q#UTP7AJ7bX}c873MlI1^)UZgX^UVQFr2baG*7XJ~X~ZYDS;9D61hdnOnr9VQ+oF@1eqTP7e80VW|PDkdXaCLj?3CLty=CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y?*sV{dMDWpZ?5b#iuPb0#?^9D61hdnOnr9VQ+oF@1eqTP7e80VW|PDkdXaCLj?3CLty=CM7@=0RaF20000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y?;pV{dY9WpZ$Ib0#__9D99TTP7e80VW|PDkdviT_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0ssI1|6N^OTU#a;CKo0cCK)CgD?1BlVQyq\u003eWpFTXZ*wL)CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u70D!*$0000000018U0qvSCKe_aCKx6eCK@X|3us|(WNc+{F\u003er5lCOjq_dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCK)CgD?JNnVQyq\u003eWpFZZZ*wL+CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u70DwOL0000000018U0qvSCKe_aCKx6eCK@X~320$%WNc+{baN\u0026?CLDVv7\u003c(odCLJaoCNX_|U0Ws~5d$V6CMqT)TP7e80VW|PGA1QJ6aoML|NsC0|NmVkC0iyS5d$V6CMqT-5\u0026#4yCtE-e0RaF209__1KobN1|NsC0|NsC0|NsA8U0qvSCKe_aCKx6eCK@Y03~6q3WpZ$BWprq7WF|i*9D61hdnOnr9VQ+oF@1eqTP7e80VW|PDkdXaCLj?3CLty=CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y@5zZDDC{bYW?3aBpdDbS6M19D61hdnOnr9VQ+oF@1eqTP7e80VW|PDkdXaCLj?3CLty=CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y@8tZ*X*ZaAhVzCLDWxU0Ws~5dkJ4CMqT?TPs2fVQ_F|Ze(z8X\u003eN2TLMuZFbaG*Cb7pUHZ6-rqCKFpGAQ1s3Atov\u0026CK3PyCMZA?1poj50096100961009610096109{\u003eOTU#a;CKo0cCK)CgD?|lva%5$4CPXG2dnOorCKx6iCLSg+eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Ato{=B|sDb1ONa400000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0R#X509{\u003eOTU#a;CKo0cCLJakD@6)#b#!obbaZ)eWhO-?9D99TTP7e80VW|PDkdviD@Fxwb#h{JCPrN*6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@Y83vg+6Z*+2RbYXO5CPyY5dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCK)CgD@YD-X?AaPbaG*Cb8KOBWhO`_9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br|Kp77J00000000000000flZ-pP+)_LM0001+)g?d67nZ\u0026N0001SYq\u003eu#s;9mH0001U*$hA^lZ-n600018U0qvSCKe_aCKx6eCK@YA2ykp+Ze?z5Y$i!29D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS00000fIk2L003QGU0Yiw7A6-a7$zAe8Y@Z(aBN|2Wp8q6XC_J}9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zAe8Y@c%a\u0026L5DbY\u0026(\u003eCLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000000000018U0qvSCKe_aCKx6iCK@YD4svgGZe(L`a\u0026BdEaCCDfOeP$AeO+57AQ1s3Atov\u0026D_dPA6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobG~|NsA8U0qvSCKe_aCKx6eCK@YE5pr*JZe(L`a\u0026BdEa$#g?b#o?7CLDWxU0Ws~5dkJ4CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5dkJ4CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6o500018U0qvSCKe_aCKx6eCK@YF1#@FzY-J`+CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000@IPH9C0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u70DwOL0DwOL0DwPTU0qvSCKe_aCKx6eCK@YG5_4r|ZDnqBVr6=1WpZO|Z*yfPPbM6DCK!7r7$zMi9wsq;eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CNd@^KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd0RR91U0q#UTP7AJ7bX}c9VQwpPziHwZ*O#HaCCDfP$nFEeO+57AQ1s3Atov\u0026D_bj30V*a@T_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD^d+}Z)S9Ka$#\u003cBW^ZzBCQ\u003eFGdnOorCKx6iCLSg+eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Ato{=B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD^n12Z)S9Ka$#\u003cBW^ZzBa$#g9QzjgHeO+57AQ1s3AtoXwBU\u003egQ5dkJ4CL|^$KpFu6000000N_7eCM8=YAQ1s3AtoXwCK3PyCMR1!5CH)I003PkC_otj0000#U0q#UTP7AJ7bX}c873MlR0(u)VQzD5VRU6CR3;pIeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMZA|4*\u0026oF00000000000D8hEI}tP@JOBUy0DuHEJV36Sy8r+H0Pu{{Jpfq}y8r+H003atIX`U!yZ`_I09{\u003eOT`N@(XKZg`VQgV^baH88b#!HOCRJNoTP7AJ7bX}c9VQwpRt9!qa\u00262L7CRQdKdn;ECVr*|\u003eI\u0026*Y#X\u003eMn8WppN2dnOnwSOj8kZ)_%5CLS?;eO+57AQ2xXAtov\u0026D_bjB5N~jFd2nSQEj}PmP*hn^MJ8D*S{z|xbZK^FaBpdDbaNmrJ|ICuR7qAvP)|utR8uBeD_am@WMpu3b094~AVEY#P*hVUTPs``VPkY@c4csKX\u003eA}aJ|ICuR7qAvP*O=vCR{6B9\u0026KT1ZggR3Zg6jDZge0mJ|Im\u0026NlsKjNls8tNlsKIT`OKDVQ_GAZ+K;HWOQL}XJu}5b094~AVE-2QcqY#PDE5ePDe#fR8uBiD_\u003cCIb#!obbaZ)eWgsm+AWv0PP*qe^Sx`kLUn^h^Z*pX1av\u0026`}AWu?6MN%eUD`6\u0026bZ*^{DV{dY9WpZ+1WNCGCAT2\u00261QcqP*L_\u003c$fPDN5uK}1PaQzl_6Visd\u003ea\u0026BdEaCCDZEj}PaPf|`rQczS=CSogN7ISTHZ**vIbaNmrJ|I\u0026~Pft`xP*hVUV=H75VRdwGaCCDZEj}PYRa8$\u003cR8uBoD`g;ZZ*^{DV{dY9WpZ$Ib094~AW~0NPDDdbQcguuP*hVUWh-VXV{dMAbaG*7ZgX^UVQFV*bY*TJEj}PaPfk-*Qb9\u003ehQ\u0026dtxNk\u003eRjMNTGWD`y;OZggdGaBXFDXm4a7Ej}PgPE\u003cuwP)$WtNKZs2XDetPV{dMDWpZ?5b#iuPb094~AVW`1Rz*@\u0026Lse2%MN=kdD`_5cZ)S9Ka$#\u003cBW^ZzBAT2\u00261Q%^=zR8m1sQ$|lxO(tn8Y9w=SW^{CNVQzC~Z*pyNVPqgJJ|I(1MpRT%K~7UfPf|@%K}05MD{B^Xa$#\u003cBY+-a|AT2\u00261R8m1sQ%pfrMJ8)2Y!Gs9bYXO5AT2\u00261QcqMtR7ECiD{T\u0026QV_|G%AT2\u00261Q$s;aMJ8=4ZXj@Jc5ifaa$#\u003cBY+-a|AT2\u00261P)Sx#R8\u0026$yPE$-lR7ECkD{mTbX?AaPa\u0026L5DbY\u0026ndJ|Iv@R!\u003ew?PgFrvMJ8`6a29A`Ze(m_aCCDZEj}PfK~6+WMNm{zCU7fp8fal|WNc+{FmP{kAT2\u00261NI_0SOhr\u0026IP)}1PaVv5fXkl(-Y-MmUaBp)UEj}PfK~6+WMNlzNPg5pxD{~rXVQyq\u003eWpFZZZ*w3mJ|IXzPDD\u0026aP%=\u003cYQzmmObQW-IVQyt_a%pEEEj}PnOhHaXPf|%oCUh%x6mV=|Ze?z5Y#=Q@AW%#}PDM^lOeS?Jb{JuGbZ=s1dTC{HAT2\u00261K~+\u003ewLPc6hMN%eqD|aY!WoK\u003c=ZggU0dTC{HV{C78Wgsm+AX7z0O+`*rLPc6hMN\u0026gdPg6xEcU\u003ekETP7e8A0{CtDkdfp00br{TR;#20RR91T_z|%6CVHo000310006200093000C4000F5000I6000L7000O8000R9000UA000XB000aC000dD000gE000jF000mG000pH000sI000vJ000yK000#L000\u0026M000*N000;O000\u003eP000^Q000{R000~S0012T0015U003QGU0q!(cnWZGX\u003eDnAX?A6ECU{$2Ck1J4WMz0;Ck|\u003cDbY*8{a%FCGa%p9AdwnMjb98cPZf9j~baH8Bb9;R!5ovC8WoKn_Yh`(5ZggpKWpjIdClGUVa%pa7Yh`(5Zgg^KWpjIdT_+7`Ze(S6aBp*IbZKvH6lMSb0000009^"
+            },
+            "savedstashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5d\u003cp)3wC94bY*yBZ*^{TCIk@#D+La4a%pX8bZK^FV{dhCbS4E60V@UsX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFf\u003c@BG\u0026(XhIy5#W3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0PX7t}XCg2P};?AhPXNbBy0000000000D-aQIa%pX2Z*^{TUvqVBZDDeGCJ-kWARr(hARr(hARsXyPE}GuQy@cia\u0026~13D-jW4baZlQVs\u0026(7UvqVBZDDeGCJ`q{ARr(hATc0tZ)t9HAYpWLa%p09bY*io2~Y|kARr(hF(7AbZ(?C=AYpWLa%p09bY*io3144wZ*^{DWn^P-a\u0026BdEaCCDDD-sQ7a\u0026L8TUvqVBZDDeGCK4whARr(hATc0tZ)t9HAZK!Kb#QY!2?\u003c|cVRdwGUvPAD3VkaR2y}07Z)|U8c_tHED-;NDZ)t9Ha%E;F6k9752Wf6(X=7z`CKW\u0026u1ONa500IC509{=x77Af\u003ebaH88b#!HOCKg*O7Y}f6X\u003eN33baZlQVs\u0026(7b0!yCTU#p_1#@F\u003eaAhVKD;WlGbz*F3V\u003cs6Z8U%ECaAhVMD;o!Hb!}yGX=5fED;xxFVQpn594j3GP$nHK9tUr5bZKvHb0!{pCK`Jt8Y\u003e?Lb98cPZf7PRD\u003cB1SVQh6}CLk*z1#oX^ZgeIgeSKY9D\u003cTAQX?kTQA`t^CBL{PIZ*pO0WhNslBnW13a%Ev`GcqP5D\u003cueIWoBV@Y;\u003c!bC0iyU5dkJ6D\u003c%kLaB^i~Y\u0026J9|CMzcfc42IFWpgGcKpFu60000000018CMR1aA`t^7BPJv(C\u003ct(2XJvC~dSxak5\u0026#4%DGPF8cW_~6Wn^J=VJ0a+84PCh-#cfBx;y{?006C}C_jXTn7#l2002Ow#y{fDsJ;LI001W73_z@obh`im003QGU0o|G5NB*}Vqt7ybaZlQVs\u0026(7b0#WVTU#a=CK)CgCLbmoD=QLTUvh7CZe(R-V{dY9WpZ$Ib0#Y$9(#RVTP7kA0VX3WECp$9bTcw0EGsPsb98cPZfA2QEn8hC6\u003ca1E5dkJ6CM+f\u003e5\u0026#4%E)ipIZgX^DZgg;AXJuw=VP|tDE?Ynl0RaF209__2KobG~|NsA8U0q#WD=!Lga%pX8bZK^Fb0#laTU#a?D=-O8RZ\u003eDjb#iuPCNN!FD=`LkWpZ?7cqTDG5(EGM0RRF30{|;B24ie*b7f\u003eEGB7JM1!7@yX\u003e%qsTP7MSGzCsoQbJQEG%Ga)Z*pX1awatq1S\u003eWWWo~3?ZggdGaBpm3bZKvHCN?oEHw9~MZ*+4eH$WN)000000000000000000000000000000000000000000000008hm00000008hm00000008hm00000008hmU0q#WD\u003ew^qZ)t9HXL4_KaC0U\u0026TU%Qu94k2rUteK$bZ=j9baN\u0026-U0W+U33Fv^Wn*+{Z*C?!TPr\u0026Wb#8BRWMy(?WF|XXD?9\u003eeI3_$m5d;7L003QGU0q!#1!-\u003c%Wq4aB4ry+5WoKn_Wo~qGX=QVJeJ2fbbaH8KXJu}5a%p9AdwnMnX\u003eN37XJvA0WqD\u003c8bZK\u0026Bb9;R!5OZ{LX\u003eMn0WqD\u003c8baH8Bb9;SVCk\u003c(CWMz18Z*ysMX\u003eV\u003e6W\u0026i*H00000T\u003e"
+            },
+            "stashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5dbR$3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFf\u003c@BG\u0026(XhIy5#W3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0P|NsAf|NsB~|NsAf|NsB~|NsAf|NsB~D-aQ3baZlQVs\u0026(7UvqVBZDDeGCJ-kZARr(hATc0tZ)t9HAYpWLa%p09bY*io2~Y}sD-j5EZ*XsHZ)bTX5nC$~2yky{Zgg^GW+oC_D-#E4Ze(d=WpgGIKoS65T`Lp{VRUqIX\u003c~JBWpgGJTPqb0aBpdDbYXOKa%p09bY*iU6\u003cb?dD;5QFV{dR}CKf9f25@y^Y-wXA7b_S9ba`-PCKxLj2X1w3WpZg_CK)Rl1a4t%WhNRc8v#%z8!H?KZ*X*JZ*FrY9D61hdnOnw9R_oBa%pa7CLJpt1$JR\u003cb!8?VD\u003c1`LZ)t9HCLeu$U0W+41aoP6WhNjI11lj1b98TVVP|C~AuA#XW^i(4VQe!pCL${%2xMhuVRdYDb0#BOCLj?3CLt\u003e%2xf3{WnpYKG$te~B?fk3Y;|RGCM7@`0RR910000009_^}TP7e8112FRA}b~caA9X\u003cb7^{ICMFU91S=;Ca$$FHVP|DzVRT_8CqNkhU0q#WT`MRGaB^vFX\u003e@6JWpgGdTU{pwX\u003eMd?cv~k9X\u003eN37XJv9_Zgg^KWpjIdCk=CSa%pa7Wo~qGX=QVJeJ2rVZggd5WpZm}d1Y\u003eNX\u003ew(AdwnMmb98cPZf9#{d1Y\u003eNa%p9AdwpFe4QXy\u003cWq5FJb7^#GZ*CN30000000018"
+            },
+            "stashid": ";"
+        },
+        "position": [
+            2.65,
+            8.41
+        ],
+        "type": "curve::2.0"
+    },
+    "foreach_begin1_metadata2": {
+        "color": [
+            0.75,
+            0.4,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "parms": {
+            "blockpath": "../foreach_end2",
+            "method": "metadata"
+        },
+        "position": [
+            5.75,
+            3.34
+        ],
+        "type": "block_begin"
+    },
+    "foreach_begin2": {
+        "color": [
+            0.75,
+            0.4,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "attribpromote1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "blockpath": "../foreach_end2",
+            "method": "piece"
+        },
+        "position": [
+            2.63,
+            3.27
+        ],
+        "type": "block_begin"
+    },
+    "foreach_end2": {
+        "color": [
+            0.75,
+            0.4,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "random_pscale",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "blockpath": "../foreach_begin2",
+            "class": "primitive",
+            "itermethod": "pieces",
+            "method": "merge",
+            "templatepath": "../foreach_begin2",
+            "useattrib": false
+        },
+        "position": [
+            2.63,
+            -0.97
+        ],
+        "type": "block_end"
+    },
+    "noise_influence_ramp": {
+        "inputs": [
+            {
+                "from": "foreach_begin2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "grad": [
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0,
+                    "value": 0.18965516984462738
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.5,
+                    "value": 1
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 1,
+                    "value": 0.13793103396892548
+                }
+            ],
+            "snippet": "f@grad = chramp(\"grad\", @ptnum / (@numpt - 1.0));"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "folder0_1",
+                "parmtemplates": {
+                    "grad": {
+                        "label": "Grad",
+                        "script_callback_language": "hscript",
+                        "show_controls": true,
+                        "type": "ramp_float"
+                    }
+                }
+            }
+        ],
+        "position": [
+            2.62,
+            2.19
+        ],
+        "type": "attribwrangle"
+    },
+    "noise_offset": {
+        "children": {
+            "aanoise1": {
+                "inputs": [
+                    {
+                        "from": "geometryvopglobal1",
+                        "from_index": "P",
+                        "to_index": "pos"
+                    },
+                    {
+                        "from": "freq",
+                        "from_index": "freq",
+                        "to_index": "freq"
+                    },
+                    {
+                        "from": "offset",
+                        "from_index": "offset",
+                        "to_index": "offset"
+                    },
+                    {
+                        "from": "amp",
+                        "from_index": "amp",
+                        "to_index": "amp"
+                    },
+                    {
+                        "from": "rough",
+                        "from_index": "rough",
+                        "to_index": "rough"
+                    },
+                    {
+                        "from": "maxoctave",
+                        "from_index": "maxoctave",
+                        "to_index": "maxoctave"
+                    },
+                    {
+                        "from": "noisetype",
+                        "from_index": "noisetype",
+                        "to_index": "noisetype"
+                    }
+                ],
+                "parms": {
+                    "amp": 0.258,
+                    "maxoctave": 1,
+                    "rough": 0.288,
+                    "signature": "vv"
+                },
+                "position": [
+                    6.71,
+                    -6.52
+                ],
+                "size": [
+                    1.77,
+                    1.58
+                ],
+                "type": "aanoise"
+            },
+            "add1": {
+                "inputs": [
+                    {
+                        "from": "geometryvopglobal1",
+                        "from_index": "P",
+                        "to_index": "input1"
+                    },
+                    {
+                        "from": "multiply1",
+                        "from_index": "product",
+                        "to_index": "input2"
+                    }
+                ],
+                "position": [
+                    12.73,
+                    -3.76
+                ],
+                "size": [
+                    1.77,
+                    0.98
+                ],
+                "type": "add"
+            },
+            "amp": {
+                "flags": {
+                    "expose": false
+                },
+                "parms": {
+                    "exportcontext": "cvex",
+                    "floatdef": 0.258,
+                    "parmlabel": "Amplitude",
+                    "parmname": "amp",
+                    "rangeflt": [
+                        -1,
+                        1
+                    ]
+                },
+                "position": [
+                    4.41,
+                    -5.92
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "parameter"
+            },
+            "bind1": {
+                "parms": {
+                    "exportcontext": "cvex",
+                    "parmname": "grad"
+                },
+                "position": [
+                    6.71,
+                    -5.02
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "bind"
+            },
+            "bind2": {
+                "parms": {
+                    "exportcontext": "cvex",
+                    "parmname": "noise_mult"
+                },
+                "position": [
+                    6.71,
+                    -8.99
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "bind"
+            },
+            "freq": {
+                "flags": {
+                    "expose": false
+                },
+                "parms": {
+                    "exportcontext": "cvex",
+                    "float3def": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "parmlabel": "Frequency",
+                    "parmname": "freq",
+                    "parmtype": "float3"
+                },
+                "position": [
+                    4.21,
+                    -5.52
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "parameter"
+            },
+            "geometryvopglobal1": {
+                "flags": {
+                    "display": true,
+                    "render": true
+                },
+                "position": [
+                    3.83,
+                    -3.8
+                ],
+                "size": [
+                    1.77,
+                    3.83
+                ],
+                "type": "geometryvopglobal::2.0"
+            },
+            "geometryvopoutput1": {
+                "inputs": [
+                    {
+                        "from": "add1",
+                        "from_index": "sum",
+                        "to_index": "P"
+                    }
+                ],
+                "position": [
+                    15.59,
+                    -3.76
+                ],
+                "size": [
+                    1.77,
+                    1.28
+                ],
+                "type": "geometryvopoutput"
+            },
+            "maxoctave": {
+                "flags": {
+                    "expose": false
+                },
+                "parms": {
+                    "exportcontext": "cvex",
+                    "intdef": 1,
+                    "parmlabel": "Max Octaves",
+                    "parmname": "maxoctave",
+                    "parmtype": "int",
+                    "rangeint": [
+                        0,
+                        32
+                    ]
+                },
+                "position": [
+                    4.61,
+                    -6.32
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "parameter"
+            },
+            "multiply1": {
+                "inputs": [
+                    {
+                        "from": "aanoise1",
+                        "from_index": "noise",
+                        "to_index": "input1"
+                    },
+                    {
+                        "from": "bind1",
+                        "from_index": "grad",
+                        "to_index": "input2"
+                    },
+                    {
+                        "from": "bind2",
+                        "from_index": "noise_mult",
+                        "to_index": "input3"
+                    }
+                ],
+                "position": [
+                    9.73,
+                    -5.5
+                ],
+                "size": [
+                    1.77,
+                    1.13
+                ],
+                "type": "multiply"
+            },
+            "noisetype": {
+                "flags": {
+                    "expose": false
+                },
+                "parms": {
+                    "exportcontext": "cvex",
+                    "menuchoices": "noise \"Perlin\" xnoise \"Simplex\" ",
+                    "parmlabel": "Noise Type",
+                    "parmname": "noisetype",
+                    "parmtype": "string",
+                    "providemenu": "on",
+                    "stringdef": "noise"
+                },
+                "position": [
+                    4.71,
+                    -6.52
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "parameter"
+            },
+            "offset": {
+                "flags": {
+                    "expose": false
+                },
+                "parms": {
+                    "exportcontext": "cvex",
+                    "parmlabel": "Offset",
+                    "parmname": "offset",
+                    "parmtype": "point"
+                },
+                "position": [
+                    4.31,
+                    -5.72
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "parameter"
+            },
+            "rough": {
+                "flags": {
+                    "expose": false
+                },
+                "parms": {
+                    "exportcontext": "cvex",
+                    "floatdef": 0.288,
+                    "parmlabel": "Roughness",
+                    "parmname": "rough"
+                },
+                "position": [
+                    4.51,
+                    -6.12
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "parameter"
+            }
+        },
+        "inputs": [
+            {
+                "from": "noise_influence_ramp",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "amp": 1,
+            "freq": [
+                0.2,
+                0.2,
+                0.2
+            ],
+            "noisetype": "xnoise",
+            "offset": [
+                {
+                    "expression": "detail(\"../foreach_begin1_metadata2/\", \"iteration\", 0)*5"
+                },
+                {
+                    "expression": "detail(\"../foreach_begin1_metadata2/\", \"iteration\", 0)*10"
+                },
+                {
+                    "expression": "ch(\"../CONTROLS/noise_offset\")"
+                }
+            ],
+            "rough": 0.617
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "stdswitcher_1",
+                "parmtemplates": {
+                    "Cd": {
+                        "default_value": [
+                            1,
+                            1,
+                            1
+                        ],
+                        "hidden": true,
+                        "label": "Cd",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "Frame": {
+                        "hidden": true,
+                        "label": "Frame",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "N": {
+                        "hidden": true,
+                        "label": "N",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "OpInput1": {
+                        "hidden": true,
+                        "label": "First Input",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "string"
+                    },
+                    "OpInput2": {
+                        "hidden": true,
+                        "label": "Second Input",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "string"
+                    },
+                    "OpInput3": {
+                        "hidden": true,
+                        "label": "Third Input",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "string"
+                    },
+                    "OpInput4": {
+                        "hidden": true,
+                        "label": "Fourth Input",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "string"
+                    },
+                    "P": {
+                        "hidden": true,
+                        "label": "P",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "Time": {
+                        "hidden": true,
+                        "label": "Time",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "TimeInc": {
+                        "hidden": true,
+                        "label": "Time Inc",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "age": {
+                        "hidden": true,
+                        "label": "Age",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "amp": {
+                        "default_value": 0.258,
+                        "label": "Amplitude",
+                        "max_value": 1,
+                        "min_value": -1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "force": {
+                        "hidden": true,
+                        "label": "Force",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "freq": {
+                        "default_value": [
+                            1,
+                            1,
+                            1
+                        ],
+                        "label": "Frequency",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "id": {
+                        "default_value": -1,
+                        "hidden": true,
+                        "label": "Id",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "life": {
+                        "hidden": true,
+                        "label": "Life",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "maxoctave": {
+                        "default_value": 1,
+                        "label": "Max Octaves",
+                        "max_value": 32,
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "noisetype": {
+                        "default_value": "noise",
+                        "label": "Noise Type",
+                        "menu_items": [
+                            {
+                                "label": "Perlin",
+                                "token": "noise"
+                            },
+                            {
+                                "label": "Simplex",
+                                "token": "xnoise"
+                            }
+                        ],
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "string"
+                    },
+                    "numprim": {
+                        "hidden": true,
+                        "label": "Number of Prims",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "numpt": {
+                        "hidden": true,
+                        "label": "Number of Points",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "numvtx": {
+                        "hidden": true,
+                        "label": "Number of Vertices",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "offset": {
+                        "label": "Offset",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "primnum": {
+                        "hidden": true,
+                        "label": "Primitive Number",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "ptnum": {
+                        "hidden": true,
+                        "label": "Point Number",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "rough": {
+                        "default_value": 0.288,
+                        "label": "Roughness",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "uv": {
+                        "hidden": true,
+                        "label": "UV",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "v": {
+                        "hidden": true,
+                        "label": "Velocity",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "vtxnum": {
+                        "hidden": true,
+                        "label": "Vertex Number",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    }
+                }
+            }
+        ],
+        "position": [
+            2.62,
+            1.16
+        ],
+        "type": "attribvop"
+    },
+    "random_pscale": {
+        "inputs": [
+            {
+                "from": "noise_offset",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "foreach_begin1_metadata2",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "max_rad": 1,
+            "min_rad": 0.1,
+            "snippet": "int i = detail(1, \"iteration\", 0);\n\n@pscale = fit01(rand(i), ch(\"min_rad\"), ch(\"max_rad\"));"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "folder0_1",
+                "parmtemplates": {
+                    "max_rad": {
+                        "label": "Max Rad",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "type": "float"
+                    },
+                    "min_rad": {
+                        "label": "Min Rad",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "type": "float"
+                    }
+                }
+            }
+        ],
+        "position": [
+            2.62,
+            -0.06
+        ],
+        "type": "attribwrangle"
+    },
+    "resample1": {
+        "inputs": [
+            {
+                "from": "curve1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "length": 0.05
+        },
+        "position": [
+            2.66,
+            7.4
+        ],
+        "type": "resample"
+    },
+    "sweep1": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "foreach_end2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "applyscale": true,
+            "capdivs": 1,
+            "capscale": 0,
+            "cols": 16,
+            "computeuvs": true,
+            "endcaptype": "grid",
+            "radius": 0.014,
+            "scaleramp": [
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "surfaceshape": "tube"
+        },
+        "position": [
+            2.57,
+            -2.28
+        ],
+        "type": "sweep::2.0"
+    }
+}

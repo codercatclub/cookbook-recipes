@@ -1,0 +1,87 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "description": "Common vex snippet used for assigning point groups to the first and last points on a curve. Useful when needing a group to pin on a vellum hair sim.",
+            "category": "vex",
+            "image": "145e29d9aa28.jpg",
+            "id": "145e29d9aa28",
+            "date-created": "2025-11-09T08:06:59.26188603Z",
+            "date-modified": "2025-11-09T08:06:59.261886491Z",
+            "username": "snay",
+            "tags": [
+                "vex",
+                "point",
+                "prim",
+                "curve",
+                "tip",
+                "animation",
+                "pinning"
+            ]
+        }
+    },
+    "line1": {
+        "parms": {
+            "points": 30
+        },
+        "position": [
+            0,
+            1.27
+        ],
+        "type": "line"
+    },
+    "set_first_and_last_group": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "line1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "class": "primitive",
+            "head_length": 1,
+            "snippet": "int pts[] = primpoints(0, @primnum);\n\nfor (int i = 0; i \u003c chi(\"head_length\"); i++) {\n    setpointgroup(0, \"first\", i, 1);\n}\n\nfor (int i = 0; i \u003c chi(\"tail_length\"); i++) {\n    setpointgroup(0, \"last\", len(pts)-1-i, 1);\n}\n\n\n\n\n",
+            "tail_length": 1
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "head_length": {
+                                "label": "Head Length",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "type": "integer"
+                            },
+                            "tail_length": {
+                                "label": "Tail Length",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "type": "integer"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "type": "attribwrangle"
+    }
+}

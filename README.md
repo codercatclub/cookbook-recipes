@@ -1,2 +1,2 @@
 # cookbook-recipes
-Backup of all recipes on https://codercat.xyz/cookbook/
+Public backup of all recipes on https://codercat.xyz/cookbook/

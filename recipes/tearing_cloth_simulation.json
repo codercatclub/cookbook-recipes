@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Art direct seams in a base geometry, and use them as tearing points in a vellum simulation when under stress. Can be used for skin tears as well, ex. thorns growing out of skin.",
             "category": "vellum",
-            "image": "tear.gif",
-            "id": "2d0c45b624ef",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "snay",
+            "description": "Art direct seams in a base geometry, and use them as tearing points in a vellum simulation when under stress. Can be used for skin tears as well, ex. thorns growing out of skin.",
+            "id": "2d0c45b624ef",
+            "image": "tear.gif",
             "tags": [
                 "simulation",
                 "tearing",
@@ -16,8 +15,10 @@
                 "rui",
                 "thorn",
                 "vellum"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "circle1": {
         "parms": {

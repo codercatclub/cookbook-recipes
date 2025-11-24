@@ -30,21 +30,22 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Bake point attributes to textures in COPs. Doing vex calculations inside of COPs allows for smooth textures that can scale to any texture resolution. Geometry obviously will need UVs",
             "category": "copernicus",
-            "image": "bake_attrib.jpg",
-            "id": "283afaf94b84",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "snay",
+            "description": "Bake point attributes to textures in COPs. Doing vex calculations inside of COPs allows for smooth textures that can scale to any texture resolution. Geometry obviously will need UVs",
+            "id": "283afaf94b84",
+            "image": "bake_attrib.jpg",
             "tags": [
                 "COPs",
                 "entagma",
                 "bake",
                 "texture",
                 "favorite"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "autouv1": {
         "inputs": [

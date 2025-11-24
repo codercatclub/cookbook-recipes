@@ -2,21 +2,22 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "A few nodes to create a basic petal shape, with common masks, deformation, and UVs. This should provide a good base layer of detail to feed into a vellum simulation.",
             "category": "geometry",
-            "image": "53f42a51b249.jpg",
-            "id": "53f42a51b249",
             "date-created": "2025-11-16T17:58:36.006061101+04:00",
             "date-modified": "2025-11-05T16:18:14.25827466Z",
-            "username": "snay",
+            "description": "A few nodes to create a basic petal shape, with common masks, deformation, and UVs. This should provide a good base layer of detail to feed into a vellum simulation.",
+            "id": "53f42a51b249",
+            "image": "53f42a51b249.jpg",
             "tags": [
                 "flower",
                 "kkfrag",
                 "plant",
                 "nature",
                 "organic"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "assign_edge_val": {
         "inputs": [

@@ -20,21 +20,22 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "n Solaris, you can randomize textures and material parameters per instance using Attribute Randomize. Assign string attributes for texture paths and float attributes for values, then duplicate the node with the same seed so strings align with floats, enabling sub‑materials in one master",
             "category": "shading",
-            "image": "2ec200a8715a.jpg",
-            "id": "2ec200a8715a",
             "date-created": "2025-11-20T12:30:24.91976839Z",
             "date-modified": "2025-11-20T12:30:24.919768843Z",
-            "username": "Faitel",
+            "description": "n Solaris, you can randomize textures and material parameters per instance using Attribute Randomize. Assign string attributes for texture paths and float attributes for values, then duplicate the node with the same seed so strings align with floats, enabling sub‑materials in one master",
+            "id": "2ec200a8715a",
+            "image": "2ec200a8715a.jpg",
             "tags": [
                 "uniform",
                 "string",
                 "attributes",
                 "float",
                 "textures"
-            ]
-        }
+            ],
+            "username": "Faitel"
+        },
+        "version": ""
     },
     "attribrandomize1": {
         "inputs": [

@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "lop",
         "systemfields": {
-            "description": "LOPs lighting setup for early morning. This recipe just uses standard USD lights.",
             "category": "lighting",
-            "image": "73d4066e95ef.jpg",
-            "id": "73d4066e95ef",
             "date-created": "2025-11-05T00:00:00Z",
             "date-modified": "2025-11-05T10:56:25.161814921Z",
-            "username": "kif",
+            "description": "LOPs lighting setup for early morning. This recipe just uses standard USD lights.",
+            "id": "73d4066e95ef",
+            "image": "73d4066e95ef.jpg",
             "tags": [
                 "light",
                 "lighting",
@@ -17,8 +16,10 @@
                 "scene",
                 "morning",
                 "scenario"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "camera11": {
         "flags": {

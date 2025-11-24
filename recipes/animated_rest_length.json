@@ -16,13 +16,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Animate and update the rest length parameter during a vellum simulation. Uses vellum constraint properties inside the vellum solver.",
             "category": "vellum",
-            "image": "animate_restlength.gif",
-            "id": "5fd362fd5138",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "snay",
+            "description": "Animate and update the rest length parameter during a vellum simulation. Uses vellum constraint properties inside the vellum solver.",
+            "id": "5fd362fd5138",
+            "image": "animate_restlength.gif",
             "tags": [
                 "vellum",
                 "cloth",
@@ -30,8 +29,10 @@
                 "restscale",
                 "constraints",
                 "favorite"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "animate_rest_scale": {
         "inputs": [

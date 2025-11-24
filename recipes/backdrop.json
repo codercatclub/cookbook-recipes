@@ -23,13 +23,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Simple geometry backdrop for product rendering.",
             "category": "geometry",
-            "image": "2ec2e16b03f5.jpg",
-            "id": "2ec2e16b03f5",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "kif",
+            "description": "Simple geometry backdrop for product rendering.",
+            "id": "2ec2e16b03f5",
+            "image": "2ec2e16b03f5.jpg",
             "tags": [
                 "backdrop",
                 "layout",
@@ -37,8 +36,10 @@
                 "packshot",
                 "turntable",
                 "geo"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "blast1": {
         "flags": {

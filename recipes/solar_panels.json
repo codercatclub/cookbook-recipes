@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "lop",
         "systemfields": {
-            "description": "Split and offset mesh polys with random value making them to catch plesant highlight. Userful for mimiking solar or other panels.",
             "category": "geometry",
-            "image": "5d871463a0fb.jpg",
-            "id": "5d871463a0fb",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "kif",
+            "description": "Split and offset mesh polys with random value making them to catch plesant highlight. Userful for mimiking solar or other panels.",
+            "id": "5d871463a0fb",
+            "image": "5d871463a0fb.jpg",
             "tags": [
                 "geo",
                 "modeling",
@@ -18,8 +17,10 @@
                 "panels",
                 "random",
                 "space"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "assignmaterial1": {
         "inputs": [

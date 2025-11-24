@@ -157,13 +157,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Building up from the unfurling stem example, this snippet assembles the stems into a flower pod. The animation includes a rig attribute wrangle as the main control, and a kinefx secondary motion for extra livity. ",
             "category": "animation",
-            "image": "86421946397f.gif",
-            "id": "86421946397f",
             "date-created": "2025-11-08T00:00:00Z",
             "date-modified": "2025-11-08T14:29:33.148381219Z",
-            "username": "snay",
+            "description": "Building up from the unfurling stem example, this snippet assembles the stems into a flower pod. The animation includes a rig attribute wrangle as the main control, and a kinefx secondary motion for extra livity. ",
+            "id": "86421946397f",
+            "image": "86421946397f.gif",
             "tags": [
                 "kinefx",
                 "plant",
@@ -172,8 +171,10 @@
                 "secondary",
                 "motion",
                 "kkfrag"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "apply_rotations": {
         "inputs": [

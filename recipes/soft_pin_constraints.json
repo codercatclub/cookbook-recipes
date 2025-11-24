@@ -16,21 +16,22 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Guide a vellum simulation by softly pinning part of the geometry to an animation. Control the softness of the pin over time with an attribute.",
             "category": "vellum",
-            "image": "softpin.gif",
-            "id": "c41da7940162",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "snay",
+            "description": "Guide a vellum simulation by softly pinning part of the geometry to an animation. Control the softness of the pin over time with an attribute.",
+            "id": "c41da7940162",
+            "image": "softpin.gif",
             "tags": [
                 "vellum",
                 "cloth",
                 "pin",
                 "constraints",
                 "favorite"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "animate_stiffness": {
         "inputs": [

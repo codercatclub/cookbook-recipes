@@ -2,21 +2,22 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Smoothly morph one SDF volume into another.",
             "category": "vdb",
-            "image": "morph_sdf.gif",
-            "id": "a20cbfa603b7",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "snay",
+            "description": "Smoothly morph one SDF volume into another.",
+            "id": "a20cbfa603b7",
+            "image": "morph_sdf.gif",
             "tags": [
                 "vdb",
                 "volume",
                 "transition",
                 "morph",
                 "sdf"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "solver1": {
         "editables": {

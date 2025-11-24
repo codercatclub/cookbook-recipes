@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Separate polygons on sweeped line which angle change rapidly. Practically allow for profile cliff detection which is userful for creating cool looking shapes like outer ring of space station.",
             "category": "geometry",
-            "image": "sop_sweep_with_cliff_detection.jpg",
-            "id": "09b58f750c5f",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "kif",
+            "description": "Separate polygons on sweeped line which angle change rapidly. Practically allow for profile cliff detection which is userful for creating cool looking shapes like outer ring of space station.",
+            "id": "09b58f750c5f",
+            "image": "sop_sweep_with_cliff_detection.jpg",
             "tags": [
                 "geo",
                 "modeling",
@@ -19,8 +18,10 @@
                 "profile",
                 "sweep",
                 "scifi"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "attribpromote2": {
         "inputs": [

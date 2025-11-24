@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Distributes objects along a curve using phyllotactic spacing principles. Creates organic, natural-looking distributions for scattering elements like leaves, flowers, or other organic features along paths.",
             "category": "vex",
-            "image": "phyllotaxis_sweep.jpg",
-            "id": "3f76980bfb4f",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "snay",
+            "description": "Distributes objects along a curve using phyllotactic spacing principles. Creates organic, natural-looking distributions for scattering elements like leaves, flowers, or other organic features along paths.",
+            "id": "3f76980bfb4f",
+            "image": "phyllotaxis_sweep.jpg",
             "tags": [
                 "phyllotaxis",
                 "sweep",
@@ -17,8 +16,10 @@
                 "botanical",
                 "organic",
                 "favorite"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "add1": {
         "position": [

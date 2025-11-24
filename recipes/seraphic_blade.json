@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "An array of abstract feather like shapes reassembling Seraph's wing. ",
             "category": "geometry",
-            "image": "757c301eb0a9.jpg",
-            "id": "757c301eb0a9",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "kif",
+            "description": "An array of abstract feather like shapes reassembling Seraph's wing. ",
+            "id": "757c301eb0a9",
+            "image": "757c301eb0a9.jpg",
             "tags": [
                 "wing",
                 "seraph",
@@ -18,8 +17,10 @@
                 "greek",
                 "blade",
                 "array"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "autouv5": {
         "inputs": [

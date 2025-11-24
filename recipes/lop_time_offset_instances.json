@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "lop",
         "systemfields": {
-            "description": "This example shows how to time offset animated point instances in LOPs using point attribute.",
             "category": "solaris",
-            "image": "32492600217c.gif",
-            "id": "32492600217c",
             "date-created": "2025-11-04T16:13:18.945888479Z",
             "date-modified": "2025-11-04T16:13:18.945888977Z",
-            "username": "kif",
+            "description": "This example shows how to time offset animated point instances in LOPs using point attribute.",
+            "id": "32492600217c",
+            "image": "32492600217c.gif",
             "tags": [
                 "solaris",
                 "lops",
@@ -16,8 +15,10 @@
                 "offset",
                 "time",
                 "animation"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "__stickynote1": {
         "color": [

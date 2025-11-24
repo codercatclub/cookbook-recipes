@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "vop",
         "systemfields": {
-            "description": "Simple and fast water material for Karma. This material use metalness and doesn't use transmission to optimize for faster render.",
             "category": "shading",
-            "image": "bd99c173668b.jpg",
-            "id": "bd99c173668b",
             "date-created": "2025-11-05T11:49:30.688013044Z",
             "date-modified": "2025-11-05T11:49:30.688013471Z",
-            "username": "kif",
+            "description": "Simple and fast water material for Karma. This material use metalness and doesn't use transmission to optimize for faster render.",
+            "id": "bd99c173668b",
+            "image": "bd99c173668b.jpg",
             "tags": [
                 "water",
                 "shader",
@@ -17,8 +16,10 @@
                 "material",
                 "pond",
                 "lake"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "water": {
         "children": {

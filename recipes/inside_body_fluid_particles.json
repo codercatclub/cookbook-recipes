@@ -20,13 +20,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Various particle shapes scattered in volume. Useful for adding details in macro scenes bio scenes. This recipe also show an example on how to randomly copy different geometry to points base on name attribute.",
             "category": "geometry",
-            "image": "c964744d93e0.jpg",
-            "id": "c964744d93e0",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "kif",
+            "description": "Various particle shapes scattered in volume. Useful for adding details in macro scenes bio scenes. This recipe also show an example on how to randomly copy different geometry to points base on name attribute.",
+            "id": "c964744d93e0",
+            "image": "c964744d93e0.jpg",
             "tags": [
                 "particles",
                 "details",
@@ -37,8 +36,10 @@
                 "copytopoints",
                 "randomize",
                 "scatter"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "attribadjustinteger1": {
         "inputs": [

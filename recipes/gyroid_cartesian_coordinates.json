@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "The gyroid is a geometry with a detail and a continuous surface. It is found in nature, contributing to the structural coloration of butterfly wings and efficiency of honeycombs. This example is done on basic XYZ cartesian coordinates, but it gets interesting when you start to warp the space that feeds the Gyroid.",
             "category": "vex",
-            "image": "cfd4003c00f9.jpg",
-            "id": "cfd4003c00f9",
             "date-created": "2025-11-16T17:58:35.989317279+04:00",
             "date-modified": "2025-11-09T13:49:03.09608372Z",
-            "username": "snay",
+            "description": "The gyroid is a geometry with a detail and a continuous surface. It is found in nature, contributing to the structural coloration of butterfly wings and efficiency of honeycombs. This example is done on basic XYZ cartesian coordinates, but it gets interesting when you start to warp the space that feeds the Gyroid.",
+            "id": "cfd4003c00f9",
+            "image": "cfd4003c00f9.jpg",
             "tags": [
                 "vex",
                 "gyroid",
@@ -17,8 +16,10 @@
                 "structure",
                 "surface",
                 "pattern"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "attribblur1": {
         "flags": {

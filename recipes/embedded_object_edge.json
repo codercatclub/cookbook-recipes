@@ -30,13 +30,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Adds a raised edge to an embedded object, mimicking swelling of the skin.",
             "category": "geometry",
-            "image": "embedded.jpg",
-            "id": "5fe2d31017f3",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "snay",
+            "description": "Adds a raised edge to an embedded object, mimicking swelling of the skin.",
+            "id": "5fe2d31017f3",
+            "image": "embedded.jpg",
             "tags": [
                 "vdb",
                 "detail",
@@ -44,8 +43,10 @@
                 "organic",
                 "skin",
                 "favorite"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "attribblur1": {
         "inputs": [

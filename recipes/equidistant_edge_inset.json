@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Takes the boundary edge of a surface geometry and insets copies of it towards the center with equal spacing between iterations. Works best on Convex shapes. This was created because the built-in copy and transform with scale of 0.9 creates uneven spacing as the iteration progresses.",
             "category": "vex",
-            "image": "4a834f94a22d.gif",
-            "id": "4a834f94a22d",
             "date-created": "2025-11-16T17:58:35.985407496+04:00",
             "date-modified": "2025-11-04T09:18:42.920965274Z",
-            "username": "snay",
+            "description": "Takes the boundary edge of a surface geometry and insets copies of it towards the center with equal spacing between iterations. Works best on Convex shapes. This was created because the built-in copy and transform with scale of 0.9 creates uneven spacing as the iteration progresses.",
+            "id": "4a834f94a22d",
+            "image": "4a834f94a22d.gif",
             "tags": [
                 "edge",
                 "inset",
@@ -18,8 +17,10 @@
                 "copy",
                 "transform",
                 "pattern"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "attribpromote1": {
         "inputs": [

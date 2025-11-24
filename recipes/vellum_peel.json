@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Art direct the crack and peel of a surface geometry, using voronoi fracturing and a vellum cloth simulation.",
             "category": "vellum",
-            "image": "09751abf704f.gif",
-            "id": "09751abf704f",
             "date-created": "2025-11-09T14:53:58.643827495Z",
             "date-modified": "2025-11-09T14:53:58.643828392Z",
-            "username": "snay",
+            "description": "Art direct the crack and peel of a surface geometry, using voronoi fracturing and a vellum cloth simulation.",
+            "id": "09751abf704f",
+            "image": "09751abf704f.gif",
             "tags": [
                 "voronoi",
                 "final",
@@ -17,8 +16,10 @@
                 "organic",
                 "skin",
                 "fabric"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "anim": {
         "inputs": [

@@ -20,13 +20,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Extract names and transforms from USD objects and apply it to point attributes in SOPs. This allows for rebuilding the same layout in SOPs. This could be useful for converting manual layout to point instances or efficiently importing layout from external application trough USD format.",
             "category": "solaris",
-            "image": "d5887070ae72.jpg",
-            "id": "d5887070ae72",
             "date-created": "2025-11-04T14:06:54.03640959Z",
             "date-modified": "2025-11-04T14:06:54.036410003Z",
-            "username": "kif",
+            "description": "Extract names and transforms from USD objects and apply it to point attributes in SOPs. This allows for rebuilding the same layout in SOPs. This could be useful for converting manual layout to point instances or efficiently importing layout from external application trough USD format.",
+            "id": "d5887070ae72",
+            "image": "d5887070ae72.jpg",
             "tags": [
                 "instancing",
                 "layout",
@@ -36,8 +35,10 @@
                 "copy",
                 "transform",
                 "orient"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "box1": {
         "parms": {

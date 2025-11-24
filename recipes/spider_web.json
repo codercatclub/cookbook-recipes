@@ -2,21 +2,22 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Creates a spider web from guiding surface geometry. Recommend to do a few frames of vellum simulation, and then tweak the web to your taste with the vellum brush.",
             "category": "geometry",
-            "image": "sweb.jpg",
-            "id": "72b9890d7a26",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "snay",
+            "description": "Creates a spider web from guiding surface geometry. Recommend to do a few frames of vellum simulation, and then tweak the web to your taste with the vellum brush.",
+            "id": "72b9890d7a26",
+            "image": "sweb.jpg",
             "tags": [
                 "vellum",
                 "telerana",
                 "nature",
                 "organic",
                 "environment"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "__netbox1": {
         "box_content": [

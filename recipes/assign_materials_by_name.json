@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "lop",
         "systemfields": {
-            "description": "Assign materials to geometry with the same name.",
             "category": "solaris",
-            "image": "5db25efcdf30.jpg",
-            "id": "5db25efcdf30",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "kif",
+            "description": "Assign materials to geometry with the same name.",
+            "id": "5db25efcdf30",
+            "image": "5db25efcdf30.jpg",
             "tags": [
                 "materials",
                 "shading",
@@ -16,8 +15,10 @@
                 "lop",
                 "solaris",
                 "name"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "assign_materials_by_name": {
         "flags": {

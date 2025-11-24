@@ -2,13 +2,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Simple base setup for a shatter effect. Uses Voronoi fracturing and rigid body simulation. Can be applied to any starting geometry.",
             "category": "rigid body",
-            "image": "shatter.gif",
-            "id": "a4499751dbb1",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "snay",
+            "description": "Simple base setup for a shatter effect. Uses Voronoi fracturing and rigid body simulation. Can be applied to any starting geometry.",
+            "id": "a4499751dbb1",
+            "image": "shatter.gif",
             "tags": [
                 "shatter",
                 "no pain",
@@ -16,8 +15,10 @@
                 "glass",
                 "simulation",
                 "rbd"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "attribnoise1": {
         "inputs": [

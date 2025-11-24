@@ -2,21 +2,22 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Creates a flat phyllotactic spiral pattern using the golden angle. Points are distributed in a natural spiral formation commonly found in plant structures like sunflower seed heads and pinecone scales.",
             "category": "vex",
-            "image": "phyllotaxis.jpg",
-            "id": "3345b8518e29",
             "date-created": "2025-11-03T17:06:40.483372+04:00",
             "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "username": "snay",
+            "description": "Creates a flat phyllotactic spiral pattern using the golden angle. Points are distributed in a natural spiral formation commonly found in plant structures like sunflower seed heads and pinecone scales.",
+            "id": "3345b8518e29",
+            "image": "phyllotaxis.jpg",
             "tags": [
                 "phyllotaxis",
                 "nature",
                 "packing",
                 "botanical",
                 "organic"
-            ]
-        }
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
     },
     "add1": {
         "position": [

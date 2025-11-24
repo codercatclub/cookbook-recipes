@@ -34,21 +34,22 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Duplicate curve with random offset noise and scale. Useful for quick simple cable generations.",
             "category": "geometry",
-            "image": "b6fb88dc748b.jpg",
-            "id": "b6fb88dc748b",
             "date-created": "2025-11-16T17:58:36.027317795+04:00",
             "date-modified": "2025-11-04T09:26:12.434835655Z",
-            "username": "kif",
+            "description": "Duplicate curve with random offset noise and scale. Useful for quick simple cable generations.",
+            "id": "b6fb88dc748b",
+            "image": "b6fb88dc748b.jpg",
             "tags": [
                 "curves",
                 "cables",
                 "generator",
                 "noise",
                 "wires"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "attribpromote1": {
         "inputs": [

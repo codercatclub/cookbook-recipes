@@ -66,13 +66,12 @@
     "__cookbookMeta": {
         "context": "sop",
         "systemfields": {
-            "description": "Parent one object motion to another in SOPs. Useful for attaching things to animated geometry that comes from Alembic cache.",
             "category": "animation",
-            "image": "sop_parent.gif",
-            "id": "5ddde0ce9bde",
             "date-created": "2025-11-03T00:00:00Z",
             "date-modified": "2025-11-04T09:13:58.16659732Z",
-            "username": "kif",
+            "description": "Parent one object motion to another in SOPs. Useful for attaching things to animated geometry that comes from Alembic cache.",
+            "id": "5ddde0ce9bde",
+            "image": "sop_parent.gif",
             "tags": [
                 "sop",
                 "animation",
@@ -81,8 +80,10 @@
                 "alembic",
                 "attach",
                 "kkfrag"
-            ]
-        }
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
     },
     "box1": {
         "parms": {

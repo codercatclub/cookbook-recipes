@@ -1,13 +1,15 @@
 {
     "__cookbookMeta": {
         "context": "lop",
+        "version": "20.5.584",
         "systemfields": {
+            "description": "Dynamic camera focus point that can be animated or attached to an object so that it stays in focus when camera of object is moving. [Based on Houdini Solaris | Focus Camera Recipe](https://www.youtube.com/watch?v=ZcqZbOi7lz0) tutorial.",
             "category": "solaris",
-            "date-created": "2025-11-03T17:06:40.483372+04:00",
-            "date-modified": "2025-11-03T17:06:40.483372+04:00",
-            "description": "Dynamic camera focus point that can be animated or attached to an object so that it stays in focus when camera of object is moving. Based on the following tutorial https://www.youtube.com/watch?v=ZcqZbOi7lz0",
-            "id": "2d560a14c73c",
             "image": "2d560a14c73c.gif",
+            "id": "2d560a14c73c",
+            "date-created": "2025-11-03T17:06:40.483372+04:00",
+            "date-modified": "2025-11-30T12:24:55.72387289Z",
+            "username": "kif",
             "tags": [
                 "camera",
                 "animation",
@@ -15,10 +17,8 @@
                 "lops",
                 "solaris",
                 "usd"
-            ],
-            "username": "kif"
-        },
-        "version": "20.5.584"
+            ]
+        }
     },
     "attach_focus_to_pig": {
         "inputs": [

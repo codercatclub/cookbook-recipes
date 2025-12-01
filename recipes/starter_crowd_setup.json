@@ -61,23 +61,23 @@
     },
     "__cookbookMeta": {
         "context": "sop",
+        "version": "20.5.584",
         "systemfields": {
+            "description": "This setup is a quick start to a crowd simulation. It supports custom characters as agents, layers for clothing, and motion path avoidance, and terrain adaptation. This snippet was stripped down from our crowd simulation work for the [Cant Wait music video](https://codercat.xyz/cant-wait). ",
             "category": "animation",
-            "date-created": "2025-11-20T16:44:53.435702223Z",
-            "date-modified": "2025-11-20T16:53:54.488011763Z",
-            "description": "This setup is a quick start to a crowd simulation. It supports custom characters as agents, layers for clothing, and motion path avoidance, and terrain adaptation. This snippet was stripped down from our crowd simulation work for the Cant Wait music video https://codercat.xyz/cant-wait . ",
-            "id": "182ecd7b4d8e",
             "image": "182ecd7b4d8e.gif",
+            "id": "182ecd7b4d8e",
+            "date-created": "2025-11-20T16:44:53.435702223Z",
+            "date-modified": "2025-11-30T12:45:45.749945499Z",
+            "username": "snay",
             "tags": [
                 "crowd",
                 "simulation",
                 "character",
                 "animation",
                 "cantwait"
-            ],
-            "username": "snay"
-        },
-        "version": "20.5.584"
+            ]
+        }
     },
     "__stickynote1": {
         "color": [

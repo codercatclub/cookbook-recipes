@@ -1,0 +1,920 @@
+{
+    "OUT_center_offset": {
+        "color": [
+            1,
+            0.68,
+            0.68
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "set_center_offset",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            0,
+            -3.18
+        ],
+        "type": "null"
+    },
+    "OUT_spline_rigged": {
+        "color": [
+            1,
+            0,
+            0
+        ],
+        "flags": {
+            "colordefault": false,
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "sweep3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            6.6,
+            -13.19
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "version": "21.0.440",
+        "systemfields": {
+            "description": "Simple cartoon rig if you ever need a cute worm sliding across the screen.",
+            "category": "animation",
+            "image": "4f095229a6be.gif",
+            "id": "4f095229a6be",
+            "date-created": "2026-01-02T22:58:07.531374641Z",
+            "date-modified": "2026-01-02T22:58:07.531375856Z",
+            "username": "hugomorais",
+            "tags": [
+                "kinefx",
+                "rig",
+                "animation",
+                "worm"
+            ]
+        }
+    },
+    "__stickynote1": {
+        "color": [
+            1,
+            0.97,
+            0.52
+        ],
+        "position": [
+            13.21,
+            -0.85
+        ],
+        "size": [
+            2.5,
+            2.5
+        ],
+        "text": "Yellow coded nodes are the controllers of the rig",
+        "text_color": [
+            0,
+            0,
+            0
+        ],
+        "type": "StickyNote"
+    },
+    "add1": {
+        "inputs": [
+            {
+                "from": "attribdelete3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "keep": true,
+            "switcher": 1
+        },
+        "position": [
+            6.6,
+            -9.73
+        ],
+        "type": "add"
+    },
+    "attachjointgeo1": {
+        "inputs": [
+            {
+                "from": "color_end",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "name1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "shapes": [
+                {
+                    "shapename#": "ctrl"
+                }
+            ],
+            "userestposeattrib": false
+        },
+        "position": [
+            6.6,
+            4.22
+        ],
+        "type": "kinefx::attachjointgeo",
+        "user_data": {
+            "display_options": "{\"show_joints\": true, \"show_links\": false, \"solid_links\": true, \"show_axes\": false, \"show_scene_geo\": true, \"show_joint_data\": false}",
+            "wirestyle": "rounded"
+        }
+    },
+    "attribdelete3": {
+        "inputs": [
+            {
+                "from": "merge1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "ptdel": "*"
+        },
+        "position": [
+            6.6,
+            -8.33
+        ],
+        "type": "attribdelete"
+    },
+    "back": {
+        "parms": {
+            "dir": [
+                1,
+                0,
+                0
+            ],
+            "origin": [
+                0.25,
+                0,
+                0
+            ],
+            "points": 3
+        },
+        "position": [
+            10.69,
+            18.73
+        ],
+        "type": "line"
+    },
+    "blast1": {
+        "inputs": [
+            {
+                "from": "attachjointgeo1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "@name==mid*",
+            "grouptype": "points"
+        },
+        "position": [
+            5.36,
+            2.68
+        ],
+        "type": "blast"
+    },
+    "blast3": {
+        "inputs": [
+            {
+                "from": "rigpose3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "@name=front_parent @name=back_parent",
+            "grouptype": "points",
+            "negate": true
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "blast"
+    },
+    "blast4": {
+        "inputs": [
+            {
+                "from": "attachjointgeo1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "@name==mid*",
+            "grouptype": "points",
+            "negate": true
+        },
+        "position": [
+            8.18,
+            2.68
+        ],
+        "type": "blast"
+    },
+    "blast5": {
+        "inputs": [
+            {
+                "from": "rigpose3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "@name=front_*",
+            "grouptype": "points",
+            "negate": true
+        },
+        "position": [
+            3.7,
+            -4.85
+        ],
+        "type": "blast"
+    },
+    "blast6": {
+        "inputs": [
+            {
+                "from": "offset_hump",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "@name=mid_*",
+            "grouptype": "points",
+            "negate": true
+        },
+        "position": [
+            6.74,
+            -4.85
+        ],
+        "type": "blast"
+    },
+    "blast7": {
+        "inputs": [
+            {
+                "from": "rigpose3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "@name=back_*",
+            "grouptype": "points",
+            "negate": true
+        },
+        "position": [
+            10.06,
+            -4.85
+        ],
+        "type": "blast"
+    },
+    "clean1": {
+        "inputs": [
+            {
+                "from": "blast3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dodelattribs": true,
+            "dodelgroups": true
+        },
+        "position": [
+            0,
+            -1
+        ],
+        "type": "clean"
+    },
+    "color_end": {
+        "color": [
+            0.29,
+            0.56,
+            0.89
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "color_mid",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "color": [
+                0,
+                0,
+                1
+            ],
+            "group": "@name=*end",
+            "grouptype": "points"
+        },
+        "position": [
+            8.18,
+            9.1
+        ],
+        "type": "color"
+    },
+    "color_mid": {
+        "color": [
+            0.29,
+            0.56,
+            0.89
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "color_parents",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "color": [
+                0,
+                1,
+                0
+            ],
+            "group": "@name=*_mid @name=mid_side_*",
+            "grouptype": "points"
+        },
+        "position": [
+            8.18,
+            10.1
+        ],
+        "type": "color"
+    },
+    "color_parents": {
+        "color": [
+            0.29,
+            0.56,
+            0.89
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "name2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "color": [
+                1,
+                0,
+                0
+            ],
+            "group": "@name=*parent",
+            "grouptype": "points"
+        },
+        "position": [
+            8.18,
+            11.1
+        ],
+        "type": "color"
+    },
+    "control1": {
+        "parms": {
+            "controltype": "circles",
+            "orientation": "x",
+            "scale": 0.41
+        },
+        "position": [
+            9.89,
+            7.37
+        ],
+        "type": "control"
+    },
+    "front": {
+        "parms": {
+            "dir": [
+                -1,
+                0,
+                0
+            ],
+            "origin": [
+                -0.25,
+                0,
+                0
+            ],
+            "points": 3
+        },
+        "position": [
+            1.26,
+            18.73
+        ],
+        "type": "line"
+    },
+    "merge1": {
+        "inputs": [
+            {
+                "from": "blast5",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "blast6",
+                "from_index": 0,
+                "to_index": 1
+            },
+            {
+                "from": "blast7",
+                "from_index": 0,
+                "to_index": 2
+            }
+        ],
+        "position": [
+            6.6,
+            -6.84
+        ],
+        "type": "merge"
+    },
+    "merge6": {
+        "inputs": [
+            {
+                "from": "front",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "mid",
+                "from_index": 0,
+                "to_index": 1
+            },
+            {
+                "from": "back",
+                "from_index": 0,
+                "to_index": 2
+            }
+        ],
+        "position": [
+            5.81,
+            16.71
+        ],
+        "type": "merge"
+    },
+    "mid": {
+        "parms": {
+            "dir": [
+                1,
+                0,
+                0
+            ],
+            "dist": 0.2,
+            "origin": [
+                {
+                    "expression": "ch(\"dist\") * -0.5"
+                },
+                0,
+                0
+            ],
+            "points": 3
+        },
+        "position": [
+            5.81,
+            19.52
+        ],
+        "type": "line",
+        "user_data": {
+            "display_options": "{\"show_joints\": true, \"show_links\": true, \"solid_links\": false, \"show_axes\": true, \"show_scene_geo\": true}"
+        }
+    },
+    "name1": {
+        "inputs": [
+            {
+                "from": "control1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "name#": "ctrl"
+                }
+            ]
+        },
+        "position": [
+            9.89,
+            6.58
+        ],
+        "type": "name"
+    },
+    "name2": {
+        "color": [
+            0.58,
+            0.78,
+            1
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "parentjoints1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "class": "point",
+            "numnames": 0,
+            "numrenames": [
+                {
+                    "from#": "point_2",
+                    "to#": "front_parent"
+                },
+                {
+                    "from#": "point_1",
+                    "to#": "front_mid"
+                },
+                {
+                    "from#": "point_0",
+                    "to#": "front_end"
+                },
+                {
+                    "from#": "point_4",
+                    "to#": "mid_parent"
+                },
+                {
+                    "from#": "point_3",
+                    "to#": "mid_side_L"
+                },
+                {
+                    "from#": "point_5",
+                    "to#": "mid_side_R"
+                },
+                {
+                    "from#": "point_6",
+                    "to#": "back_parent"
+                },
+                {
+                    "from#": "point_7",
+                    "to#": "back_mid"
+                },
+                {
+                    "from#": "point_8",
+                    "to#": "back_end"
+                }
+            ]
+        },
+        "position": [
+            5.81,
+            12.68
+        ],
+        "type": "name"
+    },
+    "offset_hump": {
+        "color": [
+            1,
+            0.93,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "rigpose6",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "p": [
+                {
+                    "expression": "detail(\"../OUT_center_offset\", \"center\", 0)"
+                },
+                {
+                    "expression": "detail(\"../OUT_center_offset\", \"height\", 0)"
+                },
+                0
+            ]
+        },
+        "position": [
+            8.18,
+            0.36
+        ],
+        "type": "xform"
+    },
+    "parentjoints1": {
+        "inputs": [
+            {
+                "from": "rigdoctor2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "reparent": [
+                {
+                    "joint#": "@name=point_4"
+                },
+                {
+                    "joint#": "@name=point_3",
+                    "parent#": "@name=point_4"
+                }
+            ]
+        },
+        "position": [
+            5.81,
+            13.68
+        ],
+        "type": "kinefx::parentjoints",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": 1, \"solid_links\": 1, \"show_axes\": 0, \"show_scene_geo\": 0}",
+            "wirestyle": "rounded"
+        }
+    },
+    "resample3": {
+        "inputs": [
+            {
+                "from": "add1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "length": 0.001,
+            "treatpolysas": "subd"
+        },
+        "position": [
+            6.6,
+            -10.93
+        ],
+        "type": "resample"
+    },
+    "rigdoctor2": {
+        "inputs": [
+            {
+                "from": "sort4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "inittransforms": true,
+            "showdirection": true
+        },
+        "position": [
+            5.81,
+            14.68
+        ],
+        "type": "kinefx::rigdoctor",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": false, \"solid_links\": 1, \"show_axes\": false, \"show_scene_geo\": 1}"
+        }
+    },
+    "rigpose3": {
+        "color": [
+            1,
+            0.93,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "blast1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "transformations": [
+                {
+                    "group#": "@name=front_end"
+                },
+                {
+                    "group#": "@name=front_parent",
+                    "t#": [
+                        0.40181034803390503,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "group#": "@name=front_mid"
+                },
+                {
+                    "group#": "@name=back_parent",
+                    "r#": [
+                        0,
+                        0.11732193785236011,
+                        0
+                    ],
+                    "t#": [
+                        0.4472905397415161,
+                        0,
+                        -0.0019378553261049092
+                    ]
+                },
+                {
+                    "group#": "@name=back_mid"
+                }
+            ]
+        },
+        "position": [
+            5.37,
+            1.54
+        ],
+        "type": "kinefx::rigpose",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": 0, \"solid_links\": 1, \"show_axes\": 1, \"show_scene_geo\": 1}"
+        }
+    },
+    "rigpose6": {
+        "color": [
+            1,
+            0.93,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "blast4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "transformations": [
+                {
+                    "group#": "@name=mid_parent",
+                    "t#": [
+                        {
+                            "extrapolation_after": "extend",
+                            "extrapolation_before": "extend",
+                            "keyframes": [
+                                {
+                                    "expression": "detail(\"../OUT_center_offset\", \"center\", 0)",
+                                    "frame": 1
+                                },
+                                {
+                                    "expression": "detail(\"../OUT_center_offset\", \"center\", 0)",
+                                    "frame": 165
+                                }
+                            ]
+                        },
+                        {
+                            "extrapolation_after": "extend",
+                            "extrapolation_before": "extend",
+                            "keyframes": [
+                                {
+                                    "expression": "detail(\"../OUT_center_offset\", \"height\", 0)",
+                                    "frame": 1
+                                },
+                                {
+                                    "expression": "detail(\"../OUT_center_offset\", \"height\", 0)",
+                                    "frame": 165
+                                }
+                            ]
+                        },
+                        0
+                    ]
+                },
+                {
+                    "group#": "@name=mid_side_R"
+                },
+                {
+                    "group#": "@name=mid_side_L"
+                }
+            ]
+        },
+        "position": [
+            8.18,
+            1.54
+        ],
+        "type": "kinefx::rigpose",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": 0, \"solid_links\": 1, \"show_axes\": 1, \"show_scene_geo\": 1}"
+        }
+    },
+    "set_center_offset": {
+        "color": [
+            1,
+            0.93,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "clean1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "distThreshold": 1,
+            "falloffRate": 1,
+            "maxHeight": 1,
+            "snippet": "// Get indices of our two control points\nint h = 0;\nint t = 1;\n\n// Get positions of both points\nvector Ph = point(0, \"P\", h);\nvector Pt = point(0, \"P\", t);\n\n// Calculate the distance between points\nfloat dist = distance(Ph, Pt);\n\n// Calculate center point (middle of the two points)\nfloat center = (Ph.x + Pt.x) * 0.5;\n\n// User parameters\nfloat maxHeight = chf(\"maxHeight\");\nfloat falloffRate = chf(\"falloffRate\");\nfloat distThreshold = chf(\"distThreshold\");\n\n// Calculate height with threshold and falloff rate\n// Only start calculating height when distance is less than threshold\nfloat height;\nif (dist \u003e= distThreshold) {\n    height = 0;\n} else {\n    // Remap the distance to create a smooth transition\n    // When dist = distThreshold, height = 0\n    // When dist = 0, height approaches maxHeight\n    float adjustedDist = fit(dist, 0, distThreshold, 0, 1);\n    // Use falloffRate as an exponent to control the curve shape\n    height = maxHeight * pow(1 - adjustedDist, falloffRate);\n}\n\n// Ensure height never goes below zero\nheight = max(height, 0);\n\n// Store values as detail attributes\nsetdetailattrib(0, \"center\", center, \"set\");\nsetdetailattrib(0, \"height\", height, \"set\");"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "distThreshold": {
+                                "label": "Distthreshold",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "falloffRate": {
+                                "label": "Falloffrate",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "maxHeight": {
+                                "label": "Maxheight",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            -2.04
+        ],
+        "type": "attribwrangle"
+    },
+    "sort4": {
+        "inputs": [
+            {
+                "from": "merge6",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "ptsort": "byx"
+        },
+        "position": [
+            5.81,
+            15.68
+        ],
+        "type": "sort"
+    },
+    "sweep3": {
+        "inputs": [
+            {
+                "from": "resample3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "capdivs": 8,
+            "cols": 16,
+            "endcaptype": "grid",
+            "surfaceshape": "tube"
+        },
+        "position": [
+            6.6,
+            -11.99
+        ],
+        "type": "sweep::2.0"
+    }
+}

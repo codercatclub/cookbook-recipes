@@ -1,14 +1,14 @@
 {
     "__cookbookMeta": {
         "context": "sop",
-        "version": "",
+        "version": "20.5.613",
         "systemfields": {
             "description": "Setup of blend shapes using APEX",
             "category": "rigging",
             "image": "57c8c5c6614a.gif",
             "id": "57c8c5c6614a",
             "date-created": "2026-04-27T06:47:18.720457163Z",
-            "date-modified": "2026-04-27T06:50:46.94036648Z",
+            "date-modified": "2026-05-25T22:43:35.870687868Z",
             "username": "kif",
             "tags": [
                 "apex",

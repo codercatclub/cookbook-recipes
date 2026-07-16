@@ -1,0 +1,337 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "version": "21.0.729",
+        "systemfields": {
+            "description": "Capture Packed Geo can be tricky to set up right since it does not display an error on attribute mismatch. This example show how to set it up using corresponding name attribute on rig and packed geometry objects.",
+            "category": "rigging",
+            "image": "8af4662788d9.jpg",
+            "id": "8af4662788d9",
+            "date-created": "2026-07-15T13:28:00.60535364Z",
+            "date-modified": "2026-07-15T13:28:00.605354175Z",
+            "username": "kif",
+            "tags": [
+                "rig",
+                "rigid",
+                "packed",
+                "robot",
+                "insect",
+                "pieces",
+                "kinefx",
+                "capturepackedgeo"
+            ]
+        }
+    },
+    "bonedeform1": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "capturepackedgeo1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "rigdoctor1",
+                "from_index": 0,
+                "to_index": 1
+            },
+            {
+                "from": "rigpose1",
+                "from_index": 0,
+                "to_index": 2
+            }
+        ],
+        "position": [
+            0.44,
+            -6.46
+        ],
+        "type": "bonedeform"
+    },
+    "capturepackedgeo1": {
+        "inputs": [
+            {
+                "from": "pack1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "rigdoctor1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "capturebyname": true,
+            "nameattribute": "name"
+        },
+        "position": [
+            0.14,
+            -4.64
+        ],
+        "type": "kinefx::capturepackedgeo",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": 0, \"solid_links\": 1, \"show_axes\": 0, \"show_scene_geo\": 1}",
+            "wirestyle": "rounded"
+        }
+    },
+    "connectivity1": {
+        "inputs": [
+            {
+                "from": "delete1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "attribname": "name",
+            "attribtype": "string",
+            "connecttype": "prim",
+            "prefix": "point_"
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "connectivity"
+    },
+    "delete1": {
+        "inputs": [
+            {
+                "from": "polybevel1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "edgefilletpolys"
+        },
+        "position": [
+            0,
+            0.82
+        ],
+        "type": "delete"
+    },
+    "extractcentroid1": {
+        "inputs": [
+            {
+                "from": "pack1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            2.14,
+            -1.93
+        ],
+        "type": "extractcentroid"
+    },
+    "pack1": {
+        "inputs": [
+            {
+                "from": "connectivity1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "packbyname": true,
+            "packedfragments": false,
+            "transfer_attributes": "name"
+        },
+        "position": [
+            0,
+            -0.84
+        ],
+        "type": "pack"
+    },
+    "parentjoints1": {
+        "inputs": [
+            {
+                "from": "extractcentroid1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "reparent": [
+                {
+                    "joint#": "@name=point_1",
+                    "parent#": "@name=point_0"
+                },
+                {
+                    "joint#": "@name=point_2",
+                    "parent#": "@name=point_1"
+                },
+                {
+                    "joint#": "@name=point_3",
+                    "parent#": "@name=point_2"
+                },
+                {
+                    "joint#": "@name=point_4",
+                    "parent#": "@name=point_3"
+                },
+                {
+                    "joint#": "@name=point_5",
+                    "parent#": "@name=point_4"
+                },
+                {
+                    "joint#": "@name=point_6",
+                    "parent#": "@name=point_5"
+                }
+            ]
+        },
+        "position": [
+            2.14,
+            -2.71
+        ],
+        "type": "kinefx::parentjoints",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": 1, \"solid_links\": 1, \"show_axes\": 0, \"show_scene_geo\": 0}",
+            "wirestyle": "rounded"
+        }
+    },
+    "polybevel1": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "tube1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "p13-12-23-22-21-20-19-18-17-16-15-14-13 p25-26 p25-24-35-34-33-32-31-30-29-28-27-26 p37-38 p37-36-47-46-45-44-43-42-41-40-39-38 p49-50 p49-48-59-58-57-56-55-54-53-52-51-50 p61-62 p61-60-71-70-69-68-67-66-65-64-63-62 p73-74 p73-72-83-82-81-80-79-78-77-76-75-74",
+            "grouptype": "edges",
+            "offset": 0.01,
+            "useedgefilletgroup": true
+        },
+        "position": [
+            0,
+            1.63
+        ],
+        "type": "polybevel::3.0"
+    },
+    "rigdoctor1": {
+        "inputs": [
+            {
+                "from": "parentjoints1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "inittransforms": true
+        },
+        "position": [
+            2.14,
+            -3.61
+        ],
+        "type": "kinefx::rigdoctor",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": false, \"solid_links\": 1, \"show_axes\": false, \"show_scene_geo\": 1}"
+        }
+    },
+    "rigpose1": {
+        "inputs": [
+            {
+                "from": "rigdoctor1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "transformations": [
+                {
+                    "group#": "@name=point_0",
+                    "r#": [
+                        -18.061991628590352,
+                        7.487099646021919e-7,
+                        -1.1899924129902524e-7
+                    ]
+                },
+                {
+                    "group#": "@name=point_1",
+                    "r#": [
+                        -18.061991628590352,
+                        7.487099646021919e-7,
+                        -1.1899924129902524e-7
+                    ]
+                },
+                {
+                    "group#": "@name=point_2",
+                    "r#": [
+                        -18.061991628590352,
+                        7.487099646021919e-7,
+                        -1.1899924129902524e-7
+                    ]
+                },
+                {
+                    "group#": "@name=point_3",
+                    "r#": [
+                        -18.061991628590352,
+                        7.487099646021919e-7,
+                        -1.1899924129902524e-7
+                    ]
+                },
+                {
+                    "group#": "@name=point_4",
+                    "r#": [
+                        -18.061991628590352,
+                        7.487099646021919e-7,
+                        -1.1899924129902524e-7
+                    ]
+                },
+                {
+                    "group#": "@name=point_5",
+                    "r#": [
+                        -18.061991628590352,
+                        7.487099646021919e-7,
+                        -1.1899924129902524e-7
+                    ]
+                },
+                {
+                    "group#": "@name=point_6",
+                    "r#": [
+                        -18.061991628590352,
+                        7.487099646021919e-7,
+                        -1.1899924129902524e-7
+                    ]
+                }
+            ]
+        },
+        "position": [
+            3.66,
+            -4.77
+        ],
+        "type": "kinefx::rigpose",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": 0, \"solid_links\": 1, \"show_axes\": 1, \"show_scene_geo\": 1}"
+        }
+    },
+    "tube1": {
+        "parms": {
+            "height": 1.49,
+            "r": [
+                90,
+                0,
+                0
+            ],
+            "rad": [
+                0.5,
+                0.5
+            ],
+            "rows": 8,
+            "type": "poly"
+        },
+        "position": [
+            0,
+            2.52
+        ],
+        "type": "tube"
+    }
+}

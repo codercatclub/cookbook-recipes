@@ -1,0 +1,78 @@
+{
+    "__cookbookMeta": {
+        "context": "cop",
+        "version": "21.0.729",
+        "systemfields": {
+            "description": "Tillable hex tile pattern in COPs using tilepattern node. Based on [Houdini Forum thread](https://www.sidefx.com/forum/topic/100228/?page=1#post-441436)",
+            "category": "copernicus",
+            "image": "2edb6e58808f.jpg",
+            "id": "2edb6e58808f",
+            "date-created": "2026-07-18T12:00:02.207983872Z",
+            "date-modified": "2026-07-18T12:00:02.207984411Z",
+            "username": "kif",
+            "tags": [
+                "pattern",
+                "tile",
+                "hex",
+                "cops",
+                "texture"
+            ]
+        }
+    },
+    "tilepattern1": {
+        "flags": {
+            "compress": false,
+            "display": true,
+            "render": true
+        },
+        "parms": {
+            "basictype": "regpolygon",
+            "coloffset": 0.05,
+            "headerbond_tileheight": {
+                "expression": "1/(4*ch(\"tsize\"))"
+            },
+            "headerbond_tilewidth": {
+                "expression": "1/(3.5*ch(\"tsize\"))"
+            },
+            "hscale": {
+                "expression": "cos(30)"
+            },
+            "nrows": [
+                {
+                    "folder2_#": 1
+                }
+            ],
+            "orienttiles": true,
+            "patternmode": "tilesize",
+            "patterntype": "headerbond",
+            "scale": 1.26,
+            "tsize": 1
+        },
+        "parmtemplates": [
+            {
+                "insert_first": "",
+                "parmtemplates": {
+                    "tsize": {
+                        "label": "Tile Size",
+                        "tags": {
+                            "script_callback_language": "python"
+                        },
+                        "type": "float"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "size": [
+            1.77,
+            1.98
+        ],
+        "type": "tilepattern",
+        "user_data": {
+            "preview": "0"
+        }
+    }
+}

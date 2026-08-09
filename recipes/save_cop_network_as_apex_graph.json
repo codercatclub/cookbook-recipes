@@ -1,0 +1,325 @@
+{
+    "BLUR": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "load_COPs_graph",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            2.85,
+            -0.04
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "version": "21.0.729",
+        "systemfields": {
+            "description": "Serialize COP network to APEX graph format where graph definition is stored on geometry point and can be save to disc. This can be used as a filter during rendering or pass to husk during command line render.",
+            "category": "copernicus",
+            "image": "edcfb3032b84.jpg",
+            "id": "edcfb3032b84",
+            "date-created": "2026-08-08T14:23:51.075767132Z",
+            "date-modified": "2026-08-08T14:23:51.075767552Z",
+            "username": "kif",
+            "tags": [
+                "APEX",
+                "COPs",
+                "save",
+                "geo",
+                "bgeo",
+                "graph",
+                "slap",
+                "comp",
+                "invoke"
+            ]
+        }
+    },
+    "copnet1": {
+        "children": {
+            "__dot1": {
+                "color": [
+                    0.7,
+                    0.7,
+                    0.7
+                ],
+                "inputs": [
+                    {
+                        "from": "file1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "position": [
+                    -11.73,
+                    -1.12
+                ],
+                "type": "NetworkDot"
+            },
+            "block_begin1": {
+                "flags": {
+                    "compress": false
+                },
+                "inputs": [
+                    {
+                        "from": "file1",
+                        "from_index": "C",
+                        "to_index": "input1"
+                    }
+                ],
+                "parms": {
+                    "blockpath": "../block_end1",
+                    "ports": [
+                        {
+                            "name#": "img",
+                            "type#": "float"
+                        },
+                        {
+                            "name#": "blur_size",
+                            "type#": "float"
+                        }
+                    ]
+                },
+                "position": [
+                    -10.68,
+                    2.04
+                ],
+                "size": [
+                    1.77,
+                    1.83
+                ],
+                "type": "block_begin"
+            },
+            "block_end1": {
+                "flags": {
+                    "compress": false,
+                    "render": true
+                },
+                "inputs": [
+                    {
+                        "from": "blur1",
+                        "from_index": "blur",
+                        "to_index": "input1"
+                    }
+                ],
+                "parms": {
+                    "ports": [
+                        {
+                            "name#": "C",
+                            "type#": "float"
+                        }
+                    ]
+                },
+                "position": [
+                    -5.14,
+                    2.02
+                ],
+                "size": [
+                    1.77,
+                    1.68
+                ],
+                "type": "block_end"
+            },
+            "blur1": {
+                "flags": {
+                    "compress": false
+                },
+                "inputs": [
+                    {
+                        "from": "block_begin1",
+                        "from_index": "img",
+                        "to_index": "source"
+                    },
+                    {
+                        "from": "block_begin1",
+                        "from_index": "blur_size",
+                        "to_index": "size"
+                    }
+                ],
+                "parms": {
+                    "size": 0.05
+                },
+                "position": [
+                    -7.86,
+                    2.02
+                ],
+                "size": [
+                    1.77,
+                    1.83
+                ],
+                "type": "blur"
+            },
+            "constant1": {
+                "flags": {
+                    "compress": false
+                },
+                "position": [
+                    -10.74,
+                    -2.31
+                ],
+                "size": [
+                    1.77,
+                    1.83
+                ],
+                "type": "constant"
+            },
+            "file1": {
+                "flags": {
+                    "compress": false
+                },
+                "parms": {
+                    "aovs": [
+                        {
+                            "aov#": "C",
+                            "type#": "float"
+                        }
+                    ]
+                },
+                "position": [
+                    -13.73,
+                    2.05
+                ],
+                "size": [
+                    1.77,
+                    1.68
+                ],
+                "type": "file"
+            },
+            "invokegeo1": {
+                "flags": {
+                    "compress": false,
+                    "display": true
+                },
+                "inputs": [
+                    {
+                        "from": "load_COPs_graph",
+                        "from_index": "geometry",
+                        "to_index": "input1"
+                    },
+                    {
+                        "from": "__dot1",
+                        "from_index": "output1",
+                        "to_index": "input2"
+                    },
+                    {
+                        "from": "constant1",
+                        "from_index": "constant",
+                        "to_index": "input3"
+                    }
+                ],
+                "parms": {
+                    "inputs": [
+                        {
+                            "inputlabel#": "img",
+                            "inputtype#": "float"
+                        },
+                        {
+                            "inputlabel#": "blur_size",
+                            "inputtype#": "float"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "outputlabel#": "C",
+                            "outputtype#": "float"
+                        }
+                    ]
+                },
+                "position": [
+                    -6.95,
+                    -0.89
+                ],
+                "size": [
+                    1.77,
+                    1.98
+                ],
+                "type": "invokegeo"
+            },
+            "load_COPs_graph": {
+                "color": [
+                    0.14,
+                    0.67,
+                    0.56
+                ],
+                "flags": {
+                    "colordefault": false,
+                    "compress": false
+                },
+                "parms": {
+                    "soppath": "/obj/geo2/BLUR",
+                    "usesoppath": true
+                },
+                "position": [
+                    -10.74,
+                    -0.11
+                ],
+                "size": [
+                    1.77,
+                    1.68
+                ],
+                "type": "sopimport"
+            },
+            "save_COPs_graph": {
+                "color": [
+                    1,
+                    0.93,
+                    0
+                ],
+                "flags": {
+                    "colordefault": false,
+                    "compress": false
+                },
+                "parms": {
+                    "blockpath": "../block_end1"
+                },
+                "position": [
+                    -2.61,
+                    1.96
+                ],
+                "size": [
+                    1.77,
+                    1.68
+                ],
+                "type": "blocktogeo"
+            }
+        },
+        "position": [
+            0.03,
+            1.24
+        ],
+        "type": "copnet"
+    },
+    "load_COPs_graph": {
+        "parms": {
+            "file": "`chs(\"../rop_geometry1/sopoutput\")`"
+        },
+        "position": [
+            2.84,
+            1.13
+        ],
+        "type": "file"
+    },
+    "rop_geometry1": {
+        "inputs": [
+            {
+                "from": "copnet1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "sopoutput": "$HIP/geo/copBlur.bgeo"
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "rop_geometry"
+    }
+}

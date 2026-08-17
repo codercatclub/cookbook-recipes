@@ -1,0 +1,925 @@
+{
+    "OUT": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "copytopoints1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            1.72,
+            -4.62
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "category": "shading",
+            "date-created": "2025-11-20T12:30:24.91976839Z",
+            "date-modified": "2025-11-20T12:30:24.919768843Z",
+            "description": "n Solaris, you can randomize textures and material parameters per instance using Attribute Randomize. Assign string attributes for texture paths and float attributes for values, then duplicate the node with the same seed so strings align with floats, enabling sub‑materials in one master",
+            "id": "2ec200a8715a",
+            "image": "2ec200a8715a.jpg",
+            "tags": [
+                "uniform",
+                "string",
+                "attributes",
+                "float",
+                "textures"
+            ],
+            "username": "Faitel"
+        },
+        "version": ""
+    },
+    "attribrandomize1": {
+        "inputs": [
+            {
+                "from": "grid1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "distribution": "discrete",
+            "name": "texturepath",
+            "seed": 2671,
+            "values": [
+                {
+                    "strvalue#": "$HFS/houdini/pic/texture/bricks001_basecolor.rat"
+                },
+                {
+                    "strvalue#": "$HFS/houdini/pic/texture/dirt001_basecolor.rat"
+                }
+            ],
+            "valuetype": "string"
+        },
+        "position": [
+            3.23,
+            -0.37
+        ],
+        "type": "attribrandomize"
+    },
+    "attribrandomize2": {
+        "comment": "Referenced from attribrandomize1",
+        "flags": {
+            "displaycomment": true
+        },
+        "inputs": [
+            {
+                "from": "attribrandomize1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "allsame": {
+                "expression": "ch(\"../attribrandomize1/allsame\")"
+            },
+            "class": {
+                "expression": "ch(\"../attribrandomize1/class\")"
+            },
+            "coneangle": {
+                "expression": "ch(\"../attribrandomize1/coneangle\")"
+            },
+            "constvalue": [
+                {
+                    "expression": "ch(\"../attribrandomize1/constvaluex\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/constvaluey\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/constvaluez\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/constvaluew\")"
+                }
+            ],
+            "dimensions": {
+                "expression": "ch(\"../attribrandomize1/dimensions\")"
+            },
+            "direction": [
+                {
+                    "expression": "ch(\"../attribrandomize1/directionx\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/directiony\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/directionz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/directionw\")"
+                }
+            ],
+            "directionattrib": {
+                "expression": "chs(\"../attribrandomize1/directionattrib\")"
+            },
+            "distribution": {
+                "expression": "chs(\"../attribrandomize1/distribution\")"
+            },
+            "fit0to": {
+                "expression": "ch(\"../attribrandomize1/fit0to\")"
+            },
+            "fit1to": {
+                "expression": "ch(\"../attribrandomize1/fit1to\")"
+            },
+            "fractionattrib": {
+                "expression": "chs(\"../attribrandomize1/fractionattrib\")"
+            },
+            "group": {
+                "expression": "chs(\"../attribrandomize1/group\")"
+            },
+            "grouptype": {
+                "expression": "ch(\"../attribrandomize1/grouptype\")"
+            },
+            "max": [
+                {
+                    "expression": "ch(\"../attribrandomize1/maxx\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/maxy\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/maxz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/maxw\")"
+                }
+            ],
+            "maxdiscrete": [
+                {
+                    "expression": "ch(\"../attribrandomize1/maxdiscretex\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/maxdiscretey\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/maxdiscretez\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/maxdiscretew\")"
+                }
+            ],
+            "maxlimit": [
+                {
+                    "expression": "ch(\"../attribrandomize1/maxlimitx\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/maxlimity\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/maxlimitz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/maxlimitw\")"
+                }
+            ],
+            "median": [
+                {
+                    "expression": "ch(\"../attribrandomize1/medianx\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/mediany\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/medianz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/medianw\")"
+                }
+            ],
+            "medianattrib": {
+                "expression": "chs(\"../attribrandomize1/medianattrib\")"
+            },
+            "min": [
+                {
+                    "expression": "ch(\"../attribrandomize1/minx\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/miny\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/minz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/minw\")"
+                }
+            ],
+            "mindiscrete": [
+                {
+                    "expression": "ch(\"../attribrandomize1/mindiscretex\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/mindiscretey\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/mindiscretez\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/mindiscretew\")"
+                }
+            ],
+            "minlimit": [
+                {
+                    "expression": "ch(\"../attribrandomize1/minlimitx\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/minlimity\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/minlimitz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/minlimitw\")"
+                }
+            ],
+            "name": "shader_roughness",
+            "normalize": {
+                "expression": "ch(\"../attribrandomize1/normalize\")"
+            },
+            "nvisualizepts": {
+                "expression": "ch(\"../attribrandomize1/nvisualizepts\")"
+            },
+            "onesidedmedian": [
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedmedianx\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedmediany\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedmedianz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedmedianw\")"
+                }
+            ],
+            "onesidedmin": [
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedminx\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedminy\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedminz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedminw\")"
+                }
+            ],
+            "onesidedstddev": [
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedstddevx\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedstddevy\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedstddevz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/onesidedstddevw\")"
+                }
+            ],
+            "operation": {
+                "expression": "chs(\"../attribrandomize1/operation\")"
+            },
+            "powerbias": {
+                "expression": "ch(\"../attribrandomize1/powerbias\")"
+            },
+            "probvalueb": {
+                "expression": "ch(\"../attribrandomize1/probvalueb\")"
+            },
+            "ramp": [
+                {
+                    "interp": {
+                        "expression": "ch(\"../attribrandomize1/ramp1interp\")"
+                    },
+                    "pos": {
+                        "expression": "ch(\"../attribrandomize1/ramp1pos\")"
+                    },
+                    "value": {
+                        "expression": "ch(\"../attribrandomize1/ramp1value\")"
+                    }
+                },
+                {
+                    "interp": {
+                        "expression": "ch(\"../attribrandomize1/ramp2interp\")"
+                    },
+                    "pos": {
+                        "expression": "ch(\"../attribrandomize1/ramp2pos\")"
+                    },
+                    "value": {
+                        "expression": "ch(\"../attribrandomize1/ramp2value\")"
+                    }
+                },
+                {
+                    "interp": {
+                        "expression": "ch(\"../attribrandomize1/ramp3interp\")"
+                    },
+                    "pos": {
+                        "expression": "ch(\"../attribrandomize1/ramp3pos\")"
+                    },
+                    "value": {
+                        "expression": "ch(\"../attribrandomize1/ramp3value\")"
+                    }
+                }
+            ],
+            "scale": {
+                "expression": "ch(\"../attribrandomize1/scale\")"
+            },
+            "seed": {
+                "expression": "ch(\"../attribrandomize1/seed\")"
+            },
+            "seedattrib": {
+                "expression": "chs(\"../attribrandomize1/seedattrib\")"
+            },
+            "stddev": [
+                {
+                    "expression": "ch(\"../attribrandomize1/stddevx\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/stddevy\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/stddevz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/stddevw\")"
+                }
+            ],
+            "stepsize": [
+                {
+                    "expression": "ch(\"../attribrandomize1/stepsizex\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/stepsizey\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/stepsizez\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/stepsizew\")"
+                }
+            ],
+            "useconeangle": {
+                "expression": "ch(\"../attribrandomize1/useconeangle\")"
+            },
+            "usefit0to": {
+                "expression": "ch(\"../attribrandomize1/usefit0to\")"
+            },
+            "usefit1to": {
+                "expression": "ch(\"../attribrandomize1/usefit1to\")"
+            },
+            "usefractionattrib": {
+                "expression": "ch(\"../attribrandomize1/usefractionattrib\")"
+            },
+            "usemaxlimit": {
+                "expression": "ch(\"../attribrandomize1/usemaxlimit\")"
+            },
+            "useminlimit": {
+                "expression": "ch(\"../attribrandomize1/useminlimit\")"
+            },
+            "useonesidedmin": {
+                "expression": "ch(\"../attribrandomize1/useonesidedmin\")"
+            },
+            "usepowerbias": {
+                "expression": "ch(\"../attribrandomize1/usepowerbias\")"
+            },
+            "useseedattrib": {
+                "expression": "ch(\"../attribrandomize1/useseedattrib\")"
+            },
+            "valuea": [
+                {
+                    "expression": "ch(\"../attribrandomize1/valueax\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/valueay\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/valueaz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/valueaw\")"
+                }
+            ],
+            "valueb": [
+                {
+                    "expression": "ch(\"../attribrandomize1/valuebx\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/valueby\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/valuebz\")"
+                },
+                {
+                    "expression": "ch(\"../attribrandomize1/valuebw\")"
+                }
+            ],
+            "values": [
+                {
+                    "strvalue#": "C:/PROGRA~1/SIDEEF~1/Houdini 21.0.512/houdini/pic/texture/bricks001_basecolor.rat",
+                    "value#": 0.2
+                },
+                {
+                    "strvalue#": "C:/PROGRA~1/SIDEEF~1/Houdini 21.0.512/houdini/pic/texture/dirt001_basecolor.rat",
+                    "value#": 0.8
+                }
+            ],
+            "visualize": {
+                "expression": "ch(\"../attribrandomize1/visualize\")"
+            }
+        },
+        "position": [
+            3.23,
+            -1.57
+        ],
+        "type": "attribrandomize",
+        "user_data": {
+            "referenced_from": "../attribrandomize1"
+        }
+    },
+    "copytopoints1": {
+        "inputs": [
+            {
+                "from": "uvproject1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "attribrandomize2",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "targetattribs": [
+                {
+                    "applyattribs#": "*,^v,^Alpha,^N,^up,^pscale,^scale,^orient,^rot,^pivot,^trans,^transform"
+                },
+                {
+                    "applyattribs#": "Alpha",
+                    "applymethod#": "mult"
+                },
+                {
+                    "applyattribs#": "v",
+                    "applymethod#": "add"
+                }
+            ]
+        },
+        "position": [
+            1.72,
+            -3.04
+        ],
+        "type": "copytopoints::2.0"
+    },
+    "grid1": {
+        "parms": {
+            "cols": 5,
+            "rows": 5
+        },
+        "position": [
+            3.23,
+            1.1
+        ],
+        "type": "grid"
+    },
+    "lopnet1": {
+        "children": {
+            "assignmaterial": {
+                "flags": {
+                    "display": true
+                },
+                "inputs": [
+                    {
+                        "from": "materiallibrary1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "nummaterials": [
+                        {
+                            "matspecpath#": "/materials/karmamaterial",
+                            "primpattern#": "/sopimport1"
+                        }
+                    ]
+                },
+                "position": [
+                    -0.82,
+                    -5.58
+                ],
+                "type": "assignmaterial"
+            },
+            "materiallibrary1": {
+                "children": {
+                    "karmamaterial": {
+                        "children": {
+                            "Material_Outputs_and_AOVs": {
+                                "inputs": [
+                                    {
+                                        "from": "mtlxstandard_surface",
+                                        "from_index": "out",
+                                        "to_index": "surface"
+                                    },
+                                    {
+                                        "from": "mtlxdisplacement",
+                                        "from_index": "out",
+                                        "to_index": "displacement"
+                                    },
+                                    {
+                                        "from": "material_properties",
+                                        "from_index": "properties",
+                                        "to_index": "properties"
+                                    }
+                                ],
+                                "parms": {
+                                    "name1": "surface",
+                                    "name2": "displacement"
+                                },
+                                "position": [
+                                    2.44,
+                                    -3.87
+                                ],
+                                "size": [
+                                    1.77,
+                                    1.13
+                                ],
+                                "type": "suboutput"
+                            },
+                            "inputs": {
+                                "flags": {
+                                    "display": true,
+                                    "render": true
+                                },
+                                "position": [
+                                    -4.75,
+                                    1.36
+                                ],
+                                "size": [
+                                    1.77,
+                                    0.53
+                                ],
+                                "type": "subinput"
+                            },
+                            "material_properties": {
+                                "position": [
+                                    -0.29,
+                                    -3.87
+                                ],
+                                "size": [
+                                    1.77,
+                                    0.68
+                                ],
+                                "type": "kma_material_properties"
+                            },
+                            "mtlxdisplacement": {
+                                "position": [
+                                    -0.29,
+                                    -2.43
+                                ],
+                                "size": [
+                                    1.77,
+                                    0.83
+                                ],
+                                "type": "mtlxdisplacement"
+                            },
+                            "mtlxgeompropvalue1": {
+                                "parms": {
+                                    "geomprop": "shader_roughness"
+                                },
+                                "position": [
+                                    -4.2,
+                                    -3.26
+                                ],
+                                "size": [
+                                    1.77,
+                                    0.83
+                                ],
+                                "type": "mtlxgeompropvalue"
+                            },
+                            "mtlxgeompropvalueuniform1": {
+                                "parms": {
+                                    "geomprop": "texturepath",
+                                    "signature": "string"
+                                },
+                                "position": [
+                                    -7.56,
+                                    -0.66
+                                ],
+                                "size": [
+                                    1.77,
+                                    0.83
+                                ],
+                                "type": "mtlxgeompropvalueuniform"
+                            },
+                            "mtlximage1": {
+                                "inputs": [
+                                    {
+                                        "from": "mtlxgeompropvalueuniform1",
+                                        "from_index": "out",
+                                        "to_index": "file"
+                                    }
+                                ],
+                                "parms": {
+                                    "signature": "color3"
+                                },
+                                "position": [
+                                    -4.2,
+                                    -0.4
+                                ],
+                                "size": [
+                                    1.77,
+                                    2.03
+                                ],
+                                "type": "mtlximage"
+                            },
+                            "mtlxstandard_surface": {
+                                "inputs": [
+                                    {
+                                        "from": "mtlximage1",
+                                        "from_index": "out",
+                                        "to_index": "base_color"
+                                    },
+                                    {
+                                        "from": "mtlxgeompropvalue1",
+                                        "from_index": "out",
+                                        "to_index": "specular_roughness"
+                                    }
+                                ],
+                                "position": [
+                                    -0.29,
+                                    0.98
+                                ],
+                                "size": [
+                                    1.77,
+                                    2.86
+                                ],
+                                "type": "mtlxstandard_surface",
+                                "user_data": {
+                                    "__inputgroup_": "collapsed",
+                                    "__inputgroup_Base": "collapsed",
+                                    "__inputgroup_Coat": "collapsed",
+                                    "__inputgroup_Emission": "collapsed",
+                                    "__inputgroup_Geometry": "collapsed",
+                                    "__inputgroup_Sheen": "collapsed",
+                                    "__inputgroup_Subsurface": "collapsed",
+                                    "__inputgroup_Thin Film": "collapsed",
+                                    "__inputgroup_Transmission": "collapsed"
+                                }
+                            }
+                        },
+                        "flags": {
+                            "display": true,
+                            "material": true,
+                            "render": true
+                        },
+                        "parmtemplates": [
+                            {
+                                "insert_first": "",
+                                "parmtemplates": {
+                                    "folder1": {
+                                        "label": "Karma Material Builder",
+                                        "parmtemplates": {
+                                            "inherit_ctrl": {
+                                                "default_value": 2,
+                                                "label": "Inherit from Class",
+                                                "menu_items": [
+                                                    {
+                                                        "label": "Never",
+                                                        "token": "0"
+                                                    },
+                                                    {
+                                                        "label": "Always",
+                                                        "token": "1"
+                                                    },
+                                                    {
+                                                        "label": "Material Flag",
+                                                        "token": "2"
+                                                    }
+                                                ],
+                                                "menu_type": "normal",
+                                                "script_callback_language": "hscript",
+                                                "type": "integer"
+                                            },
+                                            "separator1": {
+                                                "label": "",
+                                                "script_callback_language": "hscript",
+                                                "type": "separator"
+                                            },
+                                            "shader_baseprimpath": {
+                                                "default_value": "/__class_mtl__/`$OS`",
+                                                "label": "Class Prim Path",
+                                                "menu_type": "normal",
+                                                "script_callback_language": "hscript",
+                                                "tags": {
+                                                    "script_action": "import lopshaderutils\nlopshaderutils.selectPrimFromInputOrFile(kwargs)",
+                                                    "script_action_help": "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.",
+                                                    "script_action_icon": "BUTTONS_reselect",
+                                                    "sidefx::shader_isparm": "0",
+                                                    "sidefx::usdpathtype": "prim",
+                                                    "spare_category": "Shader"
+                                                },
+                                                "type": "string"
+                                            },
+                                            "shader_forcechildren": {
+                                                "default_value": true,
+                                                "label": "Force Translation of Children",
+                                                "script_callback_language": "hscript",
+                                                "tags": {
+                                                    "sidefx::shader_isparm": "0",
+                                                    "spare_category": "Shader"
+                                                },
+                                                "type": "toggle"
+                                            },
+                                            "shader_referencetype": {
+                                                "default_value": {
+                                                    "expression": "n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r",
+                                                    "language": "python"
+                                                },
+                                                "label": "Class Arc",
+                                                "menu_items": [
+                                                    {
+                                                        "label": "None",
+                                                        "token": "none"
+                                                    },
+                                                    {
+                                                        "label": "Reference",
+                                                        "token": "reference"
+                                                    },
+                                                    {
+                                                        "label": "Inherit",
+                                                        "token": "inherit"
+                                                    },
+                                                    {
+                                                        "label": "Specialize",
+                                                        "token": "specialize"
+                                                    },
+                                                    {
+                                                        "label": "Represent",
+                                                        "token": "represent"
+                                                    }
+                                                ],
+                                                "menu_type": "normal",
+                                                "script_callback_language": "hscript",
+                                                "tags": {
+                                                    "sidefx::shader_isparm": "0",
+                                                    "spare_category": "Shader"
+                                                },
+                                                "type": "string"
+                                            },
+                                            "shader_rendercontextname": {
+                                                "default_value": "kma",
+                                                "label": "Render Context Name",
+                                                "menu_type": "normal",
+                                                "script_callback_language": "hscript",
+                                                "tags": {
+                                                    "sidefx::shader_isparm": "0",
+                                                    "spare_category": "Shader"
+                                                },
+                                                "type": "string"
+                                            },
+                                            "tabmenumask": {
+                                                "default_value": "karma USD ^mtlxUsd* ^mtlxramp* ^hmtlxramp* ^hmtlxcubicramp* MaterialX parameter constant collect null genericshader subnet subnetconnector suboutput subinput",
+                                                "label": "Tab Menu Mask",
+                                                "menu_type": "normal",
+                                                "script_callback_language": "hscript",
+                                                "tags": {
+                                                    "spare_category": "Tab Menu"
+                                                },
+                                                "type": "string"
+                                            }
+                                        },
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "group_type": "collapsible",
+                                            "sidefx::shader_isparm": "0"
+                                        },
+                                        "type": "folder_collapsible"
+                                    }
+                                }
+                            }
+                        ],
+                        "position": [
+                            -0.45,
+                            -5.99
+                        ],
+                        "size": [
+                            1.77,
+                            0.98
+                        ],
+                        "type": "subnet"
+                    }
+                },
+                "inputs": [
+                    {
+                        "from": "sopimport1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "materials": [
+                        {
+                            "assign#": false,
+                            "matflag#": true,
+                            "matnode#": "*"
+                        }
+                    ]
+                },
+                "parmtemplates": [
+                    {
+                        "insert_after": "matpathprefix",
+                        "parmtemplates": {
+                            "tabmenufolder": {
+                                "label": "Tab Menu",
+                                "parmtemplates": {
+                                    "tabmenumask": {
+                                        "default_value": "*builder parameter constant rampparm collect null subnet subnetconnector suboutput subinput genericshader",
+                                        "label": "Tab Menu Mask",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Tab Menu"
+                                        },
+                                        "type": "string"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            }
+                        }
+                    }
+                ],
+                "position": [
+                    -0.82,
+                    -4.3
+                ],
+                "type": "materiallibrary"
+            },
+            "sopimport1": {
+                "flags": {
+                    "render": true
+                },
+                "parms": {
+                    "enable_indexattribs": true,
+                    "soppath": "../../OUT"
+                },
+                "position": [
+                    -0.82,
+                    -3.16
+                ],
+                "type": "sopimport"
+            }
+        },
+        "position": [
+            1.72,
+            -5.85
+        ],
+        "type": "lopnet"
+    },
+    "sphere1": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "type": "polymesh"
+        },
+        "position": [
+            0,
+            1.1
+        ],
+        "type": "sphere"
+    },
+    "uvproject1": {
+        "inputs": [
+            {
+                "from": "sphere1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "projtype": "polar"
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "uvproject"
+    }
+}

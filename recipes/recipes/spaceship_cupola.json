@@ -1,0 +1,2198 @@
+{
+    "OUT": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "merge23",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            3.8,
+            -51.44
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "version": "",
+        "systemfields": {
+            "description": "Circular spaceship window that was build for our [Onsen project](https://codercat.xyz/onsen/)",
+            "category": "geometry",
+            "image": "5f186c082388.jpg",
+            "id": "5f186c082388",
+            "date-created": "2025-11-29T13:37:29.817907553Z",
+            "date-modified": "2025-11-30T12:23:24.64649682Z",
+            "username": "kif",
+            "tags": [
+                "window",
+                "port",
+                "onsen",
+                "cupola",
+                "circular",
+                "glass"
+            ]
+        }
+    },
+    "attribdelete1": {
+        "inputs": [
+            {
+                "from": "peak2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "negate": true
+        },
+        "position": [
+            12.64,
+            -40.44
+        ],
+        "type": "attribdelete"
+    },
+    "blast4": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "polyfill1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "961",
+            "grouptype": "prims",
+            "removegrp": true
+        },
+        "position": [
+            0,
+            5
+        ],
+        "type": "blast"
+    },
+    "boolean2": {
+        "inputs": [
+            {
+                "from": "polyfill1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "transform6",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "booleanop": "subtract",
+            "subtractchoices": "bminusa"
+        },
+        "position": [
+            3.37,
+            5.29
+        ],
+        "type": "boolean::2.0"
+    },
+    "carve4": {
+        "inputs": [
+            {
+                "from": "foreach_begin3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "domainu1": {
+                "expression": "1/detail(\"../foreach_count2/\", \"numiterations\", 0)*detail(\"../foreach_count2/\", \"iteration\", 0)"
+            },
+            "stdswitcher": 1
+        },
+        "position": [
+            12.64,
+            -36.35
+        ],
+        "type": "carve"
+    },
+    "carve5": {
+        "inputs": [
+            {
+                "from": "revolve2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "domainu2": 0.405,
+            "firstu": false,
+            "firstv": true,
+            "stdswitcher": 1
+        },
+        "position": [
+            6.88,
+            -34.36
+        ],
+        "type": "carve"
+    },
+    "carve6": {
+        "inputs": [
+            {
+                "from": "revolve2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "domainu2": 0.405,
+            "domainv1": 0.615,
+            "firstu": false,
+            "firstv": true,
+            "stdswitcher": 1
+        },
+        "position": [
+            5.18,
+            -34.36
+        ],
+        "type": "carve"
+    },
+    "cc_bevel_corners10": {
+        "children": {
+            "1": {
+                "position": [
+                    0,
+                    6.91
+                ],
+                "type": "SubnetIndirectInput"
+            },
+            "group1": {
+                "flags": {
+                    "highlight": true
+                },
+                "inputs": [
+                    {
+                        "from": "1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "domaxedgeangle": true,
+                    "dominedgeangle": true,
+                    "groupbase": false,
+                    "groupedges": true,
+                    "groupname": "corners",
+                    "grouptype": "edge",
+                    "maxedgeangle": {
+                        "expression": "ch(\"../maxedgeangle\")"
+                    },
+                    "minedgeangle": {
+                        "expression": "ch(\"../minedgeangle\")"
+                    }
+                },
+                "position": [
+                    0,
+                    5.22
+                ],
+                "type": "groupcreate"
+            },
+            "normal1": {
+                "flags": {
+                    "display": true,
+                    "render": true
+                },
+                "inputs": [
+                    {
+                        "from": "polybevel1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "cuspangle": {
+                        "expression": "ch(\"../cuspangle\")"
+                    }
+                },
+                "position": [
+                    0,
+                    3.22
+                ],
+                "type": "normal"
+            },
+            "output0": {
+                "inputs": [
+                    {
+                        "from": "normal1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "outputidx": 0
+                },
+                "position": [
+                    0,
+                    1.5
+                ],
+                "type": "output"
+            },
+            "polybevel1": {
+                "inputs": [
+                    {
+                        "from": "group1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "divisions": {
+                        "expression": "ch(\"../divisions\")"
+                    },
+                    "edgeprims": {
+                        "expression": "chs(\"../edgeprims\")"
+                    },
+                    "group": "corners",
+                    "grouptype": "guess",
+                    "mergedpoints": {
+                        "expression": "chs(\"../mergedpoints\")"
+                    },
+                    "offset": {
+                        "expression": "ch(\"../offset\")"
+                    },
+                    "offsetedges": {
+                        "expression": "chs(\"../offsetedges\")"
+                    },
+                    "offsetpoints": {
+                        "expression": "chs(\"../offsetpoints\")"
+                    },
+                    "ptfilletedges": {
+                        "expression": "chs(\"../ptfilletedges\")"
+                    },
+                    "ptfilletgroup": {
+                        "expression": "chs(\"../ptfilletgroup\")"
+                    },
+                    "useedgefilletgroup": {
+                        "expression": "ch(\"../useedgefilletgroup\")"
+                    },
+                    "usemergedpoints": {
+                        "expression": "ch(\"../usemergedpoints\")"
+                    },
+                    "useoffsetedges": {
+                        "expression": "ch(\"../useoffsetedges\")"
+                    },
+                    "useoffsetpoints": {
+                        "expression": "ch(\"../useoffsetpoints\")"
+                    },
+                    "useptfilletedges": {
+                        "expression": "ch(\"../useptfilletedges\")"
+                    },
+                    "useptfilletgroup": {
+                        "expression": "ch(\"../useptfilletgroup\")"
+                    }
+                },
+                "position": [
+                    0,
+                    4.22
+                ],
+                "type": "polybevel::3.0"
+            }
+        },
+        "inputs": [
+            {
+                "from": "sweep8",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "offset": 0.003
+        },
+        "position": [
+            12.64,
+            -42.44
+        ],
+        "type": "cc_bevel_corners"
+    },
+    "cc_bevel_corners5": {
+        "children": {
+            "1": {
+                "position": [
+                    0,
+                    6.91
+                ],
+                "type": "SubnetIndirectInput"
+            },
+            "group1": {
+                "flags": {
+                    "highlight": true
+                },
+                "inputs": [
+                    {
+                        "from": "1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "domaxedgeangle": true,
+                    "dominedgeangle": true,
+                    "groupbase": false,
+                    "groupedges": true,
+                    "groupname": "corners",
+                    "grouptype": "edge",
+                    "maxedgeangle": {
+                        "expression": "ch(\"../maxedgeangle\")"
+                    },
+                    "minedgeangle": {
+                        "expression": "ch(\"../minedgeangle\")"
+                    }
+                },
+                "position": [
+                    0,
+                    5.22
+                ],
+                "type": "groupcreate"
+            },
+            "normal1": {
+                "flags": {
+                    "display": true,
+                    "render": true
+                },
+                "inputs": [
+                    {
+                        "from": "polybevel1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "cuspangle": {
+                        "expression": "ch(\"../cuspangle\")"
+                    }
+                },
+                "position": [
+                    0,
+                    3.22
+                ],
+                "type": "normal"
+            },
+            "output0": {
+                "inputs": [
+                    {
+                        "from": "normal1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "outputidx": 0
+                },
+                "position": [
+                    0,
+                    1.5
+                ],
+                "type": "output"
+            },
+            "polybevel1": {
+                "inputs": [
+                    {
+                        "from": "group1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "divisions": {
+                        "expression": "ch(\"../divisions\")"
+                    },
+                    "edgeprims": {
+                        "expression": "chs(\"../edgeprims\")"
+                    },
+                    "group": "corners",
+                    "grouptype": "guess",
+                    "mergedpoints": {
+                        "expression": "chs(\"../mergedpoints\")"
+                    },
+                    "offset": {
+                        "expression": "ch(\"../offset\")"
+                    },
+                    "offsetedges": {
+                        "expression": "chs(\"../offsetedges\")"
+                    },
+                    "offsetpoints": {
+                        "expression": "chs(\"../offsetpoints\")"
+                    },
+                    "ptfilletedges": {
+                        "expression": "chs(\"../ptfilletedges\")"
+                    },
+                    "ptfilletgroup": {
+                        "expression": "chs(\"../ptfilletgroup\")"
+                    },
+                    "useedgefilletgroup": {
+                        "expression": "ch(\"../useedgefilletgroup\")"
+                    },
+                    "usemergedpoints": {
+                        "expression": "ch(\"../usemergedpoints\")"
+                    },
+                    "useoffsetedges": {
+                        "expression": "ch(\"../useoffsetedges\")"
+                    },
+                    "useoffsetpoints": {
+                        "expression": "ch(\"../useoffsetpoints\")"
+                    },
+                    "useptfilletedges": {
+                        "expression": "ch(\"../useptfilletedges\")"
+                    },
+                    "useptfilletgroup": {
+                        "expression": "ch(\"../useptfilletgroup\")"
+                    }
+                },
+                "position": [
+                    0,
+                    4.22
+                ],
+                "type": "polybevel::3.0"
+            }
+        },
+        "inputs": [
+            {
+                "from": "sweep6",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "maxedgeangle": 221,
+            "offset": 0.008
+        },
+        "position": [
+            8.12,
+            -17.61
+        ],
+        "type": "cc_bevel_corners"
+    },
+    "cc_bevel_corners6": {
+        "children": {
+            "1": {
+                "position": [
+                    0,
+                    6.91
+                ],
+                "type": "SubnetIndirectInput"
+            },
+            "group1": {
+                "flags": {
+                    "highlight": true
+                },
+                "inputs": [
+                    {
+                        "from": "1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "domaxedgeangle": true,
+                    "dominedgeangle": true,
+                    "groupbase": false,
+                    "groupedges": true,
+                    "groupname": "corners",
+                    "grouptype": "edge",
+                    "maxedgeangle": {
+                        "expression": "ch(\"../maxedgeangle\")"
+                    },
+                    "minedgeangle": {
+                        "expression": "ch(\"../minedgeangle\")"
+                    }
+                },
+                "position": [
+                    0,
+                    5.22
+                ],
+                "type": "groupcreate"
+            },
+            "normal1": {
+                "flags": {
+                    "display": true,
+                    "render": true
+                },
+                "inputs": [
+                    {
+                        "from": "polybevel1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "cuspangle": {
+                        "expression": "ch(\"../cuspangle\")"
+                    }
+                },
+                "position": [
+                    0,
+                    3.22
+                ],
+                "type": "normal"
+            },
+            "output0": {
+                "inputs": [
+                    {
+                        "from": "normal1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "outputidx": 0
+                },
+                "position": [
+                    0,
+                    1.5
+                ],
+                "type": "output"
+            },
+            "polybevel1": {
+                "inputs": [
+                    {
+                        "from": "group1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "divisions": {
+                        "expression": "ch(\"../divisions\")"
+                    },
+                    "edgeprims": {
+                        "expression": "chs(\"../edgeprims\")"
+                    },
+                    "group": "corners",
+                    "grouptype": "guess",
+                    "mergedpoints": {
+                        "expression": "chs(\"../mergedpoints\")"
+                    },
+                    "offset": {
+                        "expression": "ch(\"../offset\")"
+                    },
+                    "offsetedges": {
+                        "expression": "chs(\"../offsetedges\")"
+                    },
+                    "offsetpoints": {
+                        "expression": "chs(\"../offsetpoints\")"
+                    },
+                    "ptfilletedges": {
+                        "expression": "chs(\"../ptfilletedges\")"
+                    },
+                    "ptfilletgroup": {
+                        "expression": "chs(\"../ptfilletgroup\")"
+                    },
+                    "useedgefilletgroup": {
+                        "expression": "ch(\"../useedgefilletgroup\")"
+                    },
+                    "usemergedpoints": {
+                        "expression": "ch(\"../usemergedpoints\")"
+                    },
+                    "useoffsetedges": {
+                        "expression": "ch(\"../useoffsetedges\")"
+                    },
+                    "useoffsetpoints": {
+                        "expression": "ch(\"../useoffsetpoints\")"
+                    },
+                    "useptfilletedges": {
+                        "expression": "ch(\"../useptfilletedges\")"
+                    },
+                    "useptfilletgroup": {
+                        "expression": "ch(\"../useptfilletgroup\")"
+                    }
+                },
+                "position": [
+                    0,
+                    4.22
+                ],
+                "type": "polybevel::3.0"
+            }
+        },
+        "inputs": [
+            {
+                "from": "sweep5",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "maxedgeangle": 221,
+            "offset": 0.014,
+            "useedgefilletgroup": true
+        },
+        "position": [
+            8.08,
+            -3.72
+        ],
+        "type": "cc_bevel_corners"
+    },
+    "cc_bevel_corners7": {
+        "children": {
+            "1": {
+                "position": [
+                    0,
+                    6.91
+                ],
+                "type": "SubnetIndirectInput"
+            },
+            "group1": {
+                "flags": {
+                    "highlight": true
+                },
+                "inputs": [
+                    {
+                        "from": "1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "domaxedgeangle": true,
+                    "dominedgeangle": true,
+                    "groupbase": false,
+                    "groupedges": true,
+                    "groupname": "corners",
+                    "grouptype": "edge",
+                    "maxedgeangle": {
+                        "expression": "ch(\"../maxedgeangle\")"
+                    },
+                    "minedgeangle": {
+                        "expression": "ch(\"../minedgeangle\")"
+                    }
+                },
+                "position": [
+                    0,
+                    5.22
+                ],
+                "type": "groupcreate"
+            },
+            "normal1": {
+                "flags": {
+                    "display": true,
+                    "render": true
+                },
+                "inputs": [
+                    {
+                        "from": "polybevel1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "cuspangle": {
+                        "expression": "ch(\"../cuspangle\")"
+                    }
+                },
+                "position": [
+                    0,
+                    3.22
+                ],
+                "type": "normal"
+            },
+            "output0": {
+                "inputs": [
+                    {
+                        "from": "normal1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "outputidx": 0
+                },
+                "position": [
+                    0,
+                    1.5
+                ],
+                "type": "output"
+            },
+            "polybevel1": {
+                "inputs": [
+                    {
+                        "from": "group1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "divisions": {
+                        "expression": "ch(\"../divisions\")"
+                    },
+                    "edgeprims": {
+                        "expression": "chs(\"../edgeprims\")"
+                    },
+                    "group": "corners",
+                    "grouptype": "guess",
+                    "mergedpoints": {
+                        "expression": "chs(\"../mergedpoints\")"
+                    },
+                    "offset": {
+                        "expression": "ch(\"../offset\")"
+                    },
+                    "offsetedges": {
+                        "expression": "chs(\"../offsetedges\")"
+                    },
+                    "offsetpoints": {
+                        "expression": "chs(\"../offsetpoints\")"
+                    },
+                    "ptfilletedges": {
+                        "expression": "chs(\"../ptfilletedges\")"
+                    },
+                    "ptfilletgroup": {
+                        "expression": "chs(\"../ptfilletgroup\")"
+                    },
+                    "useedgefilletgroup": {
+                        "expression": "ch(\"../useedgefilletgroup\")"
+                    },
+                    "usemergedpoints": {
+                        "expression": "ch(\"../usemergedpoints\")"
+                    },
+                    "useoffsetedges": {
+                        "expression": "ch(\"../useoffsetedges\")"
+                    },
+                    "useoffsetpoints": {
+                        "expression": "ch(\"../useoffsetpoints\")"
+                    },
+                    "useptfilletedges": {
+                        "expression": "ch(\"../useptfilletedges\")"
+                    },
+                    "useptfilletgroup": {
+                        "expression": "ch(\"../useptfilletgroup\")"
+                    }
+                },
+                "position": [
+                    0,
+                    4.22
+                ],
+                "type": "polybevel::3.0"
+            }
+        },
+        "inputs": [
+            {
+                "from": "merge19",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "maxedgeangle": 164,
+            "minedgeangle": 32,
+            "offset": 0.001
+        },
+        "position": [
+            8.08,
+            -8.84
+        ],
+        "type": "cc_bevel_corners"
+    },
+    "cc_bevel_corners9": {
+        "children": {
+            "1": {
+                "position": [
+                    0,
+                    6.91
+                ],
+                "type": "SubnetIndirectInput"
+            },
+            "group1": {
+                "flags": {
+                    "highlight": true
+                },
+                "inputs": [
+                    {
+                        "from": "1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "domaxedgeangle": true,
+                    "dominedgeangle": true,
+                    "groupbase": false,
+                    "groupedges": true,
+                    "groupname": "corners",
+                    "grouptype": "edge",
+                    "maxedgeangle": {
+                        "expression": "ch(\"../maxedgeangle\")"
+                    },
+                    "minedgeangle": {
+                        "expression": "ch(\"../minedgeangle\")"
+                    }
+                },
+                "position": [
+                    0,
+                    5.22
+                ],
+                "type": "groupcreate"
+            },
+            "normal1": {
+                "flags": {
+                    "display": true,
+                    "render": true
+                },
+                "inputs": [
+                    {
+                        "from": "polybevel1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "cuspangle": {
+                        "expression": "ch(\"../cuspangle\")"
+                    }
+                },
+                "position": [
+                    0,
+                    3.22
+                ],
+                "type": "normal"
+            },
+            "output0": {
+                "inputs": [
+                    {
+                        "from": "normal1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "outputidx": 0
+                },
+                "position": [
+                    0,
+                    1.5
+                ],
+                "type": "output"
+            },
+            "polybevel1": {
+                "inputs": [
+                    {
+                        "from": "group1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "divisions": {
+                        "expression": "ch(\"../divisions\")"
+                    },
+                    "edgeprims": {
+                        "expression": "chs(\"../edgeprims\")"
+                    },
+                    "group": "corners",
+                    "grouptype": "guess",
+                    "mergedpoints": {
+                        "expression": "chs(\"../mergedpoints\")"
+                    },
+                    "offset": {
+                        "expression": "ch(\"../offset\")"
+                    },
+                    "offsetedges": {
+                        "expression": "chs(\"../offsetedges\")"
+                    },
+                    "offsetpoints": {
+                        "expression": "chs(\"../offsetpoints\")"
+                    },
+                    "ptfilletedges": {
+                        "expression": "chs(\"../ptfilletedges\")"
+                    },
+                    "ptfilletgroup": {
+                        "expression": "chs(\"../ptfilletgroup\")"
+                    },
+                    "useedgefilletgroup": {
+                        "expression": "ch(\"../useedgefilletgroup\")"
+                    },
+                    "usemergedpoints": {
+                        "expression": "ch(\"../usemergedpoints\")"
+                    },
+                    "useoffsetedges": {
+                        "expression": "ch(\"../useoffsetedges\")"
+                    },
+                    "useoffsetpoints": {
+                        "expression": "ch(\"../useoffsetpoints\")"
+                    },
+                    "useptfilletedges": {
+                        "expression": "ch(\"../useptfilletedges\")"
+                    },
+                    "useptfilletgroup": {
+                        "expression": "ch(\"../useptfilletgroup\")"
+                    }
+                },
+                "position": [
+                    0,
+                    4.22
+                ],
+                "type": "polybevel::3.0"
+            }
+        },
+        "inputs": [
+            {
+                "from": "sweep7",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "maxedgeangle": 221,
+            "offset": 0.008
+        },
+        "position": [
+            8.11,
+            -24.8
+        ],
+        "type": "cc_bevel_corners"
+    },
+    "circle10": {
+        "parms": {
+            "divs": 64,
+            "orient": "zx",
+            "scale": 0.86,
+            "t": [
+                0,
+                0.15578190982341766,
+                0
+            ],
+            "type": "poly"
+        },
+        "position": [
+            8.12,
+            -15.61
+        ],
+        "type": "circle"
+    },
+    "circle12": {
+        "parms": {
+            "divs": 64,
+            "orient": "zx",
+            "scale": 0.72,
+            "t": [
+                0,
+                0.22606727480888367,
+                0
+            ],
+            "type": "poly"
+        },
+        "position": [
+            8.11,
+            -21.8
+        ],
+        "type": "circle"
+    },
+    "circle9": {
+        "parms": {
+            "divs": 64,
+            "orient": "zx",
+            "scale": 1.04,
+            "type": "poly"
+        },
+        "position": [
+            8.08,
+            -1.5
+        ],
+        "type": "circle"
+    },
+    "convert2": {
+        "inputs": [
+            {
+                "from": "revolve1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "lodu": 0.001,
+            "lodv": 3.16
+        },
+        "position": [
+            1.04,
+            7.4
+        ],
+        "type": "convert"
+    },
+    "convert3": {
+        "inputs": [
+            {
+                "from": "revolve2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "lodu": 0.462,
+            "lodv": 2.257
+        },
+        "position": [
+            9.39,
+            -34.21
+        ],
+        "type": "convert"
+    },
+    "curve1": {
+        "parms": {
+            "activepoints": "3",
+            "enablebezierops": false,
+            "mode": 0,
+            "optype": "transform",
+            "outputtype": "nurbs",
+            "parmpoints": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5eO\u003e;3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IGC3eII65;oIx;XO3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0P000000000000000000000000000000D-aQ3baZlQVs\u0026(7UvqVBZDDeGCJ-m`\u0026H*4GARsd`AaHMKZge1FbaZlQVs\u0026(7b2\u003crOWMpu3b1WcjVQFr3VQFq~Z)t9HEFfrMZe(m_a4\u003eLhb1Wcqa$#\u003cBY+-a|EFe%UAaieKbaZlIZgXaDa\u00262;9WGo\u003cIV{~bDWpHw7Z7d*faCCWaWh@|YX?AaPa\u0026L5DbY(0cXkl(-Y-MmUaBp)gAaZYYZe(L`a\u0026BdEaCCDlAaieKbaZlIZgXaDa\u00260UiXkl(-Y-MmVaBp)gAaZYXVRU6IAYpZMZ(?P7X=QROAYo\u00264X?A6BZ)t9Hb1Wclb#!obbaZ)eWh@|YY+-I?Zf$HVAai43Y-KDUVRdwGaCCDlAaHD9Ze?$BX=f}TV{dMAbaG*7ZgX^UVQFV*bY*TVAYpKDa\u0026LHLZe(;}Zf9j~baN~qa\u0026L8RWMgk~Ze?\u003cEVPt7_b1WcpWoK\u003c=ZggU0dTC{HV{C78Wh@|RZggdGaBXFDXm4aJAY*TGZe?\u003cCbaN~qaA|gLbaZlIZgXs5bY(0cb8T;LbZBsNb1WcZZ*F#Fa\u0026%*La\u0026~2NEFfrMZe(m_aCCDlAa8PHWpWB2ARr(hF(7AbZ(?C=AYpWLa%p09bY*io33g#}ZDDW\u003ceJc?NbZ\u003eBPY;R|ICJ|dJ5(sc_X\u003eN3KWo9N4TPqU\u003eX\u003eMd`V`XzD6F?FGU0o{_3So3~a%p09bY*iU6k9754{\u0026d3ZggREbaH88b#!HOCKX#-TPqd?b7OCCWhNFY7Y1;3Vr*$+CKoFh1ax_DWhNLa83%54ZDn$4V\u003cs6Z8U$`(ZDl4JD;oh\u0026CL1dp2XAn6X\u003eV?GCLDVv7\u003c(odD;)-NbaH8KXC@sh9tCz`Y;|QO9xEROaBpdDbS58teO+5CAOv%1dSxac5d$kB2Xl09a$#p\u003eCLt\u003e#2xf3{WnpYHGA1G`BM4+=W?^+~baN\u0026nTP7e80VW|UBnW13a%Ev`HZ\u0026$AD\u003cuYYVQh6}b0#G~8UX+R00000003PkC0iyS5d$V6CL${)2ykI%WpinIWhN#P00b*15o2#|b97;DbZ}v3WoB$)XLBYeTR;#20RR91T`MRHa$$FHVP|DzVRT_8C_otl000000000000000U0q#UTP7AJ7bX}c9VQwpDGXs_bZK^FaBpdDbaN\u0026tCLDWxU0Ws~5dkJ4D=GzPZgev;CMqi{2Xl0CX\u003eMn8CM#PjECDknEGsPmGA1o6E\u0026(wnE?p)QTP7e80VW|PDkdfp00br|Kobc6|Ns900000000001000020000000030|Ns9000018U0qvSCKe_aCKx6eCK@X*3Snb(X?A6Ba%pWQFD4v\u0026CK!7r7$zMi9xE^vZf|a3a%psEZDn+6V_#`*bY*8{awaf+eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4D=`IWZge\u0026@CNU-@KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c9VQwpG6rE}WN\u003etICNd@*dwpG7CLj?3CLty\u0026CM#PjGp;c%FfuVYI5jmhFgP_cGB+_bEHExGF*h|bH#jgkGd4CgI5RjhG%PSKFd#54H#j*mGd3_VIWaOYIW#dcEHExIH8n6YH!?XiF*P_jGc`3eEHExGATTa7IW##qHaIglF)%VSG%z\u003cTFfKGOIW#aaIW;pfGB7hXH#9RWFfK44FfK4KH8eOkHa0gnHZn6ZH90UhEHExKFfuYXHaRvjIXN{oGC49VFfK44CNo_o6I\u0026)A5dkJ4CMqT-5\u0026#4yC_obk00000|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0U0q#UTP7AJ7bX}c873MlG!bENaB^\u003eWWo~42VQyz-Zgg`dG$tH-CK!7r7$zMi9wsn-eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CNU-@KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c873MlH40\u0026MbZ=s1dTC{HCN(A;dnOorCKx6iCLSg*eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Ato^\u003cB|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCLJakD\u003eesVb#!lVbaN\u0026)CLDWxU0Ws~5dkJ4CMqT?TU{m-TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69NDK|NmWGU0Yiw7A6-a7$zAe8Y?#wV{dMAbaG*7ZgX^UVQFV*bY*TPHzpi=CK!7r7$zMi9wsn-eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CNU-@KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c873MlI1OWOZgypIbYpdLc4c!WI3^r\u003eCK!7r7$zMi9wsn-eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CNU-@KokK10000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c9VQwpISFHLa\u0026BdEaCCDfIVK!?eO+57AQ1s3Atov\u0026D_dPA6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobG~|NsA8U0qvSCKe_aCKx6eCK@X`3us|(WNc+{FmP{kCORe@dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{SkzW@LL0000009{\u003eOTU#a;CKo0cCK)CgD?1BlVQyq\u003eWpFWYZ*wL)CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000000000018U0qvSCKe_aCKx6eCK@X|3us|(WNc+{GH`EmCOjq_dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{SkKL7v#0000009{\u003eOTU#a;CKo0cCK)CgD?JHlVQyq\u003eWpH$JCOsw`dnOorCKx6iCLSg*eSKY9CLj?5CLty\u0026CL\u003e!WAQ1s3Ato^\u003cB|sDb|NsC0|NsC0T_z=4CLj?5CLty\u0026CMFU91STh2Ko9`|00018CMZA?1ONa3|NsC0|NsC0|6N^OTU#a;CKo0cCK)CgD?SWqZggdGaBXFDXm4aDJ|-M{CK!7r7$zMi9wsn-eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CNU-@KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c873MlKMieRX\u003eN33X\u003eM?DX\u003eN2TKPDV|CK!7r7$zMi9wsn-eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CNU-@KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c9VQwpKn8Dcba`-PCO{?}dwpG7CLj?3CLty\u0026CM#PjK?`AUaAj^}aBpdDbS6P7LJ4$oVQzC~Z*pxWLR}^kTP7e80VW|PDkdfp00br|KobZ60000100001000010000100001000010000100018U0qvSCKe_aCKx6eCK@Y41#fa\u003eWpXA%CLDVv7\u003c(odCLJaoCNO\u003c{U0Ws~5dkJ4CMqT)TP7e80VW|PF(xHI6afSP00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobE300018U0qvSCKe_aCKx6iCK@Y53U76EaCLNad2nSWL?#@2eO+57AQ1s3Atov\u0026D_bi?1#We6Vsj=%T_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD@F@\u0026X?AaPa\u0026L5DbY\u0026(+CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000000000018U0qvSCKe_aCKx6eCK@Y84sdC9Z*+8WVQzD5VRU6CM\u003cyJ5eO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMZA|7ytkO00000000000OirMJ3sf$J^%m!0058JI=J7?J^%m!0Jl5JJ|dmbJ^%m!0ACAAKk$-*J^%m!0N5i0J^T;RJ^%m!0000000000000000DwWEI{*;TJ|H3jyj@*gTU#a;CKo0cCK)CgD@X`%Y+-I?Zf$HPNG2S6eO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl00000004kL00000U0q#UTP7AJ7bX}c873MlNeOUlVQyt_a%pEKNhTb7eO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl000000000000000U0q#UTP7AJ7bX}c873MlN(ORobYXO5CQ2q8dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCLJakD@zV?Z*^{DV{dY9WpZ$Ib0$kB9D99TTP7e80VW|PDkdviT_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0ssI1|6N^OTU#a;CKo0cCK)CgD@+k`Z*^{DV{dY9WpZ+1WNCGCCQK$AdwpG7CLj?3CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?3CLtywCMFU91STh2Ko9`|00018CMZA|0RR9109{\u003eOTU#a;CKo0cCK)CgD@_G+V_|G%CQT+BdwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh00000008hmT_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{SkKL7xLKL7xLKV4m2TU#a;CKo0cCK)CgD^3z~WoK\u003c=ZggU0dTC{HV{C78WhPE09D61hdnOnr9VQ+oFnxVpTP7e80VW|PDkdXaCLj?3CLty\u003cCM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69EAL003QGU0Yiw7A6-a7$zMi8Y@o;b8T;LbZBsNb0$wF9D99TTP7e80VW|PDkdviD^LL{CQw}_6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@YI4Rdd1baZlIZgXaDa\u00260D2CLDVv7\u003c(odCLJaoCNO\u003c{U0Ws~5dkJ4CMqT)TP7e80VW|PF(xHI6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@YJ5OZ\u00264baZlIZgXaDa\u00262;9WF}H39D99TTP7e80VW|PA|@kSCLj?3CLtyyCM7@`0RR910002sKV2pzTP7e80VW|PA|@sh00br|Kp6-C002J#002J#002J#002J#002MsD7-)RD7-)RD7-\u0026iU0qvSCKe_aCKx6eCK@YK33PH{ZgXs5bY\u0026(}CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yC_ot)000000000000000N?d!p0D0\u0026-00000z`puC01=Ek00000;JXUEz_2d7000000JNSuAkE6V00000Q1{=w0000qAR+?1YETtC0000000000NXkw-0000000000U0q#WD^w6?Y;R\u0026=Y+-bCa%p09bY*iUR9jnHCKe_aCKx6iCK@YM26ka`ZDDXGRVEyJD^?C-Y;R\u0026Zb98cPZfA34bS74NCKxMM1Y\u0026P*Y$jJG9x;7=U0Ws~5g#TYCMqT?TPs))Z*X*ZaAhDZJ|Is}R9R3(CRi(39ARU0X?A6BZ)t9Hb094~AVEV^NmfNrPf1QxQzls}S`cAmWN\u003etIAT2\u00261K}1AQR8uBeD_a\u003c0V{~bDWpHw7Z6GZ^AVEV^NmfNrQb|oFTPs{1ZDDC{bYW?3aBpdDbRaE0AWcC@PE\u003cijPEb!tPE;mbD_tgGaBy;Ocx7\u00266bYX61Wo~qHAT2\u00261K~PXqPgq4xL{vdeM@3FlQzl(2UKnq6bZ~Waba`-PAT2\u00261PgPV\u003cRa8`2P(\u003ezQD_;(8a%5$4AT2\u00261Pf|ohQYK$3U?y^Jb#7#1Z*p#Ba\u0026lp0X?1fTEj}PpPgPDtLr+ppMN(2hL`hXsCSWUJ7GrO6Ze?\u003cCbaNmrJ|II+QcguuP*hVUVJl)5b8T;LbZBsNb094~AX80GPgF=yR8uBmD`OI2b#!lVbaNmrJ|IC=R8LS;Qzm08WFT^Hb#7#1Z*p#Ba\u0026UBWAT2\u00261QcqP*L_\u003c$fPDN5sR8uBoD`hHUZ*FsRa$#w1b98cHX=iA3Wo{rXJ|II+PE%A;K}k+iR8m1nM@UpfP9|k5W*lj5bY*gIZDn+5Z)6}XJ|Ia\u003eR7FxyO+{2lPedkWD`y^KZ*F#Fa\u0026%*La\u0026~2NAT2\u00261Lr+dtMN(8lRZ\u003e\u003c(QzmCCXdZKKW^{CNVQzC~Z*pxQEj}PqPexQ!QbA5rMo\u0026^rCTJ^ZBy(?ObaZlIZgXaDa\u00262;9WFRd*AX869R8\u0026$yPE$rtQcY4pL?\u0026q~Y8G^IVQzD5VRU66Ej}PrQbA5rOhHsdCTc5d5OQyHVRU66Ej}PpPgFrvMJ8)2Yz}i{VQgg}Ej}PqLqSYMCTuHhAaH4RZ*+8WVQzD5VRU66Ej}PnNmfr(R8m1sQ%pfrMJ8=4ZW?fDc5ifYZ**aFWgsm+AW%tGPgGJ*R6$flCT=Tl7HDB^WNc+{baNmrJ|IXzPDD\u0026aP*hVUZ!2\u0026bXkl(-Y-MmTaBp)UEj}PfK~6+WMNlwMPg5pvD{\u0026fVVQyq\u003eWpFWYZ*w3mJ|IXzPDD\u0026aP%%(XQzmgMavEr1Ze(m_a58Xjb094~AV@(@L`+3cGEh%bCUPrt7I17~Ze?$BX=flUJ|Iv`K~6\u003caQb|W9b1QTdaBN|2Wo~V3AT2\u00261P)tEiMNUmjCUh%x7-4mEZ(?P7X=QRCEj}PYRa8$xMOsNkQYLjPb|`aYXKiI}bYf+CX=QR_Y;SXAAT2\u00261Q$\u003cHjMNU*gMOsNkQbSBnQ$;3rT_zJ-CLj?XCLty\u0026CMFU91STh2Ko9`|00018CMZA?9{\u003eOV0096100IC200RI300aO400jU500sa600#g700;m800{s9015yA01E\u0026B01N;C01W^D01f~E01p5F01yBG01*HH01^NI022TJ02BZK02KfL02TlM02crN02lxO02u%P02%-Q02=@R02}}S0384T03HAU09{\u003eOU0o}83UG31ZE19Ac4c!WcUxU21!-\u003c%Wq4aB4ry+5WoKn_Wo~qGX=QVJeJ2fbbaH8KXJu}5a%p9AdwnMnX\u003eN37XJvA0WqD\u003c8bZK\u0026Bb9;R!5OZ{LX\u003eMn0WqD\u003c8baH8Bb9;SVCk\u003c(CWMz18Z*ysMX\u003eV\u003e6W\u0026i*H00000T\u003e"
+            },
+            "pivottranslate": [
+                0.008076505735516548,
+                0.4083251953125,
+                -0.00794270634651184
+            ],
+            "savedstashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5d\u003cp)3wC94bY*yBZ*^{TCIk@#D+La4a%pX8bZK^FV{dhCbS4E60V@UsX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IGC3eII65;oIx;XO3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0PQd0yxY|w%~dzOzp01(kWAR+?100000D-aQIa%pX2Z*^{TUvqVBZDDeGCJ-kWARr(hARr(hARsXyPE}GuQy@cia\u0026~13D-jW4baZlQVs\u0026(7UvqVBZDDeGCJ`q{ARr(hATc0tZ)t9HAYpWLa%p09bY*io2~Y|kARr(hF(7AbZ(?C=AYpWLa%p09bY*io3144wZ*^{DWn^P-a\u0026BdEaCCDDD-sQ7a\u0026L8TUvqVBZDDeGCK4whARr(hATc0tZ)t9HAZK!Kb#QY!2?\u003c|cVRdwGUvPAD3VkaR2y}07Z)|U8c_tHED-;NDZ)t9Ha%E;F6k9752Wf6(X=7z`CKW\u0026u1ONa500IC509{=x77Af\u003ebaH88b#!HOCKg*O7Y}f6X\u003eN33baZlQVs\u0026(7b0!yCTU#p_1#@F\u003eaAhVKD;WlGbz*F3V\u003cs6Z8U%ECaAhVMD;o!Hb!}yGX=5fED;xxFVQpn594j3GP$nHK9tUr5bZKvHb0!{pCK`Jt8Y\u003e?Lb98cPZf7PRD\u003cB1SVQh6}CLk*z1#oX^ZgeIgeSKY9D\u003cTAQX?kTQA`t^CBL{PIZ*pO0WhNslBnW13a%Ev`GcqP5D\u003cueIWoBV@Y;\u003c!bC0iyU5dkJ6D\u003c%kLaB^i~Y\u0026J9|CMzcfc42IFWpgGcKpFu60000000018CMR1aA`t^7BPJv(C\u003ct(2XJvC~dSxak5\u0026#4%DGPF8cW_~6Wn^J=VJ0a+84PUDf\u003cJqfk30YX006mKN\u003cVkcem(#I007wK#Xg)T%sv1B002@`1Uvu`(LNv|0=!*aU0o|G5NB*}Vqt7ybaZlQVs\u0026(7b0#WVTU#a=CK)CgCLbmoD=QLTUvh7CZe(R-V{dY9WpZ$Ib0#Y$9(#RVTP7kA0VX3WECp$9bTcw0EGsPsb98cPZfA2QEn8hC6\u003ca1E5dkJ6CM+f\u003e5\u0026#4%E)ipIZgX^DZgg;AXJuw=VP|tDE?Ynl0RaF209__2KobG~|NsA8U0q#WD=!Lga%pX8bZK^Fb0#laTU#a?D=-O8RZ\u003eDjb#iuPCNN!FD=`LkWpZ?7cqTDG5(EGM0RRF30{|;B24ie*b7f\u003eEGB7JM1!7@yX\u003e%qsTP7MSGzCsoQbJQEG%Ga)Z*pX1awatq1S\u003eWWWo~3?ZggdGaBpm3bZKvHCN?oEHw9~MZ*+4eH$WN)000000000000000000000000000000000000000000000008hm00000008hm00000008hm00000008hmU0q#WD\u003ew^qZ)t9HXL4_KaC0U\u0026TU%Qu94k2rUteK$bZ=j9baN\u0026-U0W+U33Fv^Wn*+{Z*C?!TPr\u0026Wb#8BRWMy(?WF|XXD?9\u003eeI3_$m5d;7L003QGU0q!#1!-\u003c%Wq4aB4ry+5WoKn_Wo~qGX=QVJeJ2fbbaH8KXJu}5a%p9AdwnMnX\u003eN37XJvA0WqD\u003c8bZK\u0026Bb9;R!5OZ{LX\u003eMn0WqD\u003c8baH8Bb9;SVCk\u003c(CWMz18Z*ysMX\u003eV\u003e6W\u0026i*H00000T\u003e"
+            },
+            "softtransformrad": 1.47,
+            "stashid": ";"
+        },
+        "position": [
+            1.04,
+            9.56
+        ],
+        "type": "curve::2.0"
+    },
+    "curve2": {
+        "parms": {
+            "activepoints": "0",
+            "enablebezierops": false,
+            "mode": 0,
+            "optype": "transform",
+            "outputtype": "nurbs",
+            "parmpoints": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5e+K@3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IGC3eII65;oIx;aP3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0P000000000000000000000000000000D-aQ3baZlQVs\u0026(7UvqVBZDDeGCJ-m`\u0026H*4GARsd`AaHMKZge1FbaZlQVs\u0026(7b2\u003crOWMpu3b1WcjVQFr3VQFq~Z)t9HEFfrMZe(m_a4\u003eLhb1Wcqa$#\u003cBY+-a|EFe%UAaieKbaZlIZgXaDa\u00262;9WGo\u003cIV{~bDWpHw7Z7d*faCCWaWh@|YX?AaPa\u0026L5DbY(0cXkl(-Y-MmUaBp)gAaZYYZe(L`a\u0026BdEaCCDlAaieKbaZlIZgXaDa\u00260UiXkl(-Y-MmVaBp)gAaZYXVRU6IAYpZMZ(?P7X=QROAYo\u00264X?A6BZ)t9Hb1Wclb#!obbaZ)eWh@|YY+-I?Zf$HVAai43Y-KDUVRdwGaCCDlAaHD9Ze?$BX=f}TV{dMAbaG*7ZgX^UVQFV*bY*TVAYpKDa\u0026LHLZe(;}Zf9j~baN~qa\u0026L8RWMgk~Ze?\u003cEVPt7_b1WcpWoK\u003c=ZggU0dTC{HV{C78Wh@|RZggdGaBXFDXm4aJAY*TGZe?\u003cCbaN~qaA|gLbaZlIZgXs5bY(0cb8T;LbZBsNb1WcZZ*F#Fa\u0026%*La\u0026~2NEFfrMZe(m_aCCDlAa8PHWpWB2ARr(hF(7AbZ(?C=AYpWLa%p09bY*io33g#}ZDDW\u003ceJc?NbZ\u003eBPY;R|ICJ|dJ5(sc_X\u003eN3KWo9N4TPqU\u003eX\u003eMd`V`XzD6F?FGU0o{_3So3~a%p09bY*iU6k9754{\u0026d3ZggREbaH88b#!HOCKX#-TPqd?b7OCCWhNFY7Y1;3Vr*$+CKoFh1ax_DWhNLa83%54ZDn$4V\u003cs6Z8U$`(ZDl4JD;oh\u0026CL1dp2XAn6X\u003eV?GCLDVv7\u003c(odD;)-NbaH8KXC@sh9tCz`Y;|QO9xEROaBpdDbS58teO+5CAOv%1dSxac5d$kB2Xl09a$#p\u003eCLt\u003e#2xf3{WnpYHGA1G`BM4+=W?^+~baN\u0026nTP7e80VW|UBnW13a%Ev`HZ\u0026$AD\u003cuYYVQh6}b0#G~8UX+R00000003PkC0iyS5d$V6CL${)2ykI%WpinIWhN#P00b*15o2#|b97;DbZ}v3WoB$)XLBYeTR;#20RR91T`MRHa$$FHVP|DzVRT_8C_otl000000000000000U0q#UTP7AJ7bX}c9VQwpDGXs_bZK^FaBpdDbaN\u0026tCLDWxU0Ws~5dkJ4D=GzPZgev;CMqi{2Xl0CX\u003eMn8CM#PjECDbkEGsPmF(xf5E\u0026(zoE-NnqGbS%xCKFpGAQ1s3Atov\u0026CK3PyCMZA?4gdfD{{R300096100IC200RI300IC20096100IC20096100IC20096100IC20000009{\u003eOTU#a;CKo0cCK)CgD=-RSV{~bDWpHw7Z6+`#9D61hdnOnr9VQ+tF%@oaZeen1bZBj5bZKK\u003eX\u003eN37XJv9GF@1eqTP7e80VW|PDkdXaCLj?3CLt\u003e_1!-\u003c{HZ\u0026$OCM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y?pfVPs@*baN\u0026%CLDWxU0Ws~5dkJ4CMqT?TPrlJF)lGRF*GnVF*GtWH#s*pFgGkMFfK4LGcq$XGc+(WG\u0026M6aGcY(dEHExGATcg8HZeFjHZe3aHaIjhI5#pZEif)IFgZ0jI5jphF)}eTIWaRVFfK44F)lSRIWaLaH8e0bG\u0026wXeG%PJJE;2SYI5IXcGcz?gGBPqWF)T1HFd#85HZU?bIXN*mH!(IjH#s\u003etEG;lDGdVamIW#gcH!?6aFf=zdEHExGASN_jCKFpGAQ1s3Atov\u0026CK3PyCMZA?4FCWD0RR90|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|6N^OTU#a;CKo0cCK)CgD\u003eV^eaBy;Ocx7\u00266bYX61Wo~qHCN(A;dnOorCKx6iCLSg+eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Ato{=B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD\u003ee#Yb#!lHWqN64awaw=9D61hdnOnr9VQ+oF@1eqTP7e80VW|PDkdXaCLj?3CLty=CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y?#kVRdwGaCCDfHzpi=eO+57AQ1s3Atov\u0026D_dPA6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobG~|NsA8U0qvSCKe_aCKx6eCK@X^6Ju{~b98cHX\u003eN0La$#v_Xmn+6CO9S\u003ednOorCKx6iCLSg+eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Ato{=B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD\u003e)5gZ*F#Fa\u0026%*La\u0026~2NCOIY?dnOorCKx6iCLSg+eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Ato{=B|sDb0RR9100000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCLJakD\u003e?~dZ*p#Ba\u0026UBWCORe@dwpG7CLj?3CLty\u0026CM#QACKFpGAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd|NsC0U0q#UTP7AJ7bX}c873MlI}2!GZe(m_a4\u003eLhb0#|`9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cSfWH6$00000003QGU0Yiw7A6-a7$zAe8Y?^tXkl(-Y-MmUaBp)aJSH4_eO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl000000000000000U0q#UTP7AJ7bX}c873MlJqu`IZe(m_a58Xjb0$3|9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cSfIk2L00000003QGU0Yiw7A6-a7$zAe8Y?~tXkl(-Y-MnCb0$6}9D61hdnOnr9VQ+oF@1eqTP7e8112FRDkdXaCLj?3CLty=CM7@=0ssI1|NsC0|6L{}TP7e8112FRDkdfp00br{TR;#20RR91T_z|%69fPM|NsC0|NsC0|NmWGU0Yiw7A6-a7$zAe8Y@2xX\u003eN37a\u0026T\u003eBbZBp6CO;+|dnOorCKx6iCLSg+eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Ato{=B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD?klxVQFr3VQFq~Z)t9HCO{?}dnOorCKx6iCLSg+eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Ato{=B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCLJakD?tWtaCCWaWhOx;9D99TTP7e80VW|PDkdviD?$rlaByXAWN\u003ee3ZgeI\u003eD?\u003cr%a$#\u003cBW^ZzBCPQ5\u00266I\u0026)A5dkJ4CMqT-5\u0026#4yC_obp000000RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR910RR91U0q#UTP7AJ7bX}c873MlL\u003cMhhWMy(DL?#@2CK!7r7$zMi9wsq;eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CNd@^KokK40000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd1ONa4U0q#UTP7AJ7bX}c9VQwpMG9|qbZ~Waba`-PCPgM3dwpG7CLj?3CLty\u0026CM#PjMg?wla$\u003c8PMqMToTP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y@Q\u0026aA|gLbaHQWVRU6CM\u003cyJ5eO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl000000000000000U0q#UTP7AJ7bX}c873MlNDgpmc5ifaa$#\u003cBY+-a|CP*e6dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STjz87BY$0000000000001^\u0026lRu}\u003eSiArL002o+u0J+);Jp9\u003c002;O!ar=Ch`s;-004$4%|E6g%)S5s002p`#Xo_vTD|}P00912tv`w)qP+kB005Y}\u0026_B7lK)wI~000}jw?Dg|N4)?5001WJ)jxprE4}~#005pGwm$\u00267s=NRI006_E)ITeUJH7w_005zGkw0*IO1l66003QGU0Yiw7A6-a7$zAe8Y@W%aBN|2Wo~V3CP^k7dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R30001hKL7v#09{\u003eOTU#a;CKo0cCK)CgD@qA)Y+-I?Z*pm8CQ2q8dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCK)CgD@z7)Z**aFWhP4|9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zMi8Y@f=a\u0026L8RWMgk~Ze?\u003cCbaN(5CLDWxU0Ws~5dkJ4CMqT?TU{m-TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69NDK|NmWGU0Yiw7A6-a7$zAe8Y@i^a\u0026L8RWMgk~Ze?\u003cEVPt7_b0$qD9D99TTP7e80VW|PA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e80VW|PA|@sh00br{TR;#20RR91T_z|%836zQ003QGU0Yiw7A6-a7$zAe8Y@l(b7Ns_WhPE09D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910002+KV2pzTP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cSfIk2LfIk2LfInSbU0Yiw7A6-a7$zAe8Y@o{b7g03Wo~q0WqN64a${_7b7dw^CLDVv7\u003c(odCLJaoCNX_|U0Ws~5dkJ4CMqT)TP7e80VW|PGA1QJ6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobE000018U0qvSCKe_aCKx6iCK@YH33F|4Z**vIbaN(9CLDWxU0Ws~5dkJ4CMqT?TPslkDkf1~CKFpGAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c873MlQVnx\u0026W^{CNVQzC~Z*pxWQYIXGCK!7r7$zMi9wsq;eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CNd@^KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c873MlQxJ1+W^{CNVQzC~Z*pyNVPqy#CLDWxU0Ws~5dkJ4CL$\u0026yTP7e80VW|PBqk+58UX+R00000;6Gg^C0iyS5dkJ4CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6o5002K-U0qvSCKe_aCKx6eCK@YL33PH{ZgXs5bY\u0026(~CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yC_ot}000000000000000fJ%A1%P}TA00000089D1uuAzn00000K)%mBTp?OL00000KwmgM0000000000@RYDUK)%mB00000\u0026@rYxvP$_p00000z%eF0$T6lo00000fWA+\u003ec7)_S00000fH5Y#uu6Hn0000005PV!$T23n0000005PUJz%eE}00000ASi#m0000000000U0q#WD^(C@Y;R\u0026=Y+-bCa%p09bY*iURa;wICKe_aCKx6iCK@YN26ka`ZDDXGRwf*KD_0I;Y;R\u0026Zb98cPZfA34bS77OCKxMN1Y\u0026P*Y$jMH9x;7=U0Ws~5g#TYCMqT?TPs-*Z*X*ZaAhDZJ|Is}R9R3(CRr\u003c59ARU0X?A6BZ)t9Hb094~AVEV^NmfNrPf1QxQzlv~TM%JnWN\u003etIAT2\u00261K}1AQR8uBfD_j_1V{~bDWpHw7Z6GZ^AVEV^NmfNrQb|oFTq|83ZDDC{bYW?3aBpdDbRaE0AWcC@PE\u003cijPEb!tPE;mcD_$mHaBy;Ocx7\u00266bYX61Wo~qHAT2\u00261K~PXqPgq4xL{vdeM@3FlQzl+3Ul?z7bZ~Waba`-PAT2\u00261PgPV\u003cRa8`2P(\u003ezRD_{\u003c9a%5$4AT2\u00261Pf|ohQYK(4VJ32Kb#7#1Z*p#Ba\u0026lp0X?1fTEj}PpPgPDtLr+ppMN(2hL`hXsCSfaL7GrO6Ze?\u003cCbaNmrJ|II+QcguuP*hVUVk=`7b8T;LbZBsNb094~AX80GPgF=yR8uBnD`XO3b#!lVbaNmrJ|IC=R8LS;Qzm39Wgv2Ib#7#1Z*p#Ba\u0026UBWAT2\u00261QcqP*L_\u003c$fPDN5sR8uBpD`qNVZ*FsRa$#w1b98cHX=iA3Wo{rXJ|II+PE%A;K}k+iR8m1nM@UpfP9|n6XB=s6bY*gIZDn+5Z)6}XJ|Ia\u003eR7FxyO+{2lPedkXD`*~LZ*F#Fa\u0026%*La\u0026~2NAT2\u00261Lr+dtMN(8lRZ\u003e\u003c(QzmFDX\u0026!TLW^{CNVQzC~Z*pxQEj}PqPexQ!QbA5rMo\u0026^rCTS~bBy(?ObaZlIZgXaDa\u00262;9WFRd*AX869R8\u0026$yPE$rtQcY4pL?\u0026u0YZi2JVQzD5VRU66Ej}PrQbA5rOhHsdCTlBf5OQyHVRU66Ej}PpPgFrvMJ8-3Z4Pr|VQgg}Ej}PqLqSYMCT%NjAaH4RZ*+8WVQzD5VRU66Ej}PnNmfr(R8m1sQ%pfrMJ8@5ZyIoEc5ifYZ**aFWgsm+AW%tGPgGJ*R6$flCT}Zn7HDB^WNc+{baNmrJ|IXzPDD\u0026aP*hVUa4T^dXkl(-Y-MmTaBp)UEj}PfK~6+WMNlwMPg5pwD{\u003elWVQyq\u003eWpFWYZ*w3mJ|IXzPDD\u0026aP%%(XQzmjNa~f!2Ze(m_a58Xjb094~AV@(@L`+3cGEh%bCUYxv7I17~Ze?$BX=flUJ|Iv`K~6\u003caQb|W9bSrffaBN|2Wo~V3AT2\u00261P)tEiMNUmjCUq-z7-4mEZ(?P7X=QRCEj}PYRa8$xMOsNkQYLmQcPMjZXKiI}bYf+CX=QR_Y;SXAAT2\u00261Q$\u003cHjMNU*gMOsNkQbSBnQ$;3sT_zJ-CLj?XCLty\u0026CMFU91STh2Ko9`|00018CMZA?9{\u003eOV0096100IC200RI300aO400jU500sa600#g700;m800{s9015yA01E\u0026B01N;C01W^D01f~E01p5F01yBG01*HH01^NI022TJ02BZK02KfL02TlM02crN02lxO02u%P02%-Q02=@R02}}S0384T03HAU09{\u003eOU0o}93UG31ZE19Ac4c!Wcw1d31!-\u003c%Wq4aB4ry+5WoKn_Wo~qGX=QVJeJ2fbbaH8KXJu}5a%p9AdwnMnX\u003eN37XJvA0WqD\u003c8bZK\u0026Bb9;R!5OZ{LX\u003eMn0WqD\u003c8baH8Bb9;SVCk\u003c(CWMz18Z*ysMX\u003eV\u003e6W\u0026i*H00000T\u003e"
+            },
+            "pivottranslate": [
+                1.0738945007324219,
+                -0.0030896328389644623,
+                0
+            ],
+            "savedstashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5d\u003cp)3wC94bY*yBZ*^{TCIk@#D+La4a%pX8bZK^FV{dhCbS4E60V@UsX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IGC3eII65;oIx;aP3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0PV0DQ\u003cZZzaSrXkF}aC=I-0000000000D-aQIa%pX2Z*^{TUvqVBZDDeGCJ-kWARr(hARr(hARsXyPE}GuQy@cia\u0026~13D-jW4baZlQVs\u0026(7UvqVBZDDeGCJ`q{ARr(hATc0tZ)t9HAYpWLa%p09bY*io2~Y|kARr(hF(7AbZ(?C=AYpWLa%p09bY*io3144wZ*^{DWn^P-a\u0026BdEaCCDDD-sQ7a\u0026L8TUvqVBZDDeGCK4whARr(hATc0tZ)t9HAZK!Kb#QY!2?\u003c|cVRdwGUvPAD3VkaR2y}07Z)|U8c_tHED-;NDZ)t9Ha%E;F6k9752Wf6(X=7z`CKW\u0026u1ONa500IC509{=x77Af\u003ebaH88b#!HOCKg*O7Y}f6X\u003eN33baZlQVs\u0026(7b0!yCTU#p_1#@F\u003eaAhVKD;WlGbz*F3V\u003cs6Z8U%ECaAhVMD;o!Hb!}yGX=5fED;xxFVQpn594j3GP$nHK9tUr5bZKvHb0!{pCK`Jt8Y\u003e?Lb98cPZf7PRD\u003cB1SVQh6}CLk*z1#oX^ZgeIgeSKY9D\u003cTAQX?kTQA`t^CBL{PIZ*pO0WhNslBnW13a%Ev`GcqP5D\u003cueIWoBV@Y;\u003c!bC0iyU5dkJ6D\u003c%kLaB^i~Y\u0026J9|CMzcfc42IFWpgGcKpFu60000000018CMR1aA`t^7BPJv(C\u003ct(2XJvC~dSxak5\u0026#4%DGPF8cW_~6Wn^J=VJ0a+84O@`i9c|AO1l66003=vwLdw5zq|kd008tw)jwqLIKBV?003?@\u003cUgh%%)S5s003QGU0o|G5NB*}Vqt7ybaZlQVs\u0026(7b0#WVTU#a=CK)CgCLbmoD=QLTUvh7CZe(R-V{dY9WpZ$Ib0#Y$9(#RVTP7kA0VX3WECp$9bTcw0EGsPsb98cPZfA2QEn8hC6\u003ca1E5dkJ6CM+f\u003e5\u0026#4%E)ipIZgX^DZgg;AXJuw=VP|tDE?Ynl0RaF209__2KobG~|NsA8U0q#WD=!Lga%pX8bZK^Fb0#laTU#a?D=-O8RZ\u003eDjb#iuPCNN!FD=`LkWpZ?7cqTDG5(EGM0RRF30{|;B24ie*b7f\u003eEGB7JM1!7@yX\u003e%qsTP7MSGzCsoQbJQEG%Ga)Z*pX1awatq1S\u003eWWWo~3?ZggdGaBpm3bZKvHCN?oEHw9~MZ*+4eH$WN)000000000000000000000000000000000000000000000008hm00000008hm00000008hm00000008hmU0q#WD\u003ew^qZ)t9HXL4_KaC0U\u0026TU%Qu94k2rUteK$bZ=j9baN\u0026-U0W+U33Fv^Wn*+{Z*C?!TPr\u0026Wb#8BRWMy(?WF|XXD?9\u003eeI3_$m5d;7L003QGU0q!#1!-\u003c%Wq4aB4ry+5WoKn_Wo~qGX=QVJeJ2fbbaH8KXJu}5a%p9AdwnMnX\u003eN37XJvA0WqD\u003c8bZK\u0026Bb9;R!5OZ{LX\u003eMn0WqD\u003c8baH8Bb9;SVCk\u003c(CWMz18Z*ysMX\u003eV\u003e6W\u0026i*H00000T\u003e"
+            },
+            "stashid": ";"
+        },
+        "position": [
+            9.16,
+            -29.98
+        ],
+        "type": "curve::2.0"
+    },
+    "foreach_begin3": {
+        "color": [
+            0.75,
+            0.4,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "normal4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "blockpath": "../foreach_end3",
+            "method": "input"
+        },
+        "position": [
+            12.64,
+            -35.31
+        ],
+        "type": "block_begin"
+    },
+    "foreach_count2": {
+        "color": [
+            0.75,
+            0.4,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "parms": {
+            "blockpath": "../foreach_end3",
+            "method": "metadata"
+        },
+        "position": [
+            15.29,
+            -35.31
+        ],
+        "type": "block_begin"
+    },
+    "foreach_end3": {
+        "color": [
+            0.75,
+            0.4,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "carve4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "blockpath": "../foreach_begin3",
+            "iterations": 12,
+            "itermethod": "count",
+            "method": "merge",
+            "templatepath": "../foreach_begin3"
+        },
+        "position": [
+            12.64,
+            -37.4
+        ],
+        "type": "block_end"
+    },
+    "merge17": {
+        "inputs": [
+            {
+                "from": "name11",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "name12",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            3.18,
+            -1.62
+        ],
+        "type": "merge"
+    },
+    "merge18": {
+        "inputs": [
+            {
+                "from": "merge17",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "name1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            3.28,
+            -12
+        ],
+        "type": "merge"
+    },
+    "merge19": {
+        "inputs": [
+            {
+                "from": "split3",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "polyextrude9",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            8.08,
+            -7.76
+        ],
+        "type": "merge"
+    },
+    "merge20": {
+        "inputs": [
+            {
+                "from": "merge21",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "name3",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            3.48,
+            -28.29
+        ],
+        "type": "merge"
+    },
+    "merge21": {
+        "inputs": [
+            {
+                "from": "merge18",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "name2",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            3.37,
+            -20.4
+        ],
+        "type": "merge"
+    },
+    "merge22": {
+        "inputs": [
+            {
+                "from": "name4",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "name6",
+                "from_index": 0,
+                "to_index": 1
+            },
+            {
+                "from": "name5",
+                "from_index": 0,
+                "to_index": 2
+            }
+        ],
+        "position": [
+            9.57,
+            -46.44
+        ],
+        "type": "merge"
+    },
+    "merge23": {
+        "inputs": [
+            {
+                "from": "merge20",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "merge22",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            3.82,
+            -48
+        ],
+        "type": "merge"
+    },
+    "merge24": {
+        "inputs": [
+            {
+                "from": "carve6",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "carve5",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            6.64,
+            -35.93
+        ],
+        "type": "merge"
+    },
+    "name1": {
+        "inputs": [
+            {
+                "from": "normal10",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "group#": {
+                        "visible": false
+                    },
+                    "name#": {
+                        "value": "rim",
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            8.08,
+            -10.84
+        ],
+        "type": "name"
+    },
+    "name11": {
+        "inputs": [
+            {
+                "from": "normal12",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "group#": {
+                        "visible": false
+                    },
+                    "name#": {
+                        "value": "glass",
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "name"
+    },
+    "name12": {
+        "inputs": [
+            {
+                "from": "normal11",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "group#": {
+                        "visible": false
+                    },
+                    "name#": {
+                        "value": "rim",
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            3.32,
+            0.02
+        ],
+        "type": "name"
+    },
+    "name2": {
+        "inputs": [
+            {
+                "from": "normal9",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "group#": {
+                        "visible": false
+                    },
+                    "name#": {
+                        "value": "rim",
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            8.12,
+            -19.61
+        ],
+        "type": "name"
+    },
+    "name3": {
+        "inputs": [
+            {
+                "from": "normal8",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "group#": {
+                        "visible": false
+                    },
+                    "name#": {
+                        "value": "rim",
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            8.11,
+            -26.8
+        ],
+        "type": "name"
+    },
+    "name4": {
+        "inputs": [
+            {
+                "from": "normal7",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "group#": {
+                        "visible": false
+                    },
+                    "name#": {
+                        "value": "rim",
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            6.72,
+            -44.9
+        ],
+        "type": "name"
+    },
+    "name5": {
+        "inputs": [
+            {
+                "from": "normal5",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "group#": {
+                        "visible": false
+                    },
+                    "name#": {
+                        "value": "rim",
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            12.53,
+            -44.83
+        ],
+        "type": "name"
+    },
+    "name6": {
+        "inputs": [
+            {
+                "from": "normal6",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "group#": {
+                        "visible": false
+                    },
+                    "name#": {
+                        "value": "glass",
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            9.36,
+            -44.84
+        ],
+        "type": "name"
+    },
+    "normal10": {
+        "inputs": [
+            {
+                "from": "cc_bevel_corners7",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cuspangle": 30
+        },
+        "position": [
+            8.08,
+            -9.84
+        ],
+        "type": "normal"
+    },
+    "normal11": {
+        "inputs": [
+            {
+                "from": "boolean2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cuspangle": 30
+        },
+        "position": [
+            3.37,
+            4.29
+        ],
+        "type": "normal"
+    },
+    "normal12": {
+        "inputs": [
+            {
+                "from": "reverse2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cuspangle": 30
+        },
+        "position": [
+            0,
+            1
+        ],
+        "type": "normal"
+    },
+    "normal4": {
+        "inputs": [
+            {
+                "from": "revolve2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "type": "typepoint"
+        },
+        "position": [
+            12.64,
+            -34.26
+        ],
+        "type": "normal"
+    },
+    "normal5": {
+        "inputs": [
+            {
+                "from": "cc_bevel_corners10",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cuspangle": 30
+        },
+        "position": [
+            12.64,
+            -43.44
+        ],
+        "type": "normal"
+    },
+    "normal6": {
+        "inputs": [
+            {
+                "from": "reverse1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cuspangle": 30
+        },
+        "position": [
+            9.4,
+            -37.21
+        ],
+        "type": "normal"
+    },
+    "normal7": {
+        "inputs": [
+            {
+                "from": "sweep9",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cuspangle": 30
+        },
+        "position": [
+            6.64,
+            -39.41
+        ],
+        "type": "normal"
+    },
+    "normal8": {
+        "inputs": [
+            {
+                "from": "cc_bevel_corners9",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cuspangle": 30
+        },
+        "position": [
+            8.11,
+            -25.8
+        ],
+        "type": "normal"
+    },
+    "normal9": {
+        "inputs": [
+            {
+                "from": "cc_bevel_corners5",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cuspangle": 30
+        },
+        "position": [
+            8.12,
+            -18.61
+        ],
+        "type": "normal"
+    },
+    "peak2": {
+        "inputs": [
+            {
+                "from": "resample4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dist": -0.015
+        },
+        "position": [
+            12.64,
+            -39.44
+        ],
+        "type": "peak"
+    },
+    "polyextrude12": {
+        "inputs": [
+            {
+                "from": "convert3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dist": -0.01,
+            "outputback": true
+        },
+        "position": [
+            9.4,
+            -35.21
+        ],
+        "type": "polyextrude::2.0"
+    },
+    "polyextrude13": {
+        "inputs": [
+            {
+                "from": "uvflatten1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dist": -0.01,
+            "outputback": true
+        },
+        "position": [
+            0,
+            3
+        ],
+        "type": "polyextrude::2.0"
+    },
+    "polyextrude8": {
+        "inputs": [
+            {
+                "from": "split3",
+                "from_index": 1,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "inset": 0.008,
+            "outputfrontgrp": true
+        },
+        "position": [
+            9.61,
+            -5.74
+        ],
+        "type": "polyextrude::2.0"
+    },
+    "polyextrude9": {
+        "inputs": [
+            {
+                "from": "polyextrude8",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dist": -0.007,
+            "group": "extrudeFront"
+        },
+        "position": [
+            9.61,
+            -6.6
+        ],
+        "type": "polyextrude::2.0"
+    },
+    "polyfill1": {
+        "inputs": [
+            {
+                "from": "convert2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "fillmode": "none"
+        },
+        "position": [
+            1.04,
+            6.4
+        ],
+        "type": "polyfill"
+    },
+    "resample4": {
+        "inputs": [
+            {
+                "from": "foreach_end3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "length": 0.074
+        },
+        "position": [
+            12.64,
+            -38.44
+        ],
+        "type": "resample"
+    },
+    "resample5": {
+        "inputs": [
+            {
+                "from": "merge24",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "length": 0.157
+        },
+        "position": [
+            6.64,
+            -37.2
+        ],
+        "type": "resample"
+    },
+    "reverse1": {
+        "inputs": [
+            {
+                "from": "polyextrude12",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            9.4,
+            -36.21
+        ],
+        "type": "reverse"
+    },
+    "reverse2": {
+        "inputs": [
+            {
+                "from": "polyextrude13",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            0,
+            2
+        ],
+        "type": "reverse"
+    },
+    "revolve1": {
+        "inputs": [
+            {
+                "from": "curve1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "divs": 64,
+            "reversecrosssections": true
+        },
+        "position": [
+            1.04,
+            8.5
+        ],
+        "type": "revolve::2.0"
+    },
+    "revolve2": {
+        "inputs": [
+            {
+                "from": "curve2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "divs": 50
+        },
+        "position": [
+            9.16,
+            -31.2
+        ],
+        "type": "revolve::2.0"
+    },
+    "split3": {
+        "inputs": [
+            {
+                "from": "cc_bevel_corners6",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "edgefilletpolys"
+        },
+        "position": [
+            8.08,
+            -4.77
+        ],
+        "type": "split"
+    },
+    "sweep5": {
+        "inputs": [
+            {
+                "from": "circle9",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "applyscale": true,
+            "capdivs": 1,
+            "capscale": 0,
+            "cols": 3,
+            "computeuvs": true,
+            "endcaptype": "grid",
+            "radius": 0.093,
+            "scaleramp": [
+                {
+                    "interp": "constant",
+                    "pos": 0,
+                    "value": 1
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.10622710734605789,
+                    "value": 0.5422077775001526
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.45695969462394714,
+                    "value": 1
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.6556776762008667,
+                    "value": 0.5422077775001526
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.7747252583503723,
+                    "value": 1
+                },
+                {
+                    "interp": "constant",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "surfaceshape": "tube"
+        },
+        "position": [
+            8.08,
+            -2.61
+        ],
+        "type": "sweep::2.0"
+    },
+    "sweep6": {
+        "inputs": [
+            {
+                "from": "circle10",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "applyscale": true,
+            "capdivs": 1,
+            "capscale": 0,
+            "cols": 3,
+            "computeuvs": true,
+            "endcaptype": "grid",
+            "radius": 0.067,
+            "roll": 98,
+            "scaleramp": [
+                {
+                    "interp": "constant",
+                    "pos": 0,
+                    "value": 1
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.06625258922576904,
+                    "value": 0.2857142984867096
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.16977225244045258,
+                    "value": 1
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.5279502868652344,
+                    "value": 0.2759740352630615
+                },
+                {
+                    "interp": "constant",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "surfaceshape": "tube"
+        },
+        "position": [
+            8.12,
+            -16.61
+        ],
+        "type": "sweep::2.0"
+    },
+    "sweep7": {
+        "inputs": [
+            {
+                "from": "transform7",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "applyscale": true,
+            "capdivs": 1,
+            "capscale": 0,
+            "cols": 3,
+            "computeuvs": true,
+            "endcaptype": "grid",
+            "radius": 0.044,
+            "roll": 98,
+            "scaleramp": [
+                {
+                    "interp": "constant",
+                    "pos": 0,
+                    "value": 1
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.07039337605237961,
+                    "value": 0.4025973975658417
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.16977225244045258,
+                    "value": 1
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.4968944191932678,
+                    "value": 0.4025973975658417
+                },
+                {
+                    "interp": "constant",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "surfaceshape": "tube"
+        },
+        "position": [
+            8.11,
+            -23.8
+        ],
+        "type": "sweep::2.0"
+    },
+    "sweep8": {
+        "inputs": [
+            {
+                "from": "attribdelete1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "applyroll": false,
+            "capdivs": 1,
+            "capscale": 0,
+            "cols": 5,
+            "computeuvs": true,
+            "endcaptype": "grid",
+            "maxstretcharoundturns": 1.0798904338576796,
+            "radius": 0.026,
+            "surfaceshape": "tube"
+        },
+        "position": [
+            12.64,
+            -41.44
+        ],
+        "type": "sweep::2.0"
+    },
+    "sweep9": {
+        "inputs": [
+            {
+                "from": "resample5",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "capdivs": 1,
+            "capscale": 0,
+            "cols": 5,
+            "computeuvs": true,
+            "endcaptype": "grid",
+            "maxstretcharoundturns": 1.0798904338576796,
+            "radius": 0.006,
+            "surfaceshape": "tube"
+        },
+        "position": [
+            6.64,
+            -38.22
+        ],
+        "type": "sweep::2.0"
+    },
+    "torus1": {
+        "parms": {
+            "cols": 50,
+            "rad": [
+                0.75,
+                0.1
+            ],
+            "rows": 27,
+            "t": [
+                0,
+                -0.031193524599075317,
+                0
+            ]
+        },
+        "position": [
+            5.26,
+            9.52
+        ],
+        "type": "torus"
+    },
+    "transform6": {
+        "inputs": [
+            {
+                "from": "torus1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "t": [
+                0,
+                0.16079488396644592,
+                0
+            ]
+        },
+        "position": [
+            5.26,
+            8.52
+        ],
+        "type": "xform"
+    },
+    "transform7": {
+        "inputs": [
+            {
+                "from": "circle12",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "r": [
+                0,
+                125.31227291833231,
+                0
+            ]
+        },
+        "position": [
+            8.11,
+            -22.8
+        ],
+        "type": "xform"
+    },
+    "uvflatten1": {
+        "inputs": [
+            {
+                "from": "blast4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            0,
+            4
+        ],
+        "type": "uvflatten::3.0"
+    }
+}

@@ -1,0 +1,422 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "category": "geometry",
+            "date-created": "2025-11-16T17:58:36.006061101+04:00",
+            "date-modified": "2025-11-05T16:18:14.25827466Z",
+            "description": "A few nodes to create a basic petal shape, with common masks, deformation, and UVs. This should provide a good base layer of detail to feed into a vellum simulation.",
+            "id": "53f42a51b249",
+            "image": "53f42a51b249.jpg",
+            "tags": [
+                "flower",
+                "kkfrag",
+                "plant",
+                "nature",
+                "organic"
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
+    },
+    "assign_edge_val": {
+        "inputs": [
+            {
+                "from": "boundary_edge_group",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "edge",
+            "snippet": "f@edge = 1.0;  "
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "attribwrangle"
+    },
+    "autouv1": {
+        "inputs": [
+            {
+                "from": "grid3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            0,
+            7.04
+        ],
+        "type": "labs::autouv"
+    },
+    "blur_edge": {
+        "inputs": [
+            {
+                "from": "remesh1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "attributes": "edge",
+            "iterations": 9
+        },
+        "position": [
+            0,
+            -3.12
+        ],
+        "type": "attribblur"
+    },
+    "boundary_edge_group": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "edge_smooth1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "groupbase": false,
+            "groupedges": true,
+            "groupname": "edge",
+            "grouptype": "point",
+            "unshared": true
+        },
+        "position": [
+            0,
+            1.04
+        ],
+        "type": "groupcreate"
+    },
+    "center_noise": {
+        "inputs": [
+            {
+                "from": "edge_noise",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "amplitudev": 0.07,
+            "attribs": "P",
+            "blendattrib": "heightNoiseMask",
+            "blendmode": "attrib",
+            "componentscope": 106,
+            "doblend": true,
+            "elementscale": [
+                0.2,
+                1,
+                1
+            ],
+            "elementsize": 0.9,
+            "elementsizetype": 1,
+            "locationattrib": "P2",
+            "noiserange": "zcentered",
+            "oct": 0.77,
+            "offset": 22.8
+        },
+        "position": [
+            0,
+            -5.12
+        ],
+        "type": "attribnoise::2.0"
+    },
+    "create_noise_masks": {
+        "inputs": [
+            {
+                "from": "assign_edge_val",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "noise_by_edge": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": 0
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "noise_by_height": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": 0
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "snippet": "f@heightNoiseMask = chramp(\"noise_by_height\", -v@P.z);\nf@edgeNoiseMask = f@edge * chramp(\"noise_by_edge\", -v@P.z);\n\nv@P2 = normalize(v@P);"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "noise_by_edge": {
+                                "label": "Noise By Edge",
+                                "script_callback_language": "hscript",
+                                "show_controls": true,
+                                "type": "ramp_float"
+                            },
+                            "noise_by_height": {
+                                "label": "Noise By Height",
+                                "script_callback_language": "hscript",
+                                "show_controls": true,
+                                "type": "ramp_float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            -1.08
+        ],
+        "type": "attribwrangle"
+    },
+    "edge_folding": {
+        "inputs": [
+            {
+                "from": "smooth1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "snippet": "vector dir = normalize(v@P);\n\nv@P -= f@edgeNoiseMask * 0.1*dir * (1.0 + curlnoise(4.0*v@P));\nv@P.y += 0.03*f@edgeNoiseMask;"
+        },
+        "position": [
+            0,
+            -7.16
+        ],
+        "type": "attribwrangle"
+    },
+    "edge_noise": {
+        "inputs": [
+            {
+                "from": "blur_edge",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "amplitudev": 0.05,
+            "attribs": "P",
+            "blendattrib": "edgeNoiseMask",
+            "blendmode": "attrib",
+            "componentscope": 106,
+            "doblend": true,
+            "elementsize": 0.12,
+            "noiserange": "zcentered",
+            "oct": 0
+        },
+        "position": [
+            0,
+            -4.12
+        ],
+        "type": "attribnoise::2.0"
+    },
+    "edge_smooth1": {
+        "inputs": [
+            {
+                "from": "subdivide1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "includeunshared": true,
+            "smoothstrength": 8
+        },
+        "position": [
+            0,
+            2.04
+        ],
+        "type": "labs::edge_smooth::1.0",
+        "user_data": {
+            "wirestyle": "rounded"
+        }
+    },
+    "edit1": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "autouv1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "3 8",
+            "grouptype": "points",
+            "leadislandhint": "8",
+            "p": [
+                2.9802322387695312e-8,
+                0,
+                -0.2016845941543579
+            ],
+            "t": [
+                0,
+                0,
+                0.05673789978027344
+            ]
+        },
+        "position": [
+            0,
+            6.04
+        ],
+        "type": "edit"
+    },
+    "edit2": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "polysplit1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "10-11 13",
+            "grouptype": "points",
+            "leadislandhint": "13",
+            "p": [
+                2.9802322387695312e-8,
+                -0.058325737714767456,
+                -0.354408323764801
+            ],
+            "t": [
+                0,
+                -0.07929809018969536,
+                0
+            ]
+        },
+        "position": [
+            0,
+            4.04
+        ],
+        "type": "edit"
+    },
+    "grid3": {
+        "parms": {
+            "cols": 5,
+            "r": [
+                0,
+                -90,
+                0
+            ],
+            "rows": 2,
+            "size": [
+                0.7930151671171188,
+                0.4067188501358032
+            ],
+            "t": [
+                0,
+                0,
+                -0.3999383747577667
+            ]
+        },
+        "position": [
+            0,
+            8.04
+        ],
+        "type": "grid"
+    },
+    "polysplit1": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "edit1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numloops": 1,
+            "pathtype": "quadcut",
+            "splitloc": "1e1:0.508484"
+        },
+        "position": [
+            0,
+            5.04
+        ],
+        "type": "polysplit::2.0"
+    },
+    "remesh1": {
+        "inputs": [
+            {
+                "from": "create_noise_masks",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "targetsize": 0.02
+        },
+        "position": [
+            0,
+            -2.12
+        ],
+        "type": "remesh::2.0"
+    },
+    "smooth1": {
+        "inputs": [
+            {
+                "from": "center_noise",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            0,
+            -6.12
+        ],
+        "type": "smooth::2.0"
+    },
+    "subdivide1": {
+        "inputs": [
+            {
+                "from": "edit2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "iterations": 2
+        },
+        "position": [
+            0,
+            3.04
+        ],
+        "type": "subdivide"
+    }
+}

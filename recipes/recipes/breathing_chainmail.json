@@ -1,0 +1,619 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "category": "geometry",
+            "date-created": "2025-11-03T17:06:40.483372+04:00",
+            "date-modified": "2025-11-03T17:06:40.483372+04:00",
+            "description": "Converts a surface geometry into a moving, breathing, chainmail fabric. Apply this modifier to any clothing element that needs extra BLING. This pattern was inspired by 3D printable fabric prototypes.",
+            "id": "95e299a58b44",
+            "image": "chainmail.gif",
+            "tags": [
+                "fabric",
+                "curvature",
+                "vex",
+                "breathing",
+                "chainmail",
+                "vellum",
+                "clothing",
+                "detail"
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
+    },
+    "attribpromote1": {
+        "inputs": [
+            {
+                "from": "measure2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "deletein": false,
+            "inname": "curvature",
+            "outclass": "primitive"
+        },
+        "position": [
+            0,
+            3.18
+        ],
+        "type": "attribpromote"
+    },
+    "boolean2": {
+        "inputs": [
+            {
+                "from": "tube2",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "tube3",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "booleanop": "subtract"
+        },
+        "position": [
+            5.68,
+            -1.49
+        ],
+        "type": "boolean::2.0"
+    },
+    "breathe_movement": {
+        "inputs": [
+            {
+                "from": "create_prims",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "measure2",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "breatheAmt": 0.01,
+            "curveremap": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": 1
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": 0.20000000298023224
+                }
+            ],
+            "group": "edges",
+            "moveAmt": 0.054,
+            "snippet": "//add noise offset to all points \nint nearpt = nearpoint(1, @P);\n\nfloat rawCurve = clamp(point(1, \"curvature\", nearpt), 0.0, 1.0);\nfloat moveAmt = chramp(\"curveremap\", rawCurve);\n\nmoveAmt *= 1.0 + sin(-3 *v@P.y + 3 * rawCurve + 0.1 * @Frame);\n\nint n[] = neighbours(0, @ptnum);\nvector n1 = point(0,\"P\", n[0]);\nvector n2 = point(0,\"P\", n[1]);\n\nvector dir = (n1 + n2)/2.0 - @P;\n\nv@PNext = v@P+ 1.3 * chf(\"breatheAmt\") * moveAmt * @N;\nv@PNext += chf(\"moveAmt\") * moveAmt * curlnoise(@P + 0.01 * @Frame);\n\n"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "breatheAmt": {
+                                "label": "Breatheamt",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "curveremap": {
+                                "label": "Curveremap",
+                                "script_callback_language": "hscript",
+                                "show_controls": true,
+                                "type": "ramp_float"
+                            },
+                            "moveAmt": {
+                                "label": "Moveamt",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "type": "attribwrangle"
+    },
+    "copytopoints1": {
+        "inputs": [
+            {
+                "from": "divide2",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "delete3",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "idattrib": "variant",
+            "targetattribs": [
+                {
+                    "applyattribs#": {
+                        "value": "*,^v,^Alpha,^N,^up,^pscale,^scale,^orient,^rot,^pivot,^trans,^transform",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "Alpha",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "mult",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "v",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "add",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                }
+            ],
+            "targetgroup": "edges"
+        },
+        "position": [
+            5.36,
+            -4.59
+        ],
+        "type": "copytopoints::2.0"
+    },
+    "create_prims": {
+        "inputs": [
+            {
+                "from": "divide1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "class": "primitive",
+            "snippet": "//iterate over every primitive in our hexagonal mesh\nvector centerPos = @P;\naddpoint(0, @P);\n\nint primpts[] = primpoints(0, @primnum);\n\nfor(int i = 0; i \u003c len(primpts); i++){\n    //draw a line from pt to center and \n    //make it a prim \n    int new = addprim(0, \"poly\");\n    int center = addpoint(0, @P);\n    addvertex(0, new, primpts[i-1]);\n    addvertex(0, new, primpts[i]);\n    addvertex(0, new, center);\n    setprimgroup(0, \"divided\", new, 1);\n    setpointattrib(0, \"center\", center , 1, \"set\");\n    setprimattrib(0, \"curvature\",  new, @curvature, \"set\");\n    setpointgroup(0, \"divided\", center, 1);\n    setpointgroup(0, \"edges\", primpts[i-1],1);\n    setpointgroup(0, \"edges\", primpts[i],1);\n}\n\n\n\n\n\n\n"
+        },
+        "position": [
+            0,
+            1.08
+        ],
+        "type": "attribwrangle"
+    },
+    "delete3": {
+        "inputs": [
+            {
+                "from": "set_edge_pos",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "divided edges",
+            "negate": "keep"
+        },
+        "position": [
+            1.4,
+            -3.5
+        ],
+        "type": "delete"
+    },
+    "delete_small_parts1": {
+        "inputs": [
+            {
+                "from": "remesh1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "bKeeplargest": true
+        },
+        "position": [
+            0,
+            5.19
+        ],
+        "type": "labs::delete_small_parts"
+    },
+    "divide1": {
+        "inputs": [
+            {
+                "from": "attribpromote1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dual": true
+        },
+        "position": [
+            0,
+            2.12
+        ],
+        "type": "divide"
+    },
+    "divide2": {
+        "inputs": [
+            {
+                "from": "boolean2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            5.68,
+            -2.48
+        ],
+        "type": "divide"
+    },
+    "main_movement": {
+        "inputs": [
+            {
+                "from": "breathe_movement",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "measure2",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "class": "primitive",
+            "curveremap": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": 1
+                },
+                {
+                    "interp": "linear",
+                    "pos": 0.08798882365226746,
+                    "value": 0.03333333507180214
+                },
+                {
+                    "interp": "linear",
+                    "pos": 0.9746299982070923,
+                    "value": 0
+                }
+            ],
+            "group": "!divided",
+            "moveAmt": 0.015,
+            "snippet": "//find all center points\nvector centerPos = @P;\nint centerpoints[] = nearpoints(0, \"divided\", centerPos, 0.01);\n\nvector combinedMoveAmt; \nvector avgpos;\n//printf(\"%s\", len(centerpoints));\nfor(int i = 0; i \u003c len(centerpoints); i++){\n    int num = centerpoints[i];\n    int n[] = neighbours(0, num);\n    vector n1 = point(0,\"PNext\", n[0]);\n    vector n2 = point(0,\"PNext\", n[1]);\n    float len2 = (@P - n2);\n    float len1 = (@P - n1);\n    float moveAmt1 = 0.52 * max(0.0,len1 - 0.07);\n    float moveAmt2 = 0.52 * max(0.0,len2 - 0.07);\n\n    \n    combinedMoveAmt += moveAmt1 * normalize(n1 - @P);\n    combinedMoveAmt += moveAmt2 * normalize(n2 - @P);\n    avgpos += n1;\n    \n    \n}\n\nfloat count = len(centerpoints);\ncombinedMoveAmt /= count;\navgpos /= count;\n\nfloat moveAmt = length(avgpos - @P);\nfor(int i = 0; i \u003c len(centerpoints); i++){\n    int num = centerpoints[i];\n    int n[] = neighbours(0, num);\n    vector n3 = point(0,\"PNext\", n[0]);\n    vector n2 = point(0,\"PNext\", n[1]);\n    \n    \n    \n    vector n1 = point(0,\"P\", num);\n    vector normz = point(0,\"N\", n[1]);\n    n1 = avgpos + combinedMoveAmt;\n    n1 += moveAmt * normz;\n    n1 += 8 * moveAmt * ((n2 + n3)/2.0 - n1);\n    setpointattrib(0, \"P\", num, n1);\n\n}\n\n\n"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "folder0_1",
+                "parmtemplates": {
+                    "curveremap": {
+                        "label": "Curveremap",
+                        "script_callback_language": "hscript",
+                        "show_controls": true,
+                        "type": "ramp_float"
+                    },
+                    "moveAmt": {
+                        "label": "Moveamt",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "type": "float"
+                    }
+                }
+            }
+        ],
+        "position": [
+            1.39,
+            -1.38
+        ],
+        "type": "attribwrangle"
+    },
+    "measure2": {
+        "inputs": [
+            {
+                "from": "delete_small_parts1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "attribname": "curvature",
+            "colorramp": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": [
+                        0,
+                        0,
+                        1
+                    ]
+                },
+                {
+                    "interp": "linear",
+                    "pos": 0.5,
+                    "value": [
+                        1,
+                        1,
+                        1
+                    ]
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": [
+                        1,
+                        0,
+                        0
+                    ]
+                }
+            ],
+            "grouptype": "points",
+            "measure": "curvature",
+            "totalattribname": "totalcurvature"
+        },
+        "position": [
+            0,
+            4.19
+        ],
+        "type": "measure::2.0"
+    },
+    "merge3": {
+        "inputs": [
+            {
+                "from": "underside_color",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "copytopoints1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            1.4,
+            -7.52
+        ],
+        "type": "merge"
+    },
+    "normal1": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "merge3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cuspangle": 0
+        },
+        "position": [
+            1.4,
+            -8.48
+        ],
+        "type": "normal"
+    },
+    "peak2": {
+        "inputs": [
+            {
+                "from": "delete3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dist": -0.005
+        },
+        "position": [
+            1.4,
+            -4.5
+        ],
+        "type": "peak"
+    },
+    "polyextrude1": {
+        "inputs": [
+            {
+                "from": "peak2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dist": 0.005,
+            "extrusionmode": "pointnormal",
+            "outputback": true,
+            "outputbackgrp": true,
+            "outputsidegrp": true,
+            "scale": [
+                1.1,
+                1.1,
+                1.1
+            ],
+            "thicknessramp": [
+                {
+                    "interp": "catmull-rom",
+                    "pos": 0,
+                    "value": 1
+                },
+                {
+                    "interp": "catmull-rom",
+                    "pos": 1,
+                    "value": 0.9
+                }
+            ]
+        },
+        "position": [
+            1.4,
+            -5.5
+        ],
+        "type": "polyextrude::2.0"
+    },
+    "remesh1": {
+        "inputs": [
+            {
+                "from": "sphere4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "targetsize": 0.106
+        },
+        "position": [
+            0,
+            6.19
+        ],
+        "type": "remesh::2.0"
+    },
+    "set_edge_pos": {
+        "inputs": [
+            {
+                "from": "main_movement",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "edges",
+            "snippet": "v@P = v@PNext;"
+        },
+        "position": [
+            1.39,
+            -2.46
+        ],
+        "type": "attribwrangle"
+    },
+    "sphere4": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "type": "polymesh"
+        },
+        "position": [
+            0,
+            7.19
+        ],
+        "type": "sphere"
+    },
+    "tube2": {
+        "parms": {
+            "cap": true,
+            "cols": 6,
+            "height": 0.005,
+            "orient": "z",
+            "rad": [
+                0.5,
+                0.5
+            ],
+            "radscale": 0.017,
+            "surftype": "triangles",
+            "type": "mesh"
+        },
+        "position": [
+            4.83,
+            0.07
+        ],
+        "type": "tube"
+    },
+    "tube3": {
+        "parms": {
+            "cap": true,
+            "cols": 6,
+            "height": 0.003694418231025339,
+            "orient": "z",
+            "rad": [
+                0.5,
+                0.13923789918109086
+            ],
+            "radscale": 0.014,
+            "surftype": "triangles",
+            "t": [
+                0,
+                0.000055538490414619446,
+                0.002
+            ],
+            "type": "poly"
+        },
+        "position": [
+            6.47,
+            0.07
+        ],
+        "type": "tube"
+    },
+    "underside_color": {
+        "inputs": [
+            {
+                "from": "polyextrude1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "class": 1,
+            "color": [
+                0,
+                0,
+                0
+            ],
+            "group": "!extrudeBack ^extrudeSide",
+            "grouptype": "prims"
+        },
+        "position": [
+            1.4,
+            -6.5
+        ],
+        "type": "color"
+    }
+}

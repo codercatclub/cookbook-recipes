@@ -1,0 +1,271 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "category": "geometry",
+            "date-created": "2025-11-03T17:06:40.483372+04:00",
+            "date-modified": "2025-11-03T17:06:40.483372+04:00",
+            "description": "Manually art direct the position of multiple points, while still having them snap to a surface. Each point can be manually rotated, scaled, and positioned using Rig Pose.",
+            "id": "84d4cc849031",
+            "image": "points_to_surface.gif",
+            "tags": [
+                "surface",
+                "kinefx",
+                "rig pose",
+                "points",
+                "raycast",
+                "transform"
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
+    },
+    "add1": {
+        "parms": {
+            "points": 1
+        },
+        "position": [
+            2.28,
+            2.27
+        ],
+        "type": "add"
+    },
+    "copytopoints6": {
+        "inputs": [
+            {
+                "from": "sphere2",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "ray1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "targetattribs": [
+                {
+                    "applyattribs#": {
+                        "value": "*,^v,^Alpha,^N,^up,^pscale,^scale,^orient,^rot,^pivot,^trans,^transform",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "Alpha",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "mult",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                },
+                {
+                    "applyattribs#": {
+                        "value": "v",
+                        "visible": false
+                    },
+                    "applymethod#": {
+                        "value": "add",
+                        "visible": false
+                    },
+                    "applyto#": {
+                        "visible": false
+                    },
+                    "useapply#": {
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            2.28,
+            -1
+        ],
+        "type": "copytopoints::2.0"
+    },
+    "merge1": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "copytopoints6",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "normal1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            4.62,
+            -2.11
+        ],
+        "type": "merge"
+    },
+    "normal1": {
+        "inputs": [
+            {
+                "from": "sphere1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "type": "typepoint"
+        },
+        "position": [
+            4.62,
+            1.21
+        ],
+        "type": "normal"
+    },
+    "ray1": {
+        "inputs": [
+            {
+                "from": "rigpose1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "normal1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "method": "minimum"
+        },
+        "position": [
+            2.28,
+            0
+        ],
+        "type": "ray"
+    },
+    "rigpose1": {
+        "inputs": [
+            {
+                "from": "add1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "transformations": [
+                {
+                    "bake#": {
+                        "visible": false
+                    },
+                    "enable#": {
+                        "visible": false
+                    },
+                    "group#": {
+                        "value": "0",
+                        "visible": false
+                    },
+                    "mode#": {
+                        "visible": false
+                    },
+                    "p#": {
+                        "visible": false
+                    },
+                    "pivot#": {
+                        "visible": false
+                    },
+                    "pivot_r#": {
+                        "visible": false
+                    },
+                    "r#": {
+                        "value": [
+                            0,
+                            0,
+                            45.18773442221565
+                        ],
+                        "visible": false
+                    },
+                    "rOrd#": {
+                        "visible": false
+                    },
+                    "s#": {
+                        "value": [
+                            1.324074149131775,
+                            1.324074149131775,
+                            1.324074149131775
+                        ],
+                        "visible": false
+                    },
+                    "t#": {
+                        "value": [
+                            -0.46738429367542267,
+                            0.49787500500679016,
+                            0
+                        ],
+                        "visible": false
+                    },
+                    "xOrd#": {
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            2.28,
+            1.13
+        ],
+        "type": "kinefx::rigpose",
+        "user_data": {
+            "display_options": "{\"show_joints\": 1, \"show_links\": 0, \"solid_links\": 1, \"show_axes\": 1, \"show_scene_geo\": 1}"
+        }
+    },
+    "sphere1": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "type": "polymesh"
+        },
+        "position": [
+            4.62,
+            2.27
+        ],
+        "type": "sphere"
+    },
+    "sphere2": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.2,
+                0.5
+            ],
+            "scale": 0.14,
+            "type": "polymesh"
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "sphere"
+    }
+}

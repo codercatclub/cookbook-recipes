@@ -1,0 +1,148 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "category": "vex",
+            "date-created": "2025-11-09T00:00:00Z",
+            "date-modified": "2025-11-09T13:49:08.740944643Z",
+            "description": "Twist on the basic gyroid, using the formula on spherical coordinates instead of cartesian. This should conform nicer to spherical shapes. This is also an example on how to warp the gyroid shape and get more custom formations.",
+            "id": "bc5d21d2d429",
+            "image": "bc5d21d2d429.jpg",
+            "tags": [
+                "vex",
+                "volume",
+                "pattern",
+                "nature",
+                "organic",
+                "structure",
+                "detail"
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
+    },
+    "attribblur1": {
+        "inputs": [
+            {
+                "from": "convertvdb1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "iterations": 19
+        },
+        "position": [
+            0,
+            -1.98
+        ],
+        "type": "attribblur"
+    },
+    "convertvdb1": {
+        "inputs": [
+            {
+                "from": "gyroid",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "conversion": "poly",
+            "isovalue": 0.01
+        },
+        "position": [
+            0,
+            -0.98
+        ],
+        "type": "convertvdb"
+    },
+    "gyroid": {
+        "inputs": [
+            {
+                "from": "vdbfrompolygons1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "freq": 9.3,
+            "heightMul": 200,
+            "snippet": "float freq = chf(\"freq\");\n\nfloat r = length(v@P);\nfloat theta = acos(@P.z/r);\nfloat phi = atan2(@P.y,@P.x);\n\nfloat x = freq * r;\nfloat y = freq * theta;\nfloat z = freq * phi;\n\nfloat fx = sin(x) * cos(y) + sin(y) * cos(z) + sin(z) * cos(x);\n\nif(fx \u003c 0.01){\n    @density = 0.0;\n} ",
+            "totalCols": {
+                "expression": "ch(\"../circle1/divs\")"
+            }
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "bindeach",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "freq": {
+                                "label": "Freq",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            },
+            {
+                "insert_after": "folder0_1",
+                "parmtemplates": {
+                    "heightMul": {
+                        "label": "Heightmul",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "type": "float"
+                    },
+                    "totalCols": {
+                        "label": "Totalcols",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "type": "float"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "type": "volumewrangle"
+    },
+    "sphere1": {
+        "position": [
+            0,
+            2.1
+        ],
+        "type": "sphere"
+    },
+    "vdbfrompolygons1": {
+        "inputs": [
+            {
+                "from": "sphere1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "builddistance": false,
+            "buildfog": true,
+            "voxelsize": 0.02
+        },
+        "position": [
+            0,
+            1.1
+        ],
+        "type": "vdbfrompolygons"
+    }
+}

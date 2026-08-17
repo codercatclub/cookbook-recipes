@@ -1,0 +1,241 @@
+{
+    "ANMATED": {
+        "inputs": [
+            {
+                "from": "animate_rest_scale",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            3.36,
+            -2.74
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "category": "vellum",
+            "date-created": "2025-11-03T17:06:40.483372+04:00",
+            "date-modified": "2025-11-03T17:06:40.483372+04:00",
+            "description": "Animate and update the rest length parameter during a vellum simulation. Uses vellum constraint properties inside the vellum solver.",
+            "id": "5fd362fd5138",
+            "image": "animate_restlength.gif",
+            "tags": [
+                "vellum",
+                "cloth",
+                "restlength",
+                "restscale",
+                "constraints",
+                "favorite"
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
+    },
+    "animate_rest_scale": {
+        "inputs": [
+            {
+                "from": "grid1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "restscale": {
+                "extrapolation_after": "extend",
+                "extrapolation_before": "extend",
+                "keyframes": [
+                    {
+                        "accel": 0.09722222222222222,
+                        "expression": "bezier()",
+                        "frame": 1,
+                        "inaccel": 0.3333333333333333,
+                        "slope": 0,
+                        "value": 1
+                    },
+                    {
+                        "accel": 0.3333333333333333,
+                        "expression": "bezier()",
+                        "frame": 8,
+                        "inaccel": 0.09722222222222222,
+                        "slope": 0,
+                        "value": 3
+                    }
+                ]
+            },
+            "snippet": "f@restscale = chf(\"restscale\");"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "restscale": {
+                                "label": "Restscale",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            3.36,
+            -1.66
+        ],
+        "type": "attribwrangle"
+    },
+    "grid1": {
+        "parms": {
+            "size": [
+                1,
+                1
+            ]
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "grid"
+    },
+    "vellumcloth1": {
+        "inputs": [
+            {
+                "from": "grid1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "bendstiffnessexp": "-4",
+            "constrainttype": "cloth",
+            "dobendgrp": true,
+            "docompress": true,
+            "domass": "calcvarying",
+            "dostretchgrp": true,
+            "dothickness": "calcuniform"
+        },
+        "position": [
+            0.29,
+            -3.45
+        ],
+        "type": "vellumconstraints"
+    },
+    "vellumsolver1": {
+        "editables": {
+            "dopnet1/forces": {
+                "children": {
+                    "FORCE": {
+                        "inputs": [
+                            {
+                                "from": "vellumconstraintproperty1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            0.25,
+                            1.22
+                        ],
+                        "type": "subnetoutput"
+                    },
+                    "SOURCE": {
+                        "flags": {
+                            "display": true
+                        },
+                        "parms": {
+                            "outputidx": 1
+                        },
+                        "position": [
+                            3.61,
+                            1.29
+                        ],
+                        "type": "subnetoutput"
+                    },
+                    "__stickynote1": {
+                        "color": [
+                            1,
+                            0.97,
+                            0.52
+                        ],
+                        "position": [
+                            5.9,
+                            2.56
+                        ],
+                        "size": [
+                            4.8,
+                            3.02
+                        ],
+                        "text": "Wire POP Forces into FORCE to apply per-point forces.\n\nWire Vellum Constraint Properties and Vellum Rest Blend to update constraints dynamically.\n\nWire Vellum Constraints to build new constraints.\n\nWire Vellum Source DOPs to SOURCE to add new vellum geometry.",
+                        "text_color": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "type": "StickyNote"
+                    },
+                    "vellumconstraintproperty1": {
+                        "parms": {
+                            "bindgeoinput2": "../../../../ANMATED",
+                            "bindinputmenu2": "sop",
+                            "dorestscale": true,
+                            "localexpression": "restscale = point(1, \"restscale\", @ptnum);",
+                            "uselocal": true
+                        },
+                        "position": [
+                            0.25,
+                            2.22
+                        ],
+                        "type": "vellumconstraintproperty"
+                    }
+                },
+                "type": "subnet"
+            }
+        },
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "vellumcloth1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "vellumcloth1",
+                "from_index": 1,
+                "to_index": 1
+            },
+            {
+                "from": "vellumcloth1",
+                "from_index": 2,
+                "to_index": 2
+            }
+        ],
+        "parms": {
+            "gravity": [
+                0,
+                0,
+                0
+            ]
+        },
+        "position": [
+            0.29,
+            -4.86
+        ],
+        "type": "vellumsolver"
+    }
+}

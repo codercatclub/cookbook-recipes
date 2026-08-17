@@ -1,0 +1,692 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "category": "geometry",
+            "date-created": "2025-11-04T00:00:00Z",
+            "date-modified": "2025-11-04T13:01:38.517231585Z",
+            "description": "Create curves within guiding geometry volume.",
+            "id": "902ecaba7687",
+            "image": "902ecaba7687.jpg",
+            "tags": [
+                "hair",
+                "guides",
+                "curve",
+                "uv"
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
+    },
+    "curve1": {
+        "parms": {
+            "activepoints": "2",
+            "enablebezierops": false,
+            "mode": 0,
+            "optype": "transform",
+            "outputtype": "nurbs",
+            "parmpoints": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5e6#+3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFf\u003c@BH##*nIyEpR3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0P000000000000000000000000000000D-aQ3baZlQVs\u0026(7UvqVBZDDeGCJ-m`\u0026H*4GARsd`AaHMKZge1FbaZlQVs\u0026(7b2\u003crca%5$4EFfWIWN\u003etIEFf}kb#7#1Z*p#Ba\u0026lp0X?1ffAZ=l3ZggR3Zg6jDZgealZ*X*ZaAhnYV{dMDWpZ?5b#iuPb1WcXaBy;Ocx7\u00266bYX61Wo~qHEFg1lW^{CNVQzC~Z*pxcAYpZMZ*X*TEFf@fVQyt^ZEP$cZ*_EVb#!!jaAhnYXkl(-Y-MmUaBp)gAaZYXVRU6IAYo\u00264X?A6Ba%pWWAaH4RZ*+2RbYXO5EFfWZbZ=s1dTC{HEFe%UAaiYRZ**vIbaN~qXkl(-Y-MmTaBp)gAaZYYZe(L`a\u0026BdEaCCDlAY*TCb98cHX\u003eN0La$#v_Xmn+6EFg4pVQzD5VRU6IAZc!NWpZ$BWprq7WGo\u003caWoK\u003c=ZggU0dTC{HV{C78Wh@|YX?AaPbaG*Cb8KOBWh@|QVQyq\u003eWpFZZZ*wdlaBN|2Wp8q6XDlFLV{~bDWpHn4Zgg`jAZTH3WNc+{baN~qb7Ns_Wh@|bZ)S9Ka$#\u003cBW^ZzBa$#gFAY*TGZe?\u003cCbaM(IARr(hF(7AbZ(?C=AYpWLa%p09bY*io33g#}ZDDW\u003ceJc?NbZ\u003eBPY;R|ICJ|dJ5(sc_X\u003eN3KWo9N4TPqU\u003eX\u003eMd`V`XzD6F?FGU0o{_3So3~a%p09bY*iU6k9754{\u0026d3ZggREbaH88b#!HOCKX#-TPqd?b7OCCWhNFY7Y1;3Vr*$+CKoFh1ax_DWhNLa83%54ZDn$4V\u003cs6Z8U$`(ZDl4JD;oh\u0026CL1dp2XAn6X\u003eV?GCLDVv7\u003c(odD;)-NbaH8KXC@sh9tCz`Y;|QO9xEROaBpdDbS58teO+5CAOv%1dSxac5d$kB2Xl09a$#p\u003eCLt\u003e#2xf3{WnpYHGA1G`BM4+=W?^+~baN\u0026nTP7e80VW|UBnW13a%Ev`HZ\u0026$AD\u003cuYYVQh6}b0#G~8UX+R00000003PkC0iyS5d$V6CL${)2ykI%WpinIWhN#P00b*15o2#|b97;DbZ}v3WoB$)XLBYeTR;#20RR91T`MRHa$$FHVP|DzVRT_8C_otl000000000000000U0q#UTP7AJ7bX}c9VQwpDGXs_bZK^FaBpdDbaN\u0026tCLDWxU0Ws~5dkJ4D=GzPZgev;CMqi{2Xl0CX\u003eMn8CM#PjECDnoEGsPmGbSx7E\u0026(wnE-NnqGA1uwCKFpGAQ1s3Atov\u0026CK3PyCMZA?2LJ#6|NsC0{{R300096100IC200RI309{\u003eOTU#a;CKo0cCK)CgD=-RSV{~bDWpHw7Z6+`#9D61hdnOnr9VQ+tF%@oaZeen1bZBj5bZKK\u003eX\u003eN37XJv9GF@1eqTP7e80VW|PDkdXaCLj?3CLt\u003e_1!-\u003c{HZ\u0026$OCM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y?pfVPs@*baN\u0026%CLDWxU0Ws~5dkJ4CMqT?TPrlKEio=IH!?XmHZn9dF*P+aGc+|UEif)HGcq_gF*h_hGBq+VI50UfEHExGAT2O1G\u0026D9eG\u00263|XI5#pkHZ(OkEHExLIWsmlF)%nYG\u0026L|YF*h_UFfK44FfKDPH#RpjH8nIeGB7kZF)}PLE;TqcIWROZFfuVXIW{vkGAuAIFd#85F*P$aH!wIkFf=kYHZwIhEG;lDFgZ0aFgP+YG%_?eI5;*jF)T1HFd!y0D\u003eW-IE;KbcFgG\u003cbGch(eH#sslGAuAIG\u0026VLkFgY+eGdVRfF*i6lHY_kMFd!y1T_zJ-CLj?3CLty\u0026CMFU91STjz69xbP0003100960|NsC0|NsC0|NsC0|NmWGU0Yiw7A6-a7$zAe8Y?ytVQ_GAZ+K;HWOQL}XJu}5b0#(\u003e9D61hdnOnr9VQ+oF@1eqTP7e80VW|PDkdXaCLj?3CLty=CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y?#nVRdwGVr6=1WpXArCLDVv7\u003c(odCLJaoCNX_|U0Ws~5dkJ4CMqT)TP7e80VW|PGA1QJ6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6iCK@X^2Vr$|Z*X*TCO9S\u003edwpG7CLj?3CLty\u0026CM#QACKFpGAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd|NsC0U0q#UTP7AJ7bX}c873MlITK@VZgX^UVQFr2baG*7XJ~X~ZYDV\u003c9D61hdnOnr9VQ+oF@1eqTP7e80VW|PDkdXaCLj?3CLty=CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y?;tV{dMDWpZ?5b#iuPb0#__9D61hdnOnr9VQ+oF@1eqTP7e80VW|PDkdXaCLj?3CLty=CM7@=0RaF20000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y?\u003eqV{dY9WpZ$Ib0#|`9D99TTP7e80VW|PDkdviT_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0ssI1|6N^OTU#a;CKo0cCK)CgD?AHmVQyq\u003eWpFTXZ*wL*CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u70D!*$0000000018U0qvSCKe_aCKx6eCK@X}3us|(WNc+{F\u003er5lCOsw`dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCK)CgD?SToVQyq\u003eWpFZZZ*wL-CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u70DwOL0000000018U0qvSCKe_aCKx6eCK@Y0320$%WNc+{baN\u0026@CLDVv7\u003c(odCLJaoCNX_|U0Ws~5d$V6CMqT)TP7e80VW|PGA1QJ6aoML|NsC0|NmVkC0iyS5d$V6CMqT-5\u0026#4yCtE-e0RaF209__1KobN1|NsC0|NsC0|NsA8U0qvSCKe_aCKx6eCK@Y13~6q3WpZ$BWprq7WF|l+9D61hdnOnr9VQ+oF@1eqTP7e80VW|PDkdXaCLj?3CLty=CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y@8!ZDDC{bYW?3aBpdDbS6P29D61hdnOnr9VQ+oF@1eqTP7e80VW|PDkdXaCLj?3CLty=CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zMi8Y@BuZ*X*ZaAhV!CLDWxU0Ws~5dkJ4CMqT?TPs5gVQ_F|Ze(z8X\u003eN2TLn}lHbaG*Cb7pUHZ6-urCKFpGAQ1s3Atov\u0026CK3PyCMZA?1^@s6000000096100961009610096109{\u003eOTU#a;CKo0cCK)CgD@6rwa%5$4CPgM3dnOorCKx6iCLSg+eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Ato{=B|sDb1ONa400000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0R#X509{\u003eOTU#a;CKo0cCLJakD@F=$b#!obbaZ)eWhO=@9D99TTP7e80VW|PDkdviD@O%xb#h{JCP!T+6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@Y93vg+6Z*+2RbYXO5CP*e6dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STh2Ko9`|00018CMZA|0{{R3000000000009{\u003eOTU#a;CKo0cCK)CgD@hJ;X?AaPbaG*Cb8KOBWhO}`9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br|Kp7GM00000000000000000000000000002{!n!}20q;Hl0000ssFOdelfu0K0000xl;pnD`WHU{0002g#HT*a{S`j|00018U0qvSCKe_aCKx6eCK@YB2ykp+Ze?z5Y$i%39D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS00000fIk2L003QGU0Yiw7A6-a7$zAe8Y@c)aBN|2Wp8q6XC_M~9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zAe8Y@f\u0026a\u0026L5DbY\u0026(?CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000000000018U0qvSCKe_aCKx6iCK@YE4svgGZe(L`a\u0026BdEaCCDfO(q\u003cBeO+57AQ1s3Atov\u0026D_dPA6I\u0026)A5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobG~|NsA8U0qvSCKe_aCKx6eCK@YF5pr*JZe(L`a\u0026BdEa$#g?b#o?8CLDWxU0Ws~5dkJ4CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5dkJ4CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6o500018U0qvSCKe_aCKx6eCK@YG1#@FzY-J`-CLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000@IPH9C0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u70DwOL0DwOL0DwPTU0qvSCKe_aCKx6eCK@YH5_4r|ZDnqBVr6=1WpZO|Z*yfPP$nFECK!7r7$zMi9wsq;eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4CNd@^KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd0RR91U0q#UTP7AJ7bX}c9VQwpQ3-QxZ*O#HaCCDfQ6?OFeO+57AQ1s3Atov\u0026D_bj40V*a^T_zJ-CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD^m?~Z)S9Ka$#\u003cBW^ZzBCQ~LHdnOorCKx6iCLSg+eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3Ato{=B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCK)CgD^w73Z)S9Ka$#\u003cBW^ZzBa$#g9R3;pIeO+57AQ1s3AtoXwBU\u003egQ5dkJ4CL|^$KpFu6000000N_7eCM8=YAQ1s3AtoXwCK3PyCMR1!5CH)I003PkC_otj0000#U0q#UTP7AJ7bX}c873MlRS9%*VQzD5VRU6CRVEyJeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMZA|5\u0026!@I00000000000000000000000000GK1pJ}6(Ly#N3J0Hm63zRr$\u003ey#N3J0Hm7ky@0Y_y#N3J0NnrMJpimJy8r+H09{\u003eOT`N`)XKZg`VQgV^baH88b#!HOCRSTpTP7AJ7bX}c9VQwpR|a-ra\u00262L7CRZjLdn;HDVr*|\u003eI\u0026*Y#X\u003eMn8WppN3dnOnwSp;HlZ)_%6CLS?;eO+57AQ2xXAtov\u0026D_bjC5N~jFd2nSQEj}PmP*hn^MJ8G+TO46ybZK^FaBpdDbaNmrJ|ICuR7qAvP)|utR8uBfD_js^WMpu3b094~AVEY#P*hVUTq|7|VPkY@c4csKX\u003eA}aJ|ICuR7qAvP*O=vCS5CD9\u0026KT1ZggR3Zg6jDZge0mJ|Im\u0026NlsKjNls8tNlsKIUMpWFVQ_GAZ+K;HWOQL}XJu}5b094~AVE-2QcqY#PDE5ePDe#fR8uBjD_|IJb#!obbaZ)eWgsm+AWv0PP*qe^Sx`kLU@Kt`Z*pX1av\u0026`}AWu?6MN%eVD`F;cZ*^{DV{dY9WpZ+1WNCGCAT2\u00261QcqP*L_\u003c$fPDN5uK}1PaQzl|7V-{m?a\u0026BdEaCCDZEj}PaPf|`rQczS=CSxmP7ISTHZ**vIbaNmrJ|I\u0026~Pft`xP*hVUWGiJ7VRdwGaCCDZEj}PYRa8$\u003cR8uBpD`p^aZ*^{DV{dY9WpZ$Ib094~AW~0NPDDdbQcguuP*hVUW-DhZV{dMAbaG*7ZgX^UVQFV*bY*TJEj}PaPfk-*Qb9\u003ehQ\u0026dtxNk\u003eRjMNTGXD`*^PZggdGaBXFDXm4a7Ej}PgPE\u003cuwP)$WtNKZs2Xe((RV{dMDWpZ?5b#iuPb094~AVW`1Rz*@\u0026Lse2%MN=keD{3BdZ)S9Ka$#\u003cBW^ZzBAT2\u00261Q%^=zR8m1sQ$|lxO(tq9Yb0}TW^{CNVQzC~Z*pyNVPqgJJ|I(1MpRT%K~7UfPf|@%K}05ND{K~Ya$#\u003cBY+-a|AT2\u00261R8m1sQ%pfrMJ8-3Z4h#AbYXO5AT2\u00261QcqMtR7ECjD{c;RV_|G%AT2\u00261Q$s;aMJ8@5Zy\u003c1Kc5ifaa$#\u003cBY+-a|AT2\u00261P)Sx#R8\u0026$yPE$-lR7EClD{vZcX?AaPa\u0026L5DbY\u0026ndJ|Iv@R!\u003ew?PgFrvMJ8}7aTaJ{Ze(m_aCCDZEj}PfK~6+WMNm{zCUGlr8fal|WNc+{FmP{kAT2\u00261NI_0SOhr\u0026IP)}1Paw~HhXkl(-Y-MmUaBp)UEj}PfK~6+WMNlzNPg5pyD|8xYVQyq\u003eWpFZZZ*w3mJ|IXzPDD\u0026aP%=\u003cYQzmpPbrx`JVQyt_a%pEEEj}PnOhHaXPf|%oCUq-z6mV=|Ze?z5Y#=Q@AW%#}PDM^lOeS_KcNk%HbZ=s1dTC{HAT2\u00261K~+\u003ewLPc6hMN%erD|je#WoK\u003c=ZggU0dTC{HV{C78Wgsm+AX7z0O+`*rLPc6hMN\u0026gdPg6xEcwHtFTP7e8A0{CtDkdfp00br{TR;#20RR91T_z|%6CVHo000310006200093000C4000F5000I6000L7000O8000R9000UA000XB000aC000dD000gE000jF000mG000pH000sI000vJ000yK000#L000\u0026M000*N000;O000\u003eP000^Q000{R000~S0012T0015U003QGU0q!(c?xiHX\u003eDnAX?A6ECV5+3Ck1J4WMz0;Ck|\u003cDbY*8{a%FCGa%p9AdwnMjb98cPZf9j~baH8Bb9;R!5ovC8WoKn_Yh`(5ZggpKWpjIdClGUVa%pa7Yh`(5Zgg^KWpjIdT_+7`Ze(S6aBp*IbZKvH6lMSb0000009^"
+            },
+            "pivottranslate": [
+                0.4390014111995697,
+                0.5833150148391724,
+                0
+            ],
+            "savedstashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5d|v*3wC94bY*yBZ*^{TCIk@$D+La4a%pX8bZK^FV{dhCbS4E60V@UsX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFf\u003c@BH##*nIyEpR3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0PomYv!;mhqmJ\u0026_~6B2*PW0000000000D-aQIa%pX2Z*^{TUvqVBZDDeGCJ-kWARr(hARr(hARsXyPE}GuQy@cia\u0026~13D-jW4baZlQVs\u0026(7UvqVBZDDeGCJ`q{ARr(hATc0tZ)t9HAYpWLa%p09bY*io2~Y|kARr(hF(7AbZ(?C=AYpWLa%p09bY*io3144wZ*^{DWn^P-a\u0026BdEaCCDDD-sQ7a\u0026L8TUvqVBZDDeGCK4whARr(hATc0tZ)t9HAZK!Kb#QY!2?\u003c|cVRdwGUvPAD3VkaR2y}07Z)|U8c_tHED-;NDZ)t9Ha%E;F6k9752Wf6(X=7z`CKW\u0026u1poj600IC500aPCT`Lv}VRUqIX\u003c~JBWpgGLTPqh2aBpdDbYXOKa%p09bY*iU7h79fD;NcHV{dR}CKxLj25@y^Y-wXA87mqDba`-PCK@Xn2X1w3WpZg_CL1dp1a4t%WhNXe9RW}#9V;FOZ*X*JZ*FrY9(yJldnOty9|m)Da%pa7CLb#x1$JR\u003cb!8?XD\u003cK7NZ)t9HCLw)\u0026U0W+61aoP6WhNpK11lp3b98TVVP|C~BP%2bW^i(4VQe!pCL}8*2xMhuVRdYDb0#HQCL$35CL=2*2xf3{WnpYKG$tl1CkA$5Y;|RGCMQ4|0RR910000009__0TP7kA112LTBr7NgaA9X\u003cb7^{ICMXgB1S=^Ea$$FHVP|DzVRT_8DL@$yomYv!holC*00000avc!AtPcu500000%f#S5B2*PW00000!\u003eMaOJ\u0026_~600000;mhqm(CNiK00000U0q#WD=H9YY;R\u0026=Y+-bCa%p09bY*iUDqCAyCKx6eCK@ImCLAj(5?^0(Z*^{DWn^P-a\u0026BdEaCCDfD\u003c\u0026R$eO+57A`t;5BP%QgX\u003eN2gGA1l5EeCUSa%pa7b0#fYT_zP\u003cCL$35CL\u003c;+CMXgB1S\u003e8PV{dMAbYX6EaA9X\u003cW^7?+b0#iZKo9`|00018CMiG@0ssI1|6N^OU0o|L3UG31ZE19Ac4c!WFI!t%CK@X+2~Jf~LPK?Oc4a0oU0W+L26km~bY*xZF+dUp000310ssR51OO{C24ie*b7f\u003eEGB7JM1!7@yX\u003e%qsTP7MSGzCsoQbJQEG%Ga)Z*pX1awatq1S\u003eWWWo~3?ZggdGaBpm3bZKvHCN?oEHw9~MZ*+4eH$WN*000000000000000000000000000000000000000000000007`W00000008hm00000008hm00000008hm00000008hmU0q#WD\u003ew^qZ)t9HXL4_KaC0U\u0026TU%Qu94k2rUteK$bZ=j9baN\u0026-U0W+U33Fv^Wn*+{Z*C?!TPr\u0026Wb#8BRWMy(?WF|XXD?9\u003eeI3_$m5d{DM00018U0q#WCk1J4WMz0;Ck|\u003cDbY*8{a%FCGa%p9AdwnMjb98cPZf9j~baH8Bb9;R!5ovC8WoKn_Yh`(5ZggpKWpjIdClGUVa%pa7Yh`(5Zgg^KWpjIdT_+7`Ze(S6aBp*IbZKvH6lMSb0000009^"
+            },
+            "stashgeo": {
+                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@7(H7+$cG$sKn0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5dbR$3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2MB0yb98QDZDl40D+mK~b#5jID+vT-VRU6C2`dT{GB7eVEio}IFf\u003c@BH##*nIyEpR3M\u0026f+VRCe7b95#PD+~i`X=Wx2D-8\u00269Z)S9NVRB_A4J!^1NN;syX\u003eMsCGB7SRE;TqbCJrkP24Zh@Ze(*N4?r0P|NsAf|NsB~|NsAf|NsB~|NsAf|NsB~D-aQ3baZlQVs\u0026(7UvqVBZDDeGCJ-kZARr(hATc0tZ)t9HAYpWLa%p09bY*io2~Y}sD-j5EZ*XsHZ)bTX5nC$~2yky{Zgg^GW+oC_D-#E4Ze(d=WpgGIKoS65T`Lp{VRUqIX\u003c~JBWpgGJTPqb0aBpdDbYXOKa%p09bY*iU6\u003cb?dD;5QFV{dR}CKf9f25@y^Y-wXA7b_S9ba`-PCKxLj2X1w3WpZg_CK)Rl1a4t%WhNRc8v#%z8!H?KZ*X*JZ*FrY9D61hdnOnw9R_oBa%pa7CLJpt1$JR\u003cb!8?VD\u003c1`LZ)t9HCLeu$U0W+41aoP6WhNjI11lj1b98TVVP|C~AuA#XW^i(4VQe!pCL${%2xMhuVRdYDb0#BOCLj?3CLt\u003e%2xf3{WnpYKG$te~B?fk3Y;|RGCM7@`0RR910000009_^}TP7e8112FRA}b~caA9X\u003cb7^{ICMFU91S=;Ca$$FHVP|DzVRT_8CqNkhU0q#WT`MRGaB^vFX\u003e@6JWpgGdTU{pwX\u003eMd?cv~k9X\u003eN37XJv9_Zgg^KWpjIdCk=CSa%pa7Wo~qGX=QVJeJ2rVZggd5WpZm}d1Y\u003eNX\u003ew(AdwnMmb98cPZf9#{d1Y\u003eNa%p9AdwpFe4QXy\u003cWq5FJb7^#GZ*CN30000000018"
+            },
+            "stashid": ";"
+        },
+        "position": [
+            0.04,
+            0.97
+        ],
+        "type": "curve::2.0"
+    },
+    "hair_guides1": {
+        "children": {
+            "1": {
+                "position": [
+                    4.77,
+                    7.24
+                ],
+                "type": "SubnetIndirectInput"
+            },
+            "OUT": {
+                "inputs": [
+                    {
+                        "from": "switch1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "position": [
+                    2.06,
+                    -13.42
+                ],
+                "type": "null"
+            },
+            "__dot1": {
+                "color": [
+                    0.7,
+                    0.7,
+                    0.7
+                ],
+                "inputs": [
+                    {
+                        "from": "attribtransferbyuv1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "position": [
+                    5.49,
+                    -8
+                ],
+                "type": "NetworkDot"
+            },
+            "add1": {
+                "inputs": [
+                    {
+                        "from": "foreach_end1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "add": "attribute",
+                    "attrname": "id",
+                    "switcher": 1
+                },
+                "position": [
+                    0.18,
+                    -10.95
+                ],
+                "type": "add"
+            },
+            "add2": {
+                "flags": {
+                    "display": true,
+                    "render": true
+                },
+                "inputs": [
+                    {
+                        "from": "delete1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "add": "skip",
+                    "inc": {
+                        "expression": "ch(\"../circle2/divs\")"
+                    },
+                    "switcher": 1
+                },
+                "position": [
+                    2.32,
+                    -8.93
+                ],
+                "type": "add"
+            },
+            "attribcopy1": {
+                "inputs": [
+                    {
+                        "from": "circle2",
+                        "from_index": 0,
+                        "to_index": 0
+                    },
+                    {
+                        "from": "fuse1",
+                        "from_index": 0,
+                        "to_index": 1
+                    }
+                ],
+                "parms": {
+                    "attribname": "uv",
+                    "destgrouptype": "vertices",
+                    "srcgrouptype": "vertices"
+                },
+                "position": [
+                    -1.57,
+                    1.88
+                ],
+                "type": "attribcopy"
+            },
+            "attribtransferbyuv1": {
+                "inputs": [
+                    {
+                        "from": "uv_slant_twist_effect",
+                        "from_index": 0,
+                        "to_index": 0
+                    },
+                    {
+                        "from": "foreach_begin2",
+                        "from_index": 0,
+                        "to_index": 1
+                    }
+                ],
+                "parms": {
+                    "pointattribs": "P"
+                },
+                "position": [
+                    2.06,
+                    -5.19
+                ],
+                "type": "attribtransferbyuv"
+            },
+            "circle1": {
+                "parms": {
+                    "arc": "openarc",
+                    "divs": {
+                        "expression": "ch(\"../circle2/divs\")"
+                    },
+                    "type": "poly"
+                },
+                "position": [
+                    0,
+                    6.11
+                ],
+                "type": "circle"
+            },
+            "circle2": {
+                "parms": {
+                    "divs": {
+                        "expression": "ch(\"../prof_div\")"
+                    },
+                    "type": "poly"
+                },
+                "position": [
+                    -3.03,
+                    3.74
+                ],
+                "type": "circle"
+            },
+            "connectivity1": {
+                "inputs": [
+                    {
+                        "from": "1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "connecttype": "prim"
+                },
+                "position": [
+                    4.16,
+                    -1.71
+                ],
+                "type": "connectivity"
+            },
+            "copy1": {
+                "inputs": [
+                    {
+                        "from": "uvtexture2",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "ncy": {
+                        "expression": "ch(\"../num_seg\")"
+                    },
+                    "t": [
+                        0,
+                        0,
+                        {
+                            "expression": "1/ch(\"ncy\")"
+                        }
+                    ]
+                },
+                "position": [
+                    -1.57,
+                    -0.34
+                ],
+                "type": "copyxform"
+            },
+            "delete1": {
+                "inputs": [
+                    {
+                        "from": "attribtransferbyuv1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "keeppoints": true,
+                    "pattern": "*"
+                },
+                "position": [
+                    2.32,
+                    -8.05
+                ],
+                "type": "delete"
+            },
+            "foreach_begin1": {
+                "color": [
+                    0.75,
+                    0.4,
+                    0
+                ],
+                "flags": {
+                    "colordefault": false
+                },
+                "inputs": [
+                    {
+                        "from": "attribtransferbyuv1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "blockpath": "../foreach_end1",
+                    "method": "piece"
+                },
+                "position": [
+                    0.19,
+                    -6.72
+                ],
+                "type": "block_begin"
+            },
+            "foreach_begin2": {
+                "color": [
+                    0.75,
+                    0.4,
+                    0
+                ],
+                "flags": {
+                    "colordefault": false
+                },
+                "inputs": [
+                    {
+                        "from": "connectivity1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "blockpath": "../foreach_end2",
+                    "method": "piece"
+                },
+                "position": [
+                    4.16,
+                    -3.38
+                ],
+                "type": "block_begin"
+            },
+            "foreach_end1": {
+                "color": [
+                    0.75,
+                    0.4,
+                    0
+                ],
+                "flags": {
+                    "colordefault": false
+                },
+                "inputs": [
+                    {
+                        "from": "scatter1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "blockpath": "../foreach_begin1",
+                    "class": "primitive",
+                    "itermethod": "pieces",
+                    "method": "merge",
+                    "singlepass": 8,
+                    "templatepath": "../foreach_begin1",
+                    "useattrib": false
+                },
+                "position": [
+                    0.19,
+                    -9.34
+                ],
+                "type": "block_end"
+            },
+            "foreach_end2": {
+                "color": [
+                    0.75,
+                    0.4,
+                    0
+                ],
+                "flags": {
+                    "colordefault": false
+                },
+                "inputs": [
+                    {
+                        "from": "OUT",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "attrib": {
+                        "expression": "chs(\"../connectivity1/attribname\")"
+                    },
+                    "blockpath": "../foreach_begin2",
+                    "class": "primitive",
+                    "itermethod": "pieces",
+                    "method": "merge",
+                    "templatepath": "../foreach_begin2"
+                },
+                "position": [
+                    2.06,
+                    -15.29
+                ],
+                "type": "block_end"
+            },
+            "fuse1": {
+                "inputs": [
+                    {
+                        "from": "uvtexture1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "tol3d": 0.01
+                },
+                "position": [
+                    0,
+                    3.91
+                ],
+                "type": "fuse::2.0"
+            },
+            "output0": {
+                "inputs": [
+                    {
+                        "from": "foreach_end2",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "outputidx": 0
+                },
+                "position": [
+                    1.89,
+                    -18
+                ],
+                "type": "output"
+            },
+            "scatter1": {
+                "inputs": [
+                    {
+                        "from": "foreach_begin1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "densityscale": {
+                        "expression": "ch(\"../curve_dens\")"
+                    },
+                    "emergencylimit": 34722,
+                    "generateby": "texturespace",
+                    "npts": 76,
+                    "relaxiterations": {
+                        "expression": "ch(\"../relaxiterations\")"
+                    },
+                    "useoutputidattrib": true,
+                    "uvattrib": "uvw"
+                },
+                "position": [
+                    0.18,
+                    -8.05
+                ],
+                "type": "scatter::2.0"
+            },
+            "set_uv_y": {
+                "inputs": [
+                    {
+                        "from": "copy1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "class": "vertex",
+                    "snippet": "v@uv.y = v@P.z;"
+                },
+                "position": [
+                    -1.57,
+                    -1.6
+                ],
+                "type": "attribwrangle"
+            },
+            "switch1": {
+                "inputs": [
+                    {
+                        "from": "add1",
+                        "from_index": 0,
+                        "to_index": 0
+                    },
+                    {
+                        "from": "add2",
+                        "from_index": 0,
+                        "to_index": 1
+                    },
+                    {
+                        "from": "__dot1",
+                        "from_index": 0,
+                        "to_index": 2
+                    }
+                ],
+                "parms": {
+                    "input": {
+                        "expression": "ch(\"../mode\")"
+                    }
+                },
+                "position": [
+                    2.06,
+                    -12.26
+                ],
+                "type": "switch"
+            },
+            "uv_slant_twist_effect": {
+                "inputs": [
+                    {
+                        "from": "set_uv_y",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "bindings": {
+                        "multiparm_links": {}
+                    },
+                    "class": "vertex",
+                    "groupbindings": {
+                        "multiparm_links": {}
+                    },
+                    "rslant": {
+                        "points": [
+                            {
+                                "interp": {
+                                    "expression": "ch(\"../twist1interp\")"
+                                },
+                                "pos": {
+                                    "expression": "ch(\"../twist1pos\")"
+                                },
+                                "value": {
+                                    "expression": "ch(\"../twist1value\")"
+                                }
+                            },
+                            {
+                                "interp": {
+                                    "expression": "ch(\"../twist2interp\")"
+                                },
+                                "pos": {
+                                    "expression": "ch(\"../twist2pos\")"
+                                },
+                                "value": {
+                                    "expression": "ch(\"../twist2value\")"
+                                }
+                            }
+                        ],
+                        "value": {
+                            "expression": "ch(\"../twist\")"
+                        }
+                    },
+                    "snippet": "float slant = chramp(\"rslant\", v@uv.y);\n\nv@uv.x += slant;\nv@uv.x = v@uv.x%1;"
+                },
+                "parmtemplates": [
+                    {
+                        "insert_after": "vex_threadjobsize",
+                        "parmtemplates": {
+                            "folder_generatedparms_snippet": {
+                                "label": "Generated Channel Parameters",
+                                "parmtemplates": {
+                                    "rslant": {
+                                        "label": "Rslant",
+                                        "script_callback_language": "hscript",
+                                        "show_controls": true,
+                                        "type": "ramp_float"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_type": "simple",
+                                    "sidefx::look": "blank"
+                                },
+                                "type": "folder_simple"
+                            }
+                        }
+                    }
+                ],
+                "position": [
+                    -1.57,
+                    -2.74
+                ],
+                "type": "attribwrangle"
+            },
+            "uvtexture1": {
+                "inputs": [
+                    {
+                        "from": "circle1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "type": "suniform"
+                },
+                "position": [
+                    0,
+                    4.94
+                ],
+                "type": "texture"
+            },
+            "uvtexture2": {
+                "inputs": [
+                    {
+                        "from": "attribcopy1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "axis": "z",
+                    "uvattrib": "uvw"
+                },
+                "position": [
+                    -1.57,
+                    0.76
+                ],
+                "type": "texture"
+            }
+        },
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "sweep1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "twist": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": 1
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": 0.5
+                }
+            ]
+        },
+        "position": [
+            0.09,
+            -2.26
+        ],
+        "type": "cc::hair_guides::1.0"
+    },
+    "resample1": {
+        "inputs": [
+            {
+                "from": "curve1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "type": "resample"
+    },
+    "sweep1": {
+        "inputs": [
+            {
+                "from": "resample1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "applyscale": true,
+            "capdivs": 1,
+            "capscale": 0,
+            "cols": 32,
+            "computeuvs": true,
+            "normalizev": true,
+            "radius": 0.334,
+            "scaleramp": [
+                {
+                    "interp": "bspline",
+                    "pos": 0,
+                    "value": 1
+                },
+                {
+                    "interp": "bspline",
+                    "pos": 0.1800699234008789,
+                    "value": 1
+                },
+                {
+                    "interp": "bspline",
+                    "pos": 1,
+                    "value": 0.2586206793785095
+                }
+            ],
+            "surfaceshape": "tube"
+        },
+        "position": [
+            0.05,
+            -1.15
+        ],
+        "type": "sweep::2.0"
+    }
+}

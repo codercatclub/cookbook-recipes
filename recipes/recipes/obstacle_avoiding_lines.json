@@ -1,0 +1,467 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "category": "vex",
+            "date-created": "2025-11-16T17:58:35.996374301+04:00",
+            "date-modified": "2025-11-04T16:16:26.850308514Z",
+            "description": "Compute a line flow given a goal, starting points, and obstacles defined on a surface.",
+            "id": "f2b3232062b0",
+            "image": "f2b3232062b0.gif",
+            "tags": [
+                "obstacle",
+                "lines",
+                "path",
+                "gradient"
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
+    },
+    "attribblur": {
+        "inputs": [
+            {
+                "from": "create_exclude_group",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "attributes": "goal",
+            "group": "!exclude",
+            "iterations": 89
+        },
+        "position": [
+            2.59,
+            0.97
+        ],
+        "type": "attribblur"
+    },
+    "compute_gradient": {
+        "inputs": [
+            {
+                "from": "attribblur",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "attribname": "gradient",
+            "colorramp": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": [
+                        0,
+                        0,
+                        1
+                    ]
+                },
+                {
+                    "interp": "linear",
+                    "pos": 0.5,
+                    "value": [
+                        1,
+                        1,
+                        1
+                    ]
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": [
+                        1,
+                        0,
+                        0
+                    ]
+                }
+            ],
+            "grouptype": "points",
+            "measure": "gradient",
+            "srcattrib": "goal",
+            "srccomp": "xyz",
+            "totalattribname": "totalgradient"
+        },
+        "position": [
+            2.59,
+            0
+        ],
+        "type": "measure::2.0"
+    },
+    "create_delete_group": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "compute_gradient",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "sphere4",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "boundtype": "usebobject",
+            "groupbounding": true,
+            "groupname": "delete",
+            "grouptype": "point"
+        },
+        "position": [
+            1.08,
+            -2.09
+        ],
+        "type": "groupcreate"
+    },
+    "create_exclude_group": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "set_goal_weight",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "sphere3",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "boundtype": "usebobject",
+            "groupbounding": true,
+            "groupname": "exclude",
+            "grouptype": "point"
+        },
+        "position": [
+            2.59,
+            2
+        ],
+        "type": "groupcreate"
+    },
+    "create_goal_group": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "normal1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "sphere2",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "boundtype": "usebobject",
+            "groupbounding": true,
+            "groupname": "goal",
+            "grouptype": "point"
+        },
+        "position": [
+            2.59,
+            4.08
+        ],
+        "type": "groupcreate"
+    },
+    "delete1": {
+        "inputs": [
+            {
+                "from": "create_delete_group",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "entity": "point",
+            "group": "delete",
+            "negate": "keep"
+        },
+        "position": [
+            1.08,
+            -2.95
+        ],
+        "type": "delete"
+    },
+    "foreach_begin1": {
+        "color": [
+            0.75,
+            0.4,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "delete1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "blockpath": "../foreach_end1",
+            "method": "piece"
+        },
+        "position": [
+            1.08,
+            -4.5
+        ],
+        "type": "block_begin"
+    },
+    "foreach_begin1_metadata1": {
+        "color": [
+            0.75,
+            0.4,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "parms": {
+            "blockpath": "../foreach_end1",
+            "method": "metadata"
+        },
+        "position": [
+            4.08,
+            -4.5
+        ],
+        "type": "block_begin"
+    },
+    "foreach_end1": {
+        "color": [
+            0.75,
+            0.4,
+            0
+        ],
+        "flags": {
+            "colordefault": false,
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "step_along_gradient",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "blockpath": "../foreach_begin1",
+            "itermethod": "pieces",
+            "method": "merge",
+            "templatepath": "../foreach_begin1",
+            "useattrib": false
+        },
+        "position": [
+            2.76,
+            -7.18
+        ],
+        "type": "block_end"
+    },
+    "normal1": {
+        "inputs": [
+            {
+                "from": "sphere1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "type": "typepoint"
+        },
+        "position": [
+            2.59,
+            5.08
+        ],
+        "type": "normal"
+    },
+    "set_goal_weight": {
+        "inputs": [
+            {
+                "from": "create_goal_group",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "goal",
+            "snippet": "f@goal = 1.0;"
+        },
+        "position": [
+            2.59,
+            3.04
+        ],
+        "type": "attribwrangle"
+    },
+    "sphere1": {
+        "parms": {
+            "cols": 50,
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "rows": 50,
+            "scale": 2.1,
+            "type": "polymesh"
+        },
+        "position": [
+            2.59,
+            6.08
+        ],
+        "type": "sphere"
+    },
+    "sphere2": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "rows": 25,
+            "scale": 1.1,
+            "t": [
+                0,
+                1.25,
+                0
+            ],
+            "type": "polymesh"
+        },
+        "position": [
+            4.49,
+            5.18
+        ],
+        "type": "sphere"
+    },
+    "sphere3": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "scale": 0.41,
+            "t": [
+                1.04,
+                0,
+                0
+            ],
+            "type": "polymesh"
+        },
+        "position": [
+            6.35,
+            4.08
+        ],
+        "type": "sphere"
+    },
+    "sphere4": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "scale": 0.41,
+            "t": [
+                0.38,
+                -0.83,
+                0
+            ],
+            "type": "polymesh"
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "sphere"
+    },
+    "step_along_gradient": {
+        "inputs": [
+            {
+                "from": "foreach_begin1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "compute_gradient",
+                "from_index": 0,
+                "to_index": 1
+            },
+            {
+                "from": "foreach_begin1_metadata1",
+                "from_index": 0,
+                "to_index": 2
+            }
+        ],
+        "parms": {
+            "noise_amount": 0.273,
+            "noise_freq": 2,
+            "num_steps": 92,
+            "snippet": "int primnum = addprim(0, \"polyline\");\naddvertex(0, primnum, @ptnum);\nint iteration = detail(2, \"iteration\", 0);\n\nvector curPos = v@P;\n\nfor(int i = 0; i\u003cchi(\"num_steps\"); i++){\n    int prim;\n    vector uv; \n    \n    float d = xyzdist(1, curPos, prim, uv);\n    \n    vector gradient = normalize(primuv(1, \"gradient\", prim, uv));\n    gradient += chf(\"noise_amount\")*curlnoise(chf(\"noise_freq\")*curPos + chf(\"strand_noise_amount\")*iteration);\n    \n    vector nextPos = curPos + chf(\"step_size\")*normalize(gradient);\n    \n    d = xyzdist(1, nextPos, prim, uv);\n    curPos = primuv(1, \"P\", prim, uv);\n\n    int point2 = addpoint(0, curPos);\n    addvertex(0, primnum, point2);\n}",
+            "step_size": 0.026,
+            "strand_noise_amount": 0.079
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "noise_amount": {
+                                "label": "Noise Amount",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "noise_freq": {
+                                "label": "Noise Freq",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "num_steps": {
+                                "label": "Num Steps",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "type": "integer"
+                            },
+                            "step_size": {
+                                "label": "Step Size",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "strand_noise_amount": {
+                                "label": "Strand Noise Amount",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            2.76,
+            -6.01
+        ],
+        "type": "attribwrangle"
+    }
+}

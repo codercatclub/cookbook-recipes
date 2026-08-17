@@ -1,0 +1,665 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "category": "vex",
+            "date-created": "2025-11-03T00:00:00Z",
+            "date-modified": "2025-11-05T19:22:40.701818261Z",
+            "description": "Compute flow direction vector and propogate it along mesh. This is done without simulation by using ForEach.",
+            "id": "708662443d59",
+            "image": "sop_gradient_flow.gif",
+            "tags": [
+                "fx",
+                "effect",
+                "grow",
+                "infection",
+                "propogation",
+                "direction",
+                "flow",
+                "vector"
+            ],
+            "username": "kif"
+        },
+        "version": "20.5.584"
+    },
+    "attribpromote1": {
+        "inputs": [
+            {
+                "from": "polyframe1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "inclass": "vertex",
+            "inname": "tangent"
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "attribpromote"
+    },
+    "compute_gradient": {
+        "inputs": [
+            {
+                "from": "foreach_begin1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "snippet": "int neibours[] = i[]@neibours;\n\nfloat accum = 0;\nfloat infect = 0;\n\nforeach (int pnt; neibours) {\n    infect = point(0, \"infect\", pnt);\n    if (infect \u003e 0) {\n        accum += 0.1;\n    }\n}\n\n@infect += accum / len(neibours);\n"
+        },
+        "position": [
+            0,
+            4.2
+        ],
+        "type": "attribwrangle"
+    },
+    "foreach_begin1": {
+        "color": [
+            0.9,
+            0.5,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "precompute_neibours",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "blockpath": "../propogation_progress"
+        },
+        "position": [
+            0.01,
+            5.28
+        ],
+        "type": "block_begin"
+    },
+    "group1": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "subdivide1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "basegroup": "2953 5953 5970 152 2975 5968 4183 4240 8645 8648 8481 4244 4243 8668 8646 8656 5969 4251 8654 4248-4249 8655 8658 8484 1804 1799 4247 1803 122 5983 8671 8676 1826 4256 8675 1798 6022 121 8657 8672 8717 1787 4271 4273 1770 1788 8670 4275 8723 8728 8669 8722 1789 8721 4276 8726 183 1771 8716 1810 8659 8647",
+            "groupname": "start",
+            "grouptype": "point"
+        },
+        "position": [
+            0,
+            8.48
+        ],
+        "type": "groupcreate"
+    },
+    "init_infect_attr": {
+        "inputs": [
+            {
+                "from": "group1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "start",
+            "snippet": "@infect = 1;"
+        },
+        "position": [
+            0,
+            7.44
+        ],
+        "type": "attribwrangle"
+    },
+    "orient_from_gradient": {
+        "children": {
+            "bind1": {
+                "parms": {
+                    "exportcontext": "cvex",
+                    "parmname": "tangent",
+                    "parmtype": "vector"
+                },
+                "position": [
+                    3.78,
+                    3.67
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "bind"
+            },
+            "bind2": {
+                "inputs": [
+                    {
+                        "from": "matxtoquat1",
+                        "from_index": "quat",
+                        "to_index": "input"
+                    }
+                ],
+                "parms": {
+                    "exportcontext": "cvex",
+                    "exportparm": 2,
+                    "overridetype": true,
+                    "parmname": "orient",
+                    "parmtype": "float4",
+                    "useasparmdefiner": true
+                },
+                "position": [
+                    17.93,
+                    3.79
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "bind"
+            },
+            "cross1": {
+                "inputs": [
+                    {
+                        "from": "geometryvopglobal1",
+                        "from_index": "N",
+                        "to_index": "vec1"
+                    },
+                    {
+                        "from": "bind1",
+                        "from_index": "tangent",
+                        "to_index": "vec2"
+                    }
+                ],
+                "position": [
+                    6.78,
+                    2.56
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "cross"
+            },
+            "cross2": {
+                "inputs": [
+                    {
+                        "from": "bind1",
+                        "from_index": "tangent",
+                        "to_index": "vec1"
+                    },
+                    {
+                        "from": "cross1",
+                        "from_index": "crossprod",
+                        "to_index": "vec2"
+                    }
+                ],
+                "position": [
+                    9.4,
+                    0.84
+                ],
+                "size": [
+                    1.77,
+                    0.83
+                ],
+                "type": "cross"
+            },
+            "geometryvopglobal1": {
+                "flags": {
+                    "display": true,
+                    "render": true
+                },
+                "position": [
+                    1.91,
+                    1.98
+                ],
+                "size": [
+                    1.77,
+                    3.83
+                ],
+                "type": "geometryvopglobal::2.0"
+            },
+            "geometryvopoutput1": {
+                "position": [
+                    19.65,
+                    1.36
+                ],
+                "size": [
+                    1.77,
+                    1.28
+                ],
+                "type": "geometryvopoutput"
+            },
+            "matxtoquat1": {
+                "inputs": [
+                    {
+                        "from": "vectomatx1",
+                        "from_index": "matx",
+                        "to_index": "matx"
+                    }
+                ],
+                "position": [
+                    14.1,
+                    4.06
+                ],
+                "size": [
+                    1.77,
+                    0.68
+                ],
+                "type": "matxtoquat"
+            },
+            "vectomatx1": {
+                "inputs": [
+                    {
+                        "from": "cross1",
+                        "from_index": "crossprod",
+                        "to_index": "vval1"
+                    },
+                    {
+                        "from": "cross2",
+                        "from_index": "crossprod",
+                        "to_index": "vval2"
+                    },
+                    {
+                        "from": "bind1",
+                        "from_index": "tangent",
+                        "to_index": "vval3"
+                    }
+                ],
+                "position": [
+                    11.65,
+                    4.4
+                ],
+                "size": [
+                    1.77,
+                    0.98
+                ],
+                "type": "vectomatx"
+            }
+        },
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "attribpromote1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parmtemplates": [
+            {
+                "insert_after": "stdswitcher_1",
+                "parmtemplates": {
+                    "Cd": {
+                        "default_value": [
+                            1,
+                            1,
+                            1
+                        ],
+                        "hidden": true,
+                        "label": "Cd",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "Frame": {
+                        "hidden": true,
+                        "label": "Frame",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "N": {
+                        "hidden": true,
+                        "label": "N",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "OpInput1": {
+                        "hidden": true,
+                        "label": "First Input",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "string"
+                    },
+                    "OpInput2": {
+                        "hidden": true,
+                        "label": "Second Input",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "string"
+                    },
+                    "OpInput3": {
+                        "hidden": true,
+                        "label": "Third Input",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "string"
+                    },
+                    "OpInput4": {
+                        "hidden": true,
+                        "label": "Fourth Input",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "string"
+                    },
+                    "P": {
+                        "hidden": true,
+                        "label": "P",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "Time": {
+                        "hidden": true,
+                        "label": "Time",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "TimeInc": {
+                        "hidden": true,
+                        "label": "Time Inc",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "age": {
+                        "hidden": true,
+                        "label": "Age",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "force": {
+                        "hidden": true,
+                        "label": "Force",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "id": {
+                        "default_value": -1,
+                        "hidden": true,
+                        "label": "Id",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "life": {
+                        "hidden": true,
+                        "label": "Life",
+                        "max_value": 1,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "numprim": {
+                        "hidden": true,
+                        "label": "Number of Prims",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "numpt": {
+                        "hidden": true,
+                        "label": "Number of Points",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "numvtx": {
+                        "hidden": true,
+                        "label": "Number of Vertices",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "primnum": {
+                        "hidden": true,
+                        "label": "Primitive Number",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "ptnum": {
+                        "hidden": true,
+                        "label": "Point Number",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    },
+                    "uv": {
+                        "hidden": true,
+                        "label": "UV",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "v": {
+                        "hidden": true,
+                        "label": "Velocity",
+                        "num_components": 3,
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "float"
+                    },
+                    "vtxnum": {
+                        "hidden": true,
+                        "label": "Vertex Number",
+                        "menu_type": "normal",
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "parmvop": "1",
+                            "shaderparmcontexts": "cvex"
+                        },
+                        "type": "integer"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0.01,
+            -1.18
+        ],
+        "type": "attribvop"
+    },
+    "pointwrangle2": {
+        "inputs": [
+            {
+                "from": "propogation_progress",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "snippet": "v@grad = set(@infect, 0, 0);"
+        },
+        "position": [
+            0,
+            2.04
+        ],
+        "type": "attribwrangle"
+    },
+    "polyframe1": {
+        "inputs": [
+            {
+                "from": "pointwrangle2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "Non": false,
+            "attribname": "grad",
+            "style": "attrib",
+            "tangentu": "tangent"
+        },
+        "position": [
+            0,
+            1
+        ],
+        "type": "polyframe"
+    },
+    "precompute_neibours": {
+        "inputs": [
+            {
+                "from": "init_infect_attr",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "snippet": "int neibours[] = neighbours(0, @ptnum);\ni[]@neibours = neibours;"
+        },
+        "position": [
+            0,
+            6.36
+        ],
+        "type": "attribwrangle"
+    },
+    "propogation_progress": {
+        "color": [
+            0.9,
+            0.5,
+            0
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "compute_gradient",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "blockpath": "../foreach_begin1",
+            "iterations": {
+                "expression": "$F"
+            },
+            "itermethod": "count",
+            "templatepath": "../foreach_begin1"
+        },
+        "position": [
+            0.01,
+            3.12
+        ],
+        "type": "block_end"
+    },
+    "subdivide1": {
+        "inputs": [
+            {
+                "from": "testgeometry_pighead1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            0.07,
+            9.48
+        ],
+        "type": "subdivide"
+    },
+    "testgeometry_pighead1": {
+        "position": [
+            0.01,
+            10.48
+        ],
+        "type": "testgeometry_pighead"
+    }
+}

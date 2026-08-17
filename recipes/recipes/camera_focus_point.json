@@ -1,0 +1,2414 @@
+{
+    "__cookbookMeta": {
+        "context": "lop",
+        "version": "20.5.584",
+        "systemfields": {
+            "description": "Dynamic camera focus point that can be animated or attached to an object so that it stays in focus when camera of object is moving. [Based on Houdini Solaris | Focus Camera Recipe](https://www.youtube.com/watch?v=ZcqZbOi7lz0) tutorial.",
+            "category": "solaris",
+            "image": "2d560a14c73c.gif",
+            "id": "2d560a14c73c",
+            "date-created": "2025-11-03T17:06:40.483372+04:00",
+            "date-modified": "2025-11-30T12:24:55.72387289Z",
+            "username": "kif",
+            "tags": [
+                "camera",
+                "animation",
+                "layout",
+                "lops",
+                "solaris",
+                "usd"
+            ]
+        }
+    },
+    "attach_focus_to_pig": {
+        "inputs": [
+            {
+                "from": "focus_offset",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "rotation": false,
+            "scale": false,
+            "shear": false,
+            "source": "/cameras/main_focus_point",
+            "target": "/pig"
+        },
+        "position": [
+            0.11,
+            -6.16
+        ],
+        "type": "parentconstraint"
+    },
+    "focus_offset": {
+        "inputs": [
+            {
+                "from": "merge3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "primpattern": "/cameras/main_focus_point",
+            "t": [
+                0,
+                0,
+                1.3048153519630432
+            ]
+        },
+        "position": [
+            0.1,
+            -4.88
+        ],
+        "type": "xform"
+    },
+    "focus_point": {
+        "editables": {
+            "sopnet/create": {
+                "children": {
+                    "color1": {
+                        "inputs": [
+                            {
+                                "from": "merge1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "color": [
+                                0.25,
+                                0.5,
+                                0
+                            ]
+                        },
+                        "position": [
+                            2.78,
+                            -0.93
+                        ],
+                        "type": "color"
+                    },
+                    "line1": {
+                        "parms": {
+                            "origin": [
+                                0,
+                                -0.5,
+                                0
+                            ]
+                        },
+                        "position": [
+                            1.74,
+                            2.73
+                        ],
+                        "type": "line"
+                    },
+                    "line2": {
+                        "parms": {
+                            "dir": [
+                                1,
+                                0,
+                                0
+                            ],
+                            "origin": [
+                                -0.5,
+                                0,
+                                0
+                            ]
+                        },
+                        "position": [
+                            3.84,
+                            2.72
+                        ],
+                        "type": "line"
+                    },
+                    "line3": {
+                        "parms": {
+                            "dir": [
+                                0,
+                                0,
+                                1
+                            ],
+                            "origin": [
+                                0,
+                                0,
+                                -0.5
+                            ]
+                        },
+                        "position": [
+                            5.7,
+                            2.22
+                        ],
+                        "type": "line"
+                    },
+                    "merge1": {
+                        "inputs": [
+                            {
+                                "from": "line1",
+                                "from_index": 0,
+                                "to_index": 0
+                            },
+                            {
+                                "from": "line2",
+                                "from_index": 0,
+                                "to_index": 1
+                            },
+                            {
+                                "from": "line3",
+                                "from_index": 0,
+                                "to_index": 2
+                            }
+                        ],
+                        "position": [
+                            2.78,
+                            0.29
+                        ],
+                        "type": "merge"
+                    },
+                    "output0": {
+                        "flags": {
+                            "display": true,
+                            "render": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "color1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "outputidx": 0
+                        },
+                        "position": [
+                            2.79,
+                            -2.15
+                        ],
+                        "type": "output"
+                    }
+                },
+                "type": "subnet"
+            }
+        },
+        "inputs": [
+            {
+                "from": "main",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "pathprefix": "/cameras/main_focus_point",
+            "showlopstage": ""
+        },
+        "position": [
+            0,
+            -1.05
+        ],
+        "type": "sopcreate"
+    },
+    "hide_focus_gizmo": {
+        "inputs": [
+            {
+                "from": "focus_point",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "primpattern": "/cameras/main_focus_point",
+            "xn__primvarskarmaobjectrendervisibility_4xbfg": "",
+            "xn__primvarskarmaobjectrendervisibility_control_5bcfg": "set"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "createprimsgroup2",
+                "parmtemplates": {
+                    "Karma": {
+                        "label": "Karma",
+                        "parmtemplates": {
+                            "Dicing": {
+                                "label": "Dicing",
+                                "parmtemplates": {
+                                    "xn__primvarskarmaobjectdicingdepthmax_control_w7bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Dicing Maximum Depth",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectdicingdepthmax_vubfg": {
+                                        "default_value": -1,
+                                        "disable_when": "{ xn__primvarskarmaobjectdicingdepthmax_control_w7bfg == block } { xn__primvarskarmaobjectdicingdepthmax_control_w7bfg == none }",
+                                        "label": "Dicing Maximum Depth",
+                                        "menu_type": "normal",
+                                        "min_value": -1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Dicing",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    },
+                                    "xn__primvarskarmaobjectdicingdepthmin_control_w7bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Dicing Minimum Depth",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectdicingdepthmin_vubfg": {
+                                        "default_value": -1,
+                                        "disable_when": "{ xn__primvarskarmaobjectdicingdepthmin_control_w7bfg == block } { xn__primvarskarmaobjectdicingdepthmin_control_w7bfg == none }",
+                                        "label": "Dicing Minimum Depth",
+                                        "menu_type": "normal",
+                                        "min_value": -1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Dicing",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    },
+                                    "xn__primvarskarmaobjectdicingquality_8sbfg": {
+                                        "default_value": 0.5,
+                                        "disable_when": "{ xn__primvarskarmaobjectdicingquality_control_95bfg == block } { xn__primvarskarmaobjectdicingquality_control_95bfg == none }",
+                                        "label": "Dicing Quality",
+                                        "max_value": 16,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Dicing",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectdicingquality_control_95bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Dicing Quality",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjecttruedisplace_control_n4bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "True Displacements",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjecttruedisplace_mrbfg": {
+                                        "default_value": "True Displacement",
+                                        "disable_when": "{ xn__primvarskarmaobjecttruedisplace_control_n4bfg == block } { xn__primvarskarmaobjecttruedisplace_control_n4bfg == none }",
+                                        "label": "True Displacements",
+                                        "menu_items": [
+                                            {
+                                                "label": "Bump Mapped Displacement",
+                                                "token": "Bump Mapped Displacement"
+                                            },
+                                            {
+                                                "label": "True Displacement",
+                                                "token": "True Displacement"
+                                            },
+                                            {
+                                                "label": "Disable Displacement Shader",
+                                                "token": "Disable Displacement Shader"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Dicing",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            },
+                            "Geometry": {
+                                "label": "Geometry",
+                                "parmtemplates": {
+                                    "xn__primvarskarmaobjectcull_backface_8sbfg": {
+                                        "default_value": "Off",
+                                        "disable_when": "{ xn__primvarskarmaobjectcull_backface_control_95bfg == block } { xn__primvarskarmaobjectcull_backface_control_95bfg == none }",
+                                        "label": "Cull Backface",
+                                        "menu_items": [
+                                            {
+                                                "label": "Off",
+                                                "token": "Off"
+                                            },
+                                            {
+                                                "label": "Cull Backface",
+                                                "token": "Cull Backface"
+                                            },
+                                            {
+                                                "label": "Cull Frontface",
+                                                "token": "Cull Frontface"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Geometry",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    },
+                                    "xn__primvarskarmaobjectcull_backface_control_95bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Cull Backface",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectcurve_basis_control_02bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Override Curves Basis",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectcurve_basis_zpbfg": {
+                                        "default_value": "Geometry Default",
+                                        "disable_when": "{ xn__primvarskarmaobjectcurve_basis_control_02bfg == block } { xn__primvarskarmaobjectcurve_basis_control_02bfg == none }",
+                                        "label": "Override Curves Basis",
+                                        "menu_items": [
+                                            {
+                                                "label": "Geometry Default",
+                                                "token": "Geometry Default"
+                                            },
+                                            {
+                                                "label": "Force Linear",
+                                                "token": "Force Linear"
+                                            },
+                                            {
+                                                "label": "Force Bezier",
+                                                "token": "Force Bezier"
+                                            },
+                                            {
+                                                "label": "Force B-Spline",
+                                                "token": "Force B-Spline"
+                                            },
+                                            {
+                                                "label": "Force Catmull-Rom",
+                                                "token": "Force Catmull-Rom"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Geometry",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    },
+                                    "xn__primvarskarmaobjectcurve_style_control_02bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Render Curves As",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectcurve_style_zpbfg": {
+                                        "default_value": "Rounded Curves",
+                                        "disable_when": "{ xn__primvarskarmaobjectcurve_style_control_02bfg == block } { xn__primvarskarmaobjectcurve_style_control_02bfg == none }",
+                                        "label": "Render Curves As",
+                                        "menu_items": [
+                                            {
+                                                "label": "Flat Ribbons",
+                                                "token": "Flat Ribbons"
+                                            },
+                                            {
+                                                "label": "Rounded Curves",
+                                                "token": "Rounded Curves"
+                                            },
+                                            {
+                                                "label": "Oriented Ribbons",
+                                                "token": "Oriented Ribbons"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Geometry",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    },
+                                    "xn__primvarskarmaobjectpoint_style_control_02bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Render Points As",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectpoint_style_zpbfg": {
+                                        "default_value": "Spheres",
+                                        "disable_when": "{ xn__primvarskarmaobjectpoint_style_control_02bfg == block } { xn__primvarskarmaobjectpoint_style_control_02bfg == none }",
+                                        "label": "Render Points As",
+                                        "menu_items": [
+                                            {
+                                                "label": "Discs",
+                                                "token": "Discs"
+                                            },
+                                            {
+                                                "label": "Spheres",
+                                                "token": "Spheres"
+                                            },
+                                            {
+                                                "label": "Oriented Discs",
+                                                "token": "Oriented Discs"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Geometry",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            },
+                            "Light": {
+                                "label": "Light",
+                                "parmtemplates": {
+                                    "xn__primvarskarmaobjectisportal_3kbfg": {
+                                        "disable_when": "{ xn__primvarskarmaobjectisportal_control_4xbfg == block } { xn__primvarskarmaobjectisportal_control_4xbfg == none }",
+                                        "label": "Is Portal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__primvarskarmaobjectisportal_control_4xbfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": "Is Portal",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectlightsource_diffusescale_5bcfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectlightsource_diffusescale_control_6ocfg == block } { xn__primvarskarmaobjectlightsource_diffusescale_control_6ocfg == none }",
+                                        "label": "Light Source Diffuse Multiplier",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectlightsource_diffusescale_control_6ocfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Light Source Diffuse Multiplier",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectlightsource_specularscale_control_tqcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Light Source Specular Multiplier",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectlightsource_specularscale_sdcfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectlightsource_specularscale_control_tqcfg == block } { xn__primvarskarmaobjectlightsource_specularscale_control_tqcfg == none }",
+                                        "label": "Light Source Specular Multiplier",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectportaldomelights_4xbfg": {
+                                        "default_value": "*",
+                                        "disable_when": "{ xn__primvarskarmaobjectportaldomelights_control_5bcfg == block } { xn__primvarskarmaobjectportaldomelights_control_5bcfg == none }",
+                                        "label": "Portal Dome Lights",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "string"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectportaldomelights_control_5bcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                        "label": "Portal Dome Lights",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjecttreat_as_lightsource_control_oicfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Treat As Light Source",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjecttreat_as_lightsource_n4bfg": {
+                                        "default_value": "No",
+                                        "disable_when": "{ xn__primvarskarmaobjecttreat_as_lightsource_control_oicfg == block } { xn__primvarskarmaobjecttreat_as_lightsource_control_oicfg == none }",
+                                        "label": "Treat As Light Source",
+                                        "menu_items": [
+                                            {
+                                                "label": "No",
+                                                "token": "No"
+                                            },
+                                            {
+                                                "label": "Yes",
+                                                "token": "Yes"
+                                            },
+                                            {
+                                                "label": "Auto",
+                                                "token": "Auto"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            },
+                            "Limits": {
+                                "label": "Limits",
+                                "parmtemplates": {
+                                    "xn__primvarskarmaobjectdiffuselimit_control_n4bfg": {
+                                        "default_value": "none",
+                                        "hide_when": "{ xn__karmahydradisablelighting_rhbf == 1 }",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Diffuse Limit",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectdiffuselimit_mrbfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectdiffuselimit_control_n4bfg == block } { xn__primvarskarmaobjectdiffuselimit_control_n4bfg == none }",
+                                        "hide_when": "{ xn__karmahydradisablelighting_rhbf == 1 }",
+                                        "label": "Diffuse Limit",
+                                        "max_value": 32,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "sidefx::slider": "snap_to_int",
+                                            "spare_category": "Limits",
+                                            "uiscope": "viewport",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectreflectlimit_control_n4bfg": {
+                                        "default_value": "none",
+                                        "hide_when": "{ xn__karmahydradisablelighting_rhbf == 1 }",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Reflection Limit",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectreflectlimit_mrbfg": {
+                                        "default_value": 4,
+                                        "disable_when": "{ xn__primvarskarmaobjectreflectlimit_control_n4bfg == block } { xn__primvarskarmaobjectreflectlimit_control_n4bfg == none }",
+                                        "hide_when": "{ xn__karmahydradisablelighting_rhbf == 1 }",
+                                        "label": "Reflection Limit",
+                                        "max_value": 32,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "sidefx::slider": "snap_to_int",
+                                            "spare_category": "Limits",
+                                            "uiscope": "viewport",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectrefractlimit_control_n4bfg": {
+                                        "default_value": "none",
+                                        "hide_when": "{ xn__karmahydradisablelighting_rhbf == 1 }",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Refraction Limit",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectrefractlimit_mrbfg": {
+                                        "default_value": 4,
+                                        "disable_when": "{ xn__primvarskarmaobjectrefractlimit_control_n4bfg == block } { xn__primvarskarmaobjectrefractlimit_control_n4bfg == none }",
+                                        "hide_when": "{ xn__karmahydradisablelighting_rhbf == 1 }",
+                                        "label": "Refraction Limit",
+                                        "max_value": 32,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "sidefx::slider": "snap_to_int",
+                                            "spare_category": "Limits",
+                                            "uiscope": "viewport",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectssslimit_3kbfg": {
+                                        "disable_when": "{ xn__primvarskarmaobjectssslimit_control_4xbfg == block } { xn__primvarskarmaobjectssslimit_control_4xbfg == none }",
+                                        "label": "SSS Limit",
+                                        "max_value": 32,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Limits",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectssslimit_control_4xbfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "SSS Limit",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumelimit_control_02bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Volume Limit",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumelimit_zpbfg": {
+                                        "disable_when": "{ xn__primvarskarmaobjectvolumelimit_control_02bfg == block } { xn__primvarskarmaobjectvolumelimit_control_02bfg == none }",
+                                        "label": "Volume Limit",
+                                        "max_value": 32,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Limits",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            },
+                            "Sampling": {
+                                "label": "Sampling",
+                                "parmtemplates": {
+                                    "xn__primvarskarmaobjectdiffusequality_control_w7bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Diffuse Quality",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectdiffusequality_vubfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectdiffusequality_control_w7bfg == block } { xn__primvarskarmaobjectdiffusequality_control_w7bfg == none }",
+                                        "label": "Diffuse Quality",
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectlightsource_samplingquality_1gcfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectlightsource_samplingquality_control_2tcfg == block } { xn__primvarskarmaobjectlightsource_samplingquality_control_2tcfg == none }",
+                                        "label": "Light Sampling Quality",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectlightsource_samplingquality_control_2tcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Light Sampling Quality",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectreflectquality_control_w7bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Reflection Quality",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectreflectquality_vubfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectreflectquality_control_w7bfg == block } { xn__primvarskarmaobjectreflectquality_control_w7bfg == none }",
+                                        "label": "Reflection Quality",
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectrefractquality_control_w7bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Refraction Quality",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectrefractquality_vubfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectrefractquality_control_w7bfg == block } { xn__primvarskarmaobjectrefractquality_control_w7bfg == none }",
+                                        "label": "Refraction Quality",
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectsssquality_control_e1bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "SSS Quality",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectsssquality_dobfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectsssquality_control_e1bfg == block } { xn__primvarskarmaobjectsssquality_control_e1bfg == none }",
+                                        "label": "SSS Quality",
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectvarianceaa_maxsamples_95bfg": {
+                                        "default_value": 9,
+                                        "disable_when": "{ xn__primvarskarmaobjectvarianceaa_maxsamples_control_bkcfg == block } { xn__primvarskarmaobjectvarianceaa_maxsamples_control_bkcfg == none }",
+                                        "label": " Max Secondary Samples",
+                                        "max_value": 9,
+                                        "menu_type": "normal",
+                                        "min_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    },
+                                    "xn__primvarskarmaobjectvarianceaa_maxsamples_control_bkcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": " Max Secondary Samples",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvarianceaa_minsamples_95bfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectvarianceaa_minsamples_control_bkcfg == block } { xn__primvarskarmaobjectvarianceaa_minsamples_control_bkcfg == none }",
+                                        "label": " Min Secondary Samples",
+                                        "max_value": 9,
+                                        "menu_type": "normal",
+                                        "min_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    },
+                                    "xn__primvarskarmaobjectvarianceaa_minsamples_control_bkcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": " Min Secondary Samples",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvarianceaa_thresh_control_sdcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": " Secondary Noise Level",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvarianceaa_thresh_rzbfg": {
+                                        "default_value": 0.01,
+                                        "disable_when": "{ xn__primvarskarmaobjectvarianceaa_thresh_control_sdcfg == block } { xn__primvarskarmaobjectvarianceaa_thresh_control_sdcfg == none }",
+                                        "label": " Secondary Noise Level",
+                                        "max_value": 0.1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectvolumefilter_control_n4bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                        "label": "Volume Filter",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumefilter_mrbfg": {
+                                        "default_value": "box",
+                                        "disable_when": "{ xn__primvarskarmaobjectvolumefilter_control_n4bfg == block } { xn__primvarskarmaobjectvolumefilter_control_n4bfg == none }",
+                                        "label": "Volume Filter",
+                                        "menu_items": [
+                                            {
+                                                "label": "Point",
+                                                "token": "point"
+                                            },
+                                            {
+                                                "label": "Box Filter",
+                                                "token": "box"
+                                            },
+                                            {
+                                                "label": "Gaussian",
+                                                "token": "gaussian"
+                                            },
+                                            {
+                                                "label": "Bartlett (triangle)",
+                                                "token": "bartlett"
+                                            },
+                                            {
+                                                "label": "Catmull-Rom",
+                                                "token": "catrom"
+                                            },
+                                            {
+                                                "label": "Hanning",
+                                                "token": "hanning"
+                                            },
+                                            {
+                                                "label": "Blackman",
+                                                "token": "blackman"
+                                            },
+                                            {
+                                                "label": "Sinc (sharpening)",
+                                                "token": "sinc"
+                                            }
+                                        ],
+                                        "menu_type": "string_replace",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "string"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumefilterwidth_control_sdcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Volume Filter Width",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumefilterwidth_rzbfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectvolumefilterwidth_control_sdcfg == block } { xn__primvarskarmaobjectvolumefilterwidth_control_sdcfg == none }",
+                                        "label": "Volume Filter Width",
+                                        "max_value": 5,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectvolumequality_8sbfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectvolumequality_control_95bfg == block } { xn__primvarskarmaobjectvolumequality_control_95bfg == none }",
+                                        "label": "Volume Quality",
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectvolumequality_control_95bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Volume Quality",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumesamplingchannel_95bfg": {
+                                        "default_value": "density",
+                                        "disable_when": "{ xn__primvarskarmaobjectvolumesamplingchannel_control_bkcfg == block } { xn__primvarskarmaobjectvolumesamplingchannel_control_bkcfg == none }",
+                                        "label": "Volume Sampling Field",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "string"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumesamplingchannel_control_bkcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                        "label": "Volume Sampling Field",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumeshadowsteprate_control_oicfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Volume Shadow Step Rate",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumeshadowsteprate_n4bfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectvolumeshadowsteprate_control_oicfg == block } { xn__primvarskarmaobjectvolumeshadowsteprate_control_oicfg == none }",
+                                        "label": "Volume Shadow Step Rate",
+                                        "max_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectvolumesteprate_control_w7bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Volume Step Rate",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumesteprate_vubfg": {
+                                        "default_value": 0.25,
+                                        "disable_when": "{ xn__primvarskarmaobjectvolumesteprate_control_w7bfg == block } { xn__primvarskarmaobjectvolumesteprate_control_w7bfg == none }",
+                                        "label": "Volume Step Rate",
+                                        "max_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "viewport",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            },
+                            "Shading": {
+                                "label": "Shading",
+                                "parmtemplates": {
+                                    "xn__primvarskarmaobjectbumpshadowterminator_control_oicfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Bump Shadow Terminator",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectbumpshadowterminator_n4bfg": {
+                                        "disable_when": "{ xn__primvarskarmaobjectbumpshadowterminator_control_oicfg == block } { xn__primvarskarmaobjectbumpshadowterminator_control_oicfg == none }",
+                                        "label": "Bump Shadow Terminator",
+                                        "max_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_max": true,
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectcausticsenable_control_w7bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": " Enable Caustics",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectcausticsenable_vubfg": {
+                                        "disable_when": "{ xn__primvarskarmaobjectcausticsenable_control_w7bfg == block } { xn__primvarskarmaobjectcausticsenable_control_w7bfg == none }",
+                                        "label": " Enable Caustics",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__primvarskarmaobjectcausticsroughnessclamp_control_xlcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": " Caustics Roughness Clamp",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectcausticsroughnessclamp_w7bfg": {
+                                        "default_value": 0.2,
+                                        "disable_when": "{ xn__primvarskarmaobjectcausticsroughnessclamp_control_xlcfg == block } { xn__primvarskarmaobjectcausticsroughnessclamp_control_xlcfg == none }",
+                                        "label": " Caustics Roughness Clamp",
+                                        "max_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_max": true,
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectcuspangle_control_rzbfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Cusp Angle",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectcuspangle_qmbfg": {
+                                        "default_value": 60,
+                                        "disable_when": "{ xn__primvarskarmaobjectcuspangle_control_rzbfg == block } { xn__primvarskarmaobjectcuspangle_control_rzbfg == none }",
+                                        "label": "Cusp Angle",
+                                        "max_value": 90,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectcustom_tracesets_4xbfg": {
+                                        "disable_when": "{ xn__primvarskarmaobjectcustom_tracesets_control_5bcfg == block } { xn__primvarskarmaobjectcustom_tracesets_control_5bcfg == none }",
+                                        "label": "Custom Tracesets",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "string"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectcustom_tracesets_control_5bcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                        "label": "Custom Tracesets",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectdielectricpriority_control_ffcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Dielectric Priority",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectdielectricpriority_e1bfg": {
+                                        "disable_when": "{ xn__primvarskarmaobjectdielectricpriority_control_ffcfg == block } { xn__primvarskarmaobjectdielectricpriority_control_ffcfg == none }",
+                                        "label": "Dielectric Priority",
+                                        "max_value": 16,
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    },
+                                    "xn__primvarskarmaobjectfakecausticsbsdfenable_control_xlcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": " Evaluate BSDF On Fake Caustics",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectfakecausticsbsdfenable_w7bfg": {
+                                        "default_value": true,
+                                        "disable_when": "{ xn__primvarskarmaobjectfakecausticsbsdfenable_control_xlcfg == block } { xn__primvarskarmaobjectfakecausticsbsdfenable_control_xlcfg == none }",
+                                        "label": " Evaluate BSDF On Fake Caustics",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__primvarskarmaobjectfakecausticscolor_control_sdcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float3')",
+                                        "label": " Fake Caustics Color",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectfakecausticscolor_rzbfg": {
+                                        "default_value": [
+                                            1,
+                                            1,
+                                            1
+                                        ],
+                                        "disable_when": "{ xn__primvarskarmaobjectfakecausticscolor_control_sdcfg == block } { xn__primvarskarmaobjectfakecausticscolor_control_sdcfg == none }",
+                                        "label": " Fake Caustics Color",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float3"
+                                        },
+                                        "type": "color"
+                                    },
+                                    "xn__primvarskarmaobjectfakecausticsopacity_02bfg": {
+                                        "default_value": [
+                                            1,
+                                            1,
+                                            1
+                                        ],
+                                        "disable_when": "{ xn__primvarskarmaobjectfakecausticsopacity_control_1gcfg == block } { xn__primvarskarmaobjectfakecausticsopacity_control_1gcfg == none }",
+                                        "label": " Fake Caustics Opacity",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float3"
+                                        },
+                                        "type": "color"
+                                    },
+                                    "xn__primvarskarmaobjectfakecausticsopacity_control_1gcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float3')",
+                                        "label": " Fake Caustics Opacity",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectholdoutmode_control_02bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Holdout Mode",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectholdoutmode_zpbfg": {
+                                        "default_value": "None",
+                                        "disable_when": "{ xn__primvarskarmaobjectholdoutmode_control_02bfg == block } { xn__primvarskarmaobjectholdoutmode_control_02bfg == none }",
+                                        "label": "Holdout Mode",
+                                        "menu_items": [
+                                            {
+                                                "label": "None",
+                                                "token": "None"
+                                            },
+                                            {
+                                                "label": "Matte",
+                                                "token": "Matte"
+                                            },
+                                            {
+                                                "label": "Background",
+                                                "token": "Background"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    },
+                                    "xn__primvarskarmaobjectinternalreflectenable_95bfg": {
+                                        "disable_when": "{ xn__primvarskarmaobjectinternalreflectenable_control_bkcfg == block } { xn__primvarskarmaobjectinternalreflectenable_control_bkcfg == none }",
+                                        "label": " Enable Internal Reflection",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__primvarskarmaobjectinternalreflectenable_control_bkcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": " Enable Internal Reflection",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectlightsubset_control_02bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Direct Refraction Subset",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectlightsubset_zpbfg": {
+                                        "default_value": "Outside",
+                                        "disable_when": "{ xn__primvarskarmaobjectlightsubset_control_02bfg == block } { xn__primvarskarmaobjectlightsubset_control_02bfg == none }",
+                                        "label": "Direct Refraction Subset",
+                                        "menu_items": [
+                                            {
+                                                "label": "Outside",
+                                                "token": "Outside"
+                                            },
+                                            {
+                                                "label": "Inside",
+                                                "token": "Inside"
+                                            },
+                                            {
+                                                "label": "Both",
+                                                "token": "Both"
+                                            },
+                                            {
+                                                "label": "None",
+                                                "token": "None"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    },
+                                    "xn__primvarskarmaobjectlpetag_control_vubfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                        "label": "LPE Tag",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectlpetag_uhbfg": {
+                                        "disable_when": "{ xn__primvarskarmaobjectlpetag_control_vubfg == block } { xn__primvarskarmaobjectlpetag_control_vubfg == none }",
+                                        "label": "LPE Tag",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "string"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectrendervisibility_4xbfg": {
+                                        "default_value": "*",
+                                        "disable_when": "{ xn__primvarskarmaobjectrendervisibility_control_5bcfg == block } { xn__primvarskarmaobjectrendervisibility_control_5bcfg == none }",
+                                        "label": "Render Visibility",
+                                        "menu_items": [
+                                            {
+                                                "label": "Visible to all",
+                                                "token": "*"
+                                            },
+                                            {
+                                                "label": "Visible only to primary rays",
+                                                "token": "primary"
+                                            },
+                                            {
+                                                "label": "Visible only to primary and shadow rays",
+                                                "token": "primary|shadow"
+                                            },
+                                            {
+                                                "label": "Invisible to primary rays (Phantom)",
+                                                "token": "-primary"
+                                            },
+                                            {
+                                                "label": "Invisible to diffuse rays",
+                                                "token": "-diffuse"
+                                            },
+                                            {
+                                                "label": "Invisible to secondary rays",
+                                                "token": "-diffuse\u0026-reflect\u0026-refract"
+                                            },
+                                            {
+                                                "label": "Invisible to shadow rays",
+                                                "token": "-shadow"
+                                            },
+                                            {
+                                                "label": "Invisible (Unrenderable)",
+                                                "token": ""
+                                            }
+                                        ],
+                                        "menu_type": "string_replace",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "string"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectrendervisibility_control_5bcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                        "label": "Render Visibility",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectsmoothp_control_iwbfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": "Fix Shadow Terminator",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectsmoothp_hjbfg": {
+                                        "default_value": true,
+                                        "disable_when": "{ xn__primvarskarmaobjectsmoothp_control_iwbfg == block } { xn__primvarskarmaobjectsmoothp_control_iwbfg == none }",
+                                        "label": "Fix Shadow Terminator",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Shading",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            },
+                            "xn__MotionBlur_6ja": {
+                                "label": "Motion Blur",
+                                "parmtemplates": {
+                                    "xn__primvarskarmaobjectblurstyle_control_rzbfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Motion Blur Style",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectblurstyle_qmbfg": {
+                                        "default_value": "Rotation Blur",
+                                        "disable_when": "{ xn__primvarskarmaobjectblurstyle_control_rzbfg == block } { xn__primvarskarmaobjectblurstyle_control_rzbfg == none }",
+                                        "label": "Motion Blur Style",
+                                        "menu_items": [
+                                            {
+                                                "label": "Linear Blur",
+                                                "token": "Linear Blur"
+                                            },
+                                            {
+                                                "label": "Rotation Blur",
+                                                "token": "Rotation Blur"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Motion Blur",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    },
+                                    "xn__primvarskarmaobjectgeosamples_control_e1bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Geometry Time Samples",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectgeosamples_dobfg": {
+                                        "default_value": 2,
+                                        "disable_when": "{ xn__primvarskarmaobjectgeosamples_control_e1bfg == block } { xn__primvarskarmaobjectgeosamples_control_e1bfg == none }",
+                                        "label": "Geometry Time Samples",
+                                        "max_value": 8,
+                                        "menu_type": "normal",
+                                        "min_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Motion Blur",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    },
+                                    "xn__primvarskarmaobjectinstance_samples_4xbfg": {
+                                        "default_value": 2,
+                                        "disable_when": "{ xn__primvarskarmaobjectinstance_samples_control_5bcfg == block } { xn__primvarskarmaobjectinstance_samples_control_5bcfg == none }",
+                                        "label": "Instance Motion Samples",
+                                        "max_value": 8,
+                                        "menu_type": "normal",
+                                        "min_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Motion Blur",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    },
+                                    "xn__primvarskarmaobjectinstance_samples_control_5bcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Instance Motion Samples",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectinstance_vblur_control_w7bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Instance Velocity Blur",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectinstance_vblur_vubfg": {
+                                        "default_value": "No Velocity Blur",
+                                        "disable_when": "{ xn__primvarskarmaobjectinstance_vblur_control_w7bfg == block } { xn__primvarskarmaobjectinstance_vblur_control_w7bfg == none }",
+                                        "label": "Instance Velocity Blur",
+                                        "menu_items": [
+                                            {
+                                                "label": "No Velocity Blur",
+                                                "token": "No Velocity Blur"
+                                            },
+                                            {
+                                                "label": "Velocity Blur",
+                                                "token": "Velocity Blur"
+                                            },
+                                            {
+                                                "label": "Acceleration Blur",
+                                                "token": "Acceleration Blur"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Motion Blur",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    },
+                                    "xn__primvarskarmaobjectmblur_7fbfg": {
+                                        "default_value": true,
+                                        "disable_when": "{ xn__primvarskarmaobjectmblur_control_8sbfg == block } { xn__primvarskarmaobjectmblur_control_8sbfg == none }",
+                                        "label": "Enable Motion Blur",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Motion Blur",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__primvarskarmaobjectmblur_control_8sbfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": "Enable Motion Blur",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectsamplesfromstage_4xbfg": {
+                                        "default_value": true,
+                                        "disable_when": "{ xn__primvarskarmaobjectsamplesfromstage_control_5bcfg == block } { xn__primvarskarmaobjectsamplesfromstage_control_5bcfg == none }",
+                                        "label": "Motion Samples from Stage",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Motion Blur",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__primvarskarmaobjectsamplesfromstage_control_5bcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": "Motion Samples from Stage",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvblur_7fbfg": {
+                                        "default_value": "No Velocity Blur",
+                                        "disable_when": "{ xn__primvarskarmaobjectvblur_control_8sbfg == block } { xn__primvarskarmaobjectvblur_control_8sbfg == none }",
+                                        "label": "Velocity Blur",
+                                        "menu_items": [
+                                            {
+                                                "label": "No Velocity Blur",
+                                                "token": "No Velocity Blur"
+                                            },
+                                            {
+                                                "label": "Velocity Blur",
+                                                "token": "Velocity Blur"
+                                            },
+                                            {
+                                                "label": "Acceleration Blur",
+                                                "token": "Acceleration Blur"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Motion Blur",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    },
+                                    "xn__primvarskarmaobjectvblur_control_8sbfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Velocity Blur",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumevblurmode_control_j9bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Volume Velocity Blur Mode",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumevblurmode_iwbfg": {
+                                        "default_value": "Lattice Deformation",
+                                        "disable_when": "{ xn__primvarskarmaobjectvolumevblurmode_control_j9bfg == block } { xn__primvarskarmaobjectvolumevblurmode_control_j9bfg == none }",
+                                        "label": "Volume Velocity Blur Mode",
+                                        "menu_items": [
+                                            {
+                                                "label": "Lattice Deformation",
+                                                "token": "Lattice Deformation"
+                                            },
+                                            {
+                                                "label": "Lookup Offset",
+                                                "token": "Lookup Offset"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Motion Blur",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "ordered_menu"
+                                    },
+                                    "xn__primvarskarmaobjectvolumevblurscale_4xbfg": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__primvarskarmaobjectvolumevblurscale_control_5bcfg == block } { xn__primvarskarmaobjectvolumevblurscale_control_5bcfg == none }",
+                                        "label": "Volume Velocity Blur Scale",
+                                        "max_value": 2,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Motion Blur",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__primvarskarmaobjectvolumevblurscale_control_5bcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Volume Velocity Blur Scale",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectxformsamples_control_n4bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Transform Time Samples",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectxformsamples_mrbfg": {
+                                        "default_value": 2,
+                                        "disable_when": "{ xn__primvarskarmaobjectxformsamples_control_n4bfg == block } { xn__primvarskarmaobjectxformsamples_control_n4bfg == none }",
+                                        "label": "Transform Time Samples",
+                                        "max_value": 8,
+                                        "menu_type": "normal",
+                                        "min_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Motion Blur",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            },
+                            "xn__TextureBaking_vma": {
+                                "label": "Texture Baking",
+                                "parmtemplates": {
+                                    "xn__primvarskarmaobjectuvunwrap_cage_obj_control_sdcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Cage Object ID",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectuvunwrap_cage_obj_rzbfg": {
+                                        "default_value": -1,
+                                        "disable_when": "{ xn__primvarskarmaobjectuvunwrap_cage_obj_control_sdcfg == block } { xn__primvarskarmaobjectuvunwrap_cage_obj_control_sdcfg == none }",
+                                        "label": "Cage Object ID",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Texture Baking",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    },
+                                    "xn__primvarskarmaobjectuvunwrap_highres_obj_control_oicfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "High Resolution Object ID",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectuvunwrap_highres_obj_n4bfg": {
+                                        "default_value": -1,
+                                        "disable_when": "{ xn__primvarskarmaobjectuvunwrap_highres_obj_control_oicfg == block } { xn__primvarskarmaobjectuvunwrap_highres_obj_control_oicfg == none }",
+                                        "label": "High Resolution Object ID",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Texture Baking",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    },
+                                    "xn__primvarskarmaobjectuvunwrap_lowres_obj_02bfg": {
+                                        "default_value": -1,
+                                        "disable_when": "{ xn__primvarskarmaobjectuvunwrap_lowres_obj_control_1gcfg == block } { xn__primvarskarmaobjectuvunwrap_lowres_obj_control_1gcfg == none }",
+                                        "label": "Low Resolution Object ID",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Texture Baking",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    },
+                                    "xn__primvarskarmaobjectuvunwrap_lowres_obj_control_1gcfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Low Resolution Object ID",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            },
+                            "xn__UniformVolume_vma": {
+                                "label": "Uniform Volume",
+                                "parmtemplates": {
+                                    "xn__primvarskarmaobjectvolumeuniform_8sbfg": {
+                                        "disable_when": "{ xn__primvarskarmaobjectvolumeuniform_control_95bfg == block } { xn__primvarskarmaobjectvolumeuniform_control_95bfg == none }",
+                                        "label": "Uniform Volume",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Uniform Volume",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__primvarskarmaobjectvolumeuniform_control_95bfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": "Uniform Volume",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumeuniformsamples_control_oicfg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Uniform Volume Samples",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__primvarskarmaobjectvolumeuniformsamples_n4bfg": {
+                                        "default_value": 4,
+                                        "disable_when": "{ xn__primvarskarmaobjectvolumeuniformsamples_control_oicfg == block } { xn__primvarskarmaobjectvolumeuniformsamples_control_oicfg == none }",
+                                        "label": "Uniform Volume Samples",
+                                        "max_value": 8,
+                                        "menu_type": "normal",
+                                        "min_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Uniform Volume",
+                                            "uiscope": "None",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "type": "folder_tabs"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0.02,
+            -2.29
+        ],
+        "type": "rendergeometrysettings"
+    },
+    "main": {
+        "parms": {
+            "aperture": "setratio",
+            "fStop": 1.2,
+            "focalLength": 18,
+            "focusDistance": 5.487081434786079,
+            "horizontalAperture": 36,
+            "primpath": "/cameras/main",
+            "r": [
+                0,
+                12.414822241331946,
+                0
+            ],
+            "t": [
+                -0.821083664894104,
+                0,
+                0
+            ],
+            "xn__houdiniguidescale_s3a": 1,
+            "xn__shutterclose_nva": 0.3,
+            "xn__shutteropen_0ta": {
+                "expression": "-ch(\"xn__shutterclose_nva\")"
+            }
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "folder1_2",
+                "parmtemplates": {
+                    "folder2_3": {
+                        "label": "Karma",
+                        "parmtemplates": {
+                            "xn__karmacameralensshader_89ag": {
+                                "default_value": {
+                                    "expression": "hou.node(ch('xn__karmacameralensshadervop_4fbg')).shaderString() if hou.node(ch('xn__karmacameralensshadervop_4fbg')) != None else ''",
+                                    "language": "python"
+                                },
+                                "disable_when": "{ xn__karmacameralensshader_control_9nbg == block } { xn__karmacameralensshader_control_9nbg == none }",
+                                "hidden": true,
+                                "label": "Lens Shader",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "spare_category": "View",
+                                    "uiscope": "None",
+                                    "usdapischema": "KarmaCameraAPI",
+                                    "usdvaluetype": "string"
+                                },
+                                "type": "string"
+                            },
+                            "xn__karmacameralensshadervop_4fbg": {
+                                "disable_when": "{ xn__karmacameralensshadervop_control_5sbg == block } { xn__karmacameralensshadervop_control_5sbg == none }",
+                                "label": "Lens Shader VOP",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "opfilter": "!!CUSTOM/MATERIAL!!",
+                                    "oprelative": ".",
+                                    "spare_category": "View",
+                                    "uiscope": "None",
+                                    "usdapischema": "KarmaCameraAPI",
+                                    "usdvaluetype": "string"
+                                },
+                                "type": "operator_path"
+                            },
+                            "xn__karmacameralensshadervop_control_5sbg": {
+                                "default_value": "none",
+                                "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                "label": "Lens Shader VOP",
+                                "menu_type": "control_next_parameter",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "sidefx::look": "icon"
+                                },
+                                "type": "string"
+                            },
+                            "xn__karmacameramaterialbinding_control_fwbgi": {
+                                "default_value": "none",
+                                "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'relationship')",
+                                "label": "Lens Material",
+                                "menu_type": "control_next_parameter",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "sidefx::look": "icon"
+                                },
+                                "type": "string"
+                            },
+                            "xn__karmacameramaterialbinding_ejbgi": {
+                                "disable_when": "{ xn__karmacameramaterialbinding_control_fwbgi == block } { xn__karmacameramaterialbinding_control_fwbgi == none }",
+                                "label": "Lens Material",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "script_action": "\nimport loptoolutils\nloptoolutils.setupKarmaCameraLensMaterial(kwargs)\n",
+                                    "script_action_help": "Create a lens shader LOP.",
+                                    "script_action_icon": "VOP_kma_physicallens",
+                                    "script_action_language": "python",
+                                    "sidefx::usdpathtype": "prim",
+                                    "spare_category": "View",
+                                    "uiscope": "None",
+                                    "usdapischema": "KarmaCameraAPI",
+                                    "usdvaluename": "material:binding",
+                                    "usdvaluetype": "relationship"
+                                },
+                                "type": "string"
+                            },
+                            "xn__karmacameratint_control_iebg": {
+                                "default_value": "none",
+                                "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float3')",
+                                "label": "Tint",
+                                "menu_type": "control_next_parameter",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "sidefx::look": "icon"
+                                },
+                                "type": "string"
+                            },
+                            "xn__karmacameratint_h0ag": {
+                                "default_value": [
+                                    1,
+                                    1,
+                                    1
+                                ],
+                                "disable_when": "{ xn__karmacameratint_control_iebg == block } { xn__karmacameratint_control_iebg == none }",
+                                "label": "Tint",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "spare_category": "View",
+                                    "uiscope": "None",
+                                    "usdapischema": "KarmaCameraAPI",
+                                    "usdvaluetype": "float3"
+                                },
+                                "type": "color"
+                            },
+                            "xn__karmacamerause_lensshader_control_subg": {
+                                "default_value": "none",
+                                "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                "label": "Use Lens Shader",
+                                "menu_type": "control_next_parameter",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "sidefx::look": "icon"
+                                },
+                                "type": "string"
+                            },
+                            "xn__karmacamerause_lensshader_rhbg": {
+                                "disable_when": "{ xn__karmacamerause_lensshader_control_subg == block } { xn__karmacamerause_lensshader_control_subg == none }",
+                                "label": "Use Lens Shader",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "spare_category": "View",
+                                    "uiscope": "None",
+                                    "usdapischema": "KarmaCameraAPI",
+                                    "usdvaluetype": "bool"
+                                },
+                                "type": "toggle"
+                            },
+                            "xn__karmacamerawindow_control_rhbg": {
+                                "default_value": "none",
+                                "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float4')",
+                                "label": "Screen Window",
+                                "menu_type": "control_next_parameter",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "sidefx::look": "icon"
+                                },
+                                "type": "string"
+                            },
+                            "xn__karmacamerawindow_q3ag": {
+                                "default_value": [
+                                    -1,
+                                    -1,
+                                    -1,
+                                    -1
+                                ],
+                                "disable_when": "{ xn__karmacamerawindow_control_rhbg == block } { xn__karmacamerawindow_control_rhbg == none }",
+                                "label": "Screen Window",
+                                "num_components": 4,
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "spare_category": "View",
+                                    "uiscope": "None",
+                                    "usdapischema": "KarmaCameraAPI",
+                                    "usdvaluetype": "float4"
+                                },
+                                "type": "float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "type": "folder_tabs"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "type": "camera",
+        "user_data": {
+            "set_lookat": "True"
+        }
+    },
+    "merge3": {
+        "inputs": [
+            {
+                "from": "hide_focus_gizmo",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "move_focus_point",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            0.1,
+            -3.76
+        ],
+        "type": "merge"
+    },
+    "move_focus_point": {
+        "inputs": [
+            {
+                "from": "pig",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "primpattern": "/pig",
+            "t": [
+                {
+                    "expression": "cos(@Frame*2)*1.5"
+                },
+                0,
+                {
+                    "expression": "sin(@Frame*2)*1.5"
+                }
+            ]
+        },
+        "position": [
+            2.97,
+            -2.67
+        ],
+        "type": "xform"
+    },
+    "pig": {
+        "parms": {
+            "filepath": "$HH/usd/assets/pig/pig.usd",
+            "num_variants": [
+                {
+                    "primpattern#": {
+                        "visible": false
+                    },
+                    "variantname#": {
+                        "visible": false
+                    },
+                    "variantset#": {
+                        "value": "geo",
+                        "visible": false
+                    }
+                },
+                {
+                    "primpattern#": {
+                        "visible": false
+                    },
+                    "variantname#": {
+                        "visible": false
+                    },
+                    "variantset#": {
+                        "value": "mtl",
+                        "visible": false
+                    }
+                }
+            ],
+            "primpath": "/pig",
+            "t": [
+                -1.4738180647228445,
+                0.9238423705101013,
+                -3.9519541889128895
+            ]
+        },
+        "position": [
+            2.98,
+            -1.67
+        ],
+        "type": "assetreference"
+    },
+    "update_cam_focus_distance": {
+        "inputs": [
+            {
+                "from": "attach_focus_to_pig",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "exportlist": "*",
+            "primpattern": "/cameras/main",
+            "snippet": "string primName = chs(\"primpattern\");\nmatrix camMat = usd_localtransform(0, primName);\nvector camP = cracktransform(0, 0, 0, 0, camMat);\n\nmatrix focMat = usd_localtransform(0, primName+\"_focus_point\");\nvector focP = cracktransform(0, 0, 0, 0, focMat);\n\nusd_setattrib(0, primName, \"focusDistance\", distance(camP, focP));"
+        },
+        "position": [
+            0.11,
+            -7.59
+        ],
+        "type": "attribwrangle",
+        "user_data": {
+            "wirestyle": "rounded"
+        }
+    }
+}

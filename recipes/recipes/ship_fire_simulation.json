@@ -1,0 +1,653 @@
+{
+    "__cookbookMeta": {
+        "context": "sop",
+        "systemfields": {
+            "category": "pyro",
+            "date-created": "2025-11-09T00:00:00Z",
+            "date-modified": "2025-11-09T09:57:03.337864577Z",
+            "description": "Quick setup for a pyro smoke simulation ready for VDB export. Includes nodes to control initial shape, density, velocity, wind force, colliders, openCL compute and VDB output settings.",
+            "id": "51fac45832cd",
+            "image": "51fac45832cd.gif",
+            "tags": [
+                "smoke",
+                "gaia",
+                "animation",
+                "thruster"
+            ],
+            "username": "snay"
+        },
+        "version": "20.5.584"
+    },
+    "collider": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "scale": 1.85,
+            "t": [
+                -2.28359,
+                0,
+                0
+            ],
+            "type": "polymesh"
+        },
+        "position": [
+            3.17,
+            1.04
+        ],
+        "type": "sphere"
+    },
+    "convertvdb1": {
+        "inputs": [
+            {
+                "from": "volumevisualization1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "conversion": "vdb",
+            "group": "@name=density"
+        },
+        "position": [
+            0,
+            -3.02
+        ],
+        "type": "convertvdb"
+    },
+    "density_noise": {
+        "flags": {
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "vdbfrompolygons1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "r": [
+                {
+                    "inte": "linear",
+                    "pos": 0,
+                    "value": 0
+                },
+                {
+                    "inte": "linear",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "snippet": "@density = chramp(\"r\", 0.5*length(v@P));\n@density += 0.3*noise(@P*1 + 0.1*@Frame);"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "bindeach",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "r": {
+                                "label": "R",
+                                "script_callback_language": "hscript",
+                                "show_controls": true,
+                                "type": "ramp_float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0,
+            0
+        ],
+        "type": "volumewrangle"
+    },
+    "dopnet1": {
+        "children": {
+            "merge1": {
+                "flags": {
+                    "colordefault": false
+                },
+                "inputs": [
+                    {
+                        "from": "source_volume_density",
+                        "from_index": 0,
+                        "to_index": 0
+                    },
+                    {
+                        "from": "source_volume_collision",
+                        "from_index": 0,
+                        "to_index": 1
+                    }
+                ],
+                "position": [
+                    8.08,
+                    3.06
+                ],
+                "type": "merge"
+            },
+            "output1": {
+                "color": [
+                    0.4,
+                    1,
+                    0.4
+                ],
+                "flags": {
+                    "colordefault": false,
+                    "compress": false,
+                    "display": true
+                },
+                "inputs": [
+                    {
+                        "from": "pyrosolver1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "position": [
+                    6.35,
+                    -1.47
+                ],
+                "type": "output"
+            },
+            "pyrosolver1": {
+                "color": [
+                    0.4,
+                    1,
+                    0.4
+                ],
+                "flags": {
+                    "colordefault": false,
+                    "compress": false
+                },
+                "inputs": [
+                    {
+                        "from": "windforce1",
+                        "from_index": 0,
+                        "to_index": 0
+                    },
+                    {
+                        "from": "merge1",
+                        "from_index": 0,
+                        "to_index": 4
+                    }
+                ],
+                "parms": {
+                    "enable_disturbance": true,
+                    "enable_turbulence": true,
+                    "evap": 0.085,
+                    "opencl": true,
+                    "remap_dissipation_field": [
+                        {
+                            "interp": "catmull-rom",
+                            "pos": 0,
+                            "value": 1
+                        },
+                        {
+                            "interp": "catmull-rom",
+                            "pos": 0.17889,
+                            "value": 0.875
+                        },
+                        {
+                            "interp": "catmull-rom",
+                            "pos": 0.368,
+                            "value": 0.27
+                        },
+                        {
+                            "interp": "catmull-rom",
+                            "pos": 1,
+                            "value": 0
+                        }
+                    ],
+                    "turb_swirl_size": 2,
+                    "turbulence_scale": 0.306
+                },
+                "position": [
+                    6.35,
+                    0.83
+                ],
+                "type": "pyrosolver::2.0"
+            },
+            "smokeobject2": {
+                "color": [
+                    0.4,
+                    1,
+                    0.4
+                ],
+                "flags": {
+                    "colordefault": false,
+                    "compress": false
+                },
+                "parms": {
+                    "density_guidesmokedensity": 0.08,
+                    "divsize": 0.1,
+                    "multifield_cdfield": "vel",
+                    "multifield_color": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "multifield_densityfield": "density",
+                    "multifield_densityscale": 0.29,
+                    "multifield_emitcdramp": [
+                        {
+                            "interp": "linear",
+                            "pos": 0,
+                            "value": [
+                                0,
+                                0,
+                                0
+                            ]
+                        },
+                        {
+                            "interp": "catmull-rom",
+                            "pos": 0.5400000214576721,
+                            "value": [
+                                1,
+                                0.4320000112056732,
+                                0
+                            ]
+                        },
+                        {
+                            "interp": "catmull-rom",
+                            "pos": 0.8930000066757202,
+                            "value": [
+                                1,
+                                0.8833000063896179,
+                                0
+                            ]
+                        },
+                        {
+                            "interp": "catmull-rom",
+                            "pos": 1,
+                            "value": [
+                                1,
+                                1,
+                                1
+                            ]
+                        }
+                    ],
+                    "multifield_shadowscale": 0.49,
+                    "size": [
+                        28.767446517944336,
+                        6.406958103179932,
+                        3.7966842651367188
+                    ],
+                    "solvefirstframe": true,
+                    "t": [
+                        -13.108817100524902,
+                        1.1601417064666748,
+                        0.4717824459075928
+                    ],
+                    "velocity_guidediv": [
+                        28,
+                        28,
+                        28
+                    ],
+                    "velocity_guideoverridediv": true,
+                    "velocity_guideplane": "zx",
+                    "velocity_guideplaneval": -0.741,
+                    "velocity_guidescale": 0.28,
+                    "velocity_guidestreamerlen": 0.96,
+                    "velocity_guidevisscale": 0.15
+                },
+                "position": [
+                    4.76,
+                    3.56
+                ],
+                "type": "smokeobject"
+            },
+            "source_volume_collision": {
+                "flags": {
+                    "colordefault": false,
+                    "compress": false
+                },
+                "parms": {
+                    "initialize": "collision",
+                    "normalizesource": false,
+                    "normalizevel": false,
+                    "source_name": "collision",
+                    "source_path": "`opinputpath('..',1)`",
+                    "temp_name": "",
+                    "temperature_merge": "none",
+                    "vel_name": "collisionvel",
+                    "velocity_merge": "none",
+                    "vol_sourcedest": "collision",
+                    "vol_tempdest": "",
+                    "vol_veldest": "collisionvel"
+                },
+                "position": [
+                    11.13,
+                    4.87
+                ],
+                "type": "sourcevolume"
+            },
+            "source_volume_density": {
+                "color": [
+                    0.4,
+                    1,
+                    0.4
+                ],
+                "flags": {
+                    "colordefault": false,
+                    "compress": false
+                },
+                "parms": {
+                    "scale_velocity": 0.01,
+                    "source_path": "`opinputpath('..',0)`",
+                    "temp_name": "density",
+                    "velocity_merge": "add"
+                },
+                "position": [
+                    8.08,
+                    4.87
+                ],
+                "type": "sourcevolume"
+            },
+            "windforce1": {
+                "inputs": [
+                    {
+                        "from": "smokeobject2",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "amplitude": [
+                        15.4,
+                        15.4,
+                        15.4
+                    ],
+                    "samplemode": "point",
+                    "scaleforce": 1,
+                    "vel": [
+                        -156,
+                        0,
+                        0
+                    ]
+                },
+                "position": [
+                    4.76,
+                    2.53
+                ],
+                "type": "windforce"
+            }
+        },
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "density_noise",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "vdbfrompolygons2",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "autoresim": false,
+            "explicitcachename": "$HIP/cache.$OS.$SF.sim",
+            "numobj": [
+                {
+                    "dataname#": {
+                        "value": "density",
+                        "visible": false
+                    },
+                    "enable#": {
+                        "visible": false
+                    },
+                    "objname#": {
+                        "value": "*",
+                        "visible": false
+                    }
+                },
+                {
+                    "dataname#": {
+                        "value": "vel",
+                        "visible": false
+                    },
+                    "enable#": {
+                        "value": false,
+                        "visible": false
+                    },
+                    "objname#": {
+                        "value": "*",
+                        "visible": false
+                    }
+                }
+            ]
+        },
+        "position": [
+            0,
+            -1.04
+        ],
+        "type": "dopnet"
+    },
+    "filecache1": {
+        "inputs": [
+            {
+                "from": "convertvdb1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "basename": "gai_thrusterSmoke_$F.vdb",
+            "f": [
+                {
+                    "expression": "$FSTART"
+                },
+                250,
+                1
+            ],
+            "file": "$HIP/geo/xxx_shipFire_001/xxx_shipFire_$F3.vdb",
+            "filemethod": "explicit",
+            "loadfromdisk": true
+        },
+        "position": [
+            0,
+            -3.97
+        ],
+        "type": "labs::filecache::2.0"
+    },
+    "sphere1": {
+        "parms": {
+            "rad": [
+                0.5,
+                0.5,
+                0.5
+            ],
+            "type": "polymesh"
+        },
+        "position": [
+            0,
+            2.93
+        ],
+        "type": "sphere"
+    },
+    "vdbfrompolygons1": {
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "velocity_noise",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "builddistance": false,
+            "buildfog": true,
+            "numattrib": [
+                {
+                    "attribute#": {
+                        "value": "point.v",
+                        "visible": false
+                    },
+                    "attributevdbname#": {
+                        "value": "vel",
+                        "visible": false
+                    },
+                    "vectype#": {
+                        "value": "contravariant relative",
+                        "visible": false
+                    }
+                }
+            ],
+            "voxelsize": 0.05
+        },
+        "position": [
+            0,
+            1.04
+        ],
+        "type": "vdbfrompolygons"
+    },
+    "vdbfrompolygons2": {
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "collider",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "builddistance": false,
+            "buildfog": true,
+            "fogname": "collision",
+            "numattrib": [
+                {
+                    "attribute#": {
+                        "value": "point.v",
+                        "visible": false
+                    },
+                    "attributevdbname#": {
+                        "value": "collisionvel",
+                        "visible": false
+                    },
+                    "vectype#": {
+                        "value": "contravariant relative",
+                        "visible": false
+                    }
+                }
+            ],
+            "voxelsize": 0.05
+        },
+        "position": [
+            3.17,
+            0.33
+        ],
+        "type": "vdbfrompolygons"
+    },
+    "velocity_noise": {
+        "inputs": [
+            {
+                "from": "sphere1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "snippet": "@v += 20*vector(noise(@P));"
+        },
+        "position": [
+            0,
+            1.91
+        ],
+        "type": "attribwrangle"
+    },
+    "volumevisualization1": {
+        "inputs": [
+            {
+                "from": "dopnet1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "cdfield": "density",
+            "cdramp": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": [
+                        0.5,
+                        0.5,
+                        0.5
+                    ]
+                },
+                {
+                    "interp": "linear",
+                    "pos": 0.9201183319091797,
+                    "value": [
+                        1,
+                        0.5,
+                        0
+                    ]
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": [
+                        1,
+                        1,
+                        0
+                    ]
+                }
+            ],
+            "densityramp": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": 0
+                },
+                {
+                    "interp": "linear",
+                    "pos": 0.08875739574432373,
+                    "value": 0.2291666716337204
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "emitramp": [
+                {
+                    "interp": "linear",
+                    "pos": 0,
+                    "value": 0
+                },
+                {
+                    "interp": "linear",
+                    "pos": 1,
+                    "value": 1
+                }
+            ]
+        },
+        "position": [
+            0,
+            -2.09
+        ],
+        "type": "volumevisualization"
+    }
+}

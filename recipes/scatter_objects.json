@@ -1,0 +1,480 @@
+{
+    "OUT": {
+        "color": [
+            0.98,
+            0.78,
+            0.26
+        ],
+        "flags": {
+            "colordefault": false,
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "merge1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            8.95,
+            -15.65
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "version": "21.0.729",
+        "systemfields": {
+            "description": "Simple scatter setup with showing how to use Attribute from Pieces for random object picking. It also show how to set random rotation around Y, tilt and pscale.",
+            "category": "geometry",
+            "image": "0a0cca0b8bd0.jpg",
+            "id": "0a0cca0b8bd0",
+            "date-created": "2025-12-12T21:09:12.014414174Z",
+            "date-modified": "2026-08-17T15:09:20.008077746Z",
+            "username": "kif",
+            "tags": [
+                "scatter",
+                "alligh",
+                "surface",
+                "terrain",
+                "orient",
+                "randomize",
+                "instances"
+            ]
+        }
+    },
+    "attribfrompieces2": {
+        "inputs": [
+            {
+                "from": "scatter3",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "mergepacked1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "mode": "noise",
+            "noiseelementsize": 0.86
+        },
+        "position": [
+            5.74,
+            -3.92
+        ],
+        "type": "attribfrompieces"
+    },
+    "circle1": {
+        "parms": {
+            "divs": 64,
+            "orient": "zx",
+            "rad": [
+                10,
+                10
+            ],
+            "type": "poly"
+        },
+        "position": [
+            9.18,
+            3.43
+        ],
+        "type": "circle"
+    },
+    "color1": {
+        "inputs": [
+            {
+                "from": "toy",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "color": [
+                0,
+                1,
+                0.5
+            ]
+        },
+        "position": [
+            0.03,
+            -1.11
+        ],
+        "type": "color"
+    },
+    "color2": {
+        "inputs": [
+            {
+                "from": "testgeometry_squab1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "color": [
+                1,
+                0.5,
+                0
+            ]
+        },
+        "position": [
+            2.1,
+            -1.04
+        ],
+        "type": "color"
+    },
+    "color3": {
+        "inputs": [
+            {
+                "from": "testgeometry_shaderball1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "color": [
+                1,
+                0,
+                0.053
+            ]
+        },
+        "position": [
+            3.42,
+            -1.63
+        ],
+        "type": "color"
+    },
+    "compute_dir_vecs": {
+        "inputs": [
+            {
+                "from": "mountain1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "N": "up",
+            "style": "primC",
+            "tangentu": "N"
+        },
+        "position": [
+            5.76,
+            0.12
+        ],
+        "type": "polyframe"
+    },
+    "copytopoints2": {
+        "inputs": [
+            {
+                "from": "mergepacked1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "rand_scale",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "targetattribs": [
+                {
+                    "applyattribs#": "*,^v,^Alpha,^N,^up,^pscale,^scale,^orient,^rot,^pivot,^trans,^transform"
+                },
+                {
+                    "applyattribs#": "Alpha",
+                    "applymethod#": "mult"
+                },
+                {
+                    "applyattribs#": "v",
+                    "applymethod#": "add"
+                }
+            ],
+            "useidattrib": true
+        },
+        "position": [
+            2.09,
+            -11.03
+        ],
+        "type": "copytopoints::2.0"
+    },
+    "merge1": {
+        "inputs": [
+            {
+                "from": "copytopoints2",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "mountain1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            8.88,
+            -12.1
+        ],
+        "type": "merge"
+    },
+    "mergepacked1": {
+        "inputs": [
+            {
+                "from": "color1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "color2",
+                "from_index": 0,
+                "to_index": 1
+            },
+            {
+                "from": "color3",
+                "from_index": 0,
+                "to_index": 2
+            }
+        ],
+        "parms": {
+            "names": [
+                {
+                    "name#": "toy"
+                },
+                {
+                    "name#": "testgeometry_squab1"
+                },
+                {
+                    "name#": "testgeometry_shaderball1"
+                }
+            ]
+        },
+        "position": [
+            1.65,
+            -2.88
+        ],
+        "type": "mergepacked"
+    },
+    "mountain1": {
+        "inputs": [
+            {
+                "from": "remesh1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "amplitude": 2.39,
+            "attribs": "P",
+            "clampmaxvalue": 1.92,
+            "displace": true,
+            "elementsize": 9.59,
+            "fractal": "hmfT",
+            "lac": 2.954,
+            "noiserange": "zcentered",
+            "oct": 0,
+            "offset": 9.04,
+            "rough": 1
+        },
+        "position": [
+            9.08,
+            1.12
+        ],
+        "type": "attribnoise::2.0"
+    },
+    "rand_rot_around_y": {
+        "inputs": [
+            {
+                "from": "streigh_up_by_name",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "adjustquantity": "dir",
+            "attrib": "N",
+            "dir_operation": "rot",
+            "dir_rotaxisattrib": "up",
+            "dir_rotaxismode": "attrib",
+            "dir_rotmax": 360,
+            "dir_rotmin": 0,
+            "dir_singlerot": -67.9,
+            "dir_valuetype": "rand",
+            "randomseed": 36
+        },
+        "position": [
+            5.7,
+            -6.63
+        ],
+        "type": "attribadjustvector"
+    },
+    "rand_scale": {
+        "inputs": [
+            {
+                "from": "rand_tilt",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dimensions": 1,
+            "distribution": "ramp",
+            "min": [
+                0.5,
+                0.5,
+                0.5,
+                0.5
+            ],
+            "name": "pscale",
+            "ramp": [
+                {
+                    "interp": "constant",
+                    "pos": 0,
+                    "value": 0.23076923191547394
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.21187584102153778,
+                    "value": 0.5769230723381042
+                },
+                {
+                    "interp": "constant",
+                    "pos": 0.8259109258651733,
+                    "value": 1
+                },
+                {
+                    "interp": "constant",
+                    "pos": 1,
+                    "value": 1
+                }
+            ],
+            "seed": 6567
+        },
+        "position": [
+            5.71,
+            -9.99
+        ],
+        "type": "attribrandomize"
+    },
+    "rand_tilt": {
+        "inputs": [
+            {
+                "from": "rand_rot_around_y",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "adjustquantity": "dir",
+            "attrib": "up",
+            "dir_operation": "spread",
+            "dir_rotaxismode": "attrib",
+            "dir_singlerot": -24.2,
+            "dir_singlespread": 16.9,
+            "dir_spreadmax": 12,
+            "dir_valuetype": "rand",
+            "group": "@name=toy",
+            "randomseed": 30
+        },
+        "position": [
+            5.7,
+            -7.66
+        ],
+        "type": "attribadjustvector"
+    },
+    "remesh1": {
+        "inputs": [
+            {
+                "from": "circle1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "iterations": 20,
+            "smoothing": 0.2,
+            "targetsize": 0.3
+        },
+        "position": [
+            9.14,
+            2.46
+        ],
+        "type": "remesh::2.0"
+    },
+    "scatter3": {
+        "color": [
+            0.89,
+            0.41,
+            0.76
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "compute_dir_vecs",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "npts": 653,
+            "relaxiterations": 8,
+            "seed": 8
+        },
+        "position": [
+            5.73,
+            -1.76
+        ],
+        "type": "scatter::2.0"
+    },
+    "streigh_up_by_name": {
+        "inputs": [
+            {
+                "from": "attribfrompieces2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "snippet": "if (@name == \"tree\") {\n    @N = {1, 0, 0};\n    @up = {0, 1, 0};\n}"
+        },
+        "position": [
+            5.7,
+            -5.57
+        ],
+        "type": "attribwrangle"
+    },
+    "testgeometry_shaderball1": {
+        "parms": {
+            "scale": 2.56
+        },
+        "position": [
+            3.51,
+            -0.63
+        ],
+        "type": "testgeometry_shaderball::2.0"
+    },
+    "testgeometry_squab1": {
+        "parms": {
+            "addshader": false
+        },
+        "position": [
+            2.11,
+            -0.21
+        ],
+        "type": "testgeometry_squab"
+    },
+    "toy": {
+        "parms": {
+            "addshader": false
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "testgeometry_rubbertoy"
+    }
+}

@@ -1,0 +1,3416 @@
+{
+    "__cookbookMeta": {
+        "context": "lop",
+        "version": "21.0.729",
+        "systemfields": {
+            "description": "Nail polish instances with color from attribute for individual parts and different material per part. Set up in Solaris. Also show case of simple modeling techniques.",
+            "category": "solaris",
+            "image": "04905589ef7f.jpg",
+            "id": "04905589ef7f",
+            "date-created": "2026-08-19T08:50:25.896445395Z",
+            "date-modified": "2026-08-19T12:48:01.814378023Z",
+            "username": "kif",
+            "tags": [
+                "instance",
+                "lops",
+                "solaris",
+                "model",
+                "nail",
+                "polish",
+                "materia",
+                "color",
+                "randomize",
+                "glass",
+                "liquid",
+                "market"
+            ]
+        }
+    },
+    "camera1": {
+        "inputs": [
+            {
+                "from": "domelight1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "aperture": "setratio",
+            "clippingRange": [
+                0.01,
+                1000
+            ],
+            "focalLength": 50.000002374872565,
+            "horizontalAperture": 41.42140196741093,
+            "r": [
+                -23.48236568927134,
+                55.15277433777927,
+                0.000019224622633458264
+            ],
+            "t": [
+                0.33979005848139865,
+                0.23483927483750142,
+                0.22019156625143027
+            ]
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "folder1_2",
+                "parmtemplates": {
+                    "folder2_3": {
+                        "label": "Karma",
+                        "parmtemplates": {
+                            "KarmaCameraAPI_Karma": {
+                                "label": "Karma",
+                                "parmtemplates": {
+                                    "xn__karmacameratint_control_iebg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float3')",
+                                        "label": "Tint",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__karmacameratint_h0ag": {
+                                        "default_value": [
+                                            1,
+                                            1,
+                                            1
+                                        ],
+                                        "disable_when": "{ xn__karmacameratint_control_iebg == block } { xn__karmacameratint_control_iebg == none }",
+                                        "label": "Tint",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Karma",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaCameraAPI",
+                                            "usdvaluetype": "float3"
+                                        },
+                                        "type": "color"
+                                    },
+                                    "xn__karmacamerawindow_control_rhbg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float4')",
+                                        "label": "Screen Window",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__karmacamerawindow_q3ag": {
+                                        "default_value": [
+                                            -1,
+                                            -1,
+                                            -1,
+                                            -1
+                                        ],
+                                        "disable_when": "{ xn__karmacamerawindow_control_rhbg == block } { xn__karmacamerawindow_control_rhbg == none }",
+                                        "label": "Screen Window",
+                                        "num_components": 4,
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Karma",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaCameraAPI",
+                                            "usdvaluetype": "float4"
+                                        },
+                                        "type": "float"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            },
+                            "KarmaCameraAPI_View": {
+                                "label": "View",
+                                "parmtemplates": {
+                                    "xn__karmacameralensshadervop_4fbg": {
+                                        "disable_when": "{ xn__karmacameralensshadervop_control_5sbg == block } { xn__karmacameralensshadervop_control_5sbg == none }",
+                                        "label": "Lens Shader VOP",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "opfilter": "!!CUSTOM/MATERIAL!!",
+                                            "oprelative": ".",
+                                            "spare_category": "View",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaCameraAPI",
+                                            "usdvaluetype": "string"
+                                        },
+                                        "type": "operator_path"
+                                    },
+                                    "xn__karmacameralensshadervop_control_5sbg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                        "label": "Lens Shader VOP",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__karmacameramaterialbinding_control_fwbgi": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'relationship')",
+                                        "label": "Lens Material",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__karmacameramaterialbinding_ejbgi": {
+                                        "disable_when": "{ xn__karmacameramaterialbinding_control_fwbgi == block } { xn__karmacameramaterialbinding_control_fwbgi == none }",
+                                        "label": "Lens Material",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "script_action": "\nimport loptoolutils\nloptoolutils.setupKarmaCameraLensMaterial(kwargs)\n",
+                                            "script_action_help": "Create a lens shader LOP.",
+                                            "script_action_icon": "VOP_kma_physicallens",
+                                            "script_action_language": "python",
+                                            "sidefx::usdpathtype": "prim",
+                                            "spare_category": "View",
+                                            "uiscope": "None",
+                                            "usdapischema": "MaterialBindingAPI",
+                                            "usdvaluename": "material:binding",
+                                            "usdvaluetype": "relationship"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__karmacamerause_lensshader_control_subg": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": "Use Lens Shader",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__karmacamerause_lensshader_rhbg": {
+                                        "disable_when": "{ xn__karmacamerause_lensshader_control_subg == block } { xn__karmacamerause_lensshader_control_subg == none }",
+                                        "label": "Use Lens Shader",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "View",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaCameraAPI",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            },
+                            "xn__karmacameralensshader_89ag": {
+                                "default_value": {
+                                    "expression": "hou.node(ch('xn__karmacameralensshadervop_4fbg')).shaderString() if hou.node(ch('xn__karmacameralensshadervop_4fbg')) != None else ''",
+                                    "language": "python"
+                                },
+                                "disable_when": "{ xn__karmacameralensshader_control_9nbg == block } { xn__karmacameralensshader_control_9nbg == none }",
+                                "hidden": true,
+                                "label": "camera:lensshader",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "spare_category": "Rendering",
+                                    "uiscope": "None",
+                                    "usdapischema": "KarmaCameraAPI",
+                                    "usdvaluetype": "string"
+                                },
+                                "type": "string"
+                            },
+                            "xn__karmacameralensshader_control_9nbg": {
+                                "default_value": "`ifs(ch('xn__karmacamerause_lensshader_rhbg'),'set','none')`",
+                                "hidden": true,
+                                "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                "label": "camera:lensshader",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "sidefx::look": "icon"
+                                },
+                                "type": "string"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "type": "folder_tabs"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0.26,
+            -8.19
+        ],
+        "type": "camera",
+        "user_data": {
+            "set_lookat": "True"
+        }
+    },
+    "disable_boutle_shadow": {
+        "inputs": [
+            {
+                "from": "nail_polish",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "usdsource": "def Xform \"nail_polish\" () {\n    over \"boutle\"\n    {\n        string primvars:karma:object:rendervisibility = \"-shadow\" (\n            interpolation = \"constant\"\n        )\n    }\n}"
+        },
+        "position": [
+            3.41,
+            -1.08
+        ],
+        "type": "inlineusd"
+    },
+    "domelight1": {
+        "inputs": [
+            {
+                "from": "transform1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "xn__inputstexturefile_r3ah": "$HFS/houdini/pic/hdri/HDRIHaven_skylit_garage_2k.rat"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "folder0_2",
+                "parmtemplates": {
+                    "folder1_3": {
+                        "label": "Karma",
+                        "parmtemplates": {
+                            "KarmaLightAPI_Light": {
+                                "label": "Light",
+                                "parmtemplates": {
+                                    "xn__inputskarmalightactiveradius_control_pzbff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Active Radius",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightactiveradius_ombff": {
+                                        "default_value": -1,
+                                        "disable_when": "{ xn__inputskarmalightactiveradius_control_pzbff == block } { xn__inputskarmalightactiveradius_control_pzbff == none }",
+                                        "label": "Active Radius",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__inputskarmalightcontribs_5fbff": {
+                                        "default_value": "*",
+                                        "disable_when": "{ xn__inputskarmalightcontribs_control_6sbff == block } { xn__inputskarmalightcontribs_control_6sbff == none }",
+                                        "label": "Contributions",
+                                        "menu_items": [
+                                            {
+                                                "label": "Any",
+                                                "token": "*"
+                                            },
+                                            {
+                                                "label": "Diffuse",
+                                                "token": "diffuse"
+                                            },
+                                            {
+                                                "label": "Reflect",
+                                                "token": "reflect"
+                                            },
+                                            {
+                                                "label": "Coat",
+                                                "token": "coat"
+                                            },
+                                            {
+                                                "label": "SSS",
+                                                "token": "sss"
+                                            },
+                                            {
+                                                "label": "Volume",
+                                                "token": "volume"
+                                            },
+                                            {
+                                                "label": "Any diffuse",
+                                                "token": "diffuse|volume|sss"
+                                            },
+                                            {
+                                                "label": "Any non-diffuse",
+                                                "token": "-diffuse \u0026 -volume \u0026 -sss"
+                                            }
+                                        ],
+                                        "menu_type": "string_replace",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "string"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightcontribs_control_6sbff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                        "label": "Contributions",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightcontributescaustics_2xbff": {
+                                        "default_value": true,
+                                        "disable_when": "{ xn__inputskarmalightcontributescaustics_control_3bcff == block } { xn__inputskarmalightcontributescaustics_control_3bcff == none }",
+                                        "label": "Contributes to Caustics",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__inputskarmalightcontributescaustics_control_3bcff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": "Contributes to Caustics",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightillumbackground_control_l4bff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": "Illuminate Background Holdout",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightillumbackground_krbff": {
+                                        "disable_when": "{ xn__inputskarmalightillumbackground_control_l4bff == block } { xn__inputskarmalightillumbackground_control_l4bff == none }",
+                                        "label": "Illuminate Background Holdout",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__inputskarmalightlightgeocastsshadow_2xbff": {
+                                        "disable_when": "{ xn__inputskarmalightlightgeocastsshadow_control_3bcff == block } { xn__inputskarmalightlightgeocastsshadow_control_3bcff == none }",
+                                        "label": "Light Geometry Casts Shadow",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__inputskarmalightlightgeocastsshadow_control_3bcff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": "Light Geometry Casts Shadow",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightlpetag_control_xpbff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                        "label": "LPE Tag",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightlpetag_wcbff": {
+                                        "disable_when": "{ xn__inputskarmalightlpetag_control_xpbff == block } { xn__inputskarmalightlpetag_control_xpbff == none }",
+                                        "label": "LPE Tag",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "string"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightpointradius_1kbff": {
+                                        "disable_when": "{ xn__inputskarmalightpointradius_control_2xbff == block } { xn__inputskarmalightpointradius_control_2xbff == none }",
+                                        "label": "Point Light Radius",
+                                        "max_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__inputskarmalightpointradius_control_2xbff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Point Light Radius",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightrenderlightgeo_control_y2bff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": "Render Light Geometry",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightrenderlightgeo_xpbff": {
+                                        "disable_when": "{ xn__inputskarmalightrenderlightgeo_control_y2bff == block } { xn__inputskarmalightrenderlightgeo_control_y2bff == none }",
+                                        "label": "Render Light Geometry",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__inputskarmalightshader_control_xpbff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'string')",
+                                        "label": "Light Shader",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightshader_wcbff": {
+                                        "disable_when": "{ xn__inputskarmalightshader_control_xpbff == block } { xn__inputskarmalightshader_control_xpbff == none }",
+                                        "label": "Light Shader",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "string"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightsinglesided_1kbff": {
+                                        "default_value": true,
+                                        "disable_when": "{ xn__inputskarmalightsinglesided_control_2xbff == block } { xn__inputskarmalightsinglesided_control_2xbff == none }",
+                                        "label": "Single Sided",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "bool"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "xn__inputskarmalightsinglesided_control_2xbff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'bool')",
+                                        "label": "Single Sided",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightspread_control_xpbff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Spread",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightspread_wcbff": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__inputskarmalightspread_control_xpbff == block } { xn__inputskarmalightspread_control_xpbff == none }",
+                                        "label": "Spread",
+                                        "max_value": 1,
+                                        "script_callback_language": "hscript",
+                                        "strict_max": true,
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Light",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            },
+                            "KarmaLightAPI_Sampling": {
+                                "label": "Sampling",
+                                "parmtemplates": {
+                                    "xn__inputskarmalighthdri_max_isize_control_y2bff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Maximum HDRI Size",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalighthdri_max_isize_xpbff": {
+                                        "default_value": 2048,
+                                        "disable_when": "{ xn__inputskarmalighthdri_max_isize_control_y2bff == block } { xn__inputskarmalighthdri_max_isize_control_y2bff == none }",
+                                        "label": "Maximum HDRI Size",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "int"
+                                        },
+                                        "type": "integer"
+                                    },
+                                    "xn__inputskarmalightmisbias_control_krbff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "MIS Bias",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightmisbias_jebff": {
+                                        "disable_when": "{ xn__inputskarmalightmisbias_control_krbff == block } { xn__inputskarmalightmisbias_control_krbff == none }",
+                                        "label": "MIS Bias",
+                                        "max_value": 1,
+                                        "min_value": -1,
+                                        "script_callback_language": "hscript",
+                                        "strict_max": true,
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__inputskarmalightportalmisbias_bobff": {
+                                        "disable_when": "{ xn__inputskarmalightportalmisbias_control_c1bff == block } { xn__inputskarmalightportalmisbias_control_c1bff == none }",
+                                        "label": "Portal MIS Bias",
+                                        "max_value": 1,
+                                        "min_value": -1,
+                                        "script_callback_language": "hscript",
+                                        "strict_max": true,
+                                        "strict_min": true,
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    },
+                                    "xn__inputskarmalightportalmisbias_control_c1bff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Portal MIS Bias",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightsamplingmode_control_pzbff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'int')",
+                                        "label": "Sampling Mode",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightsamplingmode_ombff": {
+                                        "default_value": "Auto",
+                                        "disable_when": "{ xn__inputskarmalightsamplingmode_control_pzbff == block } { xn__inputskarmalightsamplingmode_control_pzbff == none }",
+                                        "label": "Sampling Mode",
+                                        "menu_items": [
+                                            {
+                                                "label": "Auto",
+                                                "token": "Auto"
+                                            },
+                                            {
+                                                "label": "Uniform",
+                                                "token": "Uniform"
+                                            },
+                                            {
+                                                "label": "Light Tree",
+                                                "token": "Light Tree"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "token"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightsamplingquality_control_l4bff": {
+                                        "default_value": "none",
+                                        "item_generator_script": "import loputils\nreturn loputils.createEditPropertiesControlMenu(kwargs, 'float')",
+                                        "label": "Sampling Quality",
+                                        "menu_type": "control_next_parameter",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::look": "icon"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "xn__inputskarmalightsamplingquality_krbff": {
+                                        "default_value": 1,
+                                        "disable_when": "{ xn__inputskarmalightsamplingquality_control_l4bff == block } { xn__inputskarmalightsamplingquality_control_l4bff == none }",
+                                        "label": "Sampling Quality",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Sampling",
+                                            "uiscope": "None",
+                                            "usdapischema": "KarmaLightAPI",
+                                            "usdvaluetype": "float"
+                                        },
+                                        "type": "float"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_default": "1",
+                                    "group_type": "collapsible"
+                                },
+                                "type": "folder_collapsible"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_default": "1"
+                        },
+                        "type": "folder_tabs"
+                    }
+                }
+            }
+        ],
+        "position": [
+            0.28,
+            -6.96
+        ],
+        "type": "domelight::3.0"
+    },
+    "graftbranches1": {
+        "inputs": [
+            {
+                "from": "primitive1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "instancer1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "primcount": [
+                {
+                    "dstprimpath#": "/scene",
+                    "srcprimpath#": "/nail_polishes"
+                },
+                {
+                    "srcprimpath#": "/mat"
+                }
+            ],
+            "primpath": "/"
+        },
+        "position": [
+            0.24,
+            -4.62
+        ],
+        "type": "graftbranches"
+    },
+    "instancer1": {
+        "children": {
+            "attribrandomize1": {
+                "inputs": [
+                    {
+                        "from": "orient",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "seed": 1607
+                },
+                "position": [
+                    -119.4,
+                    24.25
+                ],
+                "type": "attribrandomize"
+            },
+            "blast1": {
+                "flags": {
+                    "highlight": true
+                },
+                "inputs": [
+                    {
+                        "from": "pointjitter1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "group": "14 19",
+                    "grouptype": "points"
+                },
+                "position": [
+                    -119.4,
+                    22.25
+                ],
+                "type": "blast"
+            },
+            "grid1": {
+                "parms": {
+                    "cols": 5,
+                    "rows": 4,
+                    "size": [
+                        0.213,
+                        0.159
+                    ]
+                },
+                "position": [
+                    -119.46,
+                    26.27
+                ],
+                "type": "grid"
+            },
+            "orient": {
+                "inputs": [
+                    {
+                        "from": "grid1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "snippet": "float rand = fit01(random(@ptnum), 0, 360);\n@orient = quaternion(radians(rand), {0, 1, 0});"
+                },
+                "position": [
+                    -119.4,
+                    25.2
+                ],
+                "type": "attribwrangle"
+            },
+            "output0": {
+                "flags": {
+                    "display": true,
+                    "render": true
+                },
+                "inputs": [
+                    {
+                        "from": "blast1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "outputidx": 0
+                },
+                "position": [
+                    -119.39,
+                    20.92
+                ],
+                "type": "output"
+            },
+            "pointjitter1": {
+                "inputs": [
+                    {
+                        "from": "attribrandomize1",
+                        "from_index": 0,
+                        "to_index": 0
+                    }
+                ],
+                "parms": {
+                    "axisscale": [
+                        1,
+                        0,
+                        1
+                    ],
+                    "scale": 0.002
+                },
+                "position": [
+                    -119.4,
+                    23.25
+                ],
+                "type": "pointjitter"
+            }
+        },
+        "inputs": [
+            {
+                "from": "materiallibrary1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "materiallibrary1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "instancename": "nail_polish_",
+            "method": "refprims",
+            "primpath": "/nail_polishes",
+            "protopattern": "/nail_polish"
+        },
+        "position": [
+            3.41,
+            -3.52
+        ],
+        "type": "instancer"
+    },
+    "karmarendersettings": {
+        "flags": {
+            "display": true
+        },
+        "inputs": [
+            {
+                "from": "camera1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "colorlimit": 100,
+            "diffuselimit": 3,
+            "engine": "xpu",
+            "oracle_ociodisplay": "P3 - Display",
+            "oracle_variance": 0.025,
+            "res_mode": "manual",
+            "resolution": [
+                1024,
+                1024
+            ],
+            "russianroulette_cutoff": 3,
+            "tonemapcurve": {
+                "locked": true,
+                "points": [
+                    {
+                        "interp": "linear",
+                        "pos": 0,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve1pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.05,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve2pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.1,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve3pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.15000000000000002,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve4pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.2,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve5pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.25,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve6pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.30000000000000004,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve7pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.35000000000000003,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve8pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.4,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve9pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.45,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve10pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.5,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve11pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.55,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve12pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.6000000000000001,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve13pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.65,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve14pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.7000000000000001,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve15pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.75,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve16pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.8,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve17pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.8500000000000001,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve18pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.9,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve19pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 0.9500000000000001,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve20pos\"), 0)"
+                        }
+                    },
+                    {
+                        "interp": "linear",
+                        "pos": 1,
+                        "value": {
+                            "expression": "primuv(\"sopnet/tonemap_curve\", 0, \"P\", 1, ch(\"tonemapcurve21pos\"), 0)"
+                        }
+                    }
+                ]
+            }
+        },
+        "position": [
+            0.34,
+            -9.35
+        ],
+        "type": "karmarendersettings",
+        "user_data": {
+            "sidefx::parm_filter_text_pattern": "tonem"
+        }
+    },
+    "materiallibrary1": {
+        "children": {
+            "glass": {
+                "children": {
+                    "Material_Outputs_and_AOVs": {
+                        "inputs": [
+                            {
+                                "from": "mtlxstandard_surface",
+                                "from_index": "out",
+                                "to_index": "surface"
+                            },
+                            {
+                                "from": "mtlxdisplacement",
+                                "from_index": "out",
+                                "to_index": "displacement"
+                            },
+                            {
+                                "from": "material_properties",
+                                "from_index": "properties",
+                                "to_index": "properties"
+                            }
+                        ],
+                        "parms": {
+                            "name1": "surface",
+                            "name2": "displacement"
+                        },
+                        "position": [
+                            10,
+                            -19.78
+                        ],
+                        "size": [
+                            1.77,
+                            1.13
+                        ],
+                        "type": "suboutput"
+                    },
+                    "inputs": {
+                        "flags": {
+                            "display": true,
+                            "render": true
+                        },
+                        "position": [
+                            3.02,
+                            -15.87
+                        ],
+                        "size": [
+                            1.77,
+                            0.53
+                        ],
+                        "type": "subinput"
+                    },
+                    "material_properties": {
+                        "position": [
+                            7.27,
+                            -19.78
+                        ],
+                        "size": [
+                            1.77,
+                            0.68
+                        ],
+                        "type": "kma_material_properties"
+                    },
+                    "mtlxdisplacement": {
+                        "position": [
+                            7.27,
+                            -18.34
+                        ],
+                        "size": [
+                            1.77,
+                            0.83
+                        ],
+                        "type": "mtlxdisplacement"
+                    },
+                    "mtlxstandard_surface": {
+                        "parms": {
+                            "base_color": [
+                                0.07500000298023224,
+                                0.30000001192092896,
+                                0.30000001192092896
+                            ],
+                            "specular_anisotropy": 0.163,
+                            "specular_roughness": 0,
+                            "transmission": 0.9
+                        },
+                        "position": [
+                            7.27,
+                            -15.87
+                        ],
+                        "size": [
+                            1.77,
+                            1.88
+                        ],
+                        "type": "mtlxstandard_surface",
+                        "user_data": {
+                            "__inputgroup_": "collapsed",
+                            "__inputgroup_Base": "collapsed",
+                            "__inputgroup_Coat": "collapsed",
+                            "__inputgroup_Emission": "collapsed",
+                            "__inputgroup_Geometry": "collapsed",
+                            "__inputgroup_Sheen": "collapsed",
+                            "__inputgroup_Specular": "collapsed",
+                            "__inputgroup_Subsurface": "collapsed",
+                            "__inputgroup_Thin Film": "collapsed",
+                            "__inputgroup_Transmission": "collapsed"
+                        }
+                    }
+                },
+                "flags": {
+                    "material": true
+                },
+                "parmtemplates": [
+                    {
+                        "insert_first": "",
+                        "parmtemplates": {
+                            "folder1": {
+                                "label": "Karma Material Builder",
+                                "parmtemplates": {
+                                    "inherit_ctrl": {
+                                        "default_value": 2,
+                                        "label": "Inherit from Class",
+                                        "menu_items": [
+                                            {
+                                                "label": "Never",
+                                                "token": "0"
+                                            },
+                                            {
+                                                "label": "Always",
+                                                "token": "1"
+                                            },
+                                            {
+                                                "label": "Material Flag",
+                                                "token": "2"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "type": "integer"
+                                    },
+                                    "separator1": {
+                                        "label": "",
+                                        "script_callback_language": "hscript",
+                                        "type": "separator"
+                                    },
+                                    "shader_baseprimpath": {
+                                        "default_value": "/__class_mtl__/`$OS`",
+                                        "label": "Class Prim Path",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "script_action": "import lopshaderutils\nlopshaderutils.selectPrimFromInputOrFile(kwargs)",
+                                            "script_action_help": "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.",
+                                            "script_action_icon": "BUTTONS_reselect",
+                                            "sidefx::shader_isparm": "0",
+                                            "sidefx::usdpathtype": "prim",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_forcechildren": {
+                                        "default_value": true,
+                                        "label": "Force Translation of Children",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "shader_referencetype": {
+                                        "default_value": {
+                                            "expression": "n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r",
+                                            "language": "python"
+                                        },
+                                        "label": "Class Arc",
+                                        "menu_items": [
+                                            {
+                                                "label": "None",
+                                                "token": "none"
+                                            },
+                                            {
+                                                "label": "Reference",
+                                                "token": "reference"
+                                            },
+                                            {
+                                                "label": "Inherit",
+                                                "token": "inherit"
+                                            },
+                                            {
+                                                "label": "Specialize",
+                                                "token": "specialize"
+                                            },
+                                            {
+                                                "label": "Represent",
+                                                "token": "represent"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_rendercontextname": {
+                                        "default_value": "kma",
+                                        "label": "Render Context Name",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "tabmenumask": {
+                                        "default_value": "karma USD ^mtlxUsd* ^mtlxramp* ^hmtlxramp* ^hmtlxcubicramp* MaterialX parameter constant collect null genericshader subnet subnetconnector suboutput subinput",
+                                        "label": "Tab Menu Mask",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Tab Menu"
+                                        },
+                                        "type": "string"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_type": "collapsible",
+                                    "sidefx::shader_isparm": "0"
+                                },
+                                "type": "folder_collapsible"
+                            }
+                        }
+                    }
+                ],
+                "position": [
+                    -125.26,
+                    23.7
+                ],
+                "size": [
+                    1.77,
+                    0.98
+                ],
+                "type": "subnet"
+            },
+            "liquid": {
+                "children": {
+                    "Material_Outputs_and_AOVs": {
+                        "inputs": [
+                            {
+                                "from": "mtlxstandard_surface",
+                                "from_index": "out",
+                                "to_index": "surface"
+                            },
+                            {
+                                "from": "mtlxdisplacement",
+                                "from_index": "out",
+                                "to_index": "displacement"
+                            },
+                            {
+                                "from": "material_properties",
+                                "from_index": "properties",
+                                "to_index": "properties"
+                            }
+                        ],
+                        "parms": {
+                            "name1": "surface",
+                            "name2": "displacement"
+                        },
+                        "position": [
+                            10,
+                            -19.78
+                        ],
+                        "size": [
+                            1.77,
+                            1.13
+                        ],
+                        "type": "suboutput"
+                    },
+                    "inputs": {
+                        "flags": {
+                            "display": true,
+                            "render": true
+                        },
+                        "position": [
+                            2.05,
+                            -18.34
+                        ],
+                        "size": [
+                            1.77,
+                            0.53
+                        ],
+                        "type": "subinput"
+                    },
+                    "material_properties": {
+                        "position": [
+                            7.27,
+                            -19.78
+                        ],
+                        "size": [
+                            1.77,
+                            0.68
+                        ],
+                        "type": "kma_material_properties"
+                    },
+                    "mtlxdisplacement": {
+                        "position": [
+                            7.27,
+                            -18.34
+                        ],
+                        "size": [
+                            1.77,
+                            0.83
+                        ],
+                        "type": "mtlxdisplacement"
+                    },
+                    "mtlxstandard_surface": {
+                        "inputs": [
+                            {
+                                "from": "usdprimvarreader1",
+                                "from_index": "result",
+                                "to_index": "base_color"
+                            }
+                        ],
+                        "parms": {
+                            "base_color": [
+                                0.8734698295593262,
+                                -0.03312067314982414,
+                                0.058288831263780594
+                            ],
+                            "specular_IOR": 1.33,
+                            "specular_roughness": 0,
+                            "subsurface_radius": [
+                                1,
+                                0.691,
+                                1
+                            ],
+                            "subsurface_scale": 0.01
+                        },
+                        "position": [
+                            7.13,
+                            -14.91
+                        ],
+                        "size": [
+                            1.77,
+                            3.39
+                        ],
+                        "type": "mtlxstandard_surface",
+                        "user_data": {
+                            "__inputgroup_": "collapsed",
+                            "__inputgroup_Coat": "collapsed",
+                            "__inputgroup_Emission": "collapsed",
+                            "__inputgroup_Geometry": "collapsed",
+                            "__inputgroup_Sheen": "collapsed",
+                            "__inputgroup_Specular": "collapsed",
+                            "__inputgroup_Thin Film": "collapsed",
+                            "__inputgroup_Transmission": "collapsed"
+                        }
+                    },
+                    "usdprimvarreader1": {
+                        "parms": {
+                            "signature": "vector",
+                            "varname": "displayColor"
+                        },
+                        "position": [
+                            4.35,
+                            -15.18
+                        ],
+                        "size": [
+                            1.77,
+                            0.83
+                        ],
+                        "type": "usdprimvarreader"
+                    }
+                },
+                "flags": {
+                    "display": true,
+                    "material": true,
+                    "render": true
+                },
+                "parmtemplates": [
+                    {
+                        "insert_first": "",
+                        "parmtemplates": {
+                            "folder1": {
+                                "label": "Karma Material Builder",
+                                "parmtemplates": {
+                                    "inherit_ctrl": {
+                                        "default_value": 2,
+                                        "label": "Inherit from Class",
+                                        "menu_items": [
+                                            {
+                                                "label": "Never",
+                                                "token": "0"
+                                            },
+                                            {
+                                                "label": "Always",
+                                                "token": "1"
+                                            },
+                                            {
+                                                "label": "Material Flag",
+                                                "token": "2"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "type": "integer"
+                                    },
+                                    "separator1": {
+                                        "label": "",
+                                        "script_callback_language": "hscript",
+                                        "type": "separator"
+                                    },
+                                    "shader_baseprimpath": {
+                                        "default_value": "/__class_mtl__/`$OS`",
+                                        "label": "Class Prim Path",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "script_action": "import lopshaderutils\nlopshaderutils.selectPrimFromInputOrFile(kwargs)",
+                                            "script_action_help": "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.",
+                                            "script_action_icon": "BUTTONS_reselect",
+                                            "sidefx::shader_isparm": "0",
+                                            "sidefx::usdpathtype": "prim",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_forcechildren": {
+                                        "default_value": true,
+                                        "label": "Force Translation of Children",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "shader_referencetype": {
+                                        "default_value": {
+                                            "expression": "n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r",
+                                            "language": "python"
+                                        },
+                                        "label": "Class Arc",
+                                        "menu_items": [
+                                            {
+                                                "label": "None",
+                                                "token": "none"
+                                            },
+                                            {
+                                                "label": "Reference",
+                                                "token": "reference"
+                                            },
+                                            {
+                                                "label": "Inherit",
+                                                "token": "inherit"
+                                            },
+                                            {
+                                                "label": "Specialize",
+                                                "token": "specialize"
+                                            },
+                                            {
+                                                "label": "Represent",
+                                                "token": "represent"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_rendercontextname": {
+                                        "default_value": "kma",
+                                        "label": "Render Context Name",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "tabmenumask": {
+                                        "default_value": "karma USD ^mtlxUsd* ^mtlxramp* ^hmtlxramp* ^hmtlxcubicramp* MaterialX parameter constant collect null genericshader subnet subnetconnector suboutput subinput",
+                                        "label": "Tab Menu Mask",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Tab Menu"
+                                        },
+                                        "type": "string"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_type": "collapsible",
+                                    "sidefx::shader_isparm": "0"
+                                },
+                                "type": "folder_collapsible"
+                            }
+                        }
+                    }
+                ],
+                "position": [
+                    -125.26,
+                    19.78
+                ],
+                "size": [
+                    1.77,
+                    0.98
+                ],
+                "type": "subnet"
+            },
+            "plastic": {
+                "children": {
+                    "Material_Outputs_and_AOVs": {
+                        "inputs": [
+                            {
+                                "from": "mtlxstandard_surface",
+                                "from_index": "out",
+                                "to_index": "surface"
+                            },
+                            {
+                                "from": "mtlxdisplacement",
+                                "from_index": "out",
+                                "to_index": "displacement"
+                            },
+                            {
+                                "from": "material_properties",
+                                "from_index": "properties",
+                                "to_index": "properties"
+                            }
+                        ],
+                        "parms": {
+                            "name1": "surface",
+                            "name2": "displacement"
+                        },
+                        "position": [
+                            10,
+                            -19.78
+                        ],
+                        "size": [
+                            1.77,
+                            1.13
+                        ],
+                        "type": "suboutput"
+                    },
+                    "inputs": {
+                        "flags": {
+                            "display": true,
+                            "render": true
+                        },
+                        "position": [
+                            0.37,
+                            -18.34
+                        ],
+                        "size": [
+                            1.77,
+                            0.53
+                        ],
+                        "type": "subinput"
+                    },
+                    "material_properties": {
+                        "position": [
+                            7.27,
+                            -19.78
+                        ],
+                        "size": [
+                            1.77,
+                            0.68
+                        ],
+                        "type": "kma_material_properties"
+                    },
+                    "mtlxdisplacement": {
+                        "position": [
+                            7.27,
+                            -18.34
+                        ],
+                        "size": [
+                            1.77,
+                            0.83
+                        ],
+                        "type": "mtlxdisplacement"
+                    },
+                    "mtlxstandard_surface": {
+                        "inputs": [
+                            {
+                                "from": "usdprimvarreader1",
+                                "from_index": "result",
+                                "to_index": "base_color"
+                            }
+                        ],
+                        "parms": {
+                            "base_color": [
+                                0.0062500000931322575,
+                                0.0062500000931322575,
+                                0.0062500000931322575
+                            ]
+                        },
+                        "position": [
+                            7.27,
+                            -15.59
+                        ],
+                        "size": [
+                            1.77,
+                            2.56
+                        ],
+                        "type": "mtlxstandard_surface",
+                        "user_data": {
+                            "__inputgroup_": "collapsed",
+                            "__inputgroup_Coat": "collapsed",
+                            "__inputgroup_Emission": "collapsed",
+                            "__inputgroup_Geometry": "collapsed",
+                            "__inputgroup_Sheen": "collapsed",
+                            "__inputgroup_Specular": "collapsed",
+                            "__inputgroup_Subsurface": "collapsed",
+                            "__inputgroup_Thin Film": "collapsed",
+                            "__inputgroup_Transmission": "collapsed"
+                        }
+                    },
+                    "usdprimvarreader1": {
+                        "parms": {
+                            "signature": "vector",
+                            "varname": "displayColor"
+                        },
+                        "position": [
+                            2.15,
+                            -16.11
+                        ],
+                        "size": [
+                            1.77,
+                            0.83
+                        ],
+                        "type": "usdprimvarreader"
+                    }
+                },
+                "flags": {
+                    "material": true
+                },
+                "parmtemplates": [
+                    {
+                        "insert_first": "",
+                        "parmtemplates": {
+                            "folder1": {
+                                "label": "Karma Material Builder",
+                                "parmtemplates": {
+                                    "inherit_ctrl": {
+                                        "default_value": 2,
+                                        "label": "Inherit from Class",
+                                        "menu_items": [
+                                            {
+                                                "label": "Never",
+                                                "token": "0"
+                                            },
+                                            {
+                                                "label": "Always",
+                                                "token": "1"
+                                            },
+                                            {
+                                                "label": "Material Flag",
+                                                "token": "2"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "type": "integer"
+                                    },
+                                    "separator1": {
+                                        "label": "",
+                                        "script_callback_language": "hscript",
+                                        "type": "separator"
+                                    },
+                                    "shader_baseprimpath": {
+                                        "default_value": "/__class_mtl__/`$OS`",
+                                        "label": "Class Prim Path",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "script_action": "import lopshaderutils\nlopshaderutils.selectPrimFromInputOrFile(kwargs)",
+                                            "script_action_help": "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.",
+                                            "script_action_icon": "BUTTONS_reselect",
+                                            "sidefx::shader_isparm": "0",
+                                            "sidefx::usdpathtype": "prim",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_forcechildren": {
+                                        "default_value": true,
+                                        "label": "Force Translation of Children",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "shader_referencetype": {
+                                        "default_value": {
+                                            "expression": "n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r",
+                                            "language": "python"
+                                        },
+                                        "label": "Class Arc",
+                                        "menu_items": [
+                                            {
+                                                "label": "None",
+                                                "token": "none"
+                                            },
+                                            {
+                                                "label": "Reference",
+                                                "token": "reference"
+                                            },
+                                            {
+                                                "label": "Inherit",
+                                                "token": "inherit"
+                                            },
+                                            {
+                                                "label": "Specialize",
+                                                "token": "specialize"
+                                            },
+                                            {
+                                                "label": "Represent",
+                                                "token": "represent"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_rendercontextname": {
+                                        "default_value": "kma",
+                                        "label": "Render Context Name",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "tabmenumask": {
+                                        "default_value": "karma USD ^mtlxUsd* ^mtlxramp* ^hmtlxramp* ^hmtlxcubicramp* MaterialX parameter constant collect null genericshader subnet subnetconnector suboutput subinput",
+                                        "label": "Tab Menu Mask",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Tab Menu"
+                                        },
+                                        "type": "string"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_type": "collapsible",
+                                    "sidefx::shader_isparm": "0"
+                                },
+                                "type": "folder_collapsible"
+                            }
+                        }
+                    }
+                ],
+                "position": [
+                    -125.26,
+                    25.44
+                ],
+                "size": [
+                    1.77,
+                    0.98
+                ],
+                "type": "subnet"
+            },
+            "sticker": {
+                "children": {
+                    "Material_Outputs_and_AOVs": {
+                        "inputs": [
+                            {
+                                "from": "mtlxstandard_surface",
+                                "from_index": "out",
+                                "to_index": "surface"
+                            },
+                            {
+                                "from": "mtlxdisplacement",
+                                "from_index": "out",
+                                "to_index": "displacement"
+                            },
+                            {
+                                "from": "material_properties",
+                                "from_index": "properties",
+                                "to_index": "properties"
+                            }
+                        ],
+                        "parms": {
+                            "name1": "surface",
+                            "name2": "displacement"
+                        },
+                        "position": [
+                            10,
+                            -19.78
+                        ],
+                        "size": [
+                            1.77,
+                            1.13
+                        ],
+                        "type": "suboutput"
+                    },
+                    "inputs": {
+                        "flags": {
+                            "display": true,
+                            "render": true
+                        },
+                        "position": [
+                            3.02,
+                            -15.87
+                        ],
+                        "size": [
+                            1.77,
+                            0.53
+                        ],
+                        "type": "subinput"
+                    },
+                    "material_properties": {
+                        "position": [
+                            7.27,
+                            -19.78
+                        ],
+                        "size": [
+                            1.77,
+                            0.68
+                        ],
+                        "type": "kma_material_properties"
+                    },
+                    "mtlxdisplacement": {
+                        "position": [
+                            7.27,
+                            -18.34
+                        ],
+                        "size": [
+                            1.77,
+                            0.83
+                        ],
+                        "type": "mtlxdisplacement"
+                    },
+                    "mtlxstandard_surface": {
+                        "parms": {
+                            "base_color": [
+                                0.0062500000931322575,
+                                0.0062500000931322575,
+                                0.0062500000931322575
+                            ]
+                        },
+                        "position": [
+                            7.27,
+                            -15.87
+                        ],
+                        "size": [
+                            1.77,
+                            1.88
+                        ],
+                        "type": "mtlxstandard_surface",
+                        "user_data": {
+                            "__inputgroup_": "collapsed",
+                            "__inputgroup_Base": "collapsed",
+                            "__inputgroup_Coat": "collapsed",
+                            "__inputgroup_Emission": "collapsed",
+                            "__inputgroup_Geometry": "collapsed",
+                            "__inputgroup_Sheen": "collapsed",
+                            "__inputgroup_Specular": "collapsed",
+                            "__inputgroup_Subsurface": "collapsed",
+                            "__inputgroup_Thin Film": "collapsed",
+                            "__inputgroup_Transmission": "collapsed"
+                        }
+                    }
+                },
+                "flags": {
+                    "material": true
+                },
+                "parmtemplates": [
+                    {
+                        "insert_first": "",
+                        "parmtemplates": {
+                            "folder1": {
+                                "label": "Karma Material Builder",
+                                "parmtemplates": {
+                                    "inherit_ctrl": {
+                                        "default_value": 2,
+                                        "label": "Inherit from Class",
+                                        "menu_items": [
+                                            {
+                                                "label": "Never",
+                                                "token": "0"
+                                            },
+                                            {
+                                                "label": "Always",
+                                                "token": "1"
+                                            },
+                                            {
+                                                "label": "Material Flag",
+                                                "token": "2"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "type": "integer"
+                                    },
+                                    "separator1": {
+                                        "label": "",
+                                        "script_callback_language": "hscript",
+                                        "type": "separator"
+                                    },
+                                    "shader_baseprimpath": {
+                                        "default_value": "/__class_mtl__/`$OS`",
+                                        "label": "Class Prim Path",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "script_action": "import lopshaderutils\nlopshaderutils.selectPrimFromInputOrFile(kwargs)",
+                                            "script_action_help": "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.",
+                                            "script_action_icon": "BUTTONS_reselect",
+                                            "sidefx::shader_isparm": "0",
+                                            "sidefx::usdpathtype": "prim",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_forcechildren": {
+                                        "default_value": true,
+                                        "label": "Force Translation of Children",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "toggle"
+                                    },
+                                    "shader_referencetype": {
+                                        "default_value": {
+                                            "expression": "n = hou.pwd()\nn_hasFlag = n.isMaterialFlagSet()\ni = n.evalParm('inherit_ctrl')\nr = 'none'\nif i == 1 or (n_hasFlag and i == 2):\n    r = 'inherit'\nreturn r",
+                                            "language": "python"
+                                        },
+                                        "label": "Class Arc",
+                                        "menu_items": [
+                                            {
+                                                "label": "None",
+                                                "token": "none"
+                                            },
+                                            {
+                                                "label": "Reference",
+                                                "token": "reference"
+                                            },
+                                            {
+                                                "label": "Inherit",
+                                                "token": "inherit"
+                                            },
+                                            {
+                                                "label": "Specialize",
+                                                "token": "specialize"
+                                            },
+                                            {
+                                                "label": "Represent",
+                                                "token": "represent"
+                                            }
+                                        ],
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "shader_rendercontextname": {
+                                        "default_value": "kma",
+                                        "label": "Render Context Name",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "sidefx::shader_isparm": "0",
+                                            "spare_category": "Shader"
+                                        },
+                                        "type": "string"
+                                    },
+                                    "tabmenumask": {
+                                        "default_value": "karma USD ^mtlxUsd* ^mtlxramp* ^hmtlxramp* ^hmtlxcubicramp* MaterialX parameter constant collect null genericshader subnet subnetconnector suboutput subinput",
+                                        "label": "Tab Menu Mask",
+                                        "menu_type": "normal",
+                                        "script_callback_language": "hscript",
+                                        "tags": {
+                                            "spare_category": "Tab Menu"
+                                        },
+                                        "type": "string"
+                                    }
+                                },
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "group_type": "collapsible",
+                                    "sidefx::shader_isparm": "0"
+                                },
+                                "type": "folder_collapsible"
+                            }
+                        }
+                    }
+                ],
+                "position": [
+                    -125.26,
+                    21.86
+                ],
+                "size": [
+                    1.77,
+                    0.98
+                ],
+                "type": "subnet"
+            }
+        },
+        "inputs": [
+            {
+                "from": "disable_boutle_shadow",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "materials": [
+                {
+                    "geopath#": "/nail_polish/cap",
+                    "matnode#": "plastic",
+                    "matpath#": "plastic"
+                },
+                {
+                    "geopath#": "/nail_polish/boutle",
+                    "matnode#": "glass",
+                    "matpath#": "glass"
+                },
+                {
+                    "geopath#": "/nail_polish/label",
+                    "matnode#": "sticker",
+                    "matpath#": "sticker"
+                },
+                {
+                    "geopath#": "/nail_polish/liquid",
+                    "matnode#": "liquid",
+                    "matpath#": "liquid"
+                }
+            ],
+            "matpathprefix": "/mat/"
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "matpathprefix",
+                "parmtemplates": {
+                    "tabmenufolder": {
+                        "label": "Tab Menu",
+                        "parmtemplates": {
+                            "tabmenumask": {
+                                "default_value": "*builder parameter constant rampparm collect null subnet subnetconnector suboutput subinput genericshader",
+                                "label": "Tab Menu Mask",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "tags": {
+                                    "spare_category": "Tab Menu"
+                                },
+                                "type": "string"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "collapsible"
+                        },
+                        "type": "folder_collapsible"
+                    }
+                }
+            }
+        ],
+        "position": [
+            3.42,
+            -2.11
+        ],
+        "type": "materiallibrary"
+    },
+    "nail_polish": {
+        "editables": {
+            "sopnet/create": {
+                "children": {
+                    "BOUTLE": {
+                        "color": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "flags": {
+                            "colordefault": false
+                        },
+                        "inputs": [
+                            {
+                                "from": "name1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            7.45,
+                            -26.58
+                        ],
+                        "type": "null"
+                    },
+                    "CAP": {
+                        "color": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "flags": {
+                            "colordefault": false
+                        },
+                        "inputs": [
+                            {
+                                "from": "name2",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            5.3,
+                            -26.51
+                        ],
+                        "type": "null"
+                    },
+                    "LABEL": {
+                        "color": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "flags": {
+                            "colordefault": false
+                        },
+                        "inputs": [
+                            {
+                                "from": "name3",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            10.41,
+                            -26.64
+                        ],
+                        "type": "null"
+                    },
+                    "LIQUID": {
+                        "color": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "flags": {
+                            "colordefault": false
+                        },
+                        "inputs": [
+                            {
+                                "from": "name4",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            13.71,
+                            -36.41
+                        ],
+                        "type": "null"
+                    },
+                    "bend1": {
+                        "inputs": [
+                            {
+                                "from": "remesh1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "bend": -58.38,
+                            "dir": [
+                                1,
+                                0,
+                                0
+                            ],
+                            "length": 0.0267151,
+                            "origin": [
+                                0.0001804,
+                                0.0001874738809419796,
+                                0
+                            ],
+                            "symmetricdeformation": true,
+                            "upangle": 90,
+                            "upvectorcontrol": "yaxis"
+                        },
+                        "position": [
+                            10.26,
+                            -16.46
+                        ],
+                        "type": "bend"
+                    },
+                    "boolean1": {
+                        "inputs": [
+                            {
+                                "from": "transform1",
+                                "from_index": 0,
+                                "to_index": 0
+                            },
+                            {
+                                "from": "split1",
+                                "from_index": 1,
+                                "to_index": 1
+                            }
+                        ],
+                        "parms": {
+                            "booleanop": "intersect",
+                            "bsurface": "surface"
+                        },
+                        "position": [
+                            10.3,
+                            -18.58
+                        ],
+                        "type": "boolean::2.0"
+                    },
+                    "btm": {
+                        "flags": {
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "reverse2",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "groupbounding": true,
+                            "groupname": "btm",
+                            "grouptype": "point",
+                            "size": [
+                                0.01917872577905655,
+                                0.0029441374354064465,
+                                0.01911921426653862
+                            ],
+                            "t": [
+                                0,
+                                0.0024134761188179255,
+                                0
+                            ]
+                        },
+                        "position": [
+                            7.44,
+                            -19.35
+                        ],
+                        "type": "groupcreate"
+                    },
+                    "clip1": {
+                        "inputs": [
+                            {
+                                "from": "peak1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "dir": [
+                                -6.123233995736766e-17,
+                                -1,
+                                1.2246467991473532e-16
+                            ],
+                            "origin": [
+                                0,
+                                0.05314071197062731,
+                                0
+                            ]
+                        },
+                        "position": [
+                            13.68,
+                            -27.53
+                        ],
+                        "type": "clip::2.0"
+                    },
+                    "clip2": {
+                        "inputs": [
+                            {
+                                "from": "merge4",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "dir": [
+                                0.6633827315744775,
+                                0,
+                                -0.7482802626347863
+                            ],
+                            "dist": 0.022
+                        },
+                        "position": [
+                            12.36,
+                            -41.41
+                        ],
+                        "type": "clip::2.0"
+                    },
+                    "color1": {
+                        "flags": {
+                            "bypass": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "liquid",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "color": [
+                                0.25,
+                                0.5,
+                                0
+                            ]
+                        },
+                        "position": [
+                            13.71,
+                            -34.3
+                        ],
+                        "type": "color"
+                    },
+                    "convert1": {
+                        "inputs": [
+                            {
+                                "from": "curve1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            5.17,
+                            -10.28
+                        ],
+                        "type": "convert"
+                    },
+                    "cup": {
+                        "flags": {
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "fuse1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "groupbounding": true,
+                            "groupname": "cap",
+                            "size": [
+                                0.04,
+                                0.0615682527422905,
+                                0.04
+                            ],
+                            "t": [
+                                0,
+                                0.09542307630181313,
+                                0
+                            ]
+                        },
+                        "position": [
+                            5.18,
+                            -14.28
+                        ],
+                        "type": "groupcreate"
+                    },
+                    "curve1": {
+                        "parms": {
+                            "cornerpts": "0 9 27 49",
+                            "mode": 3,
+                            "optype": "nop",
+                            "parmpoints": {
+                                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@A)FfKPTIVJ%s0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5g{uC3wC94bY*yBZ*^{TCIk@xD+La4a%pX8bZK^FV{dhCbS4E604oLrX\u003eMk3CI)*e2L@qsbZK*RCI\u003e4B18Zq!CI~AD2y\u003c^{ba!ELWhMzL3J^$db!2I7X\u0026^E\u0026E-)@PGC3v+D+\u003ef\u003cVRU6C3o8s0GB7eWEigDOF*zVHGdeRdIx;gR3@Z%?Xm4|LZeeX@CJieN1Z{6`ZYB;Z4+dgyb#7#HCJ#Uv1^@s6000000000000000000000000004op?VRUqIX\u003c~JBWnXi3ZEaz4c_t7i@~r_NARr(!G9YkoX\u003eN2NVRUqIX\u003c~JBWpg?SVPkY@c4csHX\u003eN3LEFg1ZVQghAAYpKDa\u0026LHLZe(;}Zf9j~baN~qZDDC{bYW?3aBpdDbSxlaZ*FsRa$#w1b98cHX=iA3Wo|4WaBN|2Wp8q6XDlFdZEtUMXmE6MEFfrMZe(m_a4\u003eLhb1WcpWoK\u003c=ZggU0dTC{HV{C78Wh@|LZ*p#Ba\u0026UBWEFf}kb#7#1Z*p#Ba\u0026lp0X?1ffAYpZMZ*X*TEFfrMZe(m_a4~Rib1WceVQyq\u003eWpH$JEFf@fVQyt^ZEP$caA|gLbaZlIZgXs5bY(0ca\u0026L8RWMgk~Ze?\u003cCbaN~qXkl(-Y-MmVaBp)gAa8PHWpXSab8lvJbaG*Cb7pUHZ7d*gX?AaPa\u0026L5DbY(0cZ*X*ZaAhnYb8lvJbaG*Cb7pUHZE|5`EFfWZbZ=s1dTC{HEFfuabY*gIZDn+5Z)7YWVPs@*baN~qZ*_EVb#!!jaAhnYbaG*Cb8KOBWh@|2EFfWHbZK^FaB^vFEFf}kbYXO5EFfcVZgypIbYpdLc4c!4eJc?NbZ\u003eBPY;R|ICJ|dJ5(sc_X\u003eN3KWo9N4TPqU\u003eX\u003eMd`V`XzD6F?FGU0o{_3So3~a%p09bY*iU6k9754{\u0026d3ZggREbaH88b#!HOCKX#-TPqd?b7OCCWhNFY7Y1;3Vr*$+CKoFh1ax_DWhNLa83%54ZDn$4V\u003cs6Z8U$`(ZDl4JD;oh\u0026CL1dp2XAn6X\u003eV?GCLDVv7\u003c(odD;)-NbaH8KXC@sh9tCz`Y;|QO9xEROaBpdDbS58teO+5CAOv%1dSxac5d$kB2Xl09a$#p\u003eCLt\u003e#2xf3{WnpYHGA1G`BM4+=W?^+~baN\u0026nTP7e80VW|UBnW13a%Ev`HZ\u0026$AD\u003cuYYVQh6}b0#G~8UX+R00000003PkC0iyS5d$V6CL${)2ykI%WpinIWhN#P00b*15o2#|b97;DbZ}v3WoB$)XLBYeTR;#20RR91T`MRHa$$FHVP|DzVRT_8C_otl000000000000000U0q#UTP7AJ7bX}c9VQwpDGXs_bZK^FaBpdDbaN\u0026tCLDWxU0Ws~5dkJ4D=GzPZgev;CMqi{2Xl0CX\u003eMn8CM#PjECMnyCM+v00W\u00265oD=q;xCN3*40x\u003elvFDozwF*P7FIVLbGF#\u003c6%CNV2A0x\u003euyGAlCzGBhSLD\u003eNT4ATuB~AUPm0G9WQEATc-~GczDFHXt)OAT%-{G\u0026LqPD\u003eVi%ATuB{GbS}FHYG41Gaxn~IUq4IATc!{F*qPHF(5NAATu){Gd3VIIUqDLAT%{5HY+y^GBF@BG$1oDAT\u002658H!C;+FeW%FIRY{_COIoQ0XZf*T_zJ-CLj?3CLty\u0026CMFU91STjz6CwZq|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|Nj6000031000310006200093000C4000C400093000C4000C4000C4000C4000C4000F5000I6000L7000O8000R9000UA000XB000aC000dD000dD000gE003QGU0Yiw7A6-a7$zAe8Y?\u003erVPkY@c4csKX\u003eBGuCLDVv7\u003c(odCLJaoD?Al$Z*F07X\u003e@39Wprs{UukZ1WoKn_COmz8U0Ws~5dkJ4CMqT)TP7e80VW|UJq2lQbT%|5JtieU6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6iCK@X~24Q4maCCDfJ|-M{eO+57AQ1s3Atov\u0026D_bi+wlFR*FfcPQF)}tZG\u0026DFdFfcbTF)T1HF)=qbI5##iGB-CdIXE{tGAuAIFd#54FfcGPF)=bWG\u0026D3gF)%PUFflAJE-^7THaIsnF)}wdF*!IlIWjCTE-)Z1FfK4LFflbbHZnOkG\u00263_WH8U_aEHExHF*i0iH#RXcH#adkI5#;mEHExGAT2O1FflMOH90miIX5\u0026jGcYwXFg7eOE-^7THaIsnF)}wdF*!IlIWjCTE-)Y_KPy0pEif)HF)%STIW{smH#9RdFf}tUHY_kMF)=qbI5##iGB-CdIXE{tGAuAIFd!{3E-*1LF*P|hGC4CjH!wLgGBqqPE-*GYGczzZGB`CgG%z\u003cfHZ\u0026|SE-)Z1FfK4LFflbbHZnOgIX5slG%__TFfK4QI5RUaH!?UiH8e0cI5spaFfK44CO|7ehb=HJFflMOH90miIWsvoFgY|bH7qbLFg7?dGcY$YI5jmiFgG|hG%PSKFd!{3E-)}RHZ(XfI5#shF)=hVH#saYE-*GYGczzZGB-6bH#RUdI5R9TE-)Z1FfK4KH#RglF*r9fGchqVGdDRbFfK4QI5RUaH!?RhF*i0aG\u0026nOXFfK44CP6Dgi7hZLFfcbZG\u0026nIhH#0LaF*GwbIV\u003e\u003cPFg7?dGcY$YH#IRgHZU|eGb}JJFd!{3E-)}RHZ(XfI5#pfGdMCaI5#*fFfK4QH8VFeH#s;lIWaddHa0daFfK44Eif)HFgG?dI59XkGBPtbGBG$eI4m$OFg7(aH#0XmI59afH!wCfHY_kMFd!yED?^GcFfK4KH#RglF*r9eGBY?bF*r9kEHExGHZ?OhGdDRnF*z|eFg7+eEHExGAT2O1FfchXG%ztSH#addH90geFf}YNE-*GVGdD9hFfcYbG\u0026wXfG\u0026d|TE-)Z1FfK4KIWjabF)=qcF)}qdG%zqVEHExGHZ?OhGdM6XHaRpoG%_?dEHExGASOdAM2amiE-)}TGBhwTF*i3cGBr6gFfcVNFfK4QH8VFeI503aIW##mGBh_VFfK44Eif)HFgY?bFflPVI5jmhH!v_XH7qbLFg7tcHZwOiIWRdiGBG$YGAuAIFd!{3E-)}TGBhwTF*i6hH8VFbFf=tRFfK4QF*!CfH#RviIW#gcI59FTFfK44CPXVmh%GQKFfchXG%ztSH#jvlGdD0WG\u0026L+RE-*GRIW{vlHaRdkG%_(bF)}PLE-)Z1FfK4MH#j*nGc+|eG\u0026eIjIW{\u003eqEHExGHZeIiGdDLdH8VIhHaImbFfK44Eif)HGB-FmGcz\u003cbHZ(UgIXN~tHY_kMFg7tcHZwOjFf}tcH8wakEHExGASOjCMvW~nE-*4TI5{\u0026jG\u0026MFfH#0doHaRvdFfK4QF*!CfH#aafGdMLiI5jLVE-)Z1FfK4MH#j*nGc+|gFf%YRGBY?eEHExGFfcVXHZU_aHaIpmG%_?YIXNsaE-)Z1FfK4MH#j*nGc+|gFf%YRGBY?eEHExGFfcVXHZU_aHaIpmG%_?YIXNsaE-)Y_Mk_~\u003cEif)HGB-FmGcz\u003cbI50CXGBPtbH7qbLFfcGRHa0LbH8walHZ(FcGC4UcFfK44Eif)HFfcPWFfcYYG\u0026ngoGB-0fGAuAIFfcGRHa0LbH8waiH#0IcH#s;gFfK44Eif)HFfcPWFfcYYG\u0026ngoGB-0fGAuAIFfcGRHa0LbH8waiH#0IcH#s;gFfK44CP!T+6I\u0026)A5dkJ4CMqT-5\u0026#4yC_ob-000000RR910ssI20{{R31ONa41poj51^@s62LJ#72mk;8|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0U0q#UTP7AJ7bX}c873MlND*OhaB^\u003eWWo~42VQyz-Zgg`dNG2S6CK!7r7$zMi9wt0}eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4COsx4KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c873MlNeW?gbZ=s1dTC{HCP^k7dnOorCKx6iCLSg{eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpU0B|sDb0000000000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0RR9109{\u003eOTU#a;CKo0cCLJakD@q4pb#!lVbaN(3CLDWxU0Ws~5dkJ4CMqT?TU{m-TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69NDK|NmWGU0Yiw7A6-a7$zAe8Y@c^V{dMAbaG*7ZgX^UVQFV*bY*TPOC}t9CK!7r7$zMi9wt0}eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4COsx4KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c873MlObugiZgypIbYpdLc4c!WOeP$ACK!7r7$zMi9wt0}eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4COsx4KokK10000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c9VQwpO$lRfa\u0026BdEaCCDfO(q\u003cBeO+57AQ1s3Atov\u0026D_bj0127;nCQd6)1u!5pAT}mXD^Le8ATuB~AUP\u0026bD^UtCATuB~AUPm0GA2\u003cgQVlR5Gaxn~IUq4IATc#2QY%vsFd#D^HXu15F)|=AH6SrKCQ~a^6EGk%AT}U5ATcr^F*P7DI3O}HCR8g`7BC\u003c)AT}U5ATcr^F*P7DI3O}HATl\u00262RV!8*Fd#D^HXu15F)|=AH6SrKATlu^GBhAEHzrmqR~9fJGaxn~IUq4IATc!{F*qPHG$1lJCRZz16fht*AUPm0G9WQEATc-~GBhAEHzrssSrRZHIUq4IATc!{F*qPHG$1lJCRr\u003c54=^A(ATcr^F*qPHG$1lJCR!_73@{)$ATc-~GBhAEHzr#vTnR8BIUq7LATl\u003e5Tq|7$Fd#V~GB+k\u0026T_zJ-CLj?3CLty\u0026CMFU91STjz6CwZq|Nj60000310006200093000C4000F5000I6000L7000O8000R9000R9000UA000XB000aC000aC000XB000aC000aC000aC000aC000aC000aC000dD000gE000jF000jF000jF000jF000jF000jF000jF000jF003QGU0Yiw7A6-a7$zAe8Y^B4Xkl(-Y-MmTaBp)aUM3uSeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl004l$0000000000U0q#UTP7AJ7bX}c873MlUkhkqZe(m_a4~Rib0%LV9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zAe8Y^H6Xkl(-Y-MmVaBp)aU?v=UeO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl004kL0000000000U0q#UTP7AJ7bX}c873MlVF_qqZe(m_aCCDfVI~}VCK!7r7$zMi9wt0}eO+57AQ1y5Atov\u0026BU\u003egQ5dkJ4COsx4KokN0|NsC0|NsA8CM8=YAQ1y5Atov\u0026CK3PyCMR1!5CH)I003PkC_obf|NsC0|NsC0|NsC0U0q#UTP7AJ7bX}c873MlVhm|+bY*gIZDn+5Z)7H7CLDVv7\u003c(odCLJaoCOmz8U0Ws~5dkJ4CMqT)TP7e80VW|PJtieU6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6eCK@Ya4Q*j*ZggR3Zg6jDZgeJNCLDVv7\u003c(odCLJaoCOmz8U0Ws~5dkJ4CMqT)TP7e80VW|PJtieU6afGL00000003PkC0iyS5dkJ4CMqT-5\u0026#4yCtE-e0RaF209__1KobD~00018U0qvSCKe_aCKx6iCK@Yb25)e5d2nSWWF{PYeO+57AQ1s3Atov\u0026D_bjN3t@0@Wo~3}Z)t9HCS@yT5pr*JZe(L`a\u0026BdEb8~QPX\u003e=xLD`yaLZ*^{DV{dY9WpZ\u003c7b#rAVXDet4baG*Cb7pUHZ6;_dX#-\u003c*bS7zCCKFpGAQ1s3Atov\u0026CK3PyCMZA?ApigX00000000000000000000000000000000000000000096100IC20096100961009610096100IC200961009610096100961009610096100961009610096100RI300RI300RI300RI300RI300RI300RI300aO409{\u003eOTU#a;CKo0cCK)CgD{2LAa%5$4CTb=ednOorCKx6iCLSg{eSKY9CLj?3CLty\u0026CL\u003e!WAQ1s3AtpU0B|sDb1ONa400000T_z=4CLj?3CLty\u0026CMFU91STh2Ko9`|00018CMZA?0R#X509{\u003eOTU#a;CKo0cCLJakD{BgGb#!obbaZ)eWhQGT9D99TTP7e80VW|PDkdviD{Ka0WqN64awcqDCKFpGAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd00000U0q#UTP7AJ7bX}c873MlZ3}Q|c5ifYZ**aFWhQMV9D99TTP7e8112FRA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e8112FRA|@sh00br{TR;#20RR91T_z|%83O\u003cS0000000000003QGU0Yiw7A6-a7$zAe8Y^xNaA|gLbaZlIZgXs5bY\u0026)PCLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yC_ouw000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000mVo5Exy^k\u002600000lXND$GzRfK00000lXND$GzRfK00000lXND$`|yiB00000-D4NLv*Lw400000-D4NLv*Lw400000-D4NLv*Lw400000-D4NLv*Lw400000-D4NLv*Lw400000-D4NLv*Lw400000-D4NLv*Lw400000-D4NLv*Lw400000-D4NLv*Lw400000rJee_v*Lw400000-D4NLxy^k\u002600000mVo5E17Z|90000030tANi1xQV00000jI!Iih7jvL00000vWalKoJ6%f00000`n$utAw2Rt00000y^+AW8WZ(B00000d\u003cDX}17Z|900000;0V7s17Z|900000lzJMxYyX5j00000U0q#UTP7AJ7bX}c873MlZwPQ~VQyt^ZEPlQCLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000DwOL00018U0qvSCKe_aCKx6eCK@Yn32\u003cy-Ze?$BX=f\u0026ICLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000003PkC0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u7000000000000018U0qvSCKe_aCKx6eCK@Yo26At7VRU6CaV8vleO+57AQ1y5AtoXwBU\u003egQ5dkJ4CL|^$KpFu60000000018CM8=YAQ1y5AtoXwCK3PyCMR1!5CH)I003PkC_otl000000000000000U0q#UTP7AJ7bX}c9VQwpat?BDb#7#1Z*p#Ba\u0026UBWCUPbmdwpG7CLj?3CLty\u0026CM#Pja|tprIxsFUFgG|Rb1QTcGdeIXFfcVZG9WTBIxsFUFgG|RbSrfoGdeIXFfcVZG9WTBIxsFUFgG|LHaajaFfcJNH70c{b|f=8FfK4KH8?ULGBG+ZE-)}RI3PAUFfK4KF)%eCF*Q0cE-)r`D|b9IIxsFUFf}+bAT~NME-)}LFf|}CGCD9WFd#8CIxsFUFfcYUH#0dmFgP?cF*r9eG$1lDIxsFUFgG|RcPn^QGdeIXFfcVZG9WfOFfK4KF)%eCF)}(ZE-)Z5H99aZFfcGSGB-0hH!wIfG%+|gGBhADI65#cFfcGRH8M9aFgZ3iHZU?ZH8dbHF*-0VFfcbbCU`4(Tr)Z_E-)}PI5HqMIxsFUFflMSATcsJFfK44F*Q0cE-)}KHZnIeIX5skG\u0026C_dH!?IJF*rIfE-)}KH8nCfFfchbH#RUbH8nIKGBG+ZE-)}SATl\u0026MFfK4KI3{^3dR#L)FfK4KH8?ULHaajaFfcJNH6SrEIxsFUATc#MFfK4KFg7wbGdVXfI5addI5#phATc;PFfK4KFf}zYH!v_cHa9jfGBq_cATlvJFfK4KHXt%IIxsFUFg7N7T_zJ-CLj?3CLty\u0026CMFU91STjz6CwZq|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|Nj60000000003100062000930009300062000930009300093000930009300093000C4000F5000I6000I6000I6000I6000L7000L7000L7000L7003QGU0Yiw7A6-a7$zAe8Y_Dda\u0026L8RWMgk~Ze?\u003cEVPt7_b0\u0026Kx9D99TTP7e80VW|PA|@kSCLj?3CLtyyCM7@`0RR910000009_^}TP7e80VW|PA|@sh00br|Kp7zb0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009|06sJ|06uJwZ1#EwZ1!V5(7MM5(7K{00000000000000000018U0qvSCKe_aCKx6eCK@Yz1#@FzY-J{VCLDWxU0Ws~5d$V6CL$\u0026yTP7e80VW|PBqk+58UX+R00000@IPH9C0iyS5d$V6CL$\u0026#5\u0026#4yCtE-e0RaF209__1Kp6u70DwOL0DwOL0DwPTU0qvSCKe_aCKx6eCK@Y!5_4r|ZDnqBVr6=1WpZO|Z*yfPeI^`xCK!7r7$zMi9wt0}eO+57AQ1s3Atov\u0026BU\u003egQ5dkJ4COsx4KokK00000000018CM8=YAQ1s3Atov\u0026CK3PyCMR1!5CH)I003PkC_obd0RR91U0q#UTP7AJ7bX}c9VQwpehG7JZ*O#HaCCDfekL4yeO+57AQ1s3Atov\u0026D_bjn0V*bcT_zJ-CLj?3CLty\u0026CMFU91STjz6CnTq00960|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NsC0|NmWGU0Yiw7A6-a7$zAe8Y_Seb8lvJbaG*Cb7pUHZ6\u003c\u0026w9D61hdnOnr9VQ+oJbis#TP7e80VW|PDkdXaCLj?3CLtz0CM7@=0RR910000009_^}TP7e80VW|PDkdfp00br{TR;#20RR91T_z|%69E7K003QGU0Yiw7A6-a7$zAe8Y_Vib8lvJbaG*Cb7pUHZE|5`CV?g#dwpG7CLj?3CLtywCL\u003e!WAQ1s3AtodyB|sVh00000007`WT_z=4CLj?3CLtywCMFU91STh2Ko9`|00018CMZA|0RR91KV4m2TU#a;CKo0cCK)CgD}o7ha$#\u003cBY+-a|CW0m$dwpG7CLj?5CLtywCL\u003e!WAQ1s3AtodyB|sVh0000000000T_z=4CLj?5CLtywCMFU91STjz8Djtd0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000VJ\u003eAC;_0000000000003a;uR8z$000000000oUb_GQ002Np^f~|l00000008Pwzd8T_00000006Yd@i_nh00000005}+p|}7500000000000000000000003QGU0q!(g9\u003enRX\u003eDnAX?A6ECWBjDCk1J4WMz0;Ck|\u003cDbY*8{a%FCGa%p9AdwnMjb98cPZf9j~baH8Bb9;R!5ovC8WoKn_Yh`(5ZggpKWpjIdClGUVa%pa7Yh`(5Zgg^KWpjIdT_+7`Ze(S6aBp*IbZKvH6lMSb0000009^"
+                            },
+                            "roundcornerpts": "3:0.00582 6:0.00105 12:0.0 15:0.000627397084418724 18:0.000552700967602554 21:0.006 24:0.006",
+                            "savedstashgeo": {
+                                "geometry": "e@;_MVp}T!3ub9-Wp-t9b7^mGCIBk|2r@A)FfKPTIVJ%s0tjefb7^j5Wq2k6F)ITKaBpdDbYpLIZgeIC5i%\u003cT3wC94bY*yBZ*^{TCIk^OD+La4a%pX8bZK^FV{dhCbS4E60xJdtX\u003eMk3CI)*e2L@qsbZK*RCI\u003e4B18Zq!CI~AD2y\u003c^{ba!ELWhMzL3J^$db!2I7X\u0026^E\u0026E-)@PGC3v+D+\u003ef\u003cVRU6C3o8s0GB7eWEigDOF*zVHGdeRdIx;gR3@Z%?Xm4|LZeeX@CJieN1Z{6`ZYB;Z4+dgyb#7#HCJ#Uv1`\u003c5gyuh(\u0026Hv?i6IvNx8Jpcdz0000004op?aB^vFV{dhCbYF9IZEaz4c_t7i8XzDbARr(hARr(zAVOt\u0026X=QRCLv?a?WpfHE5fNc@baH88b#!H4b9HTPVRCsU5hwC00U#hCARsj$aBpdDbRc1LbaH88b#!HOItgE2X\u003eN37a\u0026BR4UvPA8b!{vlP%I!{UuJc4WnXY~Zgp)eAYWf{Z*^{DWn^DtZ*p#Ba$j\u0026^a\u0026#;pUte-\u003eb#7#3WM5-%a\u0026BdEUvgn\u0026X?1f7ARr(hATuCva%pX8bZK^FAYpWLa%p09bY*io3144ta%5$4EFfQBX\u003eN37a\u0026BR4UvP41ZEkgKEFfQBba`-PZeeX@3LqdLARsg#XKZg`VQe5_baZlQVs\u0026(7b2\u003crMUvqC}baZlIZgXaDa\u00262F8V_|G%EFfQBb8lvJbaG*Cb7pUHZC`Y9VQzD5VRU6IAYWf}a$#\u003cBW^ZzBX\u003eMm\u003cXkl(-Y-KDUUte=?W^{CNVQzC~Z*py4a\u0026L5DbY%)F5)Ef^Z*_2Ab9HTPVRCsU5+{WqARr(hH6U\u003crX\u003eN2NXL4_KaC15d3144fb#!lEaCCDD3144fV{~bDWnXY~a|#JxUvq75Z**v1aCCDD3144xZ)S9OW^ZzBUvPAD3JG6dV{dY9WpZC|baM(IARr(hF(7bqX\u003eDnAX?A5GXL4_KaC15dUteQyZgypIbYF0CX\u003eD@~eJc|PbZ\u003eBPY;R|ICKFpL6bNu{X\u003eN3KWo9N6TPqa@X\u003eMd`V`XzD6+jX)000310ssR59{?Z#Apisb1po#BA^;-*Bmf5h2mlEHF#rkx3jhoNC;%w{DgX@t4ge1TB\u003e*M\u003eCjbxt5dabZD*!A2EdUb$6aW\u003cf8~_~v9sm{q7XTOlE\u0026wk8FaQ|\u003c8UPyrU0o{{3So3~a%p09bY*iU7F#P94{\u0026d3ZggREbaH88b#!HOCKp\u003e\u003cTPqj^b7OCCWhNLa83u55Vr*$+CK)Rl1ax_DWhNRc8wYN6ZDn$4V\u003csCb90YD*ZDl4LD;)t)CLJpt2XAn6X\u003eV?GCLVhx8ha)hD\u003c1}PbaH8KXC@yjAO\u0026_|Y;|QOAS)pSaBpdDbS5EveO+5CA_Q}3dSxae5d$kD2Xl09a$#p\u003eCL=2(2xf3{WnpYHGA1M|B?x3?W?^+~baN\u0026pTP7kA0VX3WCJ1J5a%Ev`HZ\u0026$CD\u003c=kaVQh6}b0#N18UX+R00000003PkCtD^W5d$V8CL}8;2ykI%WpinIWhN*R00b*33vyw1aA9X\u003cWMOn+CMiG}mVoIXw;B`mJpcdz0D$Qrw;B`mJpcdz092quyc!erJpcdz092quyc!erJpcdz092quyc!erJpcdz092quylel2Jpcdz092quylel2Jpcdz092quylel2Jpcdz0F-(fylel2Jpcdz0F-(fylel2Jpcdz0F-(fylel2Jpcdz0F-(fyhh@EJpcdz0F-(fyhh@EJpcdz0F-(fyhh@EJpcdz0G^LDyhh@EJpcdz0G^LDyhh@EJpcdz0G^LDyhh@EJpcdz0G^LDyqW56Jpcdz0G^LDyqW56Jpcdz0G^LDyqW56Jpcdz01`aayqW56Jpcdz01`aayqW56Jpcdz01`aayqW56Jpcdz01`aayaQqsIsgCw01`aayaQqsIsgCw01`aayaQqsIsgCw0Kl\u003cmHv?i6IsgCw0Kl\u003cmHv?i6IsgCw01`aayqW56Jpcdz01`aayqW56Jpcdz01`aayqW56Jpcdz092quyc!erJpcdz092quyc!erJpcdz092quyc!erJpcdz092quylel2Jpcdz092quylel2Jpcdz092quylel2Jpcdz0G^LDyhh@EJpcdz0G^LDyhh@EJpcdz0G^LDyhh@EJpcdz0F-(fyhh@EJpcdz0F-(fyhh@EJpcdz0F-(fyhh@EJpcdz0G^LDyqW56Jpcdz0G^LDyqW56Jpcdz0G^LDyqW56Jpcdz01`aayaQqsIsgCw01`aayaQqsIsgCw01`aayaQqsIsgCw0F-(fylel2Jpcdz09{\u003eOTU#a=CK)CgCL1OkD=G|MUuJc4WnXY~Zgp)YDkdI#CK`Jt8YUkmAS){sZf|a3a%psEZDn+6V_#`*bY*8{awaQ%eO+57A`t;5BP%QgX\u003eN2gGA1l0C0iyU5dkJ6D=h_SZge\u0026@CM_l\u003eKokN0|NsC0|NsA8CMR1aA`t;5BPJ{+C=vh!CMiG@G5`Po0096100IC200RI300aO400jU500sa600#g700;m800{s9015yA01E\u0026B01N;C01W^D01f~E01p5F01yBG01*HH01^NI022TJ02BZK02KfL02TlM02crN02lxO02u%P02%-Q02=@R02}}S0384T03HAU03QGV03ZMW03iSX03rYY03!eZ03-ka03`qb044wc04D$d04M+e04V?f04e|g04o3h04x9i04)Fj04@Lk051Rl05AXm0RR90|6N^OTU#a=CK)CgCL1OkD=rXUUukZ1WpZv|Y+rD6Zgp)YE+!s(CK`Jt8YUkmASNq)eO+57A`t;5BPJ{+C0iyU5dkJ6CM_l\u003eKokN0|NsC0|NsA8CMR1aA`t;5BPJ{+C=vh!CMiG@G5`Po0096100IC200RI300aO400jU500sa600#g700;m800{s9015yA01E\u0026B01N;C01W^D01f~E01p5F01yBG01*HH01^NI022TJ02BZK02KfL02TlM02crN02lxO02u%P02%-Q02=@R02}}S0384T03HAU03QGV03ZMW03iSX03rYY03!eZ03-ka03`qb044wc04D$d04M+e04V?f04e|g04o3h04x9i04)Fj04@Lk051Rl05AXm05Jdn09{\u003eOTU#a=CK)CgCL1OkD=!saUvh7CZe(R-Ut@1_Ze?;`aA9(ECNCx)dnOutCK@ImCLks\u0026eSKY9CL$35CL\u003c;+CM8=YA`t;5BPJ~-CqNVd|NsC0|NsC0T_z`6CL$35CL\u003c;+CMXgB1STm!6Egq*|NsC0|NsC0|Nj6000960|NsC0|Nj6000960|NsC0|NsC0|NsC0|NsC0|Nj6000960|NsC0|Nj6000960|NsC0|Nj6000960|NsC0|Nj6000960|NsC0|Nj6000960|NsC0|NsC0|Nj91000620009300031000620009300031000620009300031000620009300031000620009300031000620009300031000620009300960|NmWGU0Yiw7$zAe8YUYi94jyvUte-\u003eb#7#3WM5-%a\u0026BdEUvgn\u0026X?1fZFeV;*eO+57A`t;5BPJv!C0iyU5dkJ6CMG5)KpFu60000000018CMR1aA`t;5BPJv!C=vh!CMiG}G5`Po00000000000JF8eI{*Lx0000004Jb{IsgCw000000000000000000000000000000000000O)rlIsgCw0000003zcMIsgCw000000H\u0026M7I{*Lx000000H\u0026M7I{*Lx00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000009{\u003eOT`MsYaB^vFX\u003e@6JWnpx5a%p09bY*iUF\u003cV\u003c(CKx6eCK@IiCLAj=5?^0wZggdGZeeU+aB^vFZgp)YGA15-CK`Jt8YUkmASNq)eO+57A`t;5BPJ{+C0iyU5dkJ6CM_l\u003eKokN0|NsC0|NsA8CMR1aA`t;5BPJ{+C=vh!CMiG@0ssI20096109{\u003eOTU#a=CK)CgCL1OkD\u003eDaQUvF|`WpXAnCLVhx8ha)hCLbmsCM$h?U0Wt15dkJ6CM+f;TP7kA0VX3RCMG998UX+R00000003PkCtD^W5dkJ6CM+f\u003e5\u0026#4%G!bKOZgX^DZgg;AXJuw=VP|tDG+RIr0RaF209__2KobE300018U0qvSCKx6eCK@ImCLAj@3SVDzd2nTJVQpn5H6|W=eO+57A`t;5BPJ{\u003eHV1Qba%pa7b0#)hD\u003en;5WqN64azk};c4a0vT_zP\u003cCL$35CL\u003c;+CMXgB1ST|FKo9`|00018CMiG@0RR9109{\u003eOT`M\u003ecXKZg`VQgV^baH88b#!HOCOBJLTP7GL873Mg8zvkpITl}Eb8lvJbaG*Cb7pUHZC`S4bYXO5COIY^dnOutCK@ImCLk+126km*bZ\u003eGdI(\u003eazTP7kA112LTBqk+WCL$35CL\u003c;$CMQ4|0RR910000009__0TP7kA112LTBqk^l00bs9TR;#20RR91T_!0\u002683O\u003cS0000000000003QGU0Yiw7$zAe8YUYi94k8\u0026Ute=?W^{CNVQzC~Z*py4b7Ns_WhOf\u00269(yJldnOttA0{9sI(\u003eazTP7kA112LTBqk+WCL$35CL\u003c;$CMQ4|0RR910000009__0TP7kA112LTBqk^l00bs9TR;#20RR91T_!0\u002683O\u003cSfIk2LfIk2LfInSbU0Yiw7$zAe8YUYi94kB-Ute=?W^{CNVQzC~Z*py4baG*Cb8KOBWhOi(9(yJldnOttA0{9sI(\u003eazTP7kA112LTBqk+WCL$35CL\u003c;$CMQ4|0RR910000009__0TP7kA112LTBqk^l00bs9TR;#20RR91T_!0\u002683O\u003cS0000000000003QGU0Yiw7$zAe8YUYi94kE)Ute@`VQzC~Z*pyEZf9R;VQyq\u003eWhOl)9(yJldnOttA0{9sD}8-kTP7kA0VX3REG8veCL$35CL\u003c;-CMQ4?0RR910000009__0TP7kA0VX3REG8%t00bs9TR;#20RR91T_!0\u002669E7K003QGU0q!(J_\u003eMhX\u003eDnAX?A6ECO%tRTP7MNH(gsRKL\u0026PXa\u0026%\u003eQCO\u003c$D5C8xH00IC500aO900saD00;mH015yL01N;P01f~T04qQSV{C78Wn?BmFe^a?VqtS\u003eb0$GsCK@Y320~?eX=QRILMuZBZ*pX1awbC\u00261S\u003e=ZYi@6Jb0$PU8U_FW00000005eqnVFfH$v\u003eKznVFfH**`QhGcz+Y\u003c3F02nVFfH=|2Df00000@IPH$U0Yiw8YVYgTP8n15+V=)5dabZ695zd6#y0h7XTOl82}mp8vq;t9RMBx9{?Z#Apjx(BLE}-B\u003e*M\u003eCjck_DF7+}D*!A2EdVY6F90wAF#sk\u0026FeX7;CK@I}CPNVfCPY9Q3;+NC0000007e\u0026GbkRk(KSmc_bkRk}KXlPW7hQDGKSmc_bkRlEKNwwf(M1\u003eCKXlPW7hQDWKV5XuMHgM\u003cKSmc_bkRlUKQFrIqKhu-KNwwf(M1\u003eSKL7v#0002+KV4m2T`NTkaBpdDbZ2sJb#QYgMO#~2CLAk93SVDgb#!lEaCCDfMqOJgM+tLfY-M9~X\u003eV\u003eOM_VgM33YC7a%5$4Wn?BuTPsNiVsCG3QcOiANm~\u0026zFkM|;U0qvSCLAkD3}0ViV{~bDWnXY~b0$h%TP8\u003caCP-T*Nm~\u0026KFcASU5hyTSU0q#WTU#a^D@zPtUvq75Z**v1aCCDfOI=$gM_VRHTP8_c5i\u00264cU0q#WTU#a^D@+exUvqC}ba-ZOa\u00262F5baN(5U0WtcTP8?bCP`ZnGB90TU0q#UTP7SUO$=XOV{dY9WpZC|baN(6U0WtcTP8?bCP`Zn0WlE\u003eFcASU5fLyE0WlF4FkM|;U0q!(P7iQ$X\u003eDnAX?A62a\u0026L8Tb0$t(TU#a^D^Cw!Ut@1\u003ec4cyOUvP41ZF441U0WtcTP8?bD^LPyI3`d)5dr}LU0q#WT_*);Ze(S6TPF@_Zggd5WpZV1baH8Bb9;R!4RdsIX\u003eMm_Zgg^KWpjIdClP6GbY*8{a%*LIWo~q7a%FRSeJ2oebaH8KXKQ77Wo~qGX=QVJeO)IFX\u003eMd?cyMoXX\u003e@6CZWLw!00000003P"
+                            },
+                            "smoothpts": "",
+                            "stashid": ";"
+                        },
+                        "position": [
+                            5.18,
+                            -9.28
+                        ],
+                        "type": "curve::2.0",
+                        "user_data": {
+                            "allow_selecting_segments": "1",
+                            "enable_hud": "1",
+                            "enableorientguide": "1",
+                            "open_prefs": "0",
+                            "orient_angle_step_size": "15.0",
+                            "orientguidedensity": "0.75",
+                            "orientguidescale": "0.75",
+                            "picking_mode": "0",
+                            "relative_segment_align": "0",
+                            "show_hover_labels": "1",
+                            "show_preview_curve": "1",
+                            "show_tangent_handles_on_all_selected": "1"
+                        }
+                    },
+                    "delete2": {
+                        "inputs": [
+                            {
+                                "from": "groupexpand2",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "group": "liquid",
+                            "negate": "keep"
+                        },
+                        "position": [
+                            13.68,
+                            -25.53
+                        ],
+                        "type": "delete"
+                    },
+                    "facet1": {
+                        "inputs": [
+                            {
+                                "from": "convert1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "inline": true,
+                            "inlinedist": 0.00001
+                        },
+                        "position": [
+                            5.18,
+                            -11.28
+                        ],
+                        "type": "facet"
+                    },
+                    "font1": {
+                        "parms": {
+                            "fontsize": 0.015,
+                            "lod": 0.183,
+                            "text": "AMUSE"
+                        },
+                        "position": [
+                            9.49,
+                            -11.21
+                        ],
+                        "type": "font"
+                    },
+                    "font2": {
+                        "parms": {
+                            "fontsize": 0.005,
+                            "lod": 0.001,
+                            "t": [
+                                0,
+                                -0.01034546468872577,
+                                0
+                            ],
+                            "text": "ANGEL DUST",
+                            "tracking": [
+                                0.485,
+                                0
+                            ]
+                        },
+                        "position": [
+                            11.75,
+                            -11.21
+                        ],
+                        "type": "font"
+                    },
+                    "fuse1": {
+                        "inputs": [
+                            {
+                                "from": "revolve1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "tol3d": 0.00015
+                        },
+                        "position": [
+                            5.18,
+                            -13.28
+                        ],
+                        "type": "fuse::2.0"
+                    },
+                    "group2": {
+                        "flags": {
+                            "bypass": true,
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "split1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "groupname": "cap"
+                        },
+                        "position": [
+                            5.33,
+                            -24.41
+                        ],
+                        "type": "groupcreate"
+                    },
+                    "group3": {
+                        "flags": {
+                            "bypass": true,
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "softtransform1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "groupname": "boutle"
+                        },
+                        "position": [
+                            7.47,
+                            -24.48
+                        ],
+                        "type": "groupcreate"
+                    },
+                    "group4": {
+                        "flags": {
+                            "bypass": true,
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "reverse3",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "groupname": "label"
+                        },
+                        "position": [
+                            10.48,
+                            -24.54
+                        ],
+                        "type": "groupcreate"
+                    },
+                    "group_edges": {
+                        "flags": {
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "polyfill1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "domaxedgeangle": true,
+                            "dominedgeangle": true,
+                            "groupbase": false,
+                            "groupedges": true,
+                            "groupname": "group_edges",
+                            "grouptype": "edge",
+                            "maxedgeangle": 100,
+                            "minedgeangle": 80
+                        },
+                        "position": [
+                            13.68,
+                            -29.53
+                        ],
+                        "type": "groupcreate"
+                    },
+                    "groupdelete1": {
+                        "flags": {
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "merge3",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "deletions": [
+                                {
+                                    "group#": "*"
+                                }
+                            ]
+                        },
+                        "position": [
+                            7.62,
+                            -41.44
+                        ],
+                        "type": "groupdelete"
+                    },
+                    "groupexpand1": {
+                        "flags": {
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "grouppromote2",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "group": "btm",
+                            "numsteps": 7,
+                            "outputgroup": "btm_exp"
+                        },
+                        "position": [
+                            7.44,
+                            -21.35
+                        ],
+                        "type": "groupexpand"
+                    },
+                    "groupexpand2": {
+                        "flags": {
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "softtransform1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "group": "btm_exp",
+                            "numsteps": 7,
+                            "outputgroup": "liquid"
+                        },
+                        "position": [
+                            13.68,
+                            -24.53
+                        ],
+                        "type": "groupexpand"
+                    },
+                    "grouppromote1": {
+                        "flags": {
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "groupexpand1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "promotions": [
+                                {
+                                    "group#": "btm_exp",
+                                    "preserve#": true
+                                }
+                            ]
+                        },
+                        "position": [
+                            7.44,
+                            -22.35
+                        ],
+                        "type": "grouppromote"
+                    },
+                    "grouppromote2": {
+                        "flags": {
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "btm",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "promotions": [
+                                {
+                                    "group#": "btm",
+                                    "totype#": "prims"
+                                }
+                            ]
+                        },
+                        "position": [
+                            7.44,
+                            -20.35
+                        ],
+                        "type": "grouppromote"
+                    },
+                    "liquid": {
+                        "flags": {
+                            "bypass": true,
+                            "highlight": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "normal1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "groupname": "liquid"
+                        },
+                        "position": [
+                            13.69,
+                            -33.3
+                        ],
+                        "type": "groupcreate"
+                    },
+                    "merge1": {
+                        "inputs": [
+                            {
+                                "from": "font1",
+                                "from_index": 0,
+                                "to_index": 0
+                            },
+                            {
+                                "from": "font2",
+                                "from_index": 0,
+                                "to_index": 1
+                            }
+                        ],
+                        "position": [
+                            10.26,
+                            -12.74
+                        ],
+                        "type": "merge"
+                    },
+                    "merge3": {
+                        "inputs": [
+                            {
+                                "from": "CAP",
+                                "from_index": 0,
+                                "to_index": 0
+                            },
+                            {
+                                "from": "BOUTLE",
+                                "from_index": 0,
+                                "to_index": 1
+                            },
+                            {
+                                "from": "LIQUID",
+                                "from_index": 0,
+                                "to_index": 2
+                            },
+                            {
+                                "from": "LABEL",
+                                "from_index": 0,
+                                "to_index": 3
+                            }
+                        ],
+                        "position": [
+                            7.62,
+                            -39.39
+                        ],
+                        "type": "merge"
+                    },
+                    "merge4": {
+                        "inputs": [
+                            {
+                                "from": "LIQUID",
+                                "from_index": 0,
+                                "to_index": 0
+                            },
+                            {
+                                "from": "BOUTLE",
+                                "from_index": 0,
+                                "to_index": 1
+                            }
+                        ],
+                        "position": [
+                            12.39,
+                            -40.04
+                        ],
+                        "type": "merge"
+                    },
+                    "name1": {
+                        "inputs": [
+                            {
+                                "from": "group3",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "numnames": [
+                                {
+                                    "name#": "boutle"
+                                }
+                            ]
+                        },
+                        "position": [
+                            7.3,
+                            -25.48
+                        ],
+                        "type": "name"
+                    },
+                    "name2": {
+                        "inputs": [
+                            {
+                                "from": "group2",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "numnames": [
+                                {
+                                    "name#": "cap"
+                                }
+                            ]
+                        },
+                        "position": [
+                            5.26,
+                            -25.41
+                        ],
+                        "type": "name"
+                    },
+                    "name3": {
+                        "inputs": [
+                            {
+                                "from": "group4",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "numnames": [
+                                {
+                                    "name#": "label"
+                                }
+                            ]
+                        },
+                        "position": [
+                            10.39,
+                            -25.54
+                        ],
+                        "type": "name"
+                    },
+                    "name4": {
+                        "inputs": [
+                            {
+                                "from": "color1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "numnames": [
+                                {
+                                    "name#": "liquid"
+                                }
+                            ]
+                        },
+                        "position": [
+                            13.74,
+                            -35.3
+                        ],
+                        "type": "name"
+                    },
+                    "normal1": {
+                        "inputs": [
+                            {
+                                "from": "reverse4",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "cuspangle": 30
+                        },
+                        "position": [
+                            13.71,
+                            -32.53
+                        ],
+                        "type": "normal"
+                    },
+                    "output0": {
+                        "flags": {
+                            "display": true,
+                            "render": true
+                        },
+                        "inputs": [
+                            {
+                                "from": "groupdelete1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "outputidx": 0
+                        },
+                        "position": [
+                            7.62,
+                            -43.2
+                        ],
+                        "type": "output"
+                    },
+                    "peak1": {
+                        "inputs": [
+                            {
+                                "from": "delete2",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "dist": 0.0001
+                        },
+                        "position": [
+                            13.68,
+                            -26.53
+                        ],
+                        "type": "peak"
+                    },
+                    "peak2": {
+                        "inputs": [
+                            {
+                                "from": "boolean1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "dist": 0.0001
+                        },
+                        "position": [
+                            10.3,
+                            -19.58
+                        ],
+                        "type": "peak"
+                    },
+                    "polybevel1": {
+                        "inputs": [
+                            {
+                                "from": "group_edges",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "divisions": 5,
+                            "group": "group1",
+                            "offset": 0.0003
+                        },
+                        "position": [
+                            13.68,
+                            -30.53
+                        ],
+                        "type": "polybevel::3.0"
+                    },
+                    "polyextrude1": {
+                        "inputs": [
+                            {
+                                "from": "merge1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "dist": -0.001,
+                            "outputback": true
+                        },
+                        "position": [
+                            10.26,
+                            -13.76
+                        ],
+                        "type": "polyextrude::2.0"
+                    },
+                    "polyextrude2": {
+                        "inputs": [
+                            {
+                                "from": "split1",
+                                "from_index": 1,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "dist": -0.0008,
+                            "outputback": true
+                        },
+                        "position": [
+                            7.44,
+                            -17.35
+                        ],
+                        "type": "polyextrude::2.0"
+                    },
+                    "polyextrude3": {
+                        "inputs": [
+                            {
+                                "from": "peak2",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "dist": -0.0001,
+                            "outputback": true
+                        },
+                        "position": [
+                            10.32,
+                            -20.35
+                        ],
+                        "type": "polyextrude::2.0"
+                    },
+                    "polyfill1": {
+                        "inputs": [
+                            {
+                                "from": "clip1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "fillmode": "none"
+                        },
+                        "position": [
+                            13.68,
+                            -28.53
+                        ],
+                        "type": "polyfill"
+                    },
+                    "remesh1": {
+                        "inputs": [
+                            {
+                                "from": "reverse1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "iterations": 10,
+                            "smoothing": 0,
+                            "targetsize": 0.0005
+                        },
+                        "position": [
+                            10.26,
+                            -15.42
+                        ],
+                        "type": "remesh::2.0"
+                    },
+                    "reverse1": {
+                        "inputs": [
+                            {
+                                "from": "polyextrude1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            10.26,
+                            -14.58
+                        ],
+                        "type": "reverse"
+                    },
+                    "reverse2": {
+                        "inputs": [
+                            {
+                                "from": "polyextrude2",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            7.44,
+                            -18.35
+                        ],
+                        "type": "reverse"
+                    },
+                    "reverse3": {
+                        "inputs": [
+                            {
+                                "from": "polyextrude3",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            10.3,
+                            -21.11
+                        ],
+                        "type": "reverse"
+                    },
+                    "reverse4": {
+                        "inputs": [
+                            {
+                                "from": "polybevel1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "position": [
+                            13.69,
+                            -31.53
+                        ],
+                        "type": "reverse"
+                    },
+                    "revolve1": {
+                        "inputs": [
+                            {
+                                "from": "facet1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "divs": 32
+                        },
+                        "position": [
+                            5.18,
+                            -12.28
+                        ],
+                        "type": "revolve::2.0"
+                    },
+                    "softtransform1": {
+                        "inputs": [
+                            {
+                                "from": "grouppromote1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "group": "btm_exp",
+                            "rad": 0.0312,
+                            "t": [
+                                0,
+                                0.008035371085934639,
+                                0
+                            ]
+                        },
+                        "position": [
+                            7.44,
+                            -23.35
+                        ],
+                        "type": "softxform"
+                    },
+                    "split1": {
+                        "inputs": [
+                            {
+                                "from": "cup",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "group": "cap"
+                        },
+                        "position": [
+                            5.18,
+                            -15.28
+                        ],
+                        "type": "split"
+                    },
+                    "transform1": {
+                        "inputs": [
+                            {
+                                "from": "bend1",
+                                "from_index": 0,
+                                "to_index": 0
+                            }
+                        ],
+                        "parms": {
+                            "t": [
+                                -0.0001736958511173725,
+                                0.0344288136206492,
+                                0.026078337798841278
+                            ]
+                        },
+                        "position": [
+                            10.3,
+                            -17.47
+                        ],
+                        "type": "xform"
+                    }
+                },
+                "type": "subnet"
+            }
+        },
+        "flags": {
+            "render": true
+        },
+        "parms": {
+            "enable_subsetgroups": true,
+            "subsetgroups": "*"
+        },
+        "position": [
+            3.42,
+            -0.07
+        ],
+        "type": "sopcreate"
+    },
+    "primitive1": {
+        "parms": {
+            "primpath": "/scene\n/mat"
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "primitive"
+    },
+    "transform1": {
+        "inputs": [
+            {
+                "from": "graftbranches1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "p": [
+                0.05295976251363754,
+                0.0005660356837324798,
+                0.08013538271188736
+            ],
+            "primpattern": "/scene/nail_polishes/nail_polish_17",
+            "r": [
+                0,
+                103.81645233552268,
+                0
+            ]
+        },
+        "position": [
+            0.27,
+            -5.82
+        ],
+        "type": "xform"
+    },
+    "usdrender_rop1": {
+        "inputs": [
+            {
+                "from": "karmarendersettings",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "husk_instantshutter": {
+                "expression": "1 - ch(\"../karmarendersettings/enablemblur\")"
+            },
+            "renderer": {
+                "expression": "\"BRAY_HdKarma\" + ifs(strmatch(chs(\"../karmarendersettings/engine\"), \"xpu\"), \"XPU\", \"\")"
+            },
+            "rendersettings": {
+                "expression": "chs(\"../karmarendersettings/primpath\")"
+            },
+            "resolvercontext": "`chs(strcat(opcreator(\".\"), \"/resolvercontextassetpath\"))`"
+        },
+        "position": [
+            0.33,
+            -10.4
+        ],
+        "type": "usdrender_rop"
+    }
+}

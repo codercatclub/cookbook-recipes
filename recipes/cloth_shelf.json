@@ -1,0 +1,737 @@
+{
+    "CLOTH_POINTS": {
+        "inputs": [
+            {
+                "from": "attribrandomize2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            10.21,
+            -3.34
+        ],
+        "type": "null"
+    },
+    "OUT1": {
+        "color": [
+            0,
+            0,
+            0
+        ],
+        "flags": {
+            "colordefault": false,
+            "display": true,
+            "render": true
+        },
+        "inputs": [
+            {
+                "from": "name6",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            5.41,
+            -11.17
+        ],
+        "type": "null"
+    },
+    "__cookbookMeta": {
+        "context": "sop",
+        "version": "21.0.729",
+        "systemfields": {
+            "description": "Small example focused on simplicity showing how to make shelf with clothing. It show how to create points in VEX with necessary attributes for randomizing rotation around axis.",
+            "category": "geometry",
+            "image": "10e168a00ae7.jpg",
+            "id": "10e168a00ae7",
+            "date-created": "2026-08-19T12:47:10.548134982Z",
+            "date-modified": "2026-08-19T12:50:01.442327042Z",
+            "username": "kif",
+            "tags": [
+                "modeling",
+                "simple",
+                "sop",
+                "copy",
+                "furniture",
+                "closet",
+                "vex",
+                "randomize",
+                "vector",
+                "rotation",
+                "market"
+            ]
+        }
+    },
+    "attribrandomize2": {
+        "inputs": [
+            {
+                "from": "dupe_points",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "distribution": "ramp",
+            "ramp": [
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0,
+                    "value": 0.07203389704227448
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 0.5894039869308472,
+                    "value": 0.10169491171836853
+                },
+                {
+                    "interp": "monotonecubic",
+                    "pos": 1,
+                    "value": 0.75
+                }
+            ],
+            "seed": 7657
+        },
+        "position": [
+            10.23,
+            -2.11
+        ],
+        "type": "attribrandomize"
+    },
+    "blast1": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "box",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "0-1 5",
+            "grouptype": "prims",
+            "negate": true,
+            "removegrp": true
+        },
+        "position": [
+            3.27,
+            1.73
+        ],
+        "type": "blast"
+    },
+    "blast2": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "box",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "3",
+            "grouptype": "prims",
+            "negate": true,
+            "removegrp": true
+        },
+        "position": [
+            0.01,
+            4.42
+        ],
+        "type": "blast"
+    },
+    "box": {
+        "parms": {
+            "divrate": [
+                2,
+                2,
+                2
+            ],
+            "size": [
+                0.3500761847915391,
+                1.7835807496747225,
+                1
+            ],
+            "t": [
+                0.32496189270306924,
+                -0.8896155601295854,
+                0
+            ],
+            "type": "polymesh"
+        },
+        "position": [
+            3.24,
+            5.82
+        ],
+        "type": "box",
+        "user_data": {
+            "nodeshape": "circle"
+        }
+    },
+    "box2": {
+        "parms": {
+            "divrate": [
+                4,
+                2,
+                4
+            ],
+            "scale": 0.85,
+            "size": [
+                0.3818296194076538,
+                0.04526381567120552,
+                0.39683961868286133
+            ],
+            "t": [
+                0,
+                0.018986230716109276,
+                0
+            ],
+            "type": "polymesh"
+        },
+        "position": [
+            6.24,
+            0.5
+        ],
+        "type": "box"
+    },
+    "cloth": {
+        "inputs": [
+            {
+                "from": "pack4",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "name#": "folded_cloth"
+                }
+            ]
+        },
+        "position": [
+            6.21,
+            -3.38
+        ],
+        "type": "name"
+    },
+    "color2": {
+        "inputs": [
+            {
+                "from": "shelf",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "color": [
+                0.1932474970817566,
+                0.12824749946594238,
+                0.06324750185012817
+            ]
+        },
+        "position": [
+            3.2,
+            -4.29
+        ],
+        "type": "color"
+    },
+    "connectivity1": {
+        "inputs": [
+            {
+                "from": "copy1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            10.41,
+            2.5
+        ],
+        "type": "connectivity"
+    },
+    "copy1": {
+        "inputs": [
+            {
+                "from": "blast2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "ncy": 6,
+            "t": [
+                0,
+                {
+                    "expression": "ch(\"../box/sizey\")/(ch(\"ncy\")-1)"
+                },
+                0
+            ]
+        },
+        "position": [
+            0,
+            3.52
+        ],
+        "type": "copyxform"
+    },
+    "copytopoints1": {
+        "inputs": [
+            {
+                "from": "line1",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "delete1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "targetattribs": [
+                {
+                    "applyattribs#": "*,^v,^Alpha,^N,^up,^pscale,^scale,^orient,^rot,^pivot,^trans,^transform"
+                },
+                {
+                    "applyattribs#": "Alpha",
+                    "applymethod#": "mult"
+                },
+                {
+                    "applyattribs#": "v",
+                    "applymethod#": "add"
+                }
+            ]
+        },
+        "position": [
+            10.2,
+            -0.21
+        ],
+        "type": "copytopoints::2.0"
+    },
+    "copytopoints2": {
+        "inputs": [
+            {
+                "from": "cloth",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "CLOTH_POINTS",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "parms": {
+            "targetattribs": [
+                {
+                    "applyattribs#": "*,^v,^Alpha,^N,^up,^pscale,^scale,^orient,^rot,^pivot,^trans,^transform"
+                },
+                {
+                    "applyattribs#": "Alpha",
+                    "applymethod#": "mult"
+                },
+                {
+                    "applyattribs#": "v",
+                    "applymethod#": "add"
+                }
+            ]
+        },
+        "position": [
+            6.43,
+            -6.45
+        ],
+        "type": "copytopoints::2.0"
+    },
+    "delete1": {
+        "inputs": [
+            {
+                "from": "extractcentroid1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "entity": "point",
+            "filter": {
+                "expression": "@ptnum!=@numpt-1"
+            },
+            "groupop": "filter",
+            "negate": "keep",
+            "pattern": ""
+        },
+        "position": [
+            10.4,
+            0.79
+        ],
+        "type": "delete"
+    },
+    "dupe_points": {
+        "color": [
+            0.14,
+            0.67,
+            0.56
+        ],
+        "flags": {
+            "colordefault": false
+        },
+        "inputs": [
+            {
+                "from": "copytopoints1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "jitter": 0.012,
+            "max_angle": 10.1,
+            "max_num": 10,
+            "min_angle": -10.1,
+            "min_num": 3,
+            "nseed": 19,
+            "snippet": "int n = floor(fit01(rand(@ptnum + chi(\"nseed\")), chi(\"min_num\"), chi(\"max_num\")));\n\nfor(int i = 1; i \u003c n; i++) {\n    int id = i+@ptnum;\n    \n    float rx = fit01(rand(id)/2, -1, 1) * ch(\"jitter\");\n    float rz = fit01(rand(id+123), -1, 1) * ch(\"jitter\");\n    int pt = addpoint(0, set(@P.x + rx, @P.y + i*ch(\"y_offset\"), @P.z + rz));\n    \n    float angle90 = floor(fit01(rand(id), 0, 4)) * 90;\n    float angle = angle90 + fit01(rand(id), ch(\"min_angle\"), ch(\"max_angle\"));\n    vector axis = {0, 1, 0};\n    \n    vector4 orient = quaternion(radians(angle), axis);\n    \n    setpointattrib(0, \"orient\", pt, orient);\n}",
+            "y_offset": 0.028
+        },
+        "parmtemplates": [
+            {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                    "folder_generatedparms_snippet": {
+                        "label": "Generated Channel Parameters",
+                        "parmtemplates": {
+                            "jitter": {
+                                "label": "Jitter",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "max_angle": {
+                                "label": "Max Angle",
+                                "max_value": 180,
+                                "min_value": -180,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "max_num": {
+                                "label": "Max Num",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "type": "integer"
+                            },
+                            "min_angle": {
+                                "label": "Min Angle",
+                                "max_value": 180,
+                                "min_value": -180,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            },
+                            "min_num": {
+                                "label": "Min Num",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "type": "integer"
+                            },
+                            "nseed": {
+                                "label": "Nseed",
+                                "menu_type": "normal",
+                                "script_callback_language": "hscript",
+                                "type": "integer"
+                            },
+                            "y_offset": {
+                                "label": "Y Offset",
+                                "max_value": 1,
+                                "script_callback_language": "hscript",
+                                "type": "float"
+                            }
+                        },
+                        "script_callback_language": "hscript",
+                        "tags": {
+                            "group_type": "simple",
+                            "sidefx::look": "blank"
+                        },
+                        "type": "folder_simple"
+                    }
+                }
+            }
+        ],
+        "position": [
+            10.25,
+            -1.23
+        ],
+        "type": "attribwrangle"
+    },
+    "edit1": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "box2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "9 13",
+            "grouptype": "points",
+            "leadislandhint": "9",
+            "p": [
+                -0.05125913769006729,
+                0.018986230716109276,
+                -0.1686568409204483
+            ],
+            "t": [
+                0.000024341046810150146,
+                0.00013537704944610596,
+                0.014933481812477112
+            ]
+        },
+        "position": [
+            6.24,
+            -0.4
+        ],
+        "type": "edit"
+    },
+    "extractcentroid1": {
+        "inputs": [
+            {
+                "from": "connectivity1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "class": "point",
+            "pieceattrib": "class"
+        },
+        "position": [
+            10.39,
+            1.79
+        ],
+        "type": "extractcentroid"
+    },
+    "line1": {
+        "parms": {
+            "dir": [
+                0,
+                0,
+                1
+            ],
+            "dist": 0.66,
+            "origin": [
+                0,
+                0,
+                {
+                    "expression": "-ch(\"dist\")/2"
+                }
+            ],
+            "points": 3
+        },
+        "position": [
+            8.74,
+            1.19
+        ],
+        "type": "line"
+    },
+    "matchsize2": {
+        "inputs": [
+            {
+                "from": "merge2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "justify_y": "min"
+        },
+        "position": [
+            5.41,
+            -9.07
+        ],
+        "type": "matchsize"
+    },
+    "merge2": {
+        "inputs": [
+            {
+                "from": "color2",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "copytopoints2",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            5.41,
+            -8.04
+        ],
+        "type": "merge"
+    },
+    "merge3": {
+        "inputs": [
+            {
+                "from": "polyextrude2",
+                "from_index": 0,
+                "to_index": 0
+            },
+            {
+                "from": "polyextrude1",
+                "from_index": 0,
+                "to_index": 1
+            }
+        ],
+        "position": [
+            3.21,
+            -1.71
+        ],
+        "type": "merge"
+    },
+    "name6": {
+        "inputs": [
+            {
+                "from": "matchsize2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "name#": "shelf_with_cloth"
+                }
+            ]
+        },
+        "position": [
+            5.41,
+            -10.07
+        ],
+        "type": "name"
+    },
+    "pack4": {
+        "inputs": [
+            {
+                "from": "subdivide2",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            6.21,
+            -2.35
+        ],
+        "type": "pack"
+    },
+    "pack5": {
+        "inputs": [
+            {
+                "from": "merge3",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "position": [
+            3.21,
+            -2.46
+        ],
+        "type": "pack"
+    },
+    "polyextrude1": {
+        "inputs": [
+            {
+                "from": "blast1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dist": 0.020976006984710693,
+            "outputback": true
+        },
+        "position": [
+            3.3,
+            0.86
+        ],
+        "type": "polyextrude::2.0"
+    },
+    "polyextrude2": {
+        "inputs": [
+            {
+                "from": "reverse1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "dist": 0.020976006984710693,
+            "outputback": true
+        },
+        "position": [
+            0.03,
+            -0.75
+        ],
+        "type": "polyextrude::2.0"
+    },
+    "reverse1": {
+        "flags": {
+            "highlight": true
+        },
+        "inputs": [
+            {
+                "from": "copy1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "group": "0"
+        },
+        "position": [
+            0,
+            0
+        ],
+        "type": "reverse"
+    },
+    "shelf": {
+        "inputs": [
+            {
+                "from": "pack5",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "numnames": [
+                {
+                    "name#": "shelf"
+                }
+            ]
+        },
+        "position": [
+            3.2,
+            -3.45
+        ],
+        "type": "name"
+    },
+    "subdivide2": {
+        "inputs": [
+            {
+                "from": "edit1",
+                "from_index": 0,
+                "to_index": 0
+            }
+        ],
+        "parms": {
+            "iterations": 2
+        },
+        "position": [
+            6.21,
+            -1.31
+        ],
+        "type": "subdivide"
+    }
+}
